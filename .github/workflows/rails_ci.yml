@@ -1,0 +1,66 @@
+name: Rails CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - stn_v1
+  pull_request:
+    branches:
+      - main
+      - master
+      - stn_v1
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      - name: Run Rubocop
+        run: bundle exec rubocop
+
+  rspec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      - name: Setup test database
+        run: |
+          bin/rails db:create
+          bin/rails db:migrate
+      - name: Run RSpec
+        run: bundle exec rspec
+
+  brakeman:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      - name: Run Brakeman
+        run: bundle exec brakeman
