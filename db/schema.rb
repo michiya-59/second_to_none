@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_12_104912) do
+ActiveRecord::Schema.define(version: 2023_08_12_110248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "incentives", force: :cascade do |t|
+    t.string "course_type", null: false, comment: "normal、advance、two_ter_normal、two_tier_advance、a_san_self_organization、a_san_other_organization, plus_two_tier_ruby, plus_two_tier_sapphire"
+    t.string "course_name", null: false, comment: "ノーマル、アドバンス、２ティア(ノーマル)、２ティア(アドバンス)、自組織３段目以降、他系列、ルビー、サファイヤ"
+    t.integer "incentive_price", null: false, comment: "初期値【100000：ノーマルコース、140000：アドバンス、30000；２ティア(ノーマル)、40000：２ティア（アドバンス）、10000：自組織３段目以降発生、15000：他系列契約時に発生、10000：ルビー、20000：サファイヤ】"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "tmp_member_infos", force: :cascade do |t|
     t.integer "user_id", null: false, comment: "ユーザID"
