@@ -13,12 +13,14 @@ gem "puma", "~> 5.0"
 gem "rails", "~> 6.1.5"
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.0"
+gem "rails-i18n"
 
 group :development, :test do
   gem "brakeman", require: false
   gem "bullet"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
-  gem "pry-rails"
+  gem 'pry-rails'
+  gem 'pry-byebug'
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
@@ -29,7 +31,7 @@ end
 
 group :development do
   gem "listen", "~> 3.3"
-  gem "rack-mini-profiler", "~> 2.0"
+  # gem "rack-mini-profiler", "~> 2.0"
   gem "spring"
   gem "web-console", ">= 4.1.0"
 end
