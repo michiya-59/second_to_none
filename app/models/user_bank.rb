@@ -1,0 +1,2 @@
+class UserBank < ApplicationRecord
+end

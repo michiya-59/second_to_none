@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_12_110248) do
+ActiveRecord::Schema.define(version: 2023_08_12_140624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "grades", force: :cascade do |t|
+    t.string "grade_name", null: false, comment: "1：エグゼクティブ、2：ルビーエグゼクティブ、3：エメラルドエグゼクティグ"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "incentives", force: :cascade do |t|
     t.string "course_type", null: false, comment: "normal、advance、two_ter_normal、two_tier_advance、a_san_self_organization、a_san_other_organization, plus_two_tier_ruby, plus_two_tier_sapphire"
@@ -55,4 +61,57 @@ ActiveRecord::Schema.define(version: 2023_08_12_110248) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_addresses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "zip_str3", null: false
+    t.integer "zip_str4", null: false
+    t.string "ken", null: false
+    t.string "city", null: false
+    t.string "other_address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_addresses_on_user_id"
+  end
+
+  create_table "user_banks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "account_type", null: false
+    t.string "bank_name", null: false
+    t.string "branch_name", null: false
+    t.string "branch_number", null: false
+    t.string "account_number_hash", null: false
+    t.string "account_number_tail", null: false
+    t.string "account_holder", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_banks_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "login_id", limit: 64, null: false
+    t.string "email", limit: 64, null: false
+    t.string "name", null: false
+    t.string "name_kana", null: false
+    t.datetime "birthday", null: false
+    t.string "phone", null: false
+    t.string "password_digest", null: false
+    t.integer "status", null: false
+    t.integer "introducer_id", null: false
+    t.string "left_or_right"
+    t.integer "admin_flg", null: false
+    t.datetime "last_login_at"
+    t.string "image"
+    t.integer "gender_id", null: false
+    t.integer "online_flg", null: false
+    t.integer "grade_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["grade_id"], name: "index_users_on_grade_id"
+    t.index ["login_id"], name: "index_users_on_login_id", unique: true
+  end
+
+  add_foreign_key "user_addresses", "users"
+  add_foreign_key "user_banks", "users"
+  add_foreign_key "users", "grades"
 end
