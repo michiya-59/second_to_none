@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_12_140624) do
+ActiveRecord::Schema.define(version: 2023_08_14_062407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2023_08_12_140624) do
   end
 
   create_table "tmp_member_infos", force: :cascade do |t|
-    t.integer "user_id", null: false, comment: "ユーザID"
     t.string "email", null: false, comment: "メールアドレス"
     t.string "name", null: false, comment: "氏名"
     t.string "name_kana", null: false, comment: "氏名カナ"
