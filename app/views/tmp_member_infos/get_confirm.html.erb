@@ -21,7 +21,7 @@
 
 </div>
 
-<%= form_with model: @tmp_member_info, url: tmp_member_infos_path, local: true do |f| %>
+<%= form_with model: @set_tmp_member_info, url: tmp_member_infos_path, local: true do |f| %>
   <% if flash[:edit].present? %>
     <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:edit] %><p>
   <% end %>

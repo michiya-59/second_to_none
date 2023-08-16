@@ -12,9 +12,8 @@
 *
 *= require_tree .
 *= require_self
+*= require destyle
 */
-@import "destyle";
-/* miscellaneous */
 
 html {
   font-size: 62.5%;

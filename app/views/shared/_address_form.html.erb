@@ -41,7 +41,7 @@
 </div>
 <p class="form_edit_title common_size20">会員登録 住所</p>
 
-<%= form_with model: @tmp_member_info, url: confirm_tmp_member_infos_path(current_step: @current_step), local: true do |f| %>
+<%= form_with model: @set_tmp_member_info, url: confirm_tmp_member_infos_path(current_step: @current_step), local: true do |f| %>
   <!-- エラーメッセージの表示 -->
   <%= render 'shared/error' %>
   <div class="common_list_title_background common_btn_shape">

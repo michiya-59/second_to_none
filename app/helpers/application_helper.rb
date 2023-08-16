@@ -2,6 +2,6 @@
 
 module ApplicationHelper
   def get_current_path
-    current_path = request.fullpath
+    request.fullpath
   end
 end

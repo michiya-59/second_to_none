@@ -11,16 +11,16 @@ gem "jbuilder", "~> 2.7"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "rails", "~> 6.1.5"
+gem "rails-i18n"
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.0"
-gem "rails-i18n"
 
 group :development, :test do
   gem "brakeman", require: false
   gem "bullet"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
-  gem 'pry-rails'
-  gem 'pry-byebug'
+  gem "pry-byebug"
+  gem "pry-rails"
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false

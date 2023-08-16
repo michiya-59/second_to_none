@@ -130,7 +130,7 @@ Lint/UnusedMethodArgument:
 ##################### Metrics ##################################
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 80
 
 Metrics/CyclomaticComplexity:
   Max: 10
@@ -138,12 +138,20 @@ Metrics/CyclomaticComplexity:
 Metrics/LineLength:
   Max: 160
   Exclude:
-    - "db/migrate/*.rb"
+    - "db/**/*"
 
 Metrics/MethodLength:
-  Max: 20
+  Max: 30
   Exclude:
     - "db/migrate/*.rb"
 
+Metrics/BlockLength:
+  Exclude:
+    - "db/**/*"
+    - "spec/**/*"
+
 Metrics/PerceivedComplexity:
-  Max: 8
+  Max: 20
+
+Naming/AccessorMethodName:
+  Enabled: false

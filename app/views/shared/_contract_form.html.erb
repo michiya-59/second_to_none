@@ -42,7 +42,7 @@
 <p class="form_edit_title common_size20">会員登録 契約内容</p>
 <p class="gray common_size13">※こちらの契約内容は紹介者担当の方に入力をしていただきます。</p>
 
-<%= form_with model: @tmp_member_info, url: confirm_tmp_member_infos_path(current_step: @current_step), local: true do |f| %>
+<%= form_with model: @set_tmp_member_info, url: confirm_tmp_member_infos_path(current_step: @current_step), local: true do |f| %>
   <!-- エラーメッセージの表示 -->
   <%= render 'shared/error' %>
   <div class="common_list_title_background common_btn_shape">

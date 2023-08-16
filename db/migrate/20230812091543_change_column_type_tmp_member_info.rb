@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeColumnTypeTmpMemberInfo < ActiveRecord::Migration[6.1]
   def change
     change_column :tmp_member_infos, :other_address, :string
