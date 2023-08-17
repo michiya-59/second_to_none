@@ -1,0 +1,127 @@
+<div class="step_container">
+  <div class="rectangle_triangle_container">
+    <div class="rectangle">
+      <div class="rectangle-content common_size20">STEP1 入力</div>
+    </div>
+    <div class="triangle"></div>
+  </div>
+
+  <div class="rectangle_triangle_container">
+    <div class="step_white rectangle">
+      <div class="rectangle-content common_size20 beige">STEP2 確認確認</div>
+    </div>
+    <div class="triangle_white triangle"></div>
+  </div>
+
+  <div class="rectangle_triangle_container">
+    <div class="step_white rectangle">
+      <div class="rectangle-content common_size20 beige">STEP3 完了</div>
+    </div>
+  </div>
+
+</div>
+<div class="input_order">
+  <div class="basic_info">
+    <p class="common_btn_brawn_background">1</p>
+    <p class="common_size13">基本情報<br>入力</p>
+  </div>
+  <div class="address_info">
+    <p class="common_btn_brawn_background">2</p>
+    <p class="common_size13">住所情報<br>入力</p>
+  </div>
+  <div class="bank_info">
+    <p class="common_btn_brawn_background">3</p>
+    <p class="common_size13">銀行口座<br>入力</p>
+  </div>
+  <div class="contract">
+    <p class="common_btn_beige_background">4</p>
+    <p class="common_size13">契約情報<br>入力</p>
+  </div>
+  <div class="input_order_line"></div>
+</div>
+<p class="form_edit_title common_size20">会員登録 契約内容</p>
+<p class="gray common_size13">※こちらの契約内容は紹介者担当の方に入力をしていただきます。</p>
+
+<%= form_with model: @set_tmp_member_info, url: confirm_tmp_member_infos_path(current_step: @current_step), local: true do |f| %>
+  <!-- エラーメッセージの表示 -->
+  <%= render 'shared/error' %>
+  <div class="common_list_title_background common_btn_shape">
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">紹介者</p>
+        <span>必須</span>
+      </div>
+      <div class="contract_info form_part_input">
+        <%= f.select :introducer_id, @users&.map { |i| [i.name, i.id] }, { selected: get_default_value("introducer_id", "select") }%>
+      </div>
+    </div>
+
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">営業担当</p>
+        <span>必須</span>
+      </div>
+      <div class="contract_info form_part_input">
+        <%= f.select :sales_id, @users&.map { |i| [i.name, i.id] }, { selected: get_default_value("sales_id", "select") }%>
+      </div>
+    </div>
+    
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">コース</p>
+        <span>必須</span>
+      </div>
+      <div class="contract_info form_part_input">
+        <%= f.select :incentive_id, @incentives&.map { |i| [i.course_name, i.id] }, { selected: get_default_value("sales_id", "select") }%>
+      </div>
+    </div>
+    
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">組織図 配置位置</p>
+        <span>必須</span>
+      </div>
+      <div class="contract_info form_part_input">
+        <%= f.select :left_or_right, [["右", "right"], ["左", "left"]], {selected: session[:tmp_member_info_data] && session[:tmp_member_info_data]["left_or_right"] || "right" }%>
+      </div>
+    </div>
+
+    <div class="two_thier">
+      <div class="underline"></div>
+      <p class="common_size16 sales_info_text">
+        今回営業された方は紹介者の商談ですか？<br>
+        紹介者から商談の場合は、<br>
+        営業担当者本人から見て紹介者が組織図のどの位置になるか回答ください。<br>
+      </p>
+      <p class="gray common_size13">
+        ※営業担当の方のみ以下の選択肢を選択してください。
+        紹介者ではなく営業担当本人でお願いいたします。
+      </p>
+      
+      <div class="two_thier_radio">
+        <%= f.radio_button :a_san_flg, 1, checked: (get_default_value("a_san_flg", "radio") == 1) %>
+        <%= f.label :a_san_flg, '自組織の３列目以降' %>
+      </div>
+      
+      <div class="two_thier_radio">
+        <%= f.radio_button :a_san_flg, 2, checked: (get_default_value("a_san_flg", "radio") == 2) %>
+        <%= f.label :a_san_flg, '他系列'%>
+      </div>
+      
+      <div class="two_thier_radio">
+        <%= f.radio_button :a_san_flg, 9, checked: (get_default_value("a_san_flg", "radio") == 9) %>
+        <%= f.label :a_san_flg, 'どれでもない' %>
+      </div>
+    </div>
+  </div>
+
+  <% if params["back_flg"].present? %>
+    <%= f.hidden_field :back_flg, value: 1 %>
+  <% end %>
+  
+  <div class="submit_btn common_merge">
+    <%= link_to '戻る', new_tmp_member_info_path(current_step: @current_step - 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    <%= f.submit "次へ", class: "common_btn_beige common_btn_content common_box_beige" %>
+  </div>
+<% end %>
+

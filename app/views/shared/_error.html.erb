@@ -1,0 +1,8 @@
+<% if flash[:error].present? %>
+<div class="error_main">
+  <p><%= flash[:error].count %>つのエラーが発生しました</p>
+  <% flash[:error].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+</div>
+<% end %>

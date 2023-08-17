@@ -1,0 +1,256 @@
+<div class="step_container">
+  <div class="rectangle_triangle_container">
+    <div class="step_white rectangle">
+      <div class="rectangle-content common_size20 beige">STEP1 入力</div>
+    </div>
+    <div class="triangle_white triangle"></div>
+  </div>
+
+  <div class="rectangle_triangle_container">
+    <div class="rectangle">
+      <div class="rectangle-content common_size20">STEP2 確認確認</div>
+    </div>
+    <div class="triangle"></div>
+  </div>
+
+  <div class="rectangle_triangle_container">
+    <div class="step_white rectangle">
+      <div class="rectangle-content common_size20 beige">STEP3 完了</div>
+    </div>
+  </div>
+
+</div>
+
+<%= form_with model: @set_tmp_member_info, url: tmp_member_infos_path, local: true do |f| %>
+  <% if flash[:edit].present? %>
+    <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:edit] %><p>
+  <% end %>
+  <div class="user_signup_info">
+    <p class="form_edit_title common_size20">基本情報 編集確認画面</p>
+    <div class="common_list_title_background common_btn_shape">
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">ログインID</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.login_id %></p>
+        </div>
+
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">パスワード</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16">*******</p>
+        </div>
+
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">氏名</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.name %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">氏名カナ</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.name_kana %></p>
+        </div>
+
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">メールアドレス</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.email %></p>
+        </div>
+
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">電話番号</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.phone %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">誕生日</p>
+        </div>
+        <div class="form_part_input">
+          <div class="form_select">
+            <p class="not_merge common_size16"><%= @set_tmp_member_info.birthday.strftime('%Y年%m月%d日') %></p>
+          </div>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">性別</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.gender_id == 1 ? '男性' : '女性' %></p>
+        </div>
+      </div>
+    </div>
+    <div class="submit_btn common_merge">
+      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 1, back_flg: 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    </div>
+  </div>
+
+  <div class="user_signup_info">
+    <p class="form_edit_title common_size20">基本情報 住所情報</p>
+    <div class="common_list_title_background common_btn_shape">
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">郵便番号</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.zip_str3 %> - <%= @set_tmp_member_info.zip_str4 %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">都道府県</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.ken %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">市区町村番地</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.city %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">建物名・部屋番号</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.other_address.present? ? @set_tmp_member_info.other_address : "設定なし" %></p>
+        </div>
+      </div>
+    </div>
+    <div class="submit_btn common_merge">
+      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 2, back_flg: 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    </div>
+  </div>
+
+  <div class="user_signup_info">
+    <p class="form_edit_title common_size20">基本情報 銀行口座</p>
+    <div class="common_list_title_background common_btn_shape">
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">金融機関名</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.bank_name %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">支店名</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.branch_name %></p>
+        </div>
+
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">支店番号</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.branch_number %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">預金種別</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.account_type %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">銀行口座</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.account_number_tail %></p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">口座名義</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.account_holder %></p>
+        </div>
+      </div>
+    </div>
+    <div class="submit_btn common_merge">
+      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 3, back_flg: 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    </div>
+  </div>
+
+  <div class="user_signup_info">
+    <p class="form_edit_title common_size20">基本情報 契約情報</p>
+    <div class="common_list_title_background common_btn_shape">
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">紹介者</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16">西野倫也</p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">営業担当</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16">鈴木誠也</p>
+        </div>
+
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">コース</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16">アドバンスコース</p>
+        </div>
+      </div>
+      <div class="form_edit_part">
+        <div class="form_part_title common_list_title">
+          <p class="common_size16">2ティア制の結果</p>
+        </div>
+        <div class="form_part_input">
+          <p class="not_merge common_size16">
+            <% if @set_tmp_member_info.a_san_flg == 1 %>
+              自組織の３列目以降
+            <% elsif @set_tmp_member_info.a_san_flg == 2 %>
+              他系列
+            <% elsif @set_tmp_member_info.a_san_flg == 9 %>
+              どれでもない
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="submit_btn common_merge">
+      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 4, back_flg: 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    </div>
+  </div>
+  <%= f.submit "登録を完了する", class: "common_btn_shape common_btn_content common_btn_beige_background common_merge entry_btn_finish" %>
+<% end %>

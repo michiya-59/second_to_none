@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :tmp_member_infos, only: %i[new create] do
+    collection do
+      post "confirm"
+      get "get_confirm"
+      get "complete"
+    end
+  end
 end
