@@ -149,6 +149,7 @@ Metrics/BlockLength:
   Exclude:
     - "db/**/*"
     - "spec/**/*"
+    - "config/**/*"
 
 Metrics/PerceivedComplexity:
   Max: 20

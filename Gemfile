@@ -5,8 +5,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
+gem "activestorage-cloudinary-service", "~> 0.2.3"
+gem "active_storage_validations"       # 画像ファイルのバリデーション用
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.4.4", require: false
+gem "cloudinary", "~> 1.27"
+gem "image_processing"                 # (サイズ変更など)画像処理用
 gem "jbuilder", "~> 2.7"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"

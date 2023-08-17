@@ -33,7 +33,7 @@
           <p class="common_size16">ログインID</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.login_id %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.login_id %></p>
         </div>
 
       </div>
@@ -51,7 +51,7 @@
           <p class="common_size16">氏名</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.name %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.name %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -59,7 +59,7 @@
           <p class="common_size16">氏名カナ</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.name_kana %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.name_kana %></p>
         </div>
 
       </div>
@@ -68,7 +68,7 @@
           <p class="common_size16">メールアドレス</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.email %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.email %></p>
         </div>
 
       </div>
@@ -77,7 +77,7 @@
           <p class="common_size16">電話番号</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.phone %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.phone %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -86,7 +86,7 @@
         </div>
         <div class="form_part_input">
           <div class="form_select">
-            <p class="not_merge common_size16"><%= @tmp_member_info.birthday.strftime('%Y年%m月%d日') %></p>
+            <p class="not_merge common_size16"><%= @set_tmp_member_info.birthday.strftime('%Y年%m月%d日') %></p>
           </div>
         </div>
       </div>
@@ -95,17 +95,7 @@
           <p class="common_size16">性別</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.gender_id == 1 ? '男性' : '女性' %></p>
-        </div>
-      </div>
-      <div class="form_edit_part">
-        <div class="form_part_title common_list_title">
-          <p class="common_size16">自分の画像写真</p>
-        </div>
-        <div class="form_part_input">
-          <div class="avatar_image">
-            <img src="image/self_image.webp" alt="">
-          </div>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.gender_id == 1 ? '男性' : '女性' %></p>
         </div>
       </div>
     </div>
@@ -122,7 +112,7 @@
           <p class="common_size16">郵便番号</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.zip_str3 %> - <%= @tmp_member_info.zip_str4 %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.zip_str3 %> - <%= @set_tmp_member_info.zip_str4 %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -130,7 +120,7 @@
           <p class="common_size16">都道府県</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.ken %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.ken %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -138,7 +128,7 @@
           <p class="common_size16">市区町村番地</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.city %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.city %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -146,7 +136,7 @@
           <p class="common_size16">建物名・部屋番号</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.other_address.present? ? @tmp_member_info.other_address : "設定なし" %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.other_address.present? ? @set_tmp_member_info.other_address : "設定なし" %></p>
         </div>
       </div>
     </div>
@@ -163,7 +153,7 @@
           <p class="common_size16">金融機関名</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.bank_name %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.bank_name %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -171,7 +161,7 @@
           <p class="common_size16">支店名</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.branch_name %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.branch_name %></p>
         </div>
 
       </div>
@@ -180,7 +170,7 @@
           <p class="common_size16">支店番号</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.branch_number %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.branch_number %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -188,7 +178,7 @@
           <p class="common_size16">預金種別</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.account_type %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.account_type %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -196,7 +186,7 @@
           <p class="common_size16">銀行口座</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.account_number_tail %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.account_number_tail %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -204,7 +194,7 @@
           <p class="common_size16">口座名義</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @tmp_member_info.account_holder %></p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.account_holder %></p>
         </div>
       </div>
     </div>
@@ -247,11 +237,11 @@
         </div>
         <div class="form_part_input">
           <p class="not_merge common_size16">
-            <% if @tmp_member_info.a_san_flg == 1 %>
+            <% if @set_tmp_member_info.a_san_flg == 1 %>
               自組織の３列目以降
-            <% elsif @tmp_member_info.a_san_flg == 2 %>
+            <% elsif @set_tmp_member_info.a_san_flg == 2 %>
               他系列
-            <% elsif @tmp_member_info.a_san_flg == 9 %>
+            <% elsif @set_tmp_member_info.a_san_flg == 9 %>
               どれでもない
             <% end %>
           </p>

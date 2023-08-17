@@ -157,17 +157,6 @@
       </div>
     </div>
 
-    <!-- 画像写真 
-    <div class="form_edit_part">
-      <div class="form_part_title common_list_title">
-        <p class="common_size16">自分の画像写真</p>
-        <span>必須</span>
-      </div>
-      <div class="form_part_input">
-        <%= f.file_field :avatar, accept: 'image/png, image/jpeg, image/svg, image/jpg, image/webp', class: 'avatar' %>
-      </div>
-    </div> -->
-
     <% if params["back_flg"].present? %>
       <%= f.hidden_field :back_flg, value: 1 %>
     <% end %>

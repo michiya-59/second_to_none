@@ -50,7 +50,6 @@ class TmpMemberInfo < ApplicationRecord
     "bank" => 3,
     "contract" => 4,
   }.freeze
-  # validates :avatar, presence: true
 
   private
 
