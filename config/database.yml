@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: shine_stn_app_pass
+  pool: 5
+
+development:
+  <<: *default
+  database: shine_stn_app_development
+
+test:
+  <<: *default
+  database: shine_stn_app_test
+
+production:
+  <<: *default
+  database: shine_stn_app_production
