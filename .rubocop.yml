@@ -1,0 +1,158 @@
+# 自動生成されるものはチェック対象から除外する
+AllCops:
+  Exclude:
+    - "vendor/**/*" # rubocop config/default.yml
+    - "db/schema.rb"
+  DisplayCopNames: true
+  NewCops: enable
+
+##################### Style ##################################
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockDelimiters:
+  AutoCorrect: false
+  Exclude:
+    - "spec/**/*"
+
+Style/CollectionMethods:
+  PreferredMethods:
+    detect: "detect"
+    find: "detect"
+    inject: "inject"
+    reduce: "inject"
+
+Style/PreferredHashMethods:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+Style/EmptyElse:
+  EnforcedStyle: empty
+
+Style/ExtraSpacing:
+  Exclude:
+    - "db/migrate/*.rb"
+
+Style/FormatString:
+  EnforcedStyle: percent
+
+Style/GuardClause:
+  MinBodyLength: 5
+
+Style/HashSyntax:
+  Exclude:
+    - "**/*.rake"
+    - "Rakefile"
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+# Style/IndentHash:
+#   EnforcedStyle: consistent
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+Style/Lambda:
+  Enabled: false
+
+Style/NumericLiterals:
+  MinDigits: 7
+
+Style/PerlBackrefs:
+  AutoCorrect: false
+
+Style/PredicateName:
+  ForbiddenPrefixes:
+    - "is_"
+    - "have_"
+  NamePrefix:
+    - "is_"
+    - "have_"
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/RedundantReturn:
+  AllowMultipleReturnValues: true
+
+Style/Semicolon:
+  Exclude:
+    - "spec/**/*"
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Layout/SpaceAroundOperators:
+  AllowForAlignment: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+##################### Lint ##################################
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+##################### Metrics ##################################
+
+Metrics/AbcSize:
+  Max: 80
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/LineLength:
+  Max: 160
+  Exclude:
+    - "db/**/*"
+
+Metrics/MethodLength:
+  Max: 30
+  Exclude:
+    - "db/migrate/*.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "db/**/*"
+    - "spec/**/*"
+    - "config/**/*"
+
+Metrics/PerceivedComplexity:
+  Max: 20
+
+Naming/AccessorMethodName:
+  Enabled: false
