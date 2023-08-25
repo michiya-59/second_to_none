@@ -4,6 +4,8 @@ services:
     image: postgres
     environment:
       POSTGRES_PASSWORD: shine_stn_app_pass
+    ports:
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data # <名前付きvolume名>:マウントしたいコンテナ内のPATH
   web:
