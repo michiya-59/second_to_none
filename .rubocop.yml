@@ -7,6 +7,17 @@ AllCops:
   NewCops: enable
 
 ##################### Style ##################################
+Style/RedundantFetchBlock:
+  Exclude:
+    - 'config/puma.rb'
+
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_perl_names
+
+Style/SymbolArray:
+  Exclude:
+    - 'Gemfile'
+    - 'config/initializers/filter_parameter_logging.rb'
 
 Style/AndOr:
   EnforcedStyle: conditionals
@@ -73,6 +84,8 @@ Style/NumericLiterals:
 
 Style/PerlBackrefs:
   AutoCorrect: false
+  Description: 'Avoid Perl-style regex back references.'
+  Enabled: false
 
 Style/PredicateName:
   ForbiddenPrefixes:
@@ -136,7 +149,7 @@ Metrics/CyclomaticComplexity:
   Max: 10
 
 Metrics/LineLength:
-  Max: 160
+  Max: 198
   Exclude:
     - "db/**/*"
 

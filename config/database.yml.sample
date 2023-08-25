@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  pool: 5
+
+development:
+  <<: *default
+  database: shine_stn_app_development
+
+test:
+  <<: *default
+  database: shine_stn_app_test
+
+production:
+  <<: *default
+  database: shine_stn_app_production
+
+
+
