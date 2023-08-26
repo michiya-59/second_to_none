@@ -1,0 +1,94 @@
+<% if !get_current_path.include?("tmp_member_infos") && !get_current_path.include?("login") %>
+  <header>
+    <div class="header">
+      <div class="header_left">
+        <a href="index.html">
+          <img src="image/logo.png">
+        </a>
+      </div>
+      <div class="header_right">
+        <ul>
+          <li><a href="seminar_reservation.html">セミナー予約</a></li>
+          <li><a href="#">組織図</a></li>
+          <li><a href="event.html">イベント情報</a></li>
+          <li><a href="connect_service.html">連携先</a></li>
+          <li><a href="bonus.html">ボーナス情報</a></li>
+          <li><a href="title.html">タイトル</a></li>
+          <li><a href="learn.html">学びの資料</a></li>
+          <li><a href="introducer.html">紹介者一覧</a></li>
+          <li><a href="registration_information.html">登録情報</a></li>
+          <li><a href="admin.html">管理者画面</a></li>
+          <li><%= link_to "ログアウト", logout_path %></li>
+        </ul>
+      </div>
+      <div class="header_right_mobile">
+        <div id="nav-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="mobile-nav">
+          <li>
+            <a href="seminar_reservation.html">セミナー予約</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <a href="#">組織図</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          <li>
+            <a href="event.html">イベント情報</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <a href="connect_service.html">連携先</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <a href="bonus.html">ボーナス情報</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <a href="title.html">タイトル</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <a href="learn.html">学びの資料</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <a href="introducer.html">紹介者一覧</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <a href="registration_information.html">登録情報</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <a href="admin.html">管理者画面</a>
+            <div>
+              <img src="image/hamburger_arrow.svg" alt="">
+            </div>
+          </li>        
+        </ul>
+      </div>
+    </div>
+  </header>
+<% end %>
