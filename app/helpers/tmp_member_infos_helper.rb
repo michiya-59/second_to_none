@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 module TmpMemberInfosHelper
-  def get_default_value(column_name, input_type = "text")
-    if %w[text textarea].include?(input_type)
+  def get_default_value column_name, input_type = "text"
+    if %w(text textarea).include?(input_type)
       (session[:tmp_member_info_data] && session[:tmp_member_info_data][column_name]) || ""
-
-    elsif %w[select radio].include?(input_type)
+    elsif %w(select radio).include?(input_type)
       default_value = (session[:tmp_member_info_data] && session[:tmp_member_info_data][column_name]) || 1
       default_value.to_i
     end
