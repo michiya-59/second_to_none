@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
 ruby "3.2.1"
 
@@ -15,6 +15,7 @@ gem "cloudinary", "~> 1.27"
 gem "image_processing", "~> 1.2"
 gem "importmap-rails"
 gem "jbuilder"
+gem "jquery-rails"
 gem "kredis"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
@@ -24,13 +25,15 @@ gem "sassc-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+
+gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 
 group :development, :test do
   gem "brakeman", require: false
   gem "bullet"
-  gem "byebug", platforms: %i[mri mingw x64_mingw]
-  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "byebug", platforms: %i(mri mingw x64_mingw)
+  gem "debug", platforms: %i(mri mingw x64_mingw)
+  gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails"
