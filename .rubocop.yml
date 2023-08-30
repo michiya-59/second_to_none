@@ -308,6 +308,9 @@ Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 40
 
+Rails/HelperInstanceVariable:
+  Enabled: false
+
 Naming/MethodName:
   EnforcedStyle: snake_case
   SupportedStyles:
