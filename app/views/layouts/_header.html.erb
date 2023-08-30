@@ -3,7 +3,7 @@
     <div class="header">
       <div class="header_left">
         <a href="index.html">
-          <img src="image/logo.png">
+          <%= image_tag 'logo.png', alt: 'ロゴ写真' %>
         </a>
       </div>
       <div class="header_right">
@@ -17,8 +17,12 @@
           <li><a href="learn.html">学びの資料</a></li>
           <li><a href="introducer.html">紹介者一覧</a></li>
           <li><a href="registration_information.html">登録情報</a></li>
-          <li><a href="admin.html">管理者画面</a></li>
-          <li><%= link_to "ログアウト", logout_path %></li>
+          <% if current_user.admin_flg == 1 %>
+            <li><a href="admin.html">管理者画面</a></li>
+          <% end %>
+          <% if logged_in? %>
+            <li><%= link_to "ログアウト", logout_path %></li>
+          <% end %>
         </ul>
       </div>
       <div class="header_right_mobile">
@@ -75,18 +79,22 @@
               <img src="image/hamburger_arrow.svg" alt="">
             </div>
           </li>
-          <li>
             <a href="registration_information.html">登録情報</a>
             <div>
               <img src="image/hamburger_arrow.svg" alt="">
             </div>
           </li>
-          <li>
-            <a href="admin.html">管理者画面</a>
-            <div>
-              <img src="image/hamburger_arrow.svg" alt="">
-            </div>
-          </li>        
+          <% if current_user.admin_flg == 1 %>
+            <li>
+              <a href="admin.html">管理者画面</a>
+              <div>
+                <img src="image/hamburger_arrow.svg" alt="">
+              </div>
+            </li>        
+          <% end %>
+          <% if logged_in? %>
+            <li><%= link_to "ログアウト", logout_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>

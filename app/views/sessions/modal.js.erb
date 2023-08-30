@@ -1,0 +1,20 @@
+window.onload = function() {
+  var lock_blooen = "<%= @lock %>";
+  console.log(lock_blooen)
+  var modal = document.getElementById('lockModal');
+  var span = document.getElementsByClassName("close-btn")[0];
+
+  if (lock_blooen) {
+    modal.style.display = "block";
+  }
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}

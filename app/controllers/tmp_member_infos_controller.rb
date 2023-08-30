@@ -2,6 +2,7 @@
 
 class TmpMemberInfosController < ApplicationController
   before_action :set_tmp_member_info, only: %i(new confirm get_confirm create)
+  skip_before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session
 
   def new
     session[:tmp_member_info_data] ||= {}

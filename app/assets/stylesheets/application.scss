@@ -411,12 +411,12 @@ main{
     display: none;
     margin-left: auto;
     @include responsive_media(tab){
-      padding-top: 1rem;
+      padding-top: 0.5rem;
       display: block;
       margin-right: 2rem;
     }
     @include responsive_media(tab_820){
-      padding-top: 0.5rem;
+      padding-top: 1.5rem;
       display: block;
       margin-right: 2rem;
     }
@@ -498,6 +498,11 @@ main{
     .sales_batch{
       position: relative;
       right: 4rem;
+      bottom: 0.5rem;
+      @include responsive_media(sp_320){
+        right: 1.3rem;
+        bottom: 1rem;
+      }
     }
   }
 }
@@ -2086,7 +2091,7 @@ main{
     transition: .5s ease-in-out;
     cursor: pointer;
     z-index: 1000; /* Ensure the icon stays on top when open */
-    margin-top: 1.2rem;
+    margin-top: 0;
   }
   #nav-icon span {
     display: block;
