@@ -1,0 +1,2 @@
+class LearnCategory < ApplicationRecord
+end
