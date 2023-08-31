@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_003923) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_31_074557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,14 +83,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_003923) do
 
   create_table "seminars", force: :cascade do |t|
     t.string "title", null: false, comment: "セミナーのタイトル"
-    t.datetime "year", precision: nil, null: false, comment: "セミナーの開催年"
-    t.datetime "month", precision: nil, null: false, comment: "セミナーの開催月"
-    t.datetime "day", precision: nil, null: false, comment: "セミナーの開催日"
-    t.datetime "start_time", precision: nil, null: false, comment: "セミナーの開始時間"
-    t.datetime "end_time", precision: nil, null: false, comment: "セミナーの終了時間"
     t.string "teacher", null: false, comment: "講師の名前"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "year"
+    t.integer "month"
+    t.integer "day"
+    t.string "start_time"
+    t.string "end_time"
   end
 
   create_table "tmp_member_infos", force: :cascade do |t|

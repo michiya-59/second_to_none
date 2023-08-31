@@ -34,8 +34,8 @@ class SessionsController < ApplicationController
 
   def destroy
     logout if logged_in?
+    flash[:logout] = "ログアウトしました"
     redirect_to login_path
-    flash.now[:logout] = "ログアウトしました"
   end
 
   private

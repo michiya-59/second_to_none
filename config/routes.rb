@@ -14,4 +14,12 @@ Rails.application.routes.draw do
       get "complete"
     end
   end
+
+  get "/admin", to: "admin#index"
+  namespace :admin do
+    resources :seminars
+    resources :posts
+    resources :incentives
+    resources :learns
+  end
 end

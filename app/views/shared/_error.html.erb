@@ -7,6 +7,15 @@
   </div>
 <% end %>
 
+<% if flash[:form_error]&.any? %>
+  <div class="error_main">
+    <p><%= flash[:form_error].count %>つのエラーが発生しました</p>
+    <% flash[:form_error].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </div>
+<% end %>
+
 <% if flash[:login_error].present? %>
   <p><%= flash[:login_error] %></p>
 <% elsif flash[:login_lock].present? %>

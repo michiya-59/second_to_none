@@ -1,0 +1,15 @@
+<p class="pankuzu">
+  <%= link_to "トップページ", root_path, class: "common_a"%>
+  >
+  管理画面
+</p>
+<div class="common_field_title">
+  <h1>各種情報登録</h1>
+  <div class="underline"></div>
+</div>
+<div class="admin_lsit">
+  <%= link_to "セミナー情報", admin_seminars_path, class: "common_btn_beige common_btn_content common_box_beige" %>
+  <%= link_to "イベント情報", admin_posts_path, class: "common_btn_beige common_btn_content common_box_beige" %>
+  <%= link_to "報酬の種別及び<br>紐づく金額情報".html_safe, admin_incentives_path, class: "common_btn_beige common_btn_content common_box_beige" %>
+  <%= link_to "学びの資料", admin_learns_path, class: "common_btn_beige common_btn_content common_box_beige" %>
+</div>

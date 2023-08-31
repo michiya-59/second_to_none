@@ -543,3 +543,6 @@ Metrics/PerceivedComplexity:
 
 Naming/AccessorMethodName:
   Enabled: false
+
+Lint/EmptyBlock:
+  Enabled: false
