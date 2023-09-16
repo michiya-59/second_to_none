@@ -86,8 +86,11 @@
         </div>
       <% end%>
     <% else %>
-      <p>一つもセミナー情報が登録されていません。</p>
+      <p class="padding05 common_size13">一つもセミナー情報が登録されていません。</p>
     <% end %>
   </div>
+
+  <%= paginate @seminar_infos, theme: 'admin_custom_paginator' %>
+  
 </div>
 <%= link_to "戻る", admin_path, class: "common_btn_beige common_btn_beige_background common_btn_content common_merge"%>
