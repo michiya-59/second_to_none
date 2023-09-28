@@ -78,12 +78,24 @@ textarea{
 }
 .w33{
   width: 33%;
+  @include responsive_media(tab){
+    margin-right: 0.5rem;
+  }
 }
 .w39{
   width: 39%;
+  @include responsive_media(tab){
+    width: 38%;
+  }
+  @include responsive_media(sp){
+    width: 30%;
+  }
 }
 .w41{
   width: 41%;
+  @include responsive_media(tab){
+    width: 34%;
+  }
 }
 .w69{
   width: 69%;
@@ -168,6 +180,9 @@ $border_radius: 0.5rem;
   color: #888;
   margin: 1rem 0;
 }
+.padding05{
+  padding: 0.5rem;
+}
 .common_size16{
   font-size: 1.6rem;
   @include responsive_media(sp){
@@ -226,13 +241,13 @@ $border_radius: 0.5rem;
   @include responsive_media(tab){
     font-size: 2.5rem;
     height: 6rem;
-    line-height: 6rem;
+    line-height: 5.5rem;
     width: 25rem;
   }
   @include responsive_media(sp){
     width: 23rem;
-    height: 6rem;
-    line-height: 6rem;
+    height: 5rem;
+    line-height: 4.5rem;
     font-size: 2rem;
   }
 }
@@ -343,6 +358,13 @@ $border_radius: 0.5rem;
   @include responsive_media(sp){
     line-height: 3.5rem;
     width: 11rem;
+  }
+}
+.edit_btn{
+  @include responsive_media(sp){
+    height: 5rem;
+    line-height: 4.8rem;
+    width: 9rem;
   }
 }
 .not_border{
@@ -646,12 +668,13 @@ main{
   font-size: 1.3rem;
   border-radius: 0.3rem;
   @include responsive_media(tab){
-    height: 5.5rem;
-    font-size: 2.3rem;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
   }
   @include responsive_media(sp){
-    height: 5.5rem;
-    font-size: 2rem;
+    height: 3rem;
+    padding: 0 2rem;
   }
 }
 .form_select span{
@@ -2327,7 +2350,7 @@ main{
   opacity: 0.8;
   padding: 12px 10px;
   width: 50%;
-  margin: 10px auto;
+  margin: 1rem auto 1rem 0;
   font-size: 1.5rem;
 }
 .part_error_edit{

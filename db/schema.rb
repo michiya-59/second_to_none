@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_27_074617) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_31_074557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,43 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_074617) do
     t.integer "incentive_price", null: false, comment: "初期値【100000：ノーマルコース、140000：アドバンス、30000；２ティア(ノーマル)、40000：２ティア（アドバンス）、10000：自組織３段目以降発生、15000：他系列契約時に発生、10000：ルビー、20000：サファイヤ】"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "learn_categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "learns", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "learn_category_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learn_category_id"], name: "index_learns_on_learn_category_id"
+    t.index ["user_id"], name: "index_learns_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title", null: false, comment: "イベント・お知らせのタイトル"
+    t.string "body", null: false, comment: "イベント・お知らせの内容"
+    t.integer "category_flg", null: false, comment: "１：イベント、２：お知らせ"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seminars", force: :cascade do |t|
+    t.string "title", null: false, comment: "セミナーのタイトル"
+    t.string "teacher", null: false, comment: "講師の名前"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "year"
+    t.integer "month"
+    t.integer "day"
+    t.string "start_time"
+    t.string "end_time"
   end
 
   create_table "tmp_member_infos", force: :cascade do |t|
@@ -142,6 +179,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_074617) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "learns", "learn_categories"
+  add_foreign_key "learns", "users"
   add_foreign_key "user_addresses", "users"
   add_foreign_key "user_banks", "users"
   add_foreign_key "users", "grades"

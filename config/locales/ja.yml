@@ -6,6 +6,25 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        tmp_member_info:
+          attributes:
+            user_id:
+              blank: は必須入力です
+        seminar:
+          attributes:
+            year: 
+              greater_than_or_equal_to: "%{count}以上の値を入力してください。"
+              less_than_or_equal_to: "%{count}以下の値を入力してください。"
+            month: 
+              greater_than_or_equal_to: "%{count}以上の値を入力してください。"
+              less_than_or_equal_to: "%{count}以下の値を入力してください。"
+            day: 
+              greater_than_or_equal_to: "%{count}以上の値を入力してください。"
+              less_than_or_equal_to: "%{count}以下の値を入力してください。"
+            start_time: 
+              start_time_or_end_time_blank: "開始時刻と終了時刻のいずれかが設定されていません。"
+              start_time_before_end_time: "開始時刻は終了時刻より後の時刻で設定してください。"
     attributes:
       tmp_member_info:
         user_id: ユーザID
@@ -33,12 +52,14 @@ ja:
         sales_id: 営業担当ID
         incentive_id: コースタイプ
         a_san_flg: 自組織３列目または他系列のaさんであるかどうか
-    errors:
-      models:
-        tmp_member_info:
-          attributes:
-            user_id:
-              blank: は必須入力です
+      seminar:
+        year: "年"
+        month: "月"
+        day: "日"
+        start_time: "開始時間"
+        end_time: "終了時間"
+        title: "セミナータイトル"
+        teacher: "講師"
   date:
     abbr_day_names:
     - 日

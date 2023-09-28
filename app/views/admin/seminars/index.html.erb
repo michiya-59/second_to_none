@@ -1,0 +1,96 @@
+<p class="pankuzu">
+  <%= link_to "トップページ", root_path, class: "common_a"%>
+  >
+  <%= link_to "管理画面", admin_path, class: "common_a"%>
+  >
+  セミナー情報
+</p>
+<div class="admin_seminar_add_contant">
+  <div class="common_field_title">
+    <h1>セミナー登録</h1>
+    <div class="underline"></div>
+  </div>
+  <div class="admin_seminar_add">
+    <%= form_with model: @admin_seminar, url: admin_seminars_path, local: true do |form| %>
+      <!-- エラーメッセージの表示 -->
+      <%= render 'shared/error' %>
+      <% if flash[:success].present? %>
+        <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
+      <% end %>
+      <div class="seminar_add_part">
+        <p>日程：</p>
+        <div class="form_select">
+          <%= form.select :year, options_for_select((2023..2040).to_a.map { |y| [y, y] }, selected: Time.zone.now.year) %> 
+          <span>年</span>
+          <%= form.select :month, options_for_select((1..12).to_a.map { |m| [m, m] }, selected: Time.zone.now.month) %> 
+          <span>月</span>
+          <%= form.select :day, options_for_select((1..31).to_a.map { |d| [d, d] }, selected: Time.zone.now.day) %> 
+          <span>日</span>
+        </div>
+      </div>
+      <div class="seminar_add_part">
+        <p>時間：</p>
+        <div class="form_select">
+          <%= form.select :start_time, options_for_select((12..23).flat_map { |h| (0..59).step(5).map { |m| "#{h.to_s.rjust(2, '0')}:#{m.to_s.rjust(2, '0')}" } }) %>
+          　〜　
+          <%= form.select :end_time, options_for_select((12..23).flat_map { |h| (0..59).step(5).map { |m| "#{h.to_s.rjust(2, '0')}:#{m.to_s.rjust(2, '0')}" } }) %>
+        </div>
+      </div>
+      <div class="seminar_add_part">
+        <p>タイトル：</p>
+        <%= form.text_field :title %>
+      </div>
+      <div class="seminar_add_part">
+        <p>講師：</p>
+        <%= form.text_field :teacher %>
+      </div>
+      <%= form.submit "新規追加", class: "admin_add_btn common_btn_beige common_btn_content common_box_beige" %>
+    <% end %>
+  </div>
+</div>
+
+<!-- app/views/seminars/index.html.erb -->
+
+<div class="admin_seminar_content">
+  <div class="common_field_title">
+    <h1>セミナー登録一覧</h1>
+    <div class="underline"></div>
+  </div>
+  <%= form_with url: admin_seminars_path, local: true, method: :get, class: "search" do |form| %>
+    <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year) %> 
+    <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month) %> 
+    <%= form.submit "検索", class: "search_btn common_box_beige" %>
+  <% end %>
+  
+  <div class="common_admin_list">
+    <div class="common_list_head">
+      <p class="w6"></p>
+      <p class="w31 common_size16">日時</p>
+      <p class="w39 common_size16">タイトル</p>
+      <p class="w20 common_size16">講師</p>
+    </div>
+    <% if flash[:delete_success].present? %>
+      <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:delete_success] %><p>
+    <% end %>
+    
+    <% if @seminar_infos.present? %>
+      <% @seminar_infos.each_with_index do |seminar_info, i| %>
+        <div class="common_list_body">
+          <div class="common_list_body_part">
+            <p class="w6 common_size16"><%= i + 1 %></p>
+            <p class="w33 common_size16"><%= "#{seminar_info&.year}/#{seminar_info&.month}/#{seminar_info&.day} #{seminar_info&.start_time} ~ #{seminar_info&.end_time}" %></p>
+            <p class="w41 common_size16"><%= seminar_info&.title %></p>
+            <p class="w20 common_size16"><%= seminar_info&.teacher %></p>
+            <%= link_to "編集", edit_admin_seminar_path(seminar_info&.id), class: "edit_btn common_box_beige" %>
+          </div>
+        </div>
+      <% end%>
+    <% else %>
+      <p class="padding05 common_size13">一つもセミナー情報が登録されていません。</p>
+    <% end %>
+  </div>
+
+  <%= paginate @seminar_infos, theme: 'admin_custom_paginator' %>
+  
+</div>
+<%= link_to "戻る", admin_path, class: "common_btn_beige common_btn_beige_background common_btn_content common_merge"%>
