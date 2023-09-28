@@ -12,6 +12,7 @@ gem "active_storage_validations"       # 画像ファイルのバリデーショ
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "cloudinary", "~> 1.27"
+gem "dartsass-rails", "~> 0.5.0"
 gem "image_processing", "~> 1.2"
 gem "importmap-rails"
 gem "jbuilder"
@@ -26,7 +27,6 @@ gem "sassc-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
-gem "dartsass-rails", "~> 0.5.0"
 
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 

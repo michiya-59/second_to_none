@@ -180,6 +180,9 @@ $border_radius: 0.5rem;
   color: #888;
   margin: 1rem 0;
 }
+.padding05{
+  padding: 0.5rem;
+}
 .common_size16{
   font-size: 1.6rem;
   @include responsive_media(sp){

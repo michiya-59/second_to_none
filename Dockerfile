@@ -6,6 +6,7 @@ WORKDIR /shine_stn_app
 COPY Gemfile /shine_stn_app/Gemfile
 COPY Gemfile.lock /shine_stn_app/Gemfile.lock
 RUN bundle install
+RUN gem install foreman
 COPY . /shine_stn_app
 ENV TZ Asia/Tokyo
 
