@@ -1,0 +1,62 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %>
+  >
+  <%= link_to '管理画面', admin_path, class: 'common_a' %>
+  >
+  イベント情報
+</p>
+
+<div class="admin_seminar_content">
+  <div class="common_field_title">
+    <h1>イベント・お知らせ情報一覧</h1>
+    <div class="underline"></div>
+  </div>
+
+  <div class="admin_event_btns">
+    <%= form_with url: admin_posts_path, local: true, method: :get, class: "search" do |form| %>
+      <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year) %> 
+      <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month) %> 
+      <%= form.submit "検索", class: "search_btn common_box_beige" %>
+    <% end %>
+
+    <%= link_to '新規追加', new_admin_post_path, class: 'common_btn_beige common_btn_beige_background common_btn_content' %>
+  </div>
+
+  <% if flash[:success].present? %>
+    <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
+  <% end %>
+
+  <% if flash[:destroy].present? %>
+    <p class="error_main"><i class="fa fa-check "></i><%= flash[:destroy] %><p>
+  <% end %>
+
+  <div class="common_admin_list">
+    <div class="common_list_head">
+      <p class="w6"></p>
+      <p class="w20 common_size16">日時</p>
+      <p class="w10 common_size16">種別</p>
+      <p class="w69 common_size16">タイトル</p>
+    </div>
+
+    <% if @post_infos.present?%>
+      <% starting_index = @post_infos.offset_value + 1 %>
+      <% @post_infos.each do |post| %>
+        <div class="common_list_body">
+          <div class="common_list_body_part">
+            <p class="w6 common_size16"><%= starting_index %>.</p>
+            <p class="w21 common_size16"><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+            <p class="w11 common_size16"><%= post.category_flg == 1 ? "イベント" : "お知らせ" %></p>
+            <p class="w69 common_size16"><%= post.title %></p>
+            <%= link_to '編集', edit_admin_post_path(post), class: 'edit_btn common_box_beige' %>
+          </div>
+        </div>
+        <% starting_index += 1 %>
+      <% end %>
+    <% else %>
+      <p class="padding05 common_size13">一つも情報が登録されていません。</p>
+    <% end %>
+  </div>
+  <%= paginate @post_infos, theme: 'admin_post_custom_paginator', params: { search_year: @search_year, search_month: @search_month } %>  
+</div>
+
+<%= link_to '戻る', admin_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

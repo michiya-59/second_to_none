@@ -1,0 +1,41 @@
+<%= form_with(model: @post, url: (@post.new_record? ? admin_posts_path : admin_post_path(@post)), local: true, html: { class: 'your-form-class' }) do |f| %>
+  <%= render 'shared/post_error', object: @post %>
+  <div class="admin_event_form_part">
+    <%= f.label :title, "タイトル<span>必須</span>".html_safe, class: "common_size16" %>
+    <%= f.text_field :title, class: "text_box common_size16", required: true %>
+    <p class="gray common_size13">※35文字以内で入力してください。</p>
+  </div>
+  <div class="admin_event_form_part">
+    <%= f.label :body, "内容<span>必須</span>".html_safe, class: "common_size16" %>
+    <%= f.text_area :body, rows: 15, class: "common_size16", required: true %>
+  </div>
+  <div class="admin_event_form_part">
+    <%= f.label :category_flg, "カテゴリー<span>必須</span>".html_safe, class: "common_size16" %>
+    <%= f.select :category_flg, [["イベント", 1], ["お知らせ", 2]] %>
+  </div>
+  <div class="admin_event_form_part">
+    <%= f.label :event_image, "写真", class: "common_size16" %>
+    <% if @post.event_image.attached? %>
+      <div class="image_show">
+        <p>現在の写真</p>
+        <%= image_tag @post.event_image, class: 'img-thumbnail' %>
+        <%= f.check_box :remove_event_image %>
+        <%= f.label :remove_event_image, '写真を削除' %><br><br>     
+      </div>
+    <% end %>
+    <%= f.file_field :event_image, accept: "image/png,image/jpeg,image/svg,image/jpg,image/webp", class: "common_size13 event_image" %>
+  </div>
+
+  <div class="admin_submit_btn text_center common_merge">
+    <% if request.fullpath.include?('edit') %>
+      <%= link_to '削除', admin_post_path(@post), method: :delete, data: { confirm: "削除しますか？" }, class: 'add_btn common_box_beige' %>
+    <% end %>
+
+    <% if page_year_month_include?(session[:admin_post_page], session[:search_post_month], session[:search_post_year]) %>
+      <%= link_to '戻る', admin_posts_path(page: session[:admin_post_page], search_month: session[:search_post_month], search_year: session[:search_post_year]), class: 'back_btn common_box_beige' %>
+    <% else %>
+      <%= link_to '戻る', admin_posts_path, class: 'back_btn common_box_beige' %>
+    <% end %>
+    <%= f.submit "更新", class: 'add_btn common_box_beige' %>
+  </div>
+<% end %>

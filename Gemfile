@@ -8,7 +8,7 @@ ruby "3.2.1"
 gem "rails", "~> 7.0.7", ">= 7.0.7.2"
 
 gem "activestorage-cloudinary-service", "~> 0.2.3"
-gem "active_storage_validations"       # 画像ファイルのバリデーション用
+gem "active_storage_validations" # 画像ファイルのバリデーション用
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "cloudinary", "~> 1.27"
@@ -26,7 +26,7 @@ gem "redis", "~> 4.0"
 gem "sassc-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
-gem "turbo-rails"
+# gem "turbo-rails"
 
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 

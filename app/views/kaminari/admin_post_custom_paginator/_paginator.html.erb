@@ -1,0 +1,27 @@
+<% if @posts.size > 10 %>
+  <div class="pagination">
+    <%# 最初のページへのリンク %>
+    <%= link_to '<<', url_for(page: 1, search_year: @search_year, search_month: @search_month), class: "common_box_beige common_size13 padding05" unless @post_infos.first_page? %>
+
+    <%# 前のページへのリンク %>
+    <%= link_to '<', url_for(page: @post_infos.prev_page, search_year: @search_year, search_month: @search_month), class: "common_box_beige common_size13 padding05" if @post_infos.prev_page %>
+
+    <%# 中央のページリンク（最大5ページ） %>
+    <% start_page = [@post_infos.current_page - 2, 1].max %>
+    <% end_page = [@post_infos.current_page + 2, @post_infos.total_pages].min %>
+
+    <% start_page.upto(end_page) do |page| %>
+      <% if page == @post_infos.current_page %>
+        <span class="common_btn_beige_background common_size13 padding05"><%= page %></span>
+      <% else %>
+        <%= link_to page, url_for(page: page, search_year: @search_year, search_month: @search_month), class: "common_box_beige common_size13 padding05" %>
+      <% end %>
+    <% end %>
+
+    <%# 次のページへのリンク %>
+    <%= link_to '>', url_for(page: @post_infos.next_page, search_year: @search_year, search_month: @search_month), class: "common_box_beige common_size13 padding05" if @post_infos.next_page %>
+
+    <%# 最後のページへのリンク %>
+    <%= link_to '>>', url_for(page: @post_infos.total_pages, search_year: @search_year, search_month: @search_month), class: "common_box_beige common_size13 padding05" unless @post_infos.last_page? %>
+  </div>
+<% end %>

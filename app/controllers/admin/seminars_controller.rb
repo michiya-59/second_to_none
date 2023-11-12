@@ -29,7 +29,11 @@ module Admin
 
       if @seminar.update(seminars_params)
         flash[:success] = "セミナー情報の更新が完了しました。"
-        redirect_to admin_seminars_path
+        if session[:admin_seminars_page].present? && session[:search_seminars_year] && session[:search_seminars_month]
+          redirect_to admin_seminars_path(page: session[:admin_seminars_page], search_month: session[:search_seminars_month], search_year: session[:search_seminars_year])
+        else
+          redirect_to admin_seminars_path
+        end
       else
         flash[:form_error] = @seminar.errors.full_messages
         redirect_to edit_admin_seminar_path(params[:id])
@@ -40,24 +44,30 @@ module Admin
       @seminar = Seminar.find(params[:id])
       if @seminar.destroy
         flash[:delete_success] = "セミナー情報が削除されました。"
+        if session[:admin_seminars_page].present? && session[:search_seminars_year] && session[:search_seminars_month]
+          redirect_to admin_seminars_path(page: session[:admin_seminars_page], search_month: session[:search_seminars_month], search_year: session[:search_seminars_year])
+        end
       else
         flash[:error] = "セミナー情報の削除に失敗しました。"
+        redirect_to admin_seminars_path
       end
-      redirect_to admin_seminars_path
     end
 
     private
 
     def seminar_load_data
       @seminar = params[:id].present? ? Seminar.find(params[:id]) : Seminar.new
+      session[:search_seminars_year] = params[:search_year] if params[:search_year].present?
+      session[:search_seminars_month] = params[:search_month] if params[:search_month].present?
+      session[:admin_seminars_page] = params[:page] if params[:page].present?
 
-      @seminar_infos = if params[:search_year].present? && params[:search_month].present?
-                         Seminar.search_by_year_and_month(params[:search_year].to_i, params[:search_month].to_i)
-                       else
-                         Seminar.find_seminars
-                       end
+      @seminar_info_all = if session[:search_seminars_year].present? && session[:search_seminars_month].present?
+                            Seminar.search_by_year_and_month(session[:search_seminars_year].to_i, session[:search_seminars_month].to_i)
+                          else
+                            Seminar.find_seminars
+                          end
 
-      @seminar_infos = Kaminari.paginate_array(@seminar_infos).page(params[:page]).per(10)
+      @seminar_infos = Kaminari.paginate_array(@seminar_info_all).page(params[:page]).per(10)
     end
 
     def seminars_params
@@ -71,17 +81,6 @@ module Admin
         seminar_info.day = params[:seminar][:day].to_i
       end
       seminar_info
-    end
-
-    def set_search_date params
-      if params[:search_year].present?
-        search_year = params[:search_year]
-        search_month = params[:search_month]
-      else
-        search_year = Time.zone.today.year
-        search_month = Time.zone.today.month
-      end
-      [search_year, search_month]
     end
   end
 end
