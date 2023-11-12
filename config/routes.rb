@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :seminars
     resources :posts
-    resources :incentives
+    resources :incentives, only: %i(index edit update)
     resources :learns
   end
 end

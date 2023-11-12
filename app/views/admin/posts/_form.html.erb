@@ -1,5 +1,5 @@
 <%= form_with(model: @post, url: (@post.new_record? ? admin_posts_path : admin_post_path(@post)), local: true, html: { class: 'your-form-class' }) do |f| %>
-  <%= render 'shared/post_error', object: @post %>
+  <%= render 'shared/admin_error', object: @post %>
   <div class="admin_event_form_part">
     <%= f.label :title, "タイトル<span>必須</span>".html_safe, class: "common_size16" %>
     <%= f.text_field :title, class: "text_box common_size16", required: true %>

@@ -35,7 +35,15 @@ ja:
             category_flg: 
               blank: "を選択してください。"
             event_image:
-              blank: "を選択してください。"
+              blank: "を選択してください。"        
+        incentives:
+          attributes:
+            course_name:
+              blank: "を入力してください。"
+            incentive_price:
+              blank: "を入力してください。"
+              not_a_number: "は半角数字で入力してください。"
+              only_integer: "は整数で入力してください。"
     attributes:
       tmp_member_info:
         user_id: ユーザID
@@ -76,6 +84,9 @@ ja:
         body: "テキストエリア"
         category_flg: "カテゴリー"
         event_image: "写真"
+      incentive:
+        course_name: "コース名"
+        incentive_price: "報酬額"
   date:
     abbr_day_names:
     - 日

@@ -1,0 +1,35 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '管理画面', admin_path, class: 'common_a' %> >
+  報酬情報
+</p>
+<div class="admin_seminar_content">
+  <div class="common_field_title">
+    <h1>報酬情報一覧</h1>
+    <div class="underline"></div>
+  </div>
+  <% if flash[:success].present? %>
+    <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
+  <% end %>
+  <div class="common_admin_list">
+    <div class="common_list_head">
+      <p class="w6"></p>
+      <p class="w41 common_size16">コース名</p>
+      <p class="common_size16">金額</p>
+    </div>
+    <% if @incentives.present? %>
+      <% @incentives.each_with_index do |incentive, index| %>
+        <div class="common_list_body">
+          <div class="common_list_body_part">
+            <p class="w6 common_size16"><%= index + 1 %>.</p>
+            <p class="w41 common_size16"><%= incentive.course_name %></p>
+            <p class="common_size16"><%= number_to_currency(incentive.incentive_price) %></p>
+            <%= link_to '編集', edit_admin_incentive_path(incentive), class: 'edit_btn common_box_beige' %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= link_to '戻る', admin_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+
