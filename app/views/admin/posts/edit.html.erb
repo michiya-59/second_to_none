@@ -1,0 +1,15 @@
+<p class="pankuzu">
+  <%= link_to "トップページ", root_path, class: "common_a"%>
+  >
+  <%= link_to "管理画面", admin_path, class: "common_a"%>
+  >
+  <%= link_to "イベント情報", admin_posts_path, class: "common_a"%>
+  >
+  イベント情報 編集画面 
+</p>
+<div class="common_field_title">
+  <h1>イベント・お知らせ情報 編集</h1>
+  <div class="underline"></div>
+</div>
+
+<%= render "form" %>

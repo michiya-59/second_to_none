@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     return if logged_in? && valid_referrer?
 
+    reset_session
     flash[:logout] = "不正なアクセスがありました。<br>再度ログインをしてください。"
     redirect_to login_path
   end
@@ -16,6 +17,7 @@ class ApplicationController < ActionController::Base
   def redirect_not_logged_in
     return if current_user
 
+    reset_session
     flash[:logout] = "ログインされてません。ログインしてください。"
     redirect_to login_path
   end
@@ -44,5 +46,17 @@ class ApplicationController < ActionController::Base
   # URLが直接操作されているかどうかの確認
   def valid_referrer?
     request.referer.present? && request.referer.include?(request.base_url)
+  end
+
+  # 管理項目 リストの検索処理
+  def set_search_date params
+    if params[:search_year].present?
+      search_year = params[:search_year]
+      search_month = params[:search_month]
+    else
+      search_year = Time.zone.today.year
+      search_month = Time.zone.today.month
+    end
+    [search_year, search_month]
   end
 end

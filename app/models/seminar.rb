@@ -54,22 +54,25 @@ class Seminar < ApplicationRecord
     end
   end
 
+  def formatted_start_time
+    # 年/月/日 時間の形式で日時をフォーマットする
+    # オブジェクトの属性に応じて調整してください
+    "#{year}/#{month}/#{day} #{start_time} ~ #{end_time}"
+  end
+
   class << self
     def find_seminars
       now = Time.zone.now
       now_str = now.strftime("%Y-%m-%d %H:%M")
-
-      sql = ["SELECT
-              id, title, year, month, day, start_time, end_time, teacher
-            FROM
-              seminars
-            WHERE
-              TO_TIMESTAMP(CONCAT(year, '-', month, '-', day, ' ', start_time), 'YYYY-MM-DD HH24:MI') >= TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI')
-            ORDER BY
-              year, month, day, start_time", now_str]
-
-      find_by_sql sql
+    
+      sql = "SELECT id, title, year, month, day, start_time, end_time, teacher
+            FROM seminars
+            WHERE TO_TIMESTAMP(CONCAT(LPAD(year::text, 4, '0'), '-', LPAD(month::text, 2, '0'), '-', LPAD(day::text, 2, '0'), ' ', start_time), 'YYYY-MM-DD HH24:MI') >= TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI')
+            ORDER BY year, month, day, start_time"
+    
+      Seminar.find_by_sql([sql, now_str])
     end
+    
 
     def search_by_year_and_month year, month
       where(year:, month:)

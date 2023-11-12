@@ -39,3 +39,5 @@ Grade.create!(grades)
 User.create!(users)
 UserAddress.create!(user_addresses)
 UserBank.create!(user_banks)
+ActionView::Template::Error (Asset `error.css` was not declared to be precompiled in production.
+nichijou-web-1  | 21:19:03 web.1  | Declare links to your assets in `app/assets/config/manifest.js`

@@ -10,7 +10,7 @@ ja:
         tmp_member_info:
           attributes:
             user_id:
-              blank: は必須入力です
+              blank: "は必須入力です"
         seminar:
           attributes:
             year: 
@@ -25,6 +25,17 @@ ja:
             start_time: 
               start_time_or_end_time_blank: "開始時刻と終了時刻のいずれかが設定されていません。"
               start_time_before_end_time: "開始時刻は終了時刻より後の時刻で設定してください。"
+        posts:
+          attributes:
+            title:
+              blank: "を入力してください。"
+              too_long: "は35文字以内で入力してください。"
+            body: 
+              blank: "を入力してください。"
+            category_flg: 
+              blank: "を選択してください。"
+            event_image:
+              blank: "を選択してください。"
     attributes:
       tmp_member_info:
         user_id: ユーザID
@@ -60,6 +71,11 @@ ja:
         end_time: "終了時間"
         title: "セミナータイトル"
         teacher: "講師"
+      post:
+        title: "タイトル"
+        body: "テキストエリア"
+        category_flg: "カテゴリー"
+        event_image: "写真"
   date:
     abbr_day_names:
     - 日
