@@ -1,0 +1,26 @@
+<% if @id_error_msg.present? %>
+  <div class="error">
+    <div class="error_icon">
+      <%= image_tag 'error.png', alt: "エラーアイコン" %>
+    </div>
+    <p><%= @id_error_msg %></p>
+  </div>
+<% end %>
+
+<% if @pass_error_msg.present? %>
+  <div class="error">
+    <div class="error_icon">
+      <%= image_tag 'error.png', alt: "エラーアイコン" %>
+    </div>
+    <p><%= @pass_error_msg %></p>
+  </div>
+<% end %>
+
+<% if @error_msg.present? %>
+  <div class="error">
+    <div class="error_icon">
+      <%= image_tag 'error.png', alt: "エラーアイコン" %>
+    </div>
+    <p><%= @error_msg %></p>
+  </div>
+<% end %>

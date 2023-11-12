@@ -1,0 +1,10 @@
+<% case @current_step %>
+<% when 1 %>
+  <%= render partial: 'shared/base_form' %>
+<% when 2 %>
+  <%= render partial: 'shared/address_form' %>
+<% when 3 %>
+  <%= render partial: 'shared/bank_form' %>
+<% when 4 %>
+  <%= render partial: 'shared/contract_form' %>
+<% end %>

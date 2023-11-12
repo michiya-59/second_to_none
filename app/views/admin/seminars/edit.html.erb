@@ -1,0 +1,54 @@
+<p class="pankuzu">
+  <%= link_to "トップページ", root_path, class: "common_a"%>
+  >
+  <%= link_to "管理画面", admin_path, class: "common_a"%>
+  >
+  <%= link_to "セミナー情報", admin_seminars_path, class: "common_a"%>
+  >
+  セミナー情報 編集
+</p>
+<div class="admin_seminar_add_contant">
+  <div class="common_field_title">
+    <h1>セミナー編集</h1>
+    <div class="underline"></div>
+  </div>
+  <div class="admin_seminar_add">
+    <%= form_with(model: @seminar, url: admin_seminar_path(@seminar), local: true) do |form| %>
+      <!-- エラーメッセージの表示 -->
+      <%= render 'shared/error' %>
+      <div class="seminar_add_part">
+        <p>日程：</p>
+        <div class="form_select">
+          <%= form.select :year, options_for_select((2023..2040).to_a.map { |y| [y, y] }, selected: @seminar&.year) %>
+          <span>年</span>
+          <%= form.select :month, options_for_select((1..12).to_a.map { |m| [m, m] }, selected: @seminar&.month) %>
+          <span>月</span>
+          <%= form.select :day, options_for_select((1..31).to_a.map { |d| [d, d] }, selected: @seminar&.day) %>
+          <span>日</span>
+        </div>
+      </div>
+      <div class="seminar_add_part">
+        <p>時間：</p>
+        <div class="form_time">
+          <%= form.time_field :start_time, value: @seminar&.start_time %>　〜　<%= form.time_field :end_time, value: @seminar&.end_time %><br>
+        </div>
+      </div>
+      <div class="seminar_add_part">
+        <p>タイトル：</p>
+        <%= form.text_field :title, value: @seminar&.title %>
+      </div>
+      <div class="seminar_add_part">
+        <p>講師：</p>
+        <%= form.text_field :teacher, value: @seminar&.teacher %>
+      </div>
+      <%= form.submit "更新", class: "admin_add_btn common_btn_beige common_btn_content common_box_beige" %>
+    <% end %>
+    <%= button_to '削除', admin_seminar_path(@seminar), method: :delete, data: { confirm: "削除しますか？" }, class: "admin_add_btn common_btn_beige common_btn_content common_box_beige", style: 'margin-top: 1rem;' %>
+    
+    <% if page_year_month_include?(session[:admin_seminars_page], session[:search_seminars_month], session[:search_seminars_year]) %>
+      <%= link_to "戻る", admin_seminars_path(page: session[:admin_seminars_page], search_month: session[:search_seminars_month], search_year: session[:search_seminars_year]), class: "common_btn_beige common_btn_beige_background common_btn_content common_merge"%>
+    <% else %>
+      <%= link_to "戻る", admin_seminars_path, class: "common_btn_beige common_btn_beige_background common_btn_content common_merge"%>
+    <% end %>
+  </div>
+</div>

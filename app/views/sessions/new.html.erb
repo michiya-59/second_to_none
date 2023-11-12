@@ -1,0 +1,98 @@
+<script type="text/javascript">
+  <%= render partial: 'sessions/modal', formats: [:js]%>
+</script>
+<main style="position: relative;">
+  <div class="login_icon">
+    <%= image_tag 'logo.png', alt: 'アイコン' %>
+  </div>
+  <%= form_with url: login_path, local: true, data: { turbo: "false" } do |f| %>
+    <!-- Lock Modal -->
+    <div id="lockModal" class="lock-modal">
+      <div class="lock-modal-content">
+        <span class="close-btn">&times;</span>
+        <b>アカウントがロックされています。</b>
+        <div class="lock_msg">
+          <b>パスワードを5回間違えて、一時ロックがかかりました。</b>
+          <p>
+            一時ロックはの場合は、15分お待ちいただくか、<br>
+            「ロックの解除を申請」ボタンから申請してください。
+          </p>
+          <p>※ロック解除申請の場合は、管理者がロック解除申請を承認した時に、アカウントのロックが解除されます。<br>承認される前でお待ちください。</p>
+        </div>
+        <%= link_to "ロックの解除を申請", lock_off_path, class: "locl_off_btn"%>
+      </div>
+    </div>
+    <% if @error_msg.present? %>
+      <div class="top_error">
+        <div class="error_icon">
+          <%= image_tag 'error.png', alt: "エラーアイコン" %>
+        </div>
+        <p><%= @error_msg.html_safe %></p>
+      </div>
+    <% elsif flash[:logout].present?%>
+      <div class="top_error">
+        <p><%= flash[:logout].html_safe %></p>
+      </div>
+    <% end %>
+    <%= render 'shared/error' %>
+    <div class="login_form">
+      <div class="login_form_part">
+        <div class="login_form_left">
+          <div class="login_icon_img">
+            <%= image_tag 'login_id.svg' %>
+          </div>
+        </div>
+        <div class="login_form_right">
+          <%= f.text_field :login_id, placeholder: "ログインID" %>
+        </div>
+      </div>
+      <% if @id_error_msg.present? %>
+        <div class="error">
+          <div class="error_icon_bottom">
+            <%= image_tag 'error.png', alt: "エラーアイコン" %>
+          </div>
+          <p><%= @id_error_msg %></p>
+        </div>
+      <% end %>
+      <div class="login_form_part">
+        <div class="login_form_left">
+          <div class="login_icon_img">
+            <%= image_tag 'login_pass.svg' %>
+          </div>
+        </div>
+        <div class="login_form_right">
+          <%= f.password_field :password, placeholder: "パスワード" %>
+        </div>
+      </div>
+      <% if @pass_error_msg.present? %>
+        <div class="error">
+          <div class="error_icon_bottom">
+            <%= image_tag 'error.png', alt: "エラーアイコン" %>
+          </div>
+          <p><%= @pass_error_msg %></p>
+        </div>
+      <% end %>
+    </div>
+    <%= button_tag(type: 'submit', class: 'login_form_btn common_box_beige') do %>
+      <div class="login_submit_btn">
+        <%= image_tag 'login_btn.svg', alt: 'ログインボタン' %>
+      </div>
+      <p class="common_size16 beige">ログイン</p>
+    <% end %>
+    <div class="reset_link">
+      <p>?</p>
+      <a href="password_reset.html">パスワードをお忘れの場合</a>
+    </div>
+  <% end %>
+  <div class="wave">
+    <svg xmlns="http://www.w3.org/2000/svg" width="390" height="231" viewBox="0 0 390 231" preserveAspectRatio="none" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M-3 8.76148L3.55 16.4346C22.6962 30.9237 35.7962 30.2695 58.9731 22.1876C87.6923 12.1732 80.6249 15.0217 97.7692 8.76148C113.595 5.63136 125.467 12.7973 142.612 22.1876C158.437 31.578 189.469 12.1732 206.6 12.1732C223.731 12.1732 241.869 27.3014 251.442 30.9237C261.015 34.5459 273.092 36.7364 297.796 16.4346C322.5 -3.86715 332.259 -1.03741 341.205 2.50124C357.03 8.76148 352.212 11.3209 375.388 17.2869L378.915 16.4347L382.946 15.1562L385.969 14.0908L388.488 13.2385L390 231H382.087C374.175 231 357.03 231 341.205 231C324.06 231 308.235 231 292.409 231C275.265 231 259.44 231 242.295 231C226.47 231 209.326 231 193.5 231C177.674 231 160.53 231 144.705 231C127.56 231 111.735 231 95.9094 231C78.7651 231 62.9396 231 45.7953 231C29.9698 231 12.8255 231 4.91275 231H-3V8.76148Z" fill="url(#paint0_linear_256_543)"/>
+      <defs>
+        <linearGradient id="paint0_linear_256_543" x1="-3" y1="115.5" x2="390" y2="115.5" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#EACDA3"/>
+          <stop offset="1" stop-color="#D6AE7B"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+</main>
