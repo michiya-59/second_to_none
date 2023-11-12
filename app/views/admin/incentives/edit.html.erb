@@ -1,0 +1,30 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '管理画面', admin_path, class: 'common_a' %> >
+  <%= link_to '報酬情報', admin_incentives_path, class: 'common_a' %> >
+  報酬情報 編集
+</p>
+<div class="common_field_title">
+  <h1>報酬情報 編集</h1>
+  <div class="underline"></div>
+</div>
+<%= form_with model: @incentive, url: admin_incentive_path, local: true do |form| %>
+  <%= render 'shared/admin_error', object: @incentive %>
+  <div class="admin_bonus_form_part">
+    <%= form.label :course_name, "コース名<span>必須</span>".html_safe, class: "common_size16" %> 
+    <%= form.text_field :course_name, id: :course_name, class: "course_name text_box common_size16", required: true %>
+    <p class="gray common_size13">※16文字以内で入力してください。</p>
+  </div>
+  <div class="admin_bonus_form_part">
+    <%= form.label :incentive_price, "報酬額<span>必須</span>".html_safe, class: "common_size16" %>
+    <div>
+      <%= form.text_field :incentive_price, id: :incentive_price, class: "incentive_price text_box common_size16" %>
+      <span class="common_size16">円</span>
+    </div>
+    <p class="gray common_size13">※半角数字で入力ください。</p>
+  </div>
+  <div class="admin_submit_btn text_center common_merge">
+    <%= link_to '戻る', admin_incentives_path, class: 'back_btn common_box_beige' %>
+    <%= form.submit "新規追加", class: "add_btn common_box_beige" %>
+  </div>
+<% end %>
