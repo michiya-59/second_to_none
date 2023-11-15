@@ -1,0 +1,52 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '管理画面', admin_path, class: 'common_a' %> >
+  <%= link_to '学びの資料', admin_learn_categories_path, class: 'common_a' %> >
+  <%= link_to '学びの資料 詳細', admin_learns_path(id: session[:learn_category_id]), class: 'common_a' %> >
+  学びの資料 詳細編集
+</p>
+<div class="common_field_title">
+  <h1>FX 学びの資料 編集</h1>
+  <div class="underline"></div>
+</div>
+<div class="admin_laern_edit">
+  <%= form_with model: @learn, url: admin_learn_path(@learn), local: true do |form| %>
+    <%= render 'shared/admin_error', object: @learn %>
+    <div class="learn_edit_part">
+      <%= form.label :name, "タイトル名<span>必須</span>".html_safe, class: "common_size16" %>
+      <%= form.text_field :name, class: "common_size16", maxlength: 16 %>
+      <p class="gray common_size13">※16文字以内で入力してください。</p>
+    </div>
+    <div class="learn_edit_part">
+      <%= form.label :document_file, "ファイル", class: "common_size16" %>
+      <% if @learn.document_file.attached? %>
+        <%= link_to rails_blob_path(@learn.document_file, disposition: "attachment"), class: "download_edit_btm" do %>
+          <i class="fas fa-download"></i> ファイルあり
+        <% end %>
+      <% else %>
+        なし
+      <% end %>
+      <%= form.file_field :document_file, class: "common_size13 document_file", accept: ".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx", 'data-max-file-size': 5.megabytes, 'data-file-type': 'document', 'data-allowed-types-display': 'PDF, PPT, PPTX, DOC, DOCX, XLS, XLSX' %>
+    </div>
+    <div class="learn_edit_part">
+      <%= form.label :video_file, "動画", class: "common_size16" %>
+      <% if @learn.video_file.attached? %>
+        <%= link_to rails_blob_path(@learn.video_file, disposition: "attachment"), class: "download_edit_btm" do %>
+          <i class="fas fa-download"></i> 動画あり
+        <% end %>
+      <% else %>
+        なし
+      <% end %>
+      <%= form.file_field :video_file, class: "common_size13 video_file", accept: "video/mp4,video/x-m4v,video/*", 'data-max-file-size': 500.megabytes, 'data-file-type': 'video', 'data-allowed-types-display': 'MP4, M4V' %>
+    </div>
+    <div class="admin_submit_btn text_center common_merge">
+      <% if page_year_month_include?(session[:admin_learn_page], session[:search_learn_month], session[:search_learn_year]) %>
+        <%= link_to '戻る', admin_learns_path(id: session[:learn_category_id], page: session[:admin_learn_page], search_month: session[:search_learn_month], search_year: session[:search_learn_year]), class: 'back_btn common_box_beige' %>
+      <% else %>
+        <%= link_to '戻る', admin_learns_path(id: session[:learn_category_id]), class: 'back_btn common_box_beige' %>
+      <% end %>
+      <%= link_to '削除', admin_learn_path(@learn), method: :delete, data: { confirm: "削除しますか？" }, class: 'add_btn common_box_beige' %>
+      <%= form.submit "更新", class: "add_btn common_box_beige" %>
+    </div>
+  <% end %>
+</div>

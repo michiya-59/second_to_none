@@ -21,5 +21,6 @@ Rails.application.routes.draw do
     resources :posts
     resources :incentives, only: %i(index edit update)
     resources :learns
+    resources :learn_categories
   end
 end

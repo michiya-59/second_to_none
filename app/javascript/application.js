@@ -7,3 +7,4 @@ window.$ = window.jQuery = jQuery
 import Rails from '@rails/ujs';
 Rails.start();
 import("jquery-ui-dist")
+import "@fortawesome/fontawesome-free"

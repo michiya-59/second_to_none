@@ -9,8 +9,7 @@ class Post < ApplicationRecord
 
   after_save :purge_event_image, if: ->{remove_event_image && event_image.attached?}
 
-  scope :created_this_month, lambda {where("extract(year from created_at) = ? AND extract(month from created_at) = ?", Time.current.year, Time.current.month)
-  }
+  scope :created_this_month, ->{where("extract(year from created_at) = ? AND extract(month from created_at) = ?", Time.current.year, Time.current.month)}
 
   private
 

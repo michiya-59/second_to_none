@@ -44,6 +44,14 @@ ja:
               blank: "を入力してください。"
               not_a_number: "は半角数字で入力してください。"
               only_integer: "は整数で入力してください。"
+        learn_categories:
+          attributes:
+            name: "を入力してください。"
+            too_long: "は15文字以内で入力してください。"
+        learns:
+          attributes:
+            name: "を入力してください。"
+            too_long: "は15文字以内で入力してください。"
     attributes:
       tmp_member_info:
         user_id: ユーザID
@@ -87,6 +95,10 @@ ja:
       incentive:
         course_name: "コース名"
         incentive_price: "報酬額"
+      learn_category:
+        name: "学びのカテゴリー"
+      learn:
+        name: "学びの資料のタイトル"
   date:
     abbr_day_names:
     - 日

@@ -1,0 +1,25 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '管理画面', admin_path, class: 'common_a' %> >
+  <%= link_to '学びの資料', admin_learn_categories_path, class: 'common_a' %> >
+  学びの資料 編集
+</p>
+<div class="admin_learn_add_contant">
+  <div class="common_field_title">
+    <h1>学びの資料 カテゴリー編集</h1>
+    <div class="underline"></div>
+  </div>
+  <%= form_with model: @learn_category, url: admin_learn_category_path(@learn_category), local: true do |form| %>
+    <%= render 'shared/admin_error', object: @learn_category %>
+    <div class="admin_bonus_form_part">
+      <%= form.label :name, "カテゴリー名", class: "common_size16" %><span>必須</span>
+      <%= form.text_field :name, class: "course_name text_box common_size16", maxlength: 15 %>
+      <p class="gray common_size13">※15文字以内で入力してください。</p>
+    </div>
+    <div class="admin_submit_btn text_center common_merge">
+      <%= link_to '戻る', admin_learn_categories_path, class: 'back_btn common_box_beige' %>
+      <%= link_to '削除', admin_learn_category_path(@learn_category), method: :delete, data: { confirm: "削除しますか？" }, class: 'add_btn common_box_beige' %>
+      <%= form.submit "更新", class: "edit_btn common_box_beige" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,63 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '管理画面', admin_path, class: 'common_a' %> >
+  学びの資料
+</p>
+<div class="admin_learn_add_contant">
+  <div class="common_field_title">
+    <h1>学びのカテゴリー新規追加</h1>
+    <div class="underline"></div>
+  </div>
+  <div class="admin_larn_category_add">
+    <%= form_with url: admin_learn_categories_path, model: @learn_category, local: true do |form| %>
+      <%= render 'shared/error' %>
+      <% if flash[:success].present? %>
+        <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
+      <% end %>
+      <div class="learn_add_categeory_part">
+        <%= form.label :name, "カテゴリー<span>必須</span>".html_safe, class: "common_size16" %>
+        <%= form.text_field :name, class: "common_size16" %>
+      </div>
+      <%= form.submit "新規追加", class: "admin_add_btn common_btn_beige common_btn_content common_box_beige" %>
+    <% end %>
+  </div>
+</div>
+<div class="admin_learn_content">
+  <div class="common_field_title">
+    <h1>学びの資料 カテゴリー一覧</h1>
+    <div class="underline"></div>
+  </div>
+  <div class="common_admin_list">
+    <div class="common_list_head">
+      <p class="w6"></p>
+      <p class="w41 common_size16">追加日時</p>
+      <p class="common_size16">カテゴリー名</p>
+    </div>
+    <% if @learn_categories.present? %>
+      <% @learn_categories.each_with_index do |learn_category, index| %>
+        <div class="common_list_body">
+          <div class="common_list_body_part">
+            <p class="w6 common_size16"><%= index + 1 %>.</p>
+            <p class="w41 common_size16"><%= learn_category.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+            <p class="common_size16"><%= learn_category.name %></p>
+            <%= link_to '編集', edit_admin_learn_category_path(learn_category), class: 'edit_btn common_box_beige' %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="admin_category_content">
+  <div class="common_field_title">
+    <h1>学びの資料詳細一覧</h1>
+    <div class="underline"></div>
+  </div>
+  <div class="admin_category_list">
+    <% if @learn_categories.present? %>
+      <% @learn_categories.each do |learn_category| %>
+        <%= link_to learn_category.name, admin_learns_path(id: learn_category), class: 'common_btn_content common_box_beige common_btn_shape' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= link_to '戻る', admin_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

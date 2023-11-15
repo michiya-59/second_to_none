@@ -27,14 +27,14 @@
   </div>
 
   <div class="admin_submit_btn text_center common_merge">
-    <% if request.fullpath.include?('edit') %>
-      <%= link_to '削除', admin_post_path(@post), method: :delete, data: { confirm: "削除しますか？" }, class: 'add_btn common_box_beige' %>
-    <% end %>
-
     <% if page_year_month_include?(session[:admin_post_page], session[:search_post_month], session[:search_post_year]) %>
       <%= link_to '戻る', admin_posts_path(page: session[:admin_post_page], search_month: session[:search_post_month], search_year: session[:search_post_year]), class: 'back_btn common_box_beige' %>
     <% else %>
       <%= link_to '戻る', admin_posts_path, class: 'back_btn common_box_beige' %>
+    <% end %>
+    
+    <% if request.fullpath.include?('edit') %>
+      <%= link_to '削除', admin_post_path(@post), method: :delete, data: { confirm: "削除しますか？" }, class: 'add_btn common_box_beige' %>
     <% end %>
     <%= f.submit "更新", class: 'add_btn common_box_beige' %>
   </div>
