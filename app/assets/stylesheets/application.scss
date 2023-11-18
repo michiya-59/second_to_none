@@ -2098,9 +2098,15 @@ main{
 }
 .admin_category_list{
   display: flex;
+  flex-wrap: wrap;
   a{
-    margin-right: 2rem;
+    margin: 0 2rem 1rem 0;
   }
+}
+.download_edit_btm{
+  color: #3899bb;
+  font-size: 1.5rem;
+  margin: 0.1rem 0 0.6rem 0;
 }
 
 /* css/index.css */
