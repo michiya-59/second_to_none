@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
-  # 操作時間の60分前の時間を格納
+  # 操作時間の60set_search_date分前の時間を格納
   def set_session_expiration
     session[:expires_at] = 60.minutes.from_now
   end
@@ -50,7 +50,10 @@ class ApplicationController < ActionController::Base
 
   # 管理項目 リストの検索処理
   def set_search_date params
-    if params[:search_year].present?
+    if session[:search_seminars_year].present? && session[:search_seminars_month].present?
+      search_year = session[:search_seminars_year]
+      search_month = session[:search_seminars_month]
+    elsif params[:search_year].present?
       search_year = params[:search_year]
       search_month = params[:search_month]
     else
