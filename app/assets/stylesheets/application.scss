@@ -683,7 +683,10 @@ main{
     font-size: 1.2rem;
   }
 }
-
+.not_reservation{
+  opacity: 0.7;
+  pointer-events: none;
+}
 .reservation_switch_btn, .approval_switch_btn{
   display: flex;
   width: 55rem;
@@ -842,10 +845,6 @@ main{
                 vertical-align: baseline;
               }
             }
-          }
-          .not_reservation{
-            opacity: 0.7;
-            pointer-events: none;
           }
         }
       }
@@ -1317,6 +1316,9 @@ main{
     .conditons_title{
       color: white;
       padding: 1rem 5.5rem;
+      @include responsive_media(tab_820){
+        padding: 1rem 3rem;
+      }
     }
     .conditons_body{
       text-align: center;

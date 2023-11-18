@@ -1,0 +1,32 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '連携先一覧', connect_services_path, class: 'common_a' %> >
+  賃貸
+</p>
+<div class="service_top">
+  <h1 class="service_detail_title">賃貸</h1>
+  <p class="service_catch_copy">SNT特別価格　15万円~30万円特別値下げ</p>
+  <div class="underline"></div>
+</div>
+<div class="service_detail_bottom">
+  <p>
+    皆さんは賃貸に住んだことはありますか？<br>
+    私たちが提携している不動産会社との特別な契約により、<span class="beige">通常高額な初期費用を大幅に削減できます！</span><br>
+    賃貸を始める際、多くの方が驚く「初期費用」の高さ。<br><br>
+    
+    私もかつては、家賃のみを考えて不動産会社に相談し、初期費用の20.8万円の高額さに驚愕しました。<br>
+    しかし、私たちのサービスを利用することで、<span class="beige">初期費用を15万〜30万円もお値引き！！</span><br>
+    特に家賃が15万円を超える物件では、<span class="beige">初期費用を50万円以上も節約できる可能性</span>があります。<br>
+
+    「どうしてこんなにお得になるの？」そんな疑問や、引越しをご検討の方は、ぜひお問い合わせください。<br>
+    意外な事実や、お得な情報があなたを待っています。新しいスタートを切るあなたを、<span class="beige">私たちは全力でサポートします！</span><br>
+  </p>
+</div>
+<p class="guide_text">体験したい人・何か質問がある人は以下からご連絡</p>
+<div class="guide_arrow">
+  <%= image_tag 'guide_arrow.svg', alt: '案内の矢印' %>
+</div>
+<div class="contact_btn">
+  <%= link_to 'お問い合わせ', '#', class: 'common_btn_beige common_btn_content common_box_beige' %>
+</div>
+<%= link_to '戻る', connect_services_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
