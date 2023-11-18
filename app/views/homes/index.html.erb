@@ -19,7 +19,7 @@
     </div>
   </div>
 </section>
-<a href="" class="uranai_link">
+<a href="#" class="uranai_link">
   <div class="uranai">
     <div class="uranai_icon">
       <%= image_tag 'cil_badge.svg', alt: '占いのアイコン' %>
@@ -28,84 +28,64 @@
   </div>
 </a>
 <section class="menu_list">
-  <a href="seminar_reservation.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'seminer.svg', alt: 'セミナーのアイコン' %>
-      </div>
-      <p class="common_size16">セミナー予約</p>
+  <%= link_to reservations_path, class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'seminer.svg', alt: 'セミナーのアイコン' %>
     </div>
-  </a>
-  <a href="">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'organization.svg', alt: '組織図のアイコン' %>
-      </div>
-      <p class="common_size16">組織図</p>
+    <p class="common_size16">セミナー予約</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'organization.svg', alt: '組織図のアイコン' %>
     </div>
-  </a>
-  <a href="event.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'event.svg', alt: 'イベント・お知らせ情報のアイコン' %>
-      </div>
-      <p class="common_size16">イベント・お知らせ情報</p>
+    <p class="common_size16">組織図</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'event.svg', alt: 'イベント・お知らせ情報のアイコン' %>
     </div>
-  </a>
-  <a href="connect_service.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'connect_service.svg', alt: '連携先のアイコン' %>
-      </div>
-      <p class="common_size16">連携先</p>
+    <p class="common_size16">イベント・お知らせ情報</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'connect_service.svg', alt: '連携先のアイコン' %>
     </div>
-  </a>
-  <a href="bonus.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
-      </div>
-      <p class="common_size16">ボーナス情報</p>
+    <p class="common_size16">連携先</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
     </div>
-  </a>
-  <a href="title.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'title.svg', alt: 'タイトルのアイコン' %>
-      </div>
-      <p class="common_size16">タイトル</p>
+    <p class="common_size16">ボーナス情報</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'title.svg', alt: 'タイトルのアイコン' %>
     </div>
-  </a>
-  <a href="learn.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'study.svg', alt: '学びの資料のアイコン' %>
-      </div>
-      <p class="common_size16">学びの資料</p>
+    <p class="common_size16">タイトル</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'study.svg', alt: '学びの資料のアイコン' %>
     </div>
-  </a>
-  <a href="introducer.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'introducer.svg', alt: '紹介者一覧のアイコン' %>
-      </div>
-      <p class="common_size16">紹介者一覧</p>
+    <p class="common_size16">学びの資料</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'introducer.svg', alt: '紹介者一覧のアイコン' %>
     </div>
-  </a>
-  <a href="registration_information.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'registration_information.svg', alt: '会員登録情報のアイコン' %>
-      </div>
-      <p class="common_size16">会員登録情報</p>
+    <p class="common_size16">紹介者一覧</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'registration_information.svg', alt: '会員登録情報のアイコン' %>
     </div>
-  </a>
-  <a href="user_approval.html">
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'check.svg', alt: '会員登録情報のアイコン' %>
-      </div>
-      <p class="common_size16">承認画面</p>
+    <p class="common_size16">会員登録情報</p>
+  <% end %>
+  <%= link_to '#', class: 'menu_part common_btn_shape' do %>
+    <div class="menu_icon">
+      <%= image_tag 'check.svg', alt: '会員登録情報のアイコン' %>
     </div>
-  </a>
+    <p class="common_size16">承認画面</p>
+  <% end %>
 </section>

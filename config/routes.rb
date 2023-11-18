@@ -7,6 +7,16 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
 
+  resources :reservations, only: %i(index create update destroy) do
+    collection do
+      get "reservation_status"
+      get "reserved_list"
+    end
+    member do
+      get "reserve_confirm"
+      post "reserved_confirmation"
+    end
+  end
   resources :tmp_member_infos, only: %i(new create) do
     collection do
       post "confirm"

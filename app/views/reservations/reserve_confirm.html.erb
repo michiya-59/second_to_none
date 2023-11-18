@@ -1,0 +1,50 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <% if session[:search_seminars_year].present? && session[:search_seminars_month].present? %>
+    <%= link_to 'セミナー予約', reservations_path(search_year: session[:search_seminars_year], search_month: session[:search_seminars_month]), class: 'common_a' %> >
+  <% else %>
+    <%= link_to 'セミナー予約', reservations_path, class: 'common_a' %> >
+  <% end %>
+  セミナー予約確認
+</p>
+
+<div class="common_field_title">
+  <h1>セミナー予約確認</h1>
+  <div class="underline"></div>
+</div>
+<p class="confirm_text common_size16">セミナーに予約しますか？</p>
+<div class="reservation_confirm_container common_list_title_background">
+  <div class="common_list_title common_size20">
+    <p>予約情報</p>
+  </div>
+  <div class="confirm_info">
+    <div class="common_list_part common_size16">
+      <p>セミナー</p>
+      <p><%= @seminar.title %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>予約時間</p>
+      <p><%= "#{@seminar.year}/#{@seminar.month}/#{@seminar.day} #{@seminar.start_time}" %> ~ <%= @seminar.end_time %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>予約者</p>
+      <p><%= current_user.name %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>講師</p>
+      <p><%= @seminar.teacher %></p>
+    </div>
+  </div>
+</div>
+
+<div class="reservation_confirm_switch_btn">
+  <%= link_to '戻る', reservations_path, class: 'common_btn_content' %>
+
+  <%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :seminar_id, value: @seminar.id %>
+    <%= f.hidden_field :join_status, value: 9 %>
+
+    <%= f.submit '予約確定', class: 'common_btn_content reservation_confirm_switch_btn_entry' %>
+  <% end %>
+</div>
