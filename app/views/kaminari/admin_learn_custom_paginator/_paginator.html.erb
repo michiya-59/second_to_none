@@ -1,4 +1,4 @@
-<% if @learns.size > 2 %>
+<% if @learns.size > 10 %>
   <div class="pagination">
     <%# 最初のページへのリンク %>
     <%= link_to '<<', url_for(page: 1, search_year: @search_year, search_month: @search_month, id: session[:learn_category_id]), class: "common_box_beige common_size13 padding05" unless @learn_infos.first_page? %>

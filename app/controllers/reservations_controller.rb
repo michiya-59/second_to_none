@@ -4,9 +4,7 @@ class ReservationsController < ApplicationController
   before_action :seminar_load_data
   before_action :set_date, only: %i(index reserved_list update)
 
-  def index
-    @search_year, @search_month = set_search_date params
-  end
+  def index; end
 
   def create
     @seminar = Reservation.new(reserve_params)
@@ -62,7 +60,7 @@ class ReservationsController < ApplicationController
   end
 
   def set_date
-    @search_year, @search_month = set_search_date params
+    @search_year, @search_month = set_search_date params, session[:search_seminars_year], session[:search_seminars_month]
     @join_status = session[:search_join_status]
   end
 
