@@ -1,0 +1,27 @@
+<% if @events.size > 10 %>
+  <div class="pagination">
+    <%# 最初のページへのリンク %>
+    <%= link_to '<<', url_for(page: 1), class: "common_box_beige common_size15 padding1" unless @event_infos.first_page? %>
+
+    <%# 前のページへのリンク %>
+    <%= link_to '<', url_for(page: @event_infos.prev_page), class: "common_box_beige common_size15 padding1" if @event_infos.prev_page %>
+
+    <%# 中央のページリンク（最大5ページ） %>
+    <% start_page = [@event_infos.current_page - 2, 1].max %>
+    <% end_page = [@event_infos.current_page + 2, @event_infos.total_pages].min %>
+
+    <% start_page.upto(end_page) do |page| %>
+      <% if page == @event_infos.current_page %>
+        <span class="common_btn_beige_background common_size15 padding1"><%= page %></span>
+      <% else %>
+        <%= link_to page, url_for(page: page), class: "common_box_beige common_size15 padding1" %>
+      <% end %>
+    <% end %>
+
+    <%# 次のページへのリンク %>
+    <%= link_to '>', url_for(page: @event_infos.next_page), class: "common_box_beige common_size15 padding1" if @event_infos.next_page %>
+
+    <%# 最後のページへのリンク %>
+    <%= link_to '>>', url_for(page: @event_infos.total_pages), class: "common_box_beige common_size15 padding1" unless @event_infos.last_page? %>
+  </div>
+<% end %>

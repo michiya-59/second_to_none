@@ -1,0 +1,21 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  イベント情報
+</p>
+<div class="top_background"></div>
+<h2 class="top_title">イベント情報</h2>
+<div class="event_list common_btn_shape">
+  <% @event_infos.each do |event| %>
+    <div class="event_part">
+      <div class="envent_part_top">
+        <p class="common_size16"><%= event.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+        <p class="common_size16 common_box_beige"><%= event.category_flg == 1 ? "イベント" : "お知らせ" %></p>
+      </div>
+      <div class="event_part_bottom">
+        <%= link_to event.title, event_path(event), class: 'common_size16' %>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate @event_infos, theme: 'admin_event_custom_paginator' %>  
+</div>
+<%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

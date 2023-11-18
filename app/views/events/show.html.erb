@@ -1,0 +1,40 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', '#', class: 'common_a' %> >
+  <% if session[:events_page].present? %>
+    <%= link_to 'お知らせ・イベント情報', events_path(page: session[:events_page]), class: 'common_a' %> >
+  <% else %>
+    <%= link_to 'お知らせ・イベント情報', events_path, class: 'common_a' %> >
+  <% end %>
+  詳細
+</p>
+<div class="common_field_title">
+  <h1>お知らせ・イベント詳細</h1>
+</div>
+<div class="event_top_info">
+  <h3><%= @event.title%></h3>
+  <p class="common_size16">2023.06.22</p>
+</div>
+<div class="underline"></div>
+<div class="event_bottom_body">
+  <% if @event.event_image.attached? %>
+    <div class="event_image">
+      <%= image_tag @event.event_image, class: 'img-thumbnail' %>   
+    </div>
+  <% end %>
+  <%= sanitize(simple_format(@event.body)) %>
+</div>
+<div class="event_btns common_merge">
+  <% if session[:events_page].present? %>
+    <%= link_to '一覧画面へ', events_path(page: session[:events_page]), class: 'common_btn_beige common_btn_content common_box_beige' %>
+  <% else %>
+    <%= link_to '一覧画面へ', events_path, class: 'common_btn_beige common_btn_content common_box_beige' %>
+  <% end %>
+  <% if @prev_event.present? && @next_event.present? %>
+    <%= link_to '前ページ', event_path(@next_event), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    <%= link_to '次ページ', event_path(@prev_event), class: 'common_btn_beige common_btn_content common_box_beige' %>
+  <% elsif @prev_event.present? && @next_event.blank? %>
+    <%= link_to '次ページ', event_path(@prev_event), class: 'common_btn_beige common_btn_content common_box_beige', style: "border-radius: 0.5rem;" %>
+  <% elsif @prev_event.blank? && @next_event.present? %>
+    <%= link_to '前ページ', event_path(@next_event), class: 'common_btn_beige common_btn_content common_box_beige', style: "border-radius: 0.5rem;" %>
+  <% end %>
+</div>

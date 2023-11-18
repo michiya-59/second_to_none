@@ -14,10 +14,10 @@
 </div>
 
 <%= form_with url: reserved_list_reservations_path, local: true, method: :get, class: "search" do |form| %>
-  <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year), include_blank: '年を選択' %>
-  <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month), include_blank: '月を選択' %>
-  <%= form.select :join_status, [['参加済み', 1], ['未参加', 9]], selected: @join_status,include_blank: 'ステータスなし' %>
-  <%= form.submit "検索", class: "search_btn common_box_beige" %>
+  <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year), include_blank: 'なし' %>
+  <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month), include_blank: 'なし' %>
+  <%= form.select :join_status, [['参加済み', 1], ['未参加', 9]], selected: @join_status,include_blank: 'なし' %>
+  <%= form.submit "検索", class: "search_btn common_box_beige serach_mt-1" %>
 <% end %>
 
 <% if flash[:success].present? %>

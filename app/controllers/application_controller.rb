@@ -49,10 +49,10 @@ class ApplicationController < ActionController::Base
   end
 
   # 管理項目 リストの検索処理
-  def set_search_date params
-    if session[:search_seminars_year].present? && session[:search_seminars_month].present?
-      search_year = session[:search_seminars_year]
-      search_month = session[:search_seminars_month]
+  def set_search_date params, search_seminars_year, search_seminars_month
+    if search_seminars_year.present? && search_seminars_month.present?
+      search_year = search_seminars_year
+      search_month = search_seminars_month
     elsif params[:search_year].present?
       search_year = params[:search_year]
       search_month = params[:search_month]

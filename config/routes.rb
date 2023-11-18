@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
 
+  resources :events, only: %i(index show)
   resources :reservations, only: %i(index create update destroy) do
     collection do
       get "reservation_status"

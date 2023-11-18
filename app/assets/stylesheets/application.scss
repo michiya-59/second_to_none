@@ -151,7 +151,6 @@ textarea{
 .m-1{
   margin: 1rem 0;
 }
-input{ font-size:16px; } /*フォームのフォーカスOFF*/
 table {
   width: 100%;
   border-collapse: collapse;
@@ -228,6 +227,9 @@ $border_radius: 0.5rem;
 .padding05{
   padding: 0.5rem;
 }
+.padding1{
+  padding: 1rem;
+}
 .common_size16{
   font-size: 1.6rem;
   @include responsive_media(sp){
@@ -242,6 +244,12 @@ $border_radius: 0.5rem;
   font-size: 1.3rem;
   @include responsive_media(sp){
     font-size: 1.7rem;
+  }
+}
+.common_size15{
+  font-size: 1.5rem;
+  @include responsive_media(sp){
+    font-size: 1.9rem;
   }
 }
 .common_size18{
@@ -311,6 +319,11 @@ $border_radius: 0.5rem;
 .common_box_beige{
   border: 1px solid $beige;
   color: $beige;
+}
+.serach_mt-1{
+  @include responsive_media(sp_320){
+    margin-top: 1rem;
+  }
 }
 .underline::before ,.underline::after{
   content: '';
@@ -892,7 +905,6 @@ main{
   width: 40rem;
   margin: 0 auto 1rem auto;
   justify-content: space-between;
-  
   a{
     background: $base_background;
     color: white;
@@ -906,11 +918,15 @@ main{
       width: 48%;
     }
   }
+  form{
+    width: 48%;
+  }
 }
 .reservation_confirm_switch_btn_entry{
   background: $base_background;
   color: white;
   border: none;
+  width: 100%;
 }
 .cancel{
   width: 100%;
@@ -968,7 +984,7 @@ main{
         line-height: 3.3rem;
         margin-left: auto;
         @include responsive_media(sp){
-          width: 17rem;
+          width: 15rem;
           line-height: 5.5rem;
         }
         @include responsive_media(sp_320){
@@ -1060,16 +1076,34 @@ main{
   @include responsive_media(sp){
     width: 100%;
   }
+  .event_image{
+    width: 50%;
+    height: 25rem;
+    margin: 1rem 0;
+    img{
+      height: 100%;
+      object-fit: cover;
+    }
+    @include responsive_media(sp_430){
+      height: 34rem;
+      width: 100%;
+    }
+  }
   p{
     color: #5C5C5C;
     margin: 2rem 0 0 0;
+    font-size: 1.6rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: auto;
+    white-space: normal;
   }
 }
 .event_btns{
   display: flex;
   width: 45%;
-  justify-content: space-between;
   margin-left: auto;
+  justify-content: end;
   a:nth-child(2){
     border-radius: 10rem 0.5rem 0.5rem 10rem;
   }
@@ -1107,6 +1141,9 @@ main{
       width: 25%;
       margin-left: 1rem;
     }
+  }
+  a{
+    margin-left: 1rem;
   }
 }
 
