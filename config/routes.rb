@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get "learns/index"
   get "connect_services/index"
   root "homes#index"
   get "/login", to: "sessions#new"
@@ -8,6 +9,11 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
 
+  resources :learns, only: %i(index) do
+    collection do
+      get "learn_list"
+    end
+  end
   resources :connect_services, only: %i(index) do
     collection do
       get "whitening"

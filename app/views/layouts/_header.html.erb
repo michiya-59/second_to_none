@@ -12,7 +12,7 @@
           <li><%= link_to '連携先', connect_services_path %></li>
           <li><%= link_to 'ボーナス情報', '#' %></li>
           <li><%= link_to 'タイトル', '#' %></li>
-          <li><%= link_to '学びの資料', '#' %></li>
+          <li><%= link_to '学びの資料', learns_path %></li>
           <li><%= link_to '紹介者一覧', '#' %></li>
           <li><%= link_to '登録情報', '#' %></li>
           <% if current_user.admin_flg == 1 %>
@@ -67,7 +67,7 @@
             </div>
           </li>
           <li>
-            <%= link_to '学びの資料', '#' %>
+            <%= link_to '学びの資料', learns_path %>
             <div>
               <%= image_tag 'hamburger_arrow.svg' %>
             </div>
