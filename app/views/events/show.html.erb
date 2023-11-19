@@ -1,5 +1,5 @@
 <p class="pankuzu">
-  <%= link_to 'トップページ', '#', class: 'common_a' %> >
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
   <% if session[:events_page].present? %>
     <%= link_to 'お知らせ・イベント情報', events_path(page: session[:events_page]), class: 'common_a' %> >
   <% else %>

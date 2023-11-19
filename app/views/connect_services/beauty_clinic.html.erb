@@ -1,0 +1,33 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '連携先一覧', connect_services_path, class: 'common_a' %> >
+  美容クリニック
+</p>
+<div class="service_top">
+  <h1 class="service_detail_title">美容クリニック</h1>
+  <p class="service_catch_copy">SNT特別価格　全メニュー25%OFF</p>
+  <div class="underline"></div>
+</div>
+<div class="service_detail_bottom">
+  <p>
+    美しさを引き出す第一歩を踏み出しませんか？<br>
+    私たちが提携している美容クリニックで、あなたの肌を輝かせ、毎日の鏡の前の時間を楽しみに変えましょう！<br>
+    今なら、<span class="beige">すべての美容メニューが通常価格から25％オフ。</span>これまで美容に手が出しにくかったあなたも、このチャンスをお見逃しなく。<br>
+    通常高額なダーマペン治療も、<span class="beige">2万円以下で提供します。</span><br><br>
+
+    手軽に始められるこの価格で、継続しやすくなっています。<br>
+    毎月のケアで、毎日鏡を見るのが待ち遠しくなるような自分に出会えるでしょう。<br>
+    <span class="beige">「肌を綺麗にしたい！」「自分磨きをしたい！」</span>と考えているあなたに、このサービスはまさにぴったり。<br><br>
+
+    美しく、健やかな肌への一歩を踏み出しましょう。お問い合わせを心よりお待ちしています。<br>
+    <span class="beige">あなたの魅力</span>を最大限に引き出すお手伝いをさせていただきます
+  </p>
+</div>
+<p class="guide_text">体験したい人・何か質問がある人は以下からご連絡</p>
+<div class="guide_arrow">
+  <%= image_tag 'guide_arrow.svg', alt: '案内の矢印' %>
+</div>
+<div class="contact_btn">
+  <%= link_to 'お問い合わせ', '#', class: 'common_btn_beige common_btn_content common_box_beige' %>
+</div>
+<%= link_to '戻る', connect_services_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
