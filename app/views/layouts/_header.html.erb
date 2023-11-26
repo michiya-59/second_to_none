@@ -19,7 +19,7 @@
             <li><%= link_to "管理者画面", admin_path %></li>
           <% end %>
           <% if logged_in? %>
-            <li><%= link_to "ログアウト", '#' %></li>
+            <li><%= link_to "ログアウト", logout_path %></li>
           <% end %>
         </ul>
       </div>
@@ -93,7 +93,7 @@
             </li>
           <% end %>
           <% if logged_in? %>
-            <li><%= link_to "ログアウト", '#' %></li>
+            <li><%= link_to "ログアウト", logout_path %></li>
           <% end %>
         </ul>
       </div>

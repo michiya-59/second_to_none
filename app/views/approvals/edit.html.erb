@@ -1,0 +1,187 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <% if session[:search_approval_year].present? && session[:search_approval_month].present?  %>
+    <% if session[:approval_page].present? %>
+      <%= link_to '承認画面', approvals_path(page: session[:approval_page], search_year: session[:search_approval_year], search_month: session[:search_approval_month], type: @type), class: 'common_a' %> >
+    <% else %>
+      <%= link_to '承認画面', approvals_path(search_year: session[:search_approval_year], search_month: session[:search_approval_month], type: @type), class: 'common_a' %> >
+    <% end %>
+  <% else %>
+    <%= link_to '承認画面', approvals_path(type: @type), class: 'common_a' %> >
+  <% end %>
+  承認画面 詳細
+</p>
+<div class="common_field_title">
+  <h1>会員登録承画面</h1>
+  <div class="underline"></div>
+</div>
+
+<div class="common_list_title_background">
+  <div class="basic_information_title common_list_title common_size20">
+    <p>基本情報</p>
+  </div>
+  <!-- 基本情報 -->
+  <div class="basic_information">
+    <!-- 各項目の表示 -->
+    <div class="common_list_part common_size16">
+      <p>ID</p>
+      <p><%= @approval.id %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>ログインID</p>
+      <p><%= @approval.login_id %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>メールアドレス</p>
+      <p><%= @approval.email %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>氏名</p>
+      <p><%= @approval.name %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>氏名カナ</p>
+      <p><%= @approval.name_kana %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>電話番号</p>
+      <p><%= @approval.phone %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>誕生日</p>
+      <p><%= @approval.birthday %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>年齢</p>
+      <p><%= calculate_age(@approval.birthday) %></p>
+    </div>
+    <div class="common_list_part common_size16 not_border">
+      <p>性別</p>
+      <p><%= @approval.gender_id == 1 ? "男" : "女" %></p>
+    </div>
+  </div>
+</div>
+
+<!-- ビジネス情報 -->
+<div class="common_list_title_background">
+  <div class="bisiness_information_title common_list_title common_size20">
+    <p>ビジネス情報</p>
+  </div>
+  <div class="business_information">
+    <!-- ビジネス情報の表示 -->
+    <div class="common_list_part common_size16">
+      <p>ステータス</p>
+      <p>仮登録</p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>登録タイプ</p>
+      <p><%= @approval.incentive_id == 1 ? "ノーマルコース" : "アドバンスコース" %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>紹介者</p>
+      <p><%= @approval.introducer.name %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>営業担当者</p>
+      <p><%= @approval.sales.name %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>組織図 位置</p>
+      <p><%= @approval.left_or_right.upcase %></p>
+    </div>
+    <div class="common_list_part common_size16 not_border">
+      <p>契約日時</p>
+      <p><%= @approval.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+    </div>
+  </div>
+</div>
+
+<!-- 会員住所情報 -->
+<div class="common_list_title_background">
+  <div class="address_information_title common_list_title common_size20">
+    <p>会員住所情報</p>
+  </div>
+  <div class="address_information">
+    <!-- 会員住所情報の表示 -->
+    <div class="common_list_part common_size16">
+      <p>郵便番号</p>
+      <p><%= "#{@approval.zip_str3}-#{@approval.zip_str4}" %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>都道府県</p>
+      <p><%= @approval.ken %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>市区町村番地</p>
+      <p><%= @approval.city %></p>
+    </div>
+    <div class="common_list_part common_size16 not_border">
+      <p>建物名・部屋番号</p>
+      <p><%= @approval.other_address %></p>
+    </div>
+  </div>
+</div>
+
+<!-- 振込口座情報 -->
+<div class="common_list_title_background">
+  <div class="bank_information_title common_list_title common_size20">
+    <p>振込口座情報</p>
+  </div>
+  <div class="address_information">
+    <!-- 振込口座情報の表示 -->
+    <div class="common_list_part common_size16">
+      <p>預金種別</p>
+      <p>
+        <% case @approval.account_type.to_i %>
+        <% when 1 %>
+          普通預金
+        <% when 2 %>
+          当座預金
+        <% when 3 %>
+          定期預金
+        <% else %>
+          未定義
+        <% end %>
+      </p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>金融機関名</p>
+      <p><%= @approval.bank_name %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>支店名</p>
+      <p><%= @approval.branch_name %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>支店番号</p>
+      <p><%= @approval.branch_number %></p>
+    </div>
+    <div class="common_list_part common_size16">
+      <p>口座番号</p>
+      <p><%= @approval.account_number_tail %></p>
+    </div>
+    <div class="common_list_part common_size16 not_border">
+      <p>口座名義</p>
+      <p><%= @approval.account_holder %></p>
+    </div>
+  </div>
+</div>
+
+<div class="reservation_confirm_switch_btn">
+  <% if params[:type] == "new" %>
+    <%= form_with model: @approval, url: approval_path(@approval), class: 'common_btn_content' do |f|  %>
+      <%= f.hidden_field :id, value: @approval.id %>
+      <%= f.submit '承認を確定する', class: 'common_btn_content approval_btn' %>
+    <% end %>
+  <% end %>
+  
+  <% if session[:search_approval_year].present? && session[:search_approval_month].present?  %>
+    <% if session[:approval_page].present? %>
+      <%= link_to '戻る', approvals_path(page: session[:approval_page], search_year: session[:search_approval_year], search_month: session[:search_approval_month], type: @type), class: 'common_btn_content' %>
+    <% else %>
+      <%= link_to '戻る', approvals_path(search_year: session[:search_approval_year], search_month: session[:search_approval_month], type: @type), class: 'common_btn_content' %>
+    <% end %>
+  <% else %>
+    <%= link_to '戻る', approvals_path(type: @type), class: 'common_btn_content' %>
+  <% end %>
+</div>

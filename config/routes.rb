@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
 
+  resources :approvals, only: %i(index edit update)
   resources :learns, only: %i(index) do
     collection do
       get "learn_list"

@@ -1,0 +1,54 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  承認画面
+</p>
+<div class="common_field_title">
+  <h1>会員本登録承認待ち一覧</h1>
+  <div class="underline"></div>
+</div>
+<div class="approval_switch_btn">
+  <%= link_to '仮予約 承認待ち会員一覧', approvals_path(type: "new"), class: 'common_btn_content' %>
+  <%= link_to '本登録済み会員一覧', approvals_path(type: "done"), class: 'common_btn_content common_btn_beige_background' %>
+</div>
+
+<%= form_with url: approvals_path, local: true, method: :get, class: "search" do |form| %>
+  <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year) %> 
+  <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month) %> 
+  <%= form.hidden_field :type, value: @type %>
+  <%= form.submit "検索", class: "search_btn common_box_beige" %>
+<% end %>
+
+<div class="approval_container common_btn_shape mt-2">
+  <table>
+    <thead>
+      <tr class="approval_thead_tr">
+        <th>仮登録日時</th>
+        <th>登録コース名</th>
+        <th>紹介者</th>
+        <th>営業担当者</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @approval_lists.present? %>
+        <% @approval_lists.each do |approval| %>
+          <tr class="approval_tbody_tr">
+            <td><%= approval.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+            <td><%= approval.incentive_id == 1 ? "ノーマル" : "アドバンス" %></td>
+            <td><%= approval.introducer.name %></td>
+            <td><%= approval.sales.name %></td>
+            <td>
+              <%= link_to '詳細', edit_approval_path(approval, type: @type), class: 'edit_btn common_box_beige approval_detail_btn' %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr class="approval_tbody_tr">
+          <td>
+            承認待ちの仮登録はありません。
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @approval_lists, theme: 'approvals_custom_paginator', params: { search_year: @search_year, search_month: @search_month } %>  

@@ -3,6 +3,9 @@
 class TmpMemberInfo < ApplicationRecord
   attr_accessor :current_step
 
+  belongs_to :introducer, class_name: "User", optional: true
+  belongs_to :sales, class_name: "User", optional: true
+
   has_secure_password
   VALID_ALPHANUMERIC_REGEX = /\A[a-zA-Z0-9]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -50,6 +53,8 @@ class TmpMemberInfo < ApplicationRecord
     "bank" => 3,
     "contract" => 4
   }.freeze
+
+  scope :created_this_month, ->{where("extract(year from created_at) = ? AND extract(month from created_at) = ?", Time.current.year, Time.current.month)}
 
   private
 
