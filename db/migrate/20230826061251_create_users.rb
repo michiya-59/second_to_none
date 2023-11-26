@@ -18,10 +18,9 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :image
       t.integer :gender_id, null: false
       t.integer :online_flg, null: false
-      t.references :grade, null: false, foreign_key: true, unique: true
+      t.references :grade, null: false, foreign_key: true
       t.timestamps
     end
     add_index :users, :login_id, unique: true
-    add_index :users, :email, unique: true
   end
 end

@@ -3,7 +3,7 @@
 module Admin
   class IncentivesController < ApplicationController
     def index
-      @incentives = Incentive.order(incentive_price: :desc)
+      @incentives = Incentive.order(id: :asc)
     end
 
     def edit

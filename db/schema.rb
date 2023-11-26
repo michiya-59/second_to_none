@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_16_001643) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_23_062935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,9 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_001643) do
   end
 
   create_table "incentives", force: :cascade do |t|
-    t.string "course_type", null: false, comment: "normal、advance、two_ter_normal、two_tier_advance、a_san_self_organization、a_san_other_organization, plus_two_tier_ruby, plus_two_tier_sapphire"
-    t.string "course_name", null: false, comment: "ノーマル、アドバンス、２ティア(ノーマル)、２ティア(アドバンス)、自組織３段目以降、他系列、ルビー、サファイヤ"
-    t.integer "incentive_price", null: false, comment: "初期値【100000：ノーマルコース、140000：アドバンス、30000；２ティア(ノーマル)、40000：２ティア（アドバンス）、10000：自組織３段目以降発生、15000：他系列契約時に発生、10000：ルビー、20000：サファイヤ】"
+    t.string "course_type", null: false, comment: "normal、advance、two_ter_normal、two_tier_advance、a_san_self_organization、a_san_other_organization, plus_two_tier_ruby, plus_two_tier_emerald"
+    t.string "course_name", null: false, comment: "ノーマル、アドバンス、２ティア(ノーマル)、２ティア(アドバンス)、自組織３段目以降、他系列、ルビー、エメラルド"
+    t.integer "incentive_price", null: false, comment: "初期値【100000：ノーマルコース、140000：アドバンス、30000；２ティア(ノーマル)、40000：２ティア（アドバンス）、10000：自組織３段目以降発生、15000：他系列契約時に発生、10000：ルビー、20000：エメラルド】"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -81,6 +81,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_001643) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "parent_id", null: false
+    t.integer "child_id", null: false
+    t.string "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_relationships_on_child_id"
+    t.index ["parent_id"], name: "index_relationships_on_parent_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.bigint "user_id", null: false, comment: "予約を行ったユーザーの一意識別子"
     t.bigint "seminar_id", null: false, comment: "予約されたセミナーの一意識別子"
@@ -89,6 +99,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_001643) do
     t.datetime "updated_at", null: false
     t.index ["seminar_id"], name: "index_reservations_on_seminar_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.integer "user_id", null: false, comment: "ユーザID"
+    t.integer "incentive_id", null: false, comment: "報酬コード"
+    t.integer "incentive_price", comment: "報酬金額"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "seminars", force: :cascade do |t|
@@ -182,6 +200,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_001643) do
     t.datetime "locked_at"
     t.integer "failed_login_count", default: 0
     t.boolean "locked", default: false, null: false
+    t.integer "incentive_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["grade_id"], name: "index_users_on_grade_id"
     t.index ["login_id"], name: "index_users_on_login_id", unique: true
@@ -191,8 +210,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_001643) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "learns", "learn_categories"
   add_foreign_key "learns", "users"
+  add_foreign_key "relationships", "users", column: "child_id"
+  add_foreign_key "relationships", "users", column: "parent_id"
   add_foreign_key "reservations", "seminars"
   add_foreign_key "reservations", "users"
+  add_foreign_key "rewards", "incentives"
+  add_foreign_key "rewards", "users"
   add_foreign_key "user_addresses", "users"
   add_foreign_key "user_banks", "users"
   add_foreign_key "users", "grades"

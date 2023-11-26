@@ -676,11 +676,11 @@ main{
   margin: 1.6rem 0;
   color: $black;
   @include responsive_media(tab){
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
   @include responsive_media(sp){
     margin-bottom: 3rem;
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 }
 .not_reservation{
@@ -694,13 +694,16 @@ main{
   justify-content: space-between;
   a{
     width: 26.5rem;
+    @include responsive_media(tab){
+      width: 35rem;
+    }
   }
   a:nth-child(1){
     color: #EACDA3;
     background: linear-gradient(90deg, rgba(234, 205, 163, 0.16) 0%, rgba(214, 174, 123, 0.16) 100%);
   }
   @include responsive_media(tab){
-    width: 52rem;
+    width: 72rem;
   }
   @include responsive_media(sp){
     width: 100%;
@@ -2347,6 +2350,8 @@ main{
 }
 .approval_thead_tr th{
   width: 10%;
+  text-align: left;
+  padding: 0;
 }
 @include responsive_media(sp){
   .approval_thead_tr th:nth-child(1){
@@ -2370,13 +2375,14 @@ main{
   @include responsive_media(sp){
     padding: 1rem;
     line-height: 3rem;
-    height: 5rem;
+    height: auto;
     td{
       width: 21.8%;
       a{
         display: block;
         line-height: 1.5rem;
         width: 8rem;
+        height: auto;
       }
     }
     td:nth-child(2){
@@ -2617,3 +2623,9 @@ main{
 }
 
 // 動画のモーダル
+
+.approval_btn{
+  color: white;
+  border: none;
+  background: var(--unnamed, linear-gradient(90deg, #EACDA3 0%, #d6ae7b 100%));
+}

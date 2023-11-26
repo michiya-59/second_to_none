@@ -7,6 +7,14 @@ class TmpMemberInfosController < ApplicationController
   def new
     session[:tmp_member_info_data] ||= {}
 
+    if session[:tmp_member_info_data]["login_id"]
+      if validete_uniq? session[:tmp_member_info_data]["login_id"], "login_id"
+        flash[:error] = ["入力したログインIDは他のユーザ使っています。別のものにしてください。"]
+      elsif validete_uniq? session[:tmp_member_info_data]["email"], "email"
+        flash[:error] = ["入力したメールアドレスは他のユーザ使っています。別のものにしてください。"]
+      end
+    end
+    
     @current_step = if params["current_step"].present?
                       params["current_step"].to_i
                     else
@@ -116,5 +124,15 @@ class TmpMemberInfosController < ApplicationController
 
     @set_tmp_member_info.assign_attributes(account_number_tail: "*****#{@set_tmp_member_info['account_number_hash'][-3..]}")
     @set_tmp_member_info.assign_attributes(account_number_hash: "********")
+  end
+
+  def validete_uniq? value, type
+    if type == "login_id"
+      uniq_value = User.find_by(login_id: value)
+    elsif type == "email"
+      uniq_value = User.find_by(email: value)
+    end
+
+    true if uniq_value.present?
   end
 end
