@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_23_062935) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_27_163216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,14 +111,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_062935) do
 
   create_table "seminars", force: :cascade do |t|
     t.string "title", null: false, comment: "セミナーのタイトル"
+    t.integer "year", null: false, comment: "セミナーの開催年"
+    t.integer "month", null: false, comment: "セミナーの開催月"
+    t.integer "day", null: false, comment: "セミナーの開催日"
+    t.string "start_time", null: false, comment: "セミナーの開始時間"
+    t.string "end_time", null: false, comment: "セミナーの終了時間"
     t.string "teacher", null: false, comment: "講師の名前"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "year"
-    t.integer "month"
-    t.integer "day"
-    t.string "start_time"
-    t.string "end_time"
   end
 
   create_table "tmp_member_infos", force: :cascade do |t|
@@ -150,12 +150,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_062935) do
     t.integer "approval_id", null: false, comment: "承認ID（１：承認済み、２：承認待ち）"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_tmp_member_infos_on_email", unique: true
+    t.index ["login_id"], name: "index_tmp_member_infos_on_login_id", unique: true
   end
 
   create_table "user_addresses", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "zip_str3", null: false
-    t.integer "zip_str4", null: false
+    t.string "zip_str3", null: false
+    t.string "zip_str4", null: false
     t.string "ken", null: false
     t.string "city", null: false
     t.string "other_address"

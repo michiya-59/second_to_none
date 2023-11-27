@@ -1,0 +1,8 @@
+<% case params[:type] %>
+<% when "base" %>
+  <%= render partial: 'base_form' %>
+<% when "address" %>
+  <%= render partial: 'address_form' %>
+<% when "bank" %>
+  <%= render partial: 'bank_form' %>
+<% end %>

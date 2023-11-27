@@ -99,6 +99,27 @@ ja:
         name: "学びのカテゴリー"
       learn:
         name: "学びの資料のタイトル"
+      user:
+        user_id: ユーザID
+        email: メールアドレス
+        name: 氏名
+        name_kana: 氏名カナ
+        birthday: 誕生日
+        phone: 携帯番号
+        login_id: ログインID
+        gender_id: 性別
+      user_address:
+        zip_str3: 郵便番号
+        zip_str4: 郵便番号
+        ken: 都道府県
+        city: 市区町村
+      user_bank:
+        account_type: 預金種別
+        bank_name: 金融機関名
+        branch_name: 支店名
+        branch_number: 支店番号
+        account_number_hash: 口座番号
+        account_holder: 口座名義
   date:
     abbr_day_names:
     - 日

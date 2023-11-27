@@ -62,4 +62,14 @@ class ApplicationController < ActionController::Base
     end
     [search_year, search_month]
   end
+
+  def validete_uniq? value, type
+    if type == "login_id"
+      uniq_value = User.find_by(login_id: value)
+    elsif type == "email"
+      uniq_value = User.find_by(email: value)
+    end
+
+    true if uniq_value.present?
+  end
 end
