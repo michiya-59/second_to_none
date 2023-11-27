@@ -211,7 +211,7 @@
           <p class="common_size16">紹介者</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16">西野倫也</p>
+          <p class="not_merge common_size16"><%= @introducer %></p>
         </div>
       </div>
       <div class="form_edit_part">
@@ -219,7 +219,7 @@
           <p class="common_size16">営業担当</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16">鈴木誠也</p>
+          <p class="not_merge common_size16"><%= @saler %></p>
         </div>
 
       </div>
@@ -228,9 +228,10 @@
           <p class="common_size16">コース</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16">アドバンスコース</p>
+          <p class="not_merge common_size16"><%= @set_tmp_member_info.incentive_id == 1 ? "ノーマルコース" : "アドバンスコース" %></p>
         </div>
       </div>
+
       <div class="form_edit_part">
         <div class="form_part_title common_list_title">
           <p class="common_size16">2ティア制の結果</p>

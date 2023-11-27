@@ -1,0 +1,80 @@
+<p class="form_edit_title common_size20">会員登録 基本情報</p>
+
+<%= form_with model: @user_info, url: user_path(@user_info), local: true do |f| %>
+  <!-- エラーメッセージの表示 -->
+  <%= render 'shared/error' %>
+
+  <div class="common_list_title_background common_btn_shape">
+    <!-- ログインID -->
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">金融機関名</p>
+        <span>必須</span>
+      </div>
+      <div class="form_part_input">
+        <%= f.text_field :bank_name, class: "input_text_form", value: @user_info.bank_name  %>
+      </div>
+    </div>
+
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">支店名</p>
+        <span>必須</span>
+      </div>
+      <div class="form_part_input">
+        <%= f.text_field :branch_name, class: "input_text_form", value: @user_info.branch_name  %>
+      </div>
+    </div>
+
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">支店番号</p>
+        <span>必須</span>
+      </div>
+      <div class="form_part_input">
+        <%= f.text_field :branch_number, class: "input_text_form", value: @user_info.branch_number  %>
+      </div>
+    </div>
+
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">預金種別</p>
+        <span>必須</span>
+      </div>
+
+      <div class="deposit_type form_part_input">
+        <%= f.select :account_type, 
+              [['普通預金', 1], ['当座預金', 2], ['定期預金', 3]], 
+              { selected: @user_info.account_type }, 
+              class: "select_class_name" %>         
+      </div>
+    </div>
+
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">口座番号</p>
+        <span>必須</span>
+      </div>
+      <div class="form_part_input">
+        <%= f.text_field :account_number_hash, class: "input_text_form", value: @user_info.account_number_hash %>
+      </div>
+    </div>
+
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">口座名義</p>
+        <span>必須</span>
+      </div>
+      <div class="form_part_input">
+        <%= f.text_field :account_holder, class: "input_text_form", value: @user_info.account_holder %>
+      </div>
+    </div>  
+    <%= f.hidden_field :type, value: params[:type] %>
+
+  </div>
+  <!-- 送信ボタン -->
+  <div class="submit_btn common_merge">
+    <%= link_to '戻る', user_path(@user_info), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    <%= f.submit "更新する", class: "common_btn_beige common_btn_content common_box_beige" %>
+  </div>
+<% end %>

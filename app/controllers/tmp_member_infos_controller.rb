@@ -41,6 +41,8 @@ class TmpMemberInfosController < ApplicationController
 
   def get_confirm
     @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data])
+    @introducer = User.find(@set_tmp_member_info.introducer_id).name
+    @saler = User.find(@set_tmp_member_info.sales_id).name    
     set_conversion_account_number
   end
 
@@ -123,16 +125,6 @@ class TmpMemberInfosController < ApplicationController
     return if @set_tmp_member_info["account_number_hash"].blank?
 
     @set_tmp_member_info.assign_attributes(account_number_tail: "*****#{@set_tmp_member_info['account_number_hash'][-3..]}")
-    @set_tmp_member_info.assign_attributes(account_number_hash: "********")
-  end
-
-  def validete_uniq? value, type
-    if type == "login_id"
-      uniq_value = User.find_by(login_id: value)
-    elsif type == "email"
-      uniq_value = User.find_by(email: value)
-    end
-
-    true if uniq_value.present?
+    @set_tmp_member_info.assign_attributes(account_number_hash: @set_tmp_member_info["account_number_hash"])
   end
 end
