@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :parent_relationships, foreign_key: "child_id", class_name: "Relationship", dependent: :nullify, inverse_of: :child
   has_many :rewards, dependent: :destroy
   belongs_to :introducer, class_name: "User", optional: true, dependent: :destroy
+  has_many :introduced_users, class_name: "User", foreign_key: "introducer_id", dependent: :destroy, inverse_of: :introducer
   VALID_ALPHANUMERIC_REGEX = /\A[a-zA-Z0-9]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -46,6 +47,18 @@ class User < ApplicationRecord
         grade_id: 99,
         incentive_id: approval&.incentive_id
       )
+    end
+
+    def introducer_search params, introduce_users
+      if params[:left_or_right].present?
+        introduce_users = introduce_users.where(left_or_right: params[:left_or_right])
+      end
+      if params[:name].present?
+        introduce_users = introduce_users.where("name LIKE ?", "%#{params[:name]}%")
+      end
+      introduce_users = introduce_users.where(status: params[:status]) if params[:status].present?
+
+      introduce_users
     end
   end
 end

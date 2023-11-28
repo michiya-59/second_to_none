@@ -312,7 +312,7 @@ $border_radius: 0.5rem;
 }
 .common_list_title_background{
   height: auto;
-  margin: 0 auto 2rem auto;
+  margin: 2rem auto;
   border: 1px solid #dcb887;
   .common_list_title{
     padding: 1.5rem;
@@ -1440,6 +1440,19 @@ main{
   background: white;
   padding: 2rem;
   margin-top: 4rem;
+}
+.introducer_list_container table{
+  thead tr th{
+    text-align: left !important;
+    font-weight: bold;
+    padding: 0 !important;
+    vertical-align: top;
+  }
+  tbody tr td{
+    padding: 0;
+    vertical-align: top;
+    text-align: center;
+  }
 }
 @include responsive_media(tab){
   .introducer_list_container table thead tr{
