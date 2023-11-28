@@ -1,0 +1,67 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  紹介者一覧
+</p>
+<div class="top_background"></div>
+<h2 class="top_title">紹介者一覧</h2>
+
+<div class="introducer_container common_btn_shape">
+  <%= form_with url: search_introducers_path, method: :get, class: "search" do |f| %>
+    <div class="introducer_list common_btn_shape">
+      <!-- 組織図 配置位置 -->
+      <div class="introducer_part common_size16">
+        <%= f.label :left_or_right, '組織図 配置位置' %>
+        <%= f.select :left_or_right, options_for_select([['Left', 'left'], ['Right', 'right']], session[:search_introduce_position]) %>
+      </div>
+      <!-- 氏名 -->
+      <div class="introducer_part common_size16">
+        <%= f.label :name, '氏名' %>
+        <%= f.text_field :name, value: session[:search_introduce_name] %>
+      </div>
+      <!-- ステータス -->
+      <div class="introducer_part common_size16">
+        <%= f.label :status, 'ステータス' %>
+        <%= f.select :status, options_for_select([['活動中', 1], ['退会中', 9]], session[:search_introduce_status]) %>
+      </div>
+      <!-- 検索ボタン -->
+      <%= button_tag type: 'submit', class: 'search_form_btn' do %>
+        <div class="search_icon">
+          <%= image_tag('search_icon.svg', alt: '検索アイコン') %>
+        </div>
+        <p class="common_size16">紹介者検索</p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="introducer_list_container common_list_title_background">
+    <table>
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>登録日</th>
+          <th>氏名</th>
+          <th>直</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @introducers.present? %>
+          <% @introducers.each do |introducer| %>
+            <tr>
+              <td><%= introducer.id %></td>
+              <td><%= introducer.created_at.strftime("%Y/%m/%d") %></td>
+              <td><%= introducer.name %></td>
+              <td><%= @introduced_counts[introducer.id] %></td>
+              <td><%= introducer.status == 1 ? "活動中" : "退会済み" %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td>紹介者がいません。</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
