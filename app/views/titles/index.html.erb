@@ -1,0 +1,62 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %>
+  >
+  タイトル情報
+</p>
+<div class="my_title common_merge">
+  <div class="my_title_left">
+    <p class="common_size20">現在のタイトル</p>
+    <div class="my_title_batch <%= get_title_color @user %>">
+      <div class="title_card">
+        <%= image_tag 'batch.svg', alt: "タイトルカード" %>
+      </div>
+      <p class="common_size20"><%= @user&.grade&.grade_name %></p>
+    </div>
+    <div class="my_number_steps">
+      <p class="common_size20">現在の段数</p>
+      <div class="my_number_step">
+        <p class="common_size16">1段目：<%= @first_level_count || 0 %>名</p>
+        <p class="common_size16">2段目：<%= @second_level_count || 0%>名</p>
+      </div>
+    </div>
+  </div>
+  <div class="my_title_right <%= next_title_border(@user)[0] %>">
+    <p class="common_size18"><%= "#{current_user.name}さんの次のタイトルは" %></p>
+    <div class="next_title common_size16">
+      <span class="common_size18 <%= next_title_border(@user)[1] %>"><%= @next_grade %></span>
+    </div>
+    <p class="to_next_title common_size18">
+      次のタイトル【<%= @next_grade %>】まで<br>
+      <% if @needed_first_level > 0 %>
+        <b>1段目 あと<%= @needed_first_level %>名　</b>
+      <% end %>
+      <% if @needed_second_level > 0 %>
+        <b>2段目 あと<%= @needed_second_level %>名</b>
+      <% end %>
+    </p>
+  </div>
+</div>
+<div class="title_conditions">
+  <p class="common_size20">タイトル昇格条件</p>
+  <div class="title_conditions_list">
+    <div class="conditions_part">
+      <p class="conditons_title common_size20">エグゼクティブ</p>
+      <p class="conditons_body common_size16">1段目 3人</p>
+    </div>
+    <div class="conditions_part">
+      <p class="conditons_title common_size20">ルビーエグゼクティブ</p>
+      <p class="conditons_body common_size16">
+        1段目 3人<br>
+        2段目 6人
+      </p>
+    </div>
+    <div class="conditions_part">
+      <p class="conditons_title common_size20">サファイヤエグゼクティブ</p>
+      <p class="conditons_body common_size16">
+        1段目 12人<br>
+        2段目 12人
+      </p>
+    </div>
+  </div>
+</div>
+<%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

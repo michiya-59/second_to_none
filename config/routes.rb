@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
 
+  resources :titles, only: %i(index)
   resources :introducers, only: %i(index) do
     collection do
       get "search"
