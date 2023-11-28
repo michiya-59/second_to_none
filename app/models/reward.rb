@@ -14,7 +14,6 @@ class Reward < ApplicationRecord
       return if approval&.sales_id.blank?
 
       create_approval_rewards approval
-      
     end
 
     private
