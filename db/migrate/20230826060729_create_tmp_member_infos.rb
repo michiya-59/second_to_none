@@ -32,5 +32,8 @@ class CreateTmpMemberInfos < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    
+    add_index :tmp_member_infos, :email, unique: true
+    add_index :tmp_member_infos, :login_id, unique: true
   end
 end

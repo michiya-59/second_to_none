@@ -6,7 +6,7 @@ module Admin
 
     def index
       @admin_seminar = Seminar.new
-      @search_year, @search_month = set_search_date params
+      @search_year, @search_month = set_search_date params, session[:search_seminars_year], session[:search_seminars_month]
     end
 
     def new; end

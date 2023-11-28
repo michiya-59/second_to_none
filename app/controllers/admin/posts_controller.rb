@@ -4,7 +4,7 @@ module Admin
   class PostsController < ApplicationController
     before_action :posts_load_data, only: %i(index new edit update)
     def index
-      @search_year, @search_month = set_search_date params
+      @search_year, @search_month = set_search_date params, session[:search_post_year], session[:search_post_month]
     end
 
     def new
@@ -70,9 +70,9 @@ module Admin
         end_date = start_date.end_of_month
 
         # created_at列で範囲検索を行う
-        @posts = Post.where(created_at: start_date.beginning_of_month..end_date)
+        @posts = Post.where(created_at: start_date.beginning_of_month..end_date).order(created_at: :desc)
       else
-        @posts = Post.created_this_month
+        @posts = Post.created_this_month.order(created_at: :desc)
       end
       @post_infos = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
       @post_infos

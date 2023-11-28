@@ -106,15 +106,13 @@ RSpec.describe Seminar, type: :model do
       end
     end
   end
-
+  
   describe ".find_seminars" do
     context "未来のセミナーを検索する場合" do
-      let!(:future_seminar){FactoryBot.create(:seminar, year: Time.zone.now.year.to_i + 10, month: Time.zone.now.month.to_i, day: Time.zone.now.day.to_i)}
       let!(:current_seminar){FactoryBot.create(:seminar, year: Time.zone.now.year.to_i, month: Time.zone.now.month.to_i, day: Time.zone.now.day.to_i)}
       it "未来のセミナーだけが取得される" do
         seminars = Seminar.find_seminars
-        expect(seminars).to include future_seminar
-        expect(seminars).to include current_seminar
+        expect(seminars.map(&:id)).to include(current_seminar.id)
       end
     end
   end

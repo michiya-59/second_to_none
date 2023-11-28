@@ -2,21 +2,19 @@
   <header>
     <div class="header">
       <div class="header_left">
-        <a href="index.html">
-          <%= image_tag 'logo.png', alt: 'ロゴ写真' %>
-        </a>
+        <%= link_to image_tag('logo.png', alt: 'ロゴ写真'), root_path %>
       </div>
       <div class="header_right">
         <ul>
-          <li><a href="seminar_reservation.html">セミナー予約</a></li>
-          <li><a href="#">組織図</a></li>
-          <li><a href="event.html">イベント情報</a></li>
-          <li><a href="connect_service.html">連携先</a></li>
-          <li><a href="bonus.html">ボーナス情報</a></li>
-          <li><a href="title.html">タイトル</a></li>
-          <li><a href="learn.html">学びの資料</a></li>
-          <li><a href="introducer.html">紹介者一覧</a></li>
-          <li><a href="registration_information.html">登録情報</a></li>
+          <li><%= link_to 'セミナー予約', reservations_path %></li>
+          <li><%= link_to '組織図', '#' %></li>
+          <li><%= link_to 'イベント情報', events_path %></li>
+          <li><%= link_to '連携先', connect_services_path %></li>
+          <li><%= link_to 'ボーナス情報', '#' %></li>
+          <li><%= link_to 'タイトル', '#' %></li>
+          <li><%= link_to '学びの資料', learns_path %></li>
+          <li><%= link_to '紹介者一覧', introducers_path %></li>
+          <li><%= link_to '登録情報', user_path(current_user) %></li>
           <% if current_user.admin_flg == 1 %>
             <li><%= link_to "管理者画面", admin_path %></li>
           <% end %>
@@ -33,64 +31,66 @@
         </div>
         <ul id="mobile-nav">
           <li>
-            <a href="seminar_reservation.html">セミナー予約</a>
+            <%= link_to 'セミナー予約', '#' %>
             <div>
-              <img src="image/hamburger_arrow.svg" alt="">
+              <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <li>
-            <a href="#">組織図</a>
+            <%= link_to '組織図', '#' %>
             <div>
-              <img src="image/hamburger_arrow.svg" alt="">
-            </div>
-          <li>
-            <a href="event.html">イベント情報</a>
-            <div>
-              <img src="image/hamburger_arrow.svg" alt="">
+              <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <li>
-            <a href="connect_service.html">連携先</a>
+            <%= link_to 'イベント情報', events_path %>
             <div>
-              <img src="image/hamburger_arrow.svg" alt="">
+              <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <li>
-            <a href="bonus.html">ボーナス情報</a>
+            <%= link_to '連携先', connect_services_path %>
             <div>
-              <img src="image/hamburger_arrow.svg" alt="">
+              <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <li>
-            <a href="title.html">タイトル</a>
+            <%= link_to 'ボーナス情報', '#' %>
             <div>
-              <img src="image/hamburger_arrow.svg" alt="">
+              <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <li>
-            <a href="learn.html">学びの資料</a>
+            <%= link_to 'タイトル', '#' %>
             <div>
-              <img src="image/hamburger_arrow.svg" alt="">
+              <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <li>
-            <a href="introducer.html">紹介者一覧</a>
+            <%= link_to '学びの資料', learns_path %>
             <div>
-              <img src="image/hamburger_arrow.svg" alt="">
+              <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
-            <a href="registration_information.html">登録情報</a>
+          <li>
+            <%= link_to '紹介者一覧', introducers_path %>
             <div>
-              <img src="image/hamburger_arrow.svg" alt="">
+              <%= image_tag 'hamburger_arrow.svg' %>
+            </div>
+          </li>
+          <li>
+            <%= link_to '登録情報', user_path(current_user) %>
+            <div>
+              <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <% if current_user.admin_flg == 1 %>
             <li>
-              <a href="admin.html">管理者画面</a>
+              <%= link_to '管理者画面', admin_path %>
               <div>
-                <img src="image/hamburger_arrow.svg" alt="">
+                <%= image_tag 'hamburger_arrow.svg' %>
               </div>
-            </li>        
+            </li>
           <% end %>
           <% if logged_in? %>
             <li><%= link_to "ログアウト", logout_path %></li>

@@ -106,7 +106,7 @@ textarea{
     display: none;
   }
 }
-input{ font-size:16px; } /*フォームのフォーカスOFF*/
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -183,6 +183,9 @@ $border_radius: 0.5rem;
 .padding05{
   padding: 0.5rem;
 }
+.padding1{
+  padding: 1rem;
+}
 .common_size16{
   font-size: 1.6rem;
   @include responsive_media(sp){
@@ -197,6 +200,12 @@ $border_radius: 0.5rem;
   font-size: 1.3rem;
   @include responsive_media(sp){
     font-size: 1.7rem;
+  }
+}
+.common_size15{
+  font-size: 1.5rem;
+  @include responsive_media(sp){
+    font-size: 1.9rem;
   }
 }
 .common_size18{
@@ -267,6 +276,11 @@ $border_radius: 0.5rem;
   border: 1px solid $beige;
   color: $beige;
 }
+.serach_mt-1{
+  @include responsive_media(sp_320){
+    margin-top: 1rem;
+  }
+}
 .underline::before ,.underline::after{
   content: '';
   display: block;
@@ -298,7 +312,7 @@ $border_radius: 0.5rem;
 }
 .common_list_title_background{
   height: auto;
-  margin: 0 auto 2rem auto;
+  margin: 2rem auto;
   border: 1px solid #dcb887;
   .common_list_title{
     padding: 1.5rem;
@@ -360,11 +374,18 @@ $border_radius: 0.5rem;
     width: 11rem;
   }
 }
+
 .edit_btn{
   @include responsive_media(sp){
     height: 5rem;
     line-height: 4.8rem;
     width: 9rem;
+  }
+}
+.user_info_edit{
+  @include responsive_media(sp){
+    height: 4rem;
+    line-height: 4rem;
   }
 }
 .not_border{
@@ -618,14 +639,17 @@ main{
   margin: 1.6rem 0;
   color: $black;
   @include responsive_media(tab){
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
   @include responsive_media(sp){
     margin-bottom: 3rem;
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 }
-
+.not_reservation{
+  opacity: 0.7;
+  pointer-events: none;
+}
 .reservation_switch_btn, .approval_switch_btn{
   display: flex;
   width: 55rem;
@@ -633,13 +657,16 @@ main{
   justify-content: space-between;
   a{
     width: 26.5rem;
+    @include responsive_media(tab){
+      width: 35rem;
+    }
   }
   a:nth-child(1){
     color: #EACDA3;
     background: linear-gradient(90deg, rgba(234, 205, 163, 0.16) 0%, rgba(214, 174, 123, 0.16) 100%);
   }
   @include responsive_media(tab){
-    width: 52rem;
+    width: 72rem;
   }
   @include responsive_media(sp){
     width: 100%;
@@ -711,7 +738,7 @@ main{
   .reservation_part{
     display: flex;
     border-bottom: 1px solid $beige;
-    width: 40%;
+    width: 60rem;
     padding: 1.5rem;
     @include responsive_media(tab){
       width: 55%;
@@ -723,6 +750,10 @@ main{
     .reservation_left{
       color: $black;
       margin-right: 2rem;
+      text-align: center;
+      width: 8rem;
+      padding: 1rem 0 0 0;
+      line-height: 2.2rem;
       @include responsive_media(sp){
         text-align: center;
         padding-top: 2.2rem;
@@ -733,7 +764,7 @@ main{
       }
     }
     .reservation_right{
-      width: 40rem;
+      width: 49rem;
       height: auto;
       display: flex;
       flex-direction: column;
@@ -752,8 +783,9 @@ main{
         }
         .reservation_info_top_right{
           margin-left: auto;
+          width: 12rem;
           .reservation_btn{
-            width: 9.2rem;
+            width: 100%;
             height: 2.7rem;
             display: flex;
             justify-content: center;
@@ -761,12 +793,12 @@ main{
             @include responsive_media(tab){
               height: 4rem;
               p{
-                font-size: 2rem;
+                font-size: 1.5rem;
               }
             }
             @include responsive_media(sp){
               p{
-                font-size: 2rem;
+                font-size: 1.5rem;
               }
             }
             .reservation_calender{
@@ -838,7 +870,6 @@ main{
   width: 40rem;
   margin: 0 auto 1rem auto;
   justify-content: space-between;
-  
   a{
     background: $base_background;
     color: white;
@@ -852,8 +883,26 @@ main{
       width: 48%;
     }
   }
+  form{
+    width: 48%;
+  }
 }
-
+.reservation_confirm_switch_btn_entry{
+  background: $base_background;
+  color: white;
+  border: none;
+  width: 100%;
+}
+.cancel{
+  width: 100%;
+  padding: 0;
+  height: 100%;
+}
+.common_box_gray{
+  color: white;
+  background: #525252;
+  border: 1px solid #525252;
+}
 // reservation_status
 .reservation_status_list{
   margin: 3rem 0 10rem 0;
@@ -900,12 +949,16 @@ main{
         line-height: 3.3rem;
         margin-left: auto;
         @include responsive_media(sp){
-          width: 17rem;
+          width: 15rem;
           line-height: 5.5rem;
         }
         @include responsive_media(sp_320){
           line-height: 3.8rem;
         }
+      }
+      .not_work{
+        opacity: 0.4;
+        pointer-events: none;
       }
       @include responsive_media(sp){
         .reservation_info p{
@@ -919,6 +972,9 @@ main{
       }
       
     }
+  }
+  p{
+    font-size: 1.5rem;
   }
 }
 
@@ -985,16 +1041,34 @@ main{
   @include responsive_media(sp){
     width: 100%;
   }
+  .event_image{
+    width: 50%;
+    height: 25rem;
+    margin: 1rem 0;
+    img{
+      height: 100%;
+      object-fit: cover;
+    }
+    @include responsive_media(sp_430){
+      height: 34rem;
+      width: 100%;
+    }
+  }
   p{
     color: #5C5C5C;
     margin: 2rem 0 0 0;
+    font-size: 1.6rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: auto;
+    white-space: normal;
   }
 }
 .event_btns{
   display: flex;
   width: 45%;
-  justify-content: space-between;
   margin-left: auto;
+  justify-content: end;
   a:nth-child(2){
     border-radius: 10rem 0.5rem 0.5rem 10rem;
   }
@@ -1032,6 +1106,9 @@ main{
       width: 25%;
       margin-left: 1rem;
     }
+  }
+  a{
+    margin-left: 1rem;
   }
 }
 
@@ -1205,6 +1282,9 @@ main{
     .conditons_title{
       color: white;
       padding: 1rem 5.5rem;
+      @include responsive_media(tab_820){
+        padding: 1rem 3rem;
+      }
     }
     .conditons_body{
       text-align: center;
@@ -1270,7 +1350,7 @@ main{
     text-align: center;
     margin: 0 3rem 5rem 0;
     .learn_box{
-      background-image: url("../image/learn_background.png");
+      background-image: url("learn_background.png");
       background-size: cover;
       height: 24rem;
       padding: 8.7rem 0;
@@ -1305,6 +1385,9 @@ main{
         height: 26rem;
       }
     }
+  }
+  p{
+    font-size: 1.5rem;
   }
 }
 .pagenation{
@@ -1357,6 +1440,19 @@ main{
   background: white;
   padding: 2rem;
   margin-top: 4rem;
+}
+.introducer_list_container table{
+  thead tr th{
+    text-align: left !important;
+    font-weight: bold;
+    padding: 0 !important;
+    vertical-align: top;
+  }
+  tbody tr td{
+    padding: 0;
+    vertical-align: top;
+    text-align: center;
+  }
 }
 @include responsive_media(tab){
   .introducer_list_container table thead tr{
@@ -2230,6 +2326,8 @@ main{
 }
 .approval_thead_tr th{
   width: 10%;
+  text-align: left;
+  padding: 0;
 }
 @include responsive_media(sp){
   .approval_thead_tr th:nth-child(1){
@@ -2253,13 +2351,14 @@ main{
   @include responsive_media(sp){
     padding: 1rem;
     line-height: 3rem;
-    height: 5rem;
+    height: auto;
     td{
       width: 21.8%;
       a{
         display: block;
         line-height: 1.5rem;
         width: 8rem;
+        height: auto;
       }
     }
     td:nth-child(2){
@@ -2359,6 +2458,9 @@ main{
   width: 50%;
   margin: 1rem auto 1rem 0;
   font-size: 1.5rem;
+  @include responsive_media(sp){
+    width: 100%;
+  }
 }
 .part_error_edit{
   color: #8c1818;
@@ -2462,4 +2564,96 @@ main{
     font-weight: bold;
     font-size: 1.5rem;
   }
+}
+
+// 動画のモーダル
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal video {
+  margin: 10rem auto; /* 10% from the top and centered */
+  display: block;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// 動画のモーダル
+
+.approval_btn{
+  color: white;
+  border: none;
+  background: var(--unnamed, linear-gradient(90deg, #EACDA3 0%, #d6ae7b 100%));
+}
+
+.mb-5{
+  margin-bottom: 5rem;
+}
+.mb-4{
+  margin-bottom: 4rem;
+}
+.mb-3{
+  margin-bottom: 3rem;
+}
+.mb-2{
+  margin-bottom: 2rem;
+}
+.mb-1{
+  margin-bottom: 1rem;
+}
+.mt-5{
+  margin-top: 5rem;
+}
+.mt-4{
+  margin-top: 4rem;
+}
+.mt-3{
+  margin-top: 3rem;
+}
+.mt-2{
+  margin-top: 2rem;
+}
+.mt-1{
+  margin-top: 1rem;
+}
+.mt-0{
+  margin-top: 0;
+}
+.m-5{
+  margin: 5rem 0;
+}
+.m-4{
+  margin: 4rem 0;
+}
+.m-3{
+  margin: 3rem 0;
+}
+.m-2{
+  margin: 2rem 0;
+}
+.m-1{
+  margin: 1rem 0;
 }

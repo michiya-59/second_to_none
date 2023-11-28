@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Seminar < ApplicationRecord
+  has_many :reservations, dependent: :destroy
+
   # 数値であり、特定の範囲内であるか確認
   validates :year, numericality: {greater_than_or_equal_to: 2023, less_than_or_equal_to: 2040}
   validates :month, numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 12}
@@ -63,19 +65,39 @@ class Seminar < ApplicationRecord
   class << self
     def find_seminars
       now = Time.zone.now
-      now_str = now.strftime("%Y-%m-%d %H:%M")
+      beginning_of_month = now.beginning_of_month.strftime("%Y-%m-%d %H:%M")
+      end_of_month = now.end_of_month.strftime("%Y-%m-%d %H:%M")
     
       sql = "SELECT id, title, year, month, day, start_time, end_time, teacher
             FROM seminars
-            WHERE TO_TIMESTAMP(CONCAT(LPAD(year::text, 4, '0'), '-', LPAD(month::text, 2, '0'), '-', LPAD(day::text, 2, '0'), ' ', start_time), 'YYYY-MM-DD HH24:MI') >= TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI')
+            WHERE TO_TIMESTAMP(CONCAT(LPAD(year::text, 4, '0'), '-', LPAD(month::text, 2, '0'), '-', LPAD(day::text, 2, '0'), ' ', start_time), 'YYYY-MM-DD HH24:MI') BETWEEN TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI') AND TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI')
             ORDER BY year, month, day, start_time"
     
-      Seminar.find_by_sql([sql, now_str])
+      Seminar.find_by_sql([sql, beginning_of_month, end_of_month])
     end
-    
 
     def search_by_year_and_month year, month
-      where(year:, month:)
+      where(year:, month:).order(:year, :month, :day, :start_time)
     end
+
+    def find_user_seminars user_id, year, month, join_status
+      sql = "SELECT seminars.*, reservations.id as reservation_id, reservations.join_status " \
+            "FROM seminars " \
+            "INNER JOIN reservations ON seminars.id = reservations.seminar_id " \
+            "WHERE reservations.user_id = ? " \
+            "AND seminars.year = ? " \
+            "AND seminars.month = ? "
+      params = [user_id, year, month]
+      
+      
+      if join_status.present?
+        sql += " AND reservations.join_status = ? "
+        params << join_status.to_i
+      end
+    
+      sql += " ORDER BY seminars.year, seminars.month, seminars.day, seminars.start_time"
+    
+      Seminar.find_by_sql([sql, *params])      
+    end    
   end
 end

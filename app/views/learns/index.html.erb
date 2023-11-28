@@ -1,0 +1,24 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  学びの資料
+</p>
+<div class="top_background"></div>
+<h2 class="top_title">学びの資料</h2>
+<div class="learn_container common_btn_shape">
+  <div class="common_list_title_background">
+    <div class="common_list_title common_size20">
+      <p>学びの資料カテゴリー</p>
+    </div>
+    <div class="learn_list">
+      <% @learn_category.each do |category| %>
+        <div class="common_list_part common_size16">
+          <p><%= category.name %></p>
+          <div class="detail_btn">
+            <%= link_to '学ぶ', learn_list_learns_path(id: category), class: 'common_btn_beige_background' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

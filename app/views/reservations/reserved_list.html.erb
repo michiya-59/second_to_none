@@ -1,0 +1,67 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to 'セミナー予約', reservations_path, class: 'common_a' %> >
+  予約状況一覧
+</p>
+<div class="common_field_title">
+  <h1>予約状況一覧</h1>
+  <div class="underline"></div>
+</div>
+
+<div class="reservation_switch_btn">
+  <%= link_to '予約する', reservations_path, class: 'common_btn_content' %>
+  <%= link_to '予約状況', reserved_list_reservations_path, class: 'common_btn_content common_btn_beige_background' %>
+</div>
+
+<%= form_with url: reserved_list_reservations_path, local: true, method: :get, class: "search" do |form| %>
+  <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year), include_blank: 'なし' %>
+  <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month), include_blank: 'なし' %>
+  <%= form.select :join_status, [['参加済み', 1], ['未参加', 9]], selected: @join_status,include_blank: 'なし' %>
+  <%= form.submit "検索", class: "search_btn common_box_beige serach_mt-1" %>
+<% end %>
+
+<% if flash[:success].present? %>
+  <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
+<% end %>
+
+<div class="reservation_status_list">
+  <% if @seminars.present? %>
+    <% @seminars.each do |seminar| %>
+      <div class="reservation_status_part common_btn_shape">
+        <div class="reservation_status_top">
+          <% if seminar.join_status == 1 %>
+            <p class="common_size16 common_box_gray">参加済み</p>
+          <% else %>
+            <p class="common_size16 common_box_beige">未参加</p>
+          <% end %>
+          <p><%= seminar.title %></p>
+        </div>
+        <div class="reservation_status_bottom">
+          <div class="reservation_info common_size16">
+            <p>予約：<%= "#{seminar.year}/#{seminar.month}/#{seminar.day} #{seminar.start_time}" %> ~ <%= seminar.end_time %></p>
+            <p>講師：<%= seminar.teacher %></p>
+          </div>
+
+          <%= form_with url: reserved_confirmation_reservation_path(seminar.reservation_id), local: true, html: { style: "margin-left: auto;" } do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :id, value: seminar.reservation_id %>
+
+            <% if seminar.join_status == 1 %>
+              <%= f.submit 'キャンセル', class: 'cancel_btn not_work common_size16' %>
+            <% else %>
+              <%= f.submit 'キャンセル', class: 'cancel_btn common_size16' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="mb-3"><%= "#{@search_year}/#{@search_month}に予約しているセミナーはありません。"%></p>
+  <% end %>
+  
+  <% if session[:search_seminars_year].present? && session[:search_seminars_month].present? %>
+    <%= link_to '戻る', reservations_path(search_year: session[:search_seminars_year], search_month: session[:search_seminars_month]), class: 'common_btn_beige common_btn_beige_background common_btn_content' %> 
+  <% else %>
+    <%= link_to '戻る', reservations_path, class: 'common_btn_beige common_btn_beige_background common_btn_content' %>
+  <% end %>
+</div>

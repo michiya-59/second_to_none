@@ -8,7 +8,7 @@ module Admin
 
     def index
       @learn = Learn.new
-      @search_year, @search_month = set_search_date params
+      @search_year, @search_month = set_search_date params, session[:search_learn_year], session[:search_learn_month]
       @learn_category_name = LearnCategory.select(:name).find(session[:learn_category_id]).name
     end
     
@@ -92,7 +92,7 @@ module Admin
       end
       @learns = learn_query.order(created_at: :desc)
     
-      @learn_infos = Kaminari.paginate_array(@learns).page(params[:page]).per(2)
+      @learn_infos = Kaminari.paginate_array(@learns).page(params[:page]).per(10)
     end
 
     def find_learn_data
