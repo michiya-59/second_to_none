@@ -48,7 +48,6 @@ class ApplicationController < ActionController::Base
     request.referer.present? && request.referer.include?(request.base_url)
   end
 
-  # 管理項目 リストの検索処理
   def set_search_date params, search_seminars_year, search_seminars_month
     if search_seminars_year.present? && search_seminars_month.present?
       search_year = search_seminars_year
