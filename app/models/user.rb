@@ -4,6 +4,7 @@ class User < ApplicationRecord
   attr_accessor :type
 
   has_one_attached :image
+  has_one_attached :user_image
   has_secure_password
   has_many :learns, dependent: :nullify
   # 以下の2つの関連名を修正します
@@ -60,6 +61,15 @@ class User < ApplicationRecord
       introduce_users = introduce_users.where(status: params[:status]) if params[:status].present?
 
       introduce_users
+    end
+
+    def calculate_rewards_for_month year, month
+      start_date = Date.new(year, month, 1)
+      end_date = start_date.end_of_month
+  
+      rewards.includes(:incentive)
+        .where(created_at: start_date..end_date)
+        .sum{|reward| reward.incentive.incentive_price}
     end
   end
 end

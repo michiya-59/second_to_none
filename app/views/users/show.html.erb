@@ -52,6 +52,17 @@
         <p>性別</p>
         <p><%= @user&.gender_id == 1 ? "男" : "女" %></p>
       </div>
+      
+      <div class="common_list_part common_size16">
+        <p>プロフィール画像</p>
+        <p>
+          <% if @user.user_image.attached? %>
+              <%= image_tag @user.user_image, class: 'img-thumbnail' %>
+          <% else %>
+            写真なし
+          <% end %>
+        </p>
+      </div>
     </div>
   </div>
 

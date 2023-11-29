@@ -28,4 +28,19 @@ module ApplicationHelper
 
     age
   end
+
+  def get_title_color user
+    case user&.grade_id
+    when 99
+      "not_title"
+    when 1
+      "normal"
+    when 2
+      "ruby"
+    when 3
+      "emerald"
+    else
+      "none"
+    end
+  end
 end
