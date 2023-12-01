@@ -20,6 +20,7 @@ module Admin
       @learn.learn_category_id = session[:learn_category_id] if session[:learn_category_id].present?
 
       if @learn.save
+        CompressVideoJob.perform_later(@learn.video_file.blob) if @learn.video_file.attached?
         flash[:success] = "学びの資料を登録しました。"
       else        
         flash[:form_error] = @learn.errors.full_messages

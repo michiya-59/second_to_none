@@ -558,8 +558,12 @@ main{
 .svg-inline--fa{
   height: 2em;
 }
-.not_title_font_size{
-
+.profile_my_image{
+  height: 30rem;
+  img{
+    height: 100%;
+    object-fit: cover;
+  }
 }
 // uranai
 .uranai_link{
