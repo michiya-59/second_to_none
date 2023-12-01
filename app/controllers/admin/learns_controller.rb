@@ -66,7 +66,6 @@ module Admin
       return if params[:id].blank?
 
       session[:learn_category_id] = params[:id].to_i
-      
     end
 
     def load_learn_data
