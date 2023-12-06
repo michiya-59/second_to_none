@@ -11,7 +11,6 @@ class CreateTmpMemberInfos < ActiveRecord::Migration[7.0]
       t.string :login_id, null: false, comment: "ログインID"
       t.string :password_digest, null: false, comment: "パスワードダイジェスト"
       t.integer :introducer_id, null: false, comment: "紹介者ID"
-      t.string :left_or_right, null: false, comment: "紹介者が右か左かの情報"
       t.integer :gender_id, null: false, comment: "性別(男：１、女：０)"
       t.string :zip_str3, null: false, comment: "郵便番号の前3桁"
       t.string :zip_str4, null: false, comment: "郵便番号の前4桁"

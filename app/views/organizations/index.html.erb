@@ -1,0 +1,9 @@
+<% content_for :js do %>
+  <%= javascript_import_module_tag "controllers/orgchart_front" %>
+  <%= javascript_import_module_tag "controllers/orgchart" %>
+<% end %>
+
+<script src="https://balkan.app/js/OrgChart.js"></script>
+<div id="tree"></div>
+
+

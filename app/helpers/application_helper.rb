@@ -43,4 +43,10 @@ module ApplicationHelper
       "none"
     end
   end
+
+  def image_url_for user
+    return nil unless user.user_image.attached?
+
+    rails_blob_url(user.user_image, only_path: true)
+  end
 end

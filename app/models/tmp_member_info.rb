@@ -41,7 +41,6 @@ class TmpMemberInfo < ApplicationRecord
 
   with_options if: ->{current_step == "contract"} do
     validates :introducer_id, presence: true
-    validates :left_or_right, presence: true
     validates :sales_id, presence: true
     validates :incentive_id, presence: true
     validates :a_san_flg, presence: true

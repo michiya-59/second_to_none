@@ -22,8 +22,8 @@ grades = [
 
 # 会員のマスターデータ
 users = [
-  { login_id: "seiya", email: "stn230501@gmail.com", name: "鈴木晴也", name_kana: "スズキセイヤ", birthday: Date.new(1999, 12, 9), phone: "08035535646", password: "Seiya01!?", password_confirmation: "Seiya01!?", status: 1, introducer_id: 99999, left_or_right: nil, admin_flg: 1, gender_id: 1, online_flg: 9, grade_id: 3, created_at: Time.current, updated_at: nil },
-  { login_id: "michiya0509", email: "nishino.michiya0509@gmail.com", name: "西野倫也", name_kana: "ニシノミチヤ", birthday: Date.new(1999, 5, 9), phone: "09083675290", password: "MiChiYa0509!?", password_confirmation: "MiChiYa0509!?", status: 1, introducer_id: 99999, left_or_right: "right", admin_flg: 1, gender_id: 1, online_flg: 9, grade_id: 2, created_at: Time.current, updated_at: nil }
+  { login_id: "seiya", email: "stn230501@gmail.com", name: "鈴木晴也", name_kana: "スズキセイヤ", birthday: Date.new(1999, 12, 9), phone: "08035535646", password: "Seiya01!?", password_confirmation: "Seiya01!?", status: 1, introducer_id: 99999, admin_flg: 1, gender_id: 1, online_flg: 9, grade_id: 3, created_at: Time.current, updated_at: nil },
+  { login_id: "michiya0509", email: "nishino.michiya0509@gmail.com", name: "西野倫也", name_kana: "ニシノミチヤ", birthday: Date.new(1999, 5, 9), phone: "09083675290", password: "MiChiYa0509!?", password_confirmation: "MiChiYa0509!?", status: 1, introducer_id: 99999, admin_flg: 1, gender_id: 1, online_flg: 9, grade_id: 2, created_at: Time.current, updated_at: nil }
 ]
 
 user_addresses = [

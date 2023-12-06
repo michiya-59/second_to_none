@@ -12,10 +12,14 @@ class User < ApplicationRecord
   has_many :sales_tmp_member_infos, foreign_key: "sales_id", class_name: "TmpMemberInfo", dependent: :nullify, inverse_of: :sales
   # 親としての関連
   has_many :child_relationships, foreign_key: "parent_id", class_name: "Relationship", dependent: :nullify, inverse_of: :parent
+  has_many :children, through: :child_relationships, source: :child
   # 子としての関連
   has_many :parent_relationships, foreign_key: "child_id", class_name: "Relationship", dependent: :nullify, inverse_of: :child
   has_many :rewards, dependent: :destroy
   has_many :introduced_users, class_name: "User", foreign_key: "introducer_id", dependent: :destroy, inverse_of: :introducer
+  # 既存の関連付け
+
+  belongs_to :parent, class_name: "User", optional: true
   belongs_to :grade
   belongs_to :incentive, optional: true
   belongs_to :introducer, class_name: "User", optional: true, dependent: :destroy
@@ -42,7 +46,6 @@ class User < ApplicationRecord
         password_digest: approval&.password_digest,
         status: 1,
         introducer_id: approval&.introducer_id,
-        left_or_right: approval&.left_or_right,
         admin_flg: 9,
         gender_id: approval&.gender_id,
         online_flg: 9,
@@ -52,9 +55,6 @@ class User < ApplicationRecord
     end
 
     def introducer_search params, introduce_users
-      if params[:left_or_right].present?
-        introduce_users = introduce_users.where(left_or_right: params[:left_or_right])
-      end
       if params[:name].present?
         introduce_users = introduce_users.where("name LIKE ?", "%#{params[:name]}%")
       end
