@@ -75,16 +75,6 @@
         <%= f.select :incentive_id, @incentives&.map { |i| [i.course_name, i.id] }, { selected: get_default_value("sales_id", "select") }%>
       </div>
     </div>
-    
-    <div class="form_edit_part">
-      <div class="form_part_title common_list_title">
-        <p class="common_size16">組織図 配置位置</p>
-        <span>必須</span>
-      </div>
-      <div class="contract_info form_part_input">
-        <%= f.select :left_or_right, [["右", "right"], ["左", "left"]], {selected: session[:tmp_member_info_data] && session[:tmp_member_info_data]["left_or_right"] || "right" }%>
-      </div>
-    </div>
 
     <div class="two_thier">
       <div class="underline"></div>

@@ -64,7 +64,6 @@ ja:
         password: パスワード
         password_confirmation: パスワード 確認の値
         introducer_id: 紹介者ID
-        left_or_right: 紹介者が右か左かの情報
         gender_id: 性別
         zip_str3: 郵便番号
         zip_str4: 郵便番号

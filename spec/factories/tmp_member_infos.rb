@@ -28,7 +28,6 @@ FactoryBot.define do
 
     # 契約情報
     introducer_id{1}
-    left_or_right{"左"}
     sales_id{1}
     incentive_id{1}
     a_san_flg{true}

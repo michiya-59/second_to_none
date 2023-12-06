@@ -118,7 +118,7 @@ class TmpMemberInfosController < ApplicationController
   end
 
   def user_contract_info_params
-    params.require(:tmp_member_info).permit(:introducer_id, :sales_id, :incentive_id, :left_or_right, :a_san_flg)
+    params.require(:tmp_member_info).permit(:introducer_id, :sales_id, :incentive_id, :a_san_flg)
   end
 
   def set_conversion_account_number

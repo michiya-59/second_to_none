@@ -101,10 +101,6 @@
         <p><%= @user&.introducer&.name %></p>
       </div>
       <div class="common_list_part common_size16">
-        <p>組織図 位置</p>
-        <p><%= @user&.left_or_right.upcase %></p>
-      </div>
-      <div class="common_list_part common_size16">
         <p>契約日時</p>
         <p><%= @user&.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
       </div>

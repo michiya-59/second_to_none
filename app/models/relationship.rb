@@ -10,8 +10,7 @@ class Relationship < ApplicationRecord
     def create_relationship user
       create!(
         parent_id: user.introducer_id,
-        child_id: user.id,
-        position: user.left_or_right
+        child_id: user.id
       )
     end
   end
