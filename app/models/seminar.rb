@@ -67,12 +67,12 @@ class Seminar < ApplicationRecord
       now = Time.zone.now
       beginning_of_month = now.beginning_of_month.strftime("%Y-%m-%d %H:%M")
       end_of_month = now.end_of_month.strftime("%Y-%m-%d %H:%M")
-    
-      sql = "SELECT id, title, year, month, day, start_time, end_time, teacher
+
+      sql = "SELECT id, title, year, month, day, start_time, end_time, teacher, seminar_type
             FROM seminars
             WHERE TO_TIMESTAMP(CONCAT(LPAD(year::text, 4, '0'), '-', LPAD(month::text, 2, '0'), '-', LPAD(day::text, 2, '0'), ' ', start_time), 'YYYY-MM-DD HH24:MI') BETWEEN TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI') AND TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI')
             ORDER BY year, month, day, start_time"
-    
+
       Seminar.find_by_sql([sql, beginning_of_month, end_of_month])
     end
 
@@ -88,16 +88,16 @@ class Seminar < ApplicationRecord
             "AND seminars.year = ? " \
             "AND seminars.month = ? "
       params = [user_id, year, month]
-      
-      
+
+
       if join_status.present?
         sql += " AND reservations.join_status = ? "
         params << join_status.to_i
       end
-    
+
       sql += " ORDER BY seminars.year, seminars.month, seminars.day, seminars.start_time"
-    
-      Seminar.find_by_sql([sql, *params])      
-    end    
+
+      Seminar.find_by_sql([sql, *params])
+    end
   end
 end

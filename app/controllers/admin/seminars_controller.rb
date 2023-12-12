@@ -71,7 +71,7 @@ module Admin
     end
 
     def seminars_params
-      params.require(:seminar).permit(:title, :year, :month, :day, :start_time, :end_time, :teacher)
+      params.require(:seminar).permit(:title, :year, :month, :day, :start_time, :end_time, :teacher, :seminar_type)
     end
 
     def convert_datatime params, seminar_info
