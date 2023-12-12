@@ -7,17 +7,14 @@ class User < ApplicationRecord
   has_one_attached :user_image
   has_secure_password
   has_many :learns, dependent: :nullify
-  # 以下の2つの関連名を修正します
   has_many :introduced_tmp_member_infos, foreign_key: "introducer_id", class_name: "TmpMemberInfo", dependent: :nullify, inverse_of: :introducer
   has_many :sales_tmp_member_infos, foreign_key: "sales_id", class_name: "TmpMemberInfo", dependent: :nullify, inverse_of: :sales
-  # 親としての関連
   has_many :child_relationships, foreign_key: "parent_id", class_name: "Relationship", dependent: :nullify, inverse_of: :parent
   has_many :children, through: :child_relationships, source: :child
-  # 子としての関連
   has_many :parent_relationships, foreign_key: "child_id", class_name: "Relationship", dependent: :nullify, inverse_of: :child
   has_many :rewards, dependent: :destroy
   has_many :introduced_users, class_name: "User", foreign_key: "introducer_id", dependent: :destroy, inverse_of: :introducer
-  # 既存の関連付け
+  has_one :cap_adjustment_money
 
   belongs_to :parent, class_name: "User", optional: true
   belongs_to :grade
@@ -66,7 +63,7 @@ class User < ApplicationRecord
     def calculate_rewards_for_month year, month
       start_date = Date.new(year, month, 1)
       end_date = start_date.end_of_month
-  
+
       rewards.includes(:incentive)
         .where(created_at: start_date..end_date)
         .sum{|reward| reward.incentive.incentive_price}

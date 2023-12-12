@@ -66,5 +66,6 @@ Rails.application.routes.draw do
     resources :incentives, only: %i(index edit update)
     resources :learns
     resources :learn_categories
+    resources :cap_adjust_ments, only: %i(index edit update create)
   end
 end

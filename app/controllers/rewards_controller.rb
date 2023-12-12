@@ -5,9 +5,10 @@ class RewardsController < ApplicationController
   before_action :set_date
 
   def index
-    totle_payment_price = get_totle_payment_price 
-    @certificate_of_tax_deducted_price = calculate_y(totle_payment_price).to_i
-    @total_payment_price = totle_payment_price - @certificate_of_tax_deducted_price - 500
+    totle_payment_price = get_totle_payment_price
+    @certificate_of_tax_deducted_price, fee_price = calculate_y(totle_payment_price)
+    @cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: current_user.id)&.price
+    @total_payment_price = totle_payment_price - @certificate_of_tax_deducted_price - fee_price - @cap_adjustment_money.to_i
   end
 
   private
@@ -22,7 +23,7 @@ class RewardsController < ApplicationController
     two_tier_bonus_incentive_ids = [3, 4]
     a_san_bonus_incentive_ids = [5, 6]
     title_bonus_incentive_ids = [7, 8]
-    
+
     if session[:search_rewards_year].present? && session[:search_rewards_month].present?
       @reward_bonus_total = calculate_monthly_user_rewards(current_user.id, *reward_bonus_incentive_ids, session[:search_rewards_year].to_i, session[:search_rewards_month].to_i)
       @two_tier_bonus_total = calculate_monthly_user_rewards(current_user.id, *two_tier_bonus_incentive_ids, session[:search_rewards_year].to_i, session[:search_rewards_month].to_i)
@@ -68,6 +69,18 @@ class RewardsController < ApplicationController
   end
 
   def calculate_y totle_price
-    (totle_price - 120_000) * 0.1021
+    if totle_price > 120_000
+      certificate_of_tax_deducted_price = (totle_price - 120_000) * 0.1021
+    else
+      certificate_of_tax_deducted_price = 0
+    end
+
+    if totle_price > 500
+      fee_price = 500
+    else
+      fee_price = 0
+    end
+
+    [certificate_of_tax_deducted_price.to_i, fee_price.to_i]
   end
 end

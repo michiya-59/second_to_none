@@ -1,0 +1,34 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '管理画面', admin_path, class: 'common_a' %> >
+  <%= link_to 'キャップ調整金', admin_cap_adjust_ments_path, class: 'common_a' %> >
+  キャップ調整金 編集
+</p>
+<div class="common_field_title">
+  <h1>キャップ調整金 編集</h1>
+  <div class="underline"></div>
+</div>
+
+<%= form_with model: @cap_adjustment_money, url: (@cap_adjustment_money&.new_record? ? admin_cap_adjust_ments_path : admin_cap_adjust_ment_path(@cap_adjustment_money)), local: true do |form| %>
+  <%= render 'shared/admin_error', object: @incentive %>
+  <div class="admin_bonus_form_part">
+    <h2><%= @user&.name %>さん</h2>
+    <%= form.hidden_field :user_id, value: @user.id %>
+  </div>
+  <div class="admin_bonus_form_part">
+    <%= form.label :price, "キャップ調整金<span>必須</span>".html_safe, class: "common_size16" %>
+    <div>
+      <%= form.text_field :price, id: :price, class: "incentive_price text_box common_size16", required: true%>
+      <span class="common_size16">円</span>
+    </div>
+    <p class="gray common_size13">※半角数字で入力ください。</p>
+  </div>
+  <div class="admin_submit_btn text_center common_merge">
+    <% if params[:type].present? %>
+      <%= link_to '戻る', rewards_path, class: 'back_btn common_box_beige' %>
+    <% else %>
+      <%= link_to '戻る', admin_cap_adjust_ments_path, class: 'back_btn common_box_beige' %>
+    <% end %>
+    <%= form.submit "更新", class: "add_btn common_box_beige" %>
+  </div>
+<% end %>

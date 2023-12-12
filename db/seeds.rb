@@ -20,6 +20,11 @@ grades = [
   { id: 99, grade_name: "ノーマル" }
 ]
 
+# 新規MTカテゴリー
+learn_categories = [
+  { name: "新規MT", created_at: Time.current, updated_at: nil}
+]
+
 # 会員のマスターデータ
 users = [
   { login_id: "seiya", email: "stn230501@gmail.com", name: "鈴木晴也", name_kana: "スズキセイヤ", birthday: Date.new(1999, 12, 9), phone: "08035535646", password: "Seiya01!?", password_confirmation: "Seiya01!?", status: 1, introducer_id: 99999, admin_flg: 1, gender_id: 1, online_flg: 9, grade_id: 3, created_at: Time.current, updated_at: nil },
@@ -37,6 +42,7 @@ user_banks = [
 ]
 
 Incentive.create!(incentives)
+LearnCategory.create!(learn_categories)
 Grade.create!(grades)
 User.create!(users)
 UserAddress.create!(user_addresses)

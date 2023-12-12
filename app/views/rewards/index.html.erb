@@ -6,11 +6,13 @@
 <div class="top_background"></div>
 <h2 class="top_title">ボーナス情報</h2>
 <div class="bonus_container common_btn_shape">
-  <%= form_with url: rewards_path, local: true, method: :get, class: "search" do |form| %>
-    <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year) %>
-    <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month) %>
-    <%= form.submit "検索", class: "search_btn common_box_beige" %>
-  <% end %>
+  <div class="reward_top_content">
+    <%= form_with url: rewards_path, local: true, method: :get, class: "search" do |form| %>
+      <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year) %>
+      <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month) %>
+      <%= form.submit "検索", class: "search_btn common_box_beige" %>
+    <% end %>
+  </div>
 
   <div class="bonus_list">
     <div class="bonus_part">
@@ -76,7 +78,7 @@
         </div>
       </div>
       <div class="bonus_data">
-        <p class="common_size18">¥ -<%= @certificate_of_tax_deducted_price %></p>
+        <p class="common_size18">¥ <%= return_deduction_price @total_payment_price, @certificate_of_tax_deducted_price %></p>
       </div>
     </div>
     <div class="bonus_part">
@@ -87,7 +89,7 @@
         </div>
       </div>
       <div class="bonus_data">
-        <p class="common_size18">¥ -500</p>
+        <p class="common_size18">¥ <%= return_deduction_price @total_payment_price, 500 %></p>
       </div>
     </div>
     <div class="bonus_part">
@@ -98,7 +100,7 @@
         </div>
       </div>
       <div class="bonus_data">
-        <p class="common_size18">¥ 0</p>
+        <p class="common_size18">¥ <%= @cap_adjustment_money.present? ? "-#{@cap_adjustment_money}" : 0 %></p>
       </div>
     </div>
     <div class="bonus_part">
@@ -109,6 +111,11 @@
         <p class="common_size18">¥ <%= @total_payment_price %></p>
       </div>
     </div>
+    <% if current_user.admin_flg == 1 %>
+      <div class="reward_cap_button">
+        <%= link_to "キャップ調整金", edit_admin_cap_adjust_ment_path(current_user, type: "reward"), class: "sp_button" %>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
