@@ -89,7 +89,6 @@ class Seminar < ApplicationRecord
             "AND seminars.month = ? "
       params = [user_id, year, month]
 
-
       if join_status.present?
         sql += " AND reservations.join_status = ? "
         params << join_status.to_i

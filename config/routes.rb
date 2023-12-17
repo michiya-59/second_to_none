@@ -10,7 +10,15 @@ Rails.application.routes.draw do
   post "lock_off", to: "sessions#lock_off"
 
   resources :organizations, only: %i(index)
-  resources :rewards, only: %i(index)
+  resources :rewards, only: %i(index) do
+    collection do
+      get "user_list"
+    end
+    member do
+      get "pdf_output"
+    end
+  end
+
   resources :titles, only: %i(index)
   resources :introducers, only: %i(index) do
     collection do

@@ -25,12 +25,12 @@ module ReservationsHelper
     reservation.present?
   end
 
-  def is_previous_day? year, month, day, start_time
+  def is_previous_day? year, month, day, _start_time
     # セミナーの日付を設定
     seminar_date = Date.new(year.to_i, month.to_i, day.to_i)
 
     # 現在の日付を取得
-    current_date = Date.today
+    current_date = Time.zone.today
 
     seminar_date <= current_date || seminar_date == current_date + 1.day
   end

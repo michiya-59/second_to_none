@@ -10,7 +10,11 @@
           <li><%= link_to '組織図', organizations_path %></li>
           <li><%= link_to 'イベント情報', events_path %></li>
           <li><%= link_to '連携先', connect_services_path %></li>
-          <li><%= link_to 'ボーナス情報', rewards_path %></li>
+          <% if current_user.admin_flg == 1 %>
+            <li><%= link_to 'ボーナス情報', user_list_rewards_path %></li>
+          <% else %>
+            <li><%= link_to 'ボーナス情報', rewards_path(id: current_user.id) %></li>
+          <% end %>
           <li><%= link_to 'タイトル', titles_path %></li>
           <li><%= link_to '学びの資料', learns_path %></li>
           <li><%= link_to '紹介者一覧', introducers_path %></li>
@@ -55,7 +59,11 @@
             </div>
           </li>
           <li>
-            <%= link_to 'ボーナス情報', rewards_path %>
+            <% if current_user.admin_flg == 1 %>
+              <%= link_to 'ボーナス情報', user_list_rewards_path %>
+            <% else %>
+              <%= link_to 'ボーナス情報', rewards_path(id: current_user.id) %>
+            <% end %>
             <div>
               <%= image_tag 'hamburger_arrow.svg' %>
             </div>

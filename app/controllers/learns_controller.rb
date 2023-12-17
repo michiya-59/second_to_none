@@ -18,6 +18,6 @@ class LearnsController < ApplicationController
   private
 
   def get_learn_category
-    @learn_category = LearnCategory.where.not(id: 1)
+    @learn_category = LearnCategory.where.not(id: [1, params[:id]])
   end
 end

@@ -203,7 +203,13 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    pdf-core (0.9.0)
     pg (1.5.3)
+    prawn (2.4.0)
+      pdf-core (~> 0.9.0)
+      ttfunk (~> 1.7)
+    prawn-table (0.2.2)
+      prawn (>= 1.3.0, < 3.0.0)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -345,6 +351,7 @@ GEM
     thor (1.2.2)
     tilt (2.2.0)
     timeout (0.4.0)
+    ttfunk (1.7.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -394,6 +401,8 @@ DEPENDENCIES
   kaminari
   kredis
   pg (~> 1.1)
+  prawn
+  prawn-table
   pry-byebug
   pry-rails
   puma (~> 5.0)

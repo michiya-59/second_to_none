@@ -1,3 +1,7 @@
+<% content_for :js do %>
+  <%= javascript_import_module_tag "controllers/select2" %>
+<% end %>
+
 <p class="pankuzu">
   <%= link_to 'トップページ', root_path, class: 'common_a' %> >
   <%= link_to '管理画面', admin_path, class: 'common_a' %> >
@@ -11,16 +15,19 @@
   <% if flash[:success].present? %>
     <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
   <% end %>
+
+  <%= form_with url: admin_cap_adjust_ments_path, local: true, method: :get, class: "cap_adjust_ments_search" do |form| %>
+    <%= form.select :id, options_for_select(@user_all.map { |user| [user.name, user.id] }, selected: @selected_user_id), {}, { id: 'select2' } %> 
+    <%= form.submit "検索", class: "search_btn common_box_beige mt-1" %>
+  <% end %>
+  
   <div class="common_admin_list">
     <div class="common_list_head">
       <p class="w6"></p>
       <p class="w41 common_size16">氏名</p>
       <p class="common_size16">キャップ調整金</p>
     </div>
-    <%= form_with url: admin_cap_adjust_ments_path, local: true, method: :get, class: "cap_adjust_ments_search" do |form| %>
-      <%= form.select :id, options_for_select(@user_all.map { |user| [user.name, user.id] }, selected: @selected_user_id) %> 
-      <%= form.submit "検索", class: "search_btn common_box_beige" %>
-    <% end %>
+
     <% if @users.present? %>
       <div class="common_list_body mt-2">
         <% @users.each_with_index do |user, index| %>

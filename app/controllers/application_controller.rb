@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include(SessionsHelper)
+  include(OrganizationsHelper)
   before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session, :set_session_expiration
 
   # ログインされていない場合またはURLが直接操作されてた場合の処理

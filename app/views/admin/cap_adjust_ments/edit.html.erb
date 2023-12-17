@@ -24,8 +24,8 @@
     <p class="gray common_size13">※半角数字で入力ください。</p>
   </div>
   <div class="admin_submit_btn text_center common_merge">
-    <% if params[:type].present? %>
-      <%= link_to '戻る', rewards_path, class: 'back_btn common_box_beige' %>
+    <% if params[:type].present? && params[:id] %>
+      <%= link_to '戻る', rewards_path(id: params[:id]), class: 'back_btn common_box_beige' %>
     <% else %>
       <%= link_to '戻る', admin_cap_adjust_ments_path, class: 'back_btn common_box_beige' %>
     <% end %>

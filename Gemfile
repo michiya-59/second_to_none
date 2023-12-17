@@ -29,6 +29,8 @@ gem "stimulus-rails"
 # gem "turbo-rails"
 gem "dotenv"
 gem "gon"
+gem "prawn"
+gem "prawn-table"
 
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class CapAdjustMentsController < ApplicationController
     before_action :load_cap_adjustments_data, only: %i(index edit)
@@ -6,9 +8,10 @@ module Admin
     end
 
     def edit
-      if params[:id].present?
-        @cap_adjustment_money = CapAdjustmentMoney.find_or_initialize_by(user_id: params[:id])
-      end
+      return if params[:id].blank?
+
+      @cap_adjustment_money = CapAdjustmentMoney.find_or_initialize_by(user_id: params[:id])
+      
     end
 
     def create
