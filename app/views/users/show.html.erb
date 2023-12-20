@@ -55,13 +55,13 @@
       
       <div class="common_list_part common_size16">
         <p>プロフィール画像</p>
-        <p class="profile_my_image">
-          <% if @user.user_image.attached? %>
-              <%= image_tag @user.user_image, class: 'img-thumbnail' %>
-          <% else %>
-            写真なし
-          <% end %>
-        </p>
+        <% if @user.user_image.attached? %>
+          <p class="profile_my_image">
+            <%= image_tag @user.user_image, class: 'img-thumbnail' %>
+          </p>
+        <% else %>
+          写真なし
+        <% end %>
       </div>
     </div>
   </div>

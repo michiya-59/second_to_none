@@ -12,7 +12,7 @@ class LearnsController < ApplicationController
       @learns = Learn.where(learn_category_id: params[:id])
       @learn_category_name = LearnCategory.find(params[:id]).name
     end
-    @learn_infos = Kaminari.paginate_array(@learns).page(params[:page]).per(6)
+    @learn_infos = Kaminari.paginate_array(@learns).page(params[:page]).per(12)
   end
 
   private

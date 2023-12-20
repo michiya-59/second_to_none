@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
 
+  resources :video_views, only: %i(create)
   resources :organizations, only: %i(index)
   resources :rewards, only: %i(index) do
     collection do

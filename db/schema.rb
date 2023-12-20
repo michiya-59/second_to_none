@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_13_152316) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_17_132056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -215,6 +215,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_152316) do
     t.index ["login_id"], name: "index_users_on_login_id", unique: true
   end
 
+  create_table "video_views", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "learn_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learn_id"], name: "index_video_views_on_learn_id"
+    t.index ["user_id"], name: "index_video_views_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cap_adjustment_moneys", "users"
@@ -229,4 +238,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_152316) do
   add_foreign_key "user_addresses", "users"
   add_foreign_key "user_banks", "users"
   add_foreign_key "users", "grades"
+  add_foreign_key "video_views", "learns"
+  add_foreign_key "video_views", "users"
 end
