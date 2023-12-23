@@ -17,3 +17,6 @@ test:
 production:
   <<: *default
   database: shine_stn_app_production
+  username: <%= ENV["STN_DATABASE_USER"] %>
+  host: <%= ENV["STN_DATABASE_HOST"] %>
+  database: <%= ENV["STN_DATABASE_PASSWORD"] %>
