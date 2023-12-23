@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       get "learn_list"
     end
   end
-  resources :connect_services, only: %i(index) do
+  resources :connect_services, only: %i(index new create) do
     collection do
       get "whitening"
       get "photography"
@@ -79,7 +79,9 @@ Rails.application.routes.draw do
   end
 
   # エラーページ用のルート
-  match "/404", to: "errors#not_found", via: :all
-  match "/500", to: "errors#internal_server_error", via: :all
-  match "*path", to: "application#render_404", via: :all
+  if Rails.env.production?
+    match "/404", to: "errors#not_found", via: :all
+    match "/500", to: "errors#internal_server_error", via: :all
+    match "*path", to: "application#render_404", via: :all
+  end
 end

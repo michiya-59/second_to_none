@@ -1,0 +1,41 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '連携先一覧', connect_services_path, class: 'common_a' %> >
+  <%= @service_name %> 問い合わせ
+</p>
+  <% if flash[:success].present? %>
+    <p class="success_dsn" style="padding-top: 1rem;"><i class="fa fa-check "></i><%= flash[:success].html_safe %><p>
+  <% end %>
+<div class="service_top">
+  <h1 class="service_detail_title">連携サービス 問い合わせ</h1>
+  <p class="service_catch_copy"><%= @service_name %></p>
+  <div class="underline"></div>
+</div>
+
+<div class="service_contact_container">
+  <%= form_with model: @contact, url: connect_services_path do |form| %>
+  <p>
+    <%= form.label :name, "名前<span>必須</span>".html_safe, class: "service_contact_label" %>
+    <%= form.text_field :name, class: "service_contact_text", required: true  %>
+  </p>
+
+  <p>
+    <%= form.label :email, "メールアドレス<span>必須</span>".html_safe, class: "service_contact_label" %>
+    <%= form.email_field :email, class: "service_contact_text", required: true %>
+  </p>
+
+  <p>
+    <%= form.label :message, "問い合わせ内容<span>必須</span>".html_safe, class: "service_contact_label" %>
+    <%= form.text_area :message, rows: 15, class: "common_size16 service_contact_textarea", required: true %>
+  </p>
+  <%= form.hidden_field :type, value: params[:type] %>
+  <%= form.hidden_field :type_name, value: @service_name %>
+
+  <p>
+    <%= form.submit "送信", class: "add_btn common_box_beige"%>
+  </p>
+<% end %>
+</div>
+
+<%= link_to '戻る', connect_services_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+

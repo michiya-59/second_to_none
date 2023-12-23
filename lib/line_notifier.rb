@@ -25,6 +25,23 @@ module LineNotifier
     handle_response(response)
   end
 
+  def self.notify_service_contact contact_message
+    service_contact_line_notify_token = ENV.fetch("SERVICE_CONTACT_LINE_NOTIFY_TOKEN", nil)
+    # return unless Rails.env.production? # 本番環境のみ実行
+
+    message = contact_format_message contact_message
+    uri = URI.parse(LINE_NOTIFY_URL)
+    request = Net::HTTP::Post.new(uri)
+    request["Authorization"] = "Bearer #{service_contact_line_notify_token}"
+    request.set_form_data(message:)
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
+      http.request(request)
+    end
+
+    handle_response(response)
+  end
+
   def self.notify_tmp_entry message
     entryline_notify_token = ENV.fetch("ENTRYLINE_NOTIFY_TOKEN", nil)
     return unless Rails.env.production? # 本番環境のみ実行
@@ -62,6 +79,16 @@ module LineNotifier
     MESSAGE
   end
 
+  def self.contact_format_message(contact_message)
+    <<~MESSAGE
+      【#{contact_message[:service_name]}の問い合わせ】
+
+      名前：#{contact_message[:name]}
+      メールアドレス：#{contact_message[:email]}
+      問い合わせ内容：
+      #{contact_message[:message]}
+    MESSAGE
+  end
   def self.format_message error
     backtrace_info = error.backtrace_locations&.first
     location = if backtrace_info
