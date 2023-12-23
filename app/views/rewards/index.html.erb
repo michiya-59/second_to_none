@@ -19,7 +19,8 @@
     <% end %>
 
     <div class="reward_top_right">
-      <%= link_to 'PDF出力', pdf_output_reward_path(params[:id], format: "pdf"), target: '_blank', class: "pdf_btn" %>
+      <% class_name = Time.now.day <= 19 ? 'pdf_btn not_pdf' : 'pdf_btn' %>
+      <%= link_to 'PDF出力', pdf_output_reward_path(params[:id], format: "pdf"), target: '_blank', class: class_name %>
     </div>
   </div>
 
