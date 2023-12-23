@@ -65,13 +65,24 @@
       <p class="common_size16">連携先</p>
     </div>
   <% end %>
-  <%= link_to rewards_path do %>
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
+  <% if current_user.admin_flg == 1 %>
+    <%= link_to user_list_rewards_path do %>
+      <div class="menu_part common_btn_shape">
+        <div class="menu_icon">
+          <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
+        </div>
+        <p class="common_size16">ボーナス情報</p>
       </div>
-      <p class="common_size16">ボーナス情報</p>
-    </div>
+    <% end %>
+  <% else %>
+    <%= link_to rewards_path(id: current_user.id) do %>
+      <div class="menu_part common_btn_shape">
+        <div class="menu_icon">
+          <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
+        </div>
+        <p class="common_size16">ボーナス情報</p>
+      </div>
+    <% end %>
   <% end %>
   <%= link_to titles_path do %>
     <div class="menu_part common_btn_shape">
@@ -87,6 +98,14 @@
         <%= image_tag 'study.svg', alt: '学びの資料のアイコン' %>
       </div>
       <p class="common_size16">学びの資料</p>
+    </div>
+  <% end %>
+  <%= link_to learn_list_learns_path(type: "新規MT") do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'study.svg', alt: '新規MT' %>
+      </div>
+      <p class="common_size16">新規MT</p>
     </div>
   <% end %>
   <%= link_to introducers_path do %>

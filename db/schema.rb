@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_27_163216) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_23_020222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_163216) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "cap_adjustment_moneys", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cap_adjustment_moneys_on_user_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.text "name"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "email"
   end
 
   create_table "grades", force: :cascade do |t|
@@ -119,6 +135,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_163216) do
     t.string "teacher", null: false, comment: "講師の名前"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seminar_type"
   end
 
   create_table "tmp_member_infos", force: :cascade do |t|
@@ -206,8 +223,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_163216) do
     t.index ["login_id"], name: "index_users_on_login_id", unique: true
   end
 
+  create_table "video_views", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "learn_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learn_id"], name: "index_video_views_on_learn_id"
+    t.index ["user_id"], name: "index_video_views_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cap_adjustment_moneys", "users"
   add_foreign_key "learns", "learn_categories"
   add_foreign_key "learns", "users"
   add_foreign_key "relationships", "users", column: "child_id"
@@ -219,4 +246,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_163216) do
   add_foreign_key "user_addresses", "users"
   add_foreign_key "user_banks", "users"
   add_foreign_key "users", "grades"
+  add_foreign_key "video_views", "learns"
+  add_foreign_key "video_views", "users"
 end

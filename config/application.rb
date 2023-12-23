@@ -11,6 +11,7 @@ Bundler.require(*Rails.groups)
 module ShineStnApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.railties_order = [ActiveStorage::Engine, :main_app, :all]
     config.load_defaults 7.0
     config.time_zone = "Tokyo"
     config.active_record.default_timezone = :local
