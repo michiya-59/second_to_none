@@ -1,10 +1,13 @@
 <% content_for :js do %>
   <%= javascript_import_module_tag "controllers/video_replay" %>
+  <%= javascript_import_module_tag "controllers/video_play_completed" %>
 <% end %>
 
 <p class="pankuzu">
   <%= link_to 'トップページ', root_path, class: 'common_a' %> >
-  <%= link_to '学びの資料', learns_path, class: 'common_a' %> >
+  <% if params["type"].blank? %>
+    <%= link_to '学びの資料', learns_path, class: 'common_a' %> >
+  <% end %>
   学びの資料 <%= @learn_category_name %>
 </p>
 <div class="common_field_title">
@@ -14,26 +17,35 @@
 
 <div class="learn_detail_list">
   <% if @learn_infos.present? %>
-    <% @learn_infos.each do |learn| %>
+    <% @learn_infos.each_with_index do |learn, index| %>
+      <% if learn.learn_category_id == 1 && current_user.admin_flg != 1%>
+        <% can_view = index < 3 || video_viewed?(learn.id, index) %>
+        <% video_class = can_view ? '' : 'not_video' %>
+      <% else %>
+        <% video_class = '' %>
+      <% end %>
       <div class="learn_part black">
         <p class="common_size20"><%= learn.created_at.strftime('%Y/%m/%d') %></p>
         <p class="common_size16"><%= learn.name %></p>
 
-        <div class="learn_box common_btn_shape">
+        <div class="learn_box common_btn_shape <%= video_class %>">
+          <% if video_class == "not_video" %>
+            <%= image_tag 'lock.svg' %>
+          <% end %>
           <div class="learn_document_video">
             <% if learn.document_file.attached? %>
               <%= link_to '資料', rails_blob_path(learn.document_file, disposition: "inline"), target: "_blank", class: 'common_box_beige common_size16' %>
-            <% end %>          
+            <% end %>
             <% if learn.video_file.attached? %>
-              <%= link_to '動画', '#', class: 'common_box_beige common_size16 play-video', data: { video_url: rails_blob_path(learn.video_file, disposition: "inline") } %>
-            <% end %>        
+              <%= link_to '動画', '#', class: 'common_box_beige common_size16 play-video', data: { video_id: learn.id, user_id: current_user.id, video_url: rails_blob_path(learn.video_file, disposition: "inline") } %>
+            <% end %>
           </div>
         </div>
 
         <!-- 動画を表示するためのモーダル -->
         <div id="videoModal" class="modal">
           <span class="close">&times;</span>
-          <video id="videoPlayer" controls style="width:100%;">
+          <video id="videoPlayer" controls controlsList="nodownload" style="width:100%;">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -45,19 +57,24 @@
 </div>
 
 <!-- ページネーションの部分は必要に応じて調整 -->
-<%= paginate @learn_infos, theme: 'learn_custom_paginator' %>  
+<%= paginate @learn_infos, theme: 'learn_custom_paginator' %>
 
-
-<div class="common_field_title">
-  <h1>他カテゴリー</h1>
-  <div class="underline"></div>
-</div>
-<div class="other_category">
-  <p class="common_size20">他のカテゴリー</p>
-  <div class="category_list">
-    <% @learn_category.each do |learn_category| %>
-      <%= link_to learn_category.name, learn_list_learns_path(id: learn_category), class: 'category_part common_btn_shape common_size16' %>
-    <% end %>
+<% if params["type"].blank? %>
+  <div class="common_field_title">
+    <h1>他カテゴリー</h1>
+    <div class="underline"></div>
   </div>
-</div>
-<%= link_to '戻る', learns_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+  <div class="other_category">
+    <p class="common_size20">他のカテゴリー</p>
+    <div class="category_list">
+      <% @learn_category.each do |learn_category| %>
+        <%= link_to learn_category.name, learn_list_learns_path(id: learn_category), class: 'category_part common_btn_shape common_size16' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<% if params["type"].present? %>
+  <%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+<% else %>
+  <%= link_to '戻る', learns_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+<% end %>

@@ -1,4 +1,5 @@
 @import "destyle";
+@import "tom-select/default.css";
 
 $breakpoint: (
   sp_320: 'screen and (max-width: 320px)', // 320ピクセル以下のスマートフォン向けのスタイル
@@ -82,6 +83,12 @@ textarea{
     margin-right: 0.5rem;
   }
 }
+.w34{
+  width: 34%;
+  @include responsive_media(tab){
+    margin-right: 0.5rem;
+  }
+}
 .w39{
   width: 39%;
   @include responsive_media(tab){
@@ -159,14 +166,16 @@ th, td {
 $white: white;
 $black: #5C5C5C;
 $beige: #d6ae7b;
+$not_title_color: #485563;
 $blue_color: #65adba;
 $ruby_color: #da2131;
-$sapphire_color: #12b77f;
+$emerald_color: #12b77f;
 $box_shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.25);
+$normal_background: var(--unnamed, linear-gradient(90deg, #485563 0%, #29323C 100%));
 $base_background: var(--unnamed, linear-gradient(90deg, #EACDA3 0%, $beige 100%));
 $blue_background: var(--unnamed, linear-gradient(90deg, #4CA1AF 0%, #C4E0E5 100%));
 $ruby_background: var(--unnamed, linear-gradient(90deg, #D41429 0%, #F34952 37.50%, #F5686C 52.60%, #F34952 67.19%, #D41429 100%));
-$sapphire_background: var(--unnamed, linear-gradient(90deg, #00B379 0%, #47D3A6 37.50%, #78F5CD 52.60%, #47D3A6 67.19%, #00B379 100%));
+$emerald_background: var(--unnamed, linear-gradient(90deg, #00B379 0%, #47D3A6 37.50%, #78F5CD 52.60%, #47D3A6 67.19%, #00B379 100%));
 $border_radius: 0.5rem;
 
 // 共通部品
@@ -409,6 +418,11 @@ $border_radius: 0.5rem;
     margin-right: 1rem;
   }
 }
+.sp_320_font_size{
+  @include responsive_media(sp_320){
+    font-size: 1.7rem;
+  }
+}
 // 共通部品
 
 main{
@@ -424,6 +438,7 @@ main{
   border: 1px solid $white;
   display: flex;
   box-shadow: $box_shadow;
+  max-width: 140rem;
   .header_left{
     width: 11%;
     margin-left: 1rem;
@@ -455,12 +470,12 @@ main{
     display: none;
     margin-left: auto;
     @include responsive_media(tab){
-      padding-top: 0.5rem;
+      padding-top: 0.3rem;
       display: block;
       margin-right: 2rem;
     }
     @include responsive_media(tab_820){
-      padding-top: 1.5rem;
+      padding-top: 1rem;
       display: block;
       margin-right: 2rem;
     }
@@ -471,13 +486,17 @@ main{
     }
   }
   @include responsive_media(tab_820){
-    height: 10rem;
+    height: 9rem;
     .header_left{
       width: 40%;
     }
   }
 }
-
+#tree {
+  width: 100%;
+  height: 100vh;
+  margin-top: 2rem;  
+}
 // profile
 .profile{
   border-radius: 10px;
@@ -514,6 +533,9 @@ main{
     @include responsive_media(sp){
       padding-right: 0.5rem;
     }
+    @include responsive_media(sp_320){
+      padding-top: 8.5rem;
+    }
     .profile_info_details{
       display: flex;
       flex-direction: column;
@@ -525,23 +547,17 @@ main{
       .profile_grade{
         display: flex;
         border-radius: $border_radius;
-        background: var(--unnamed, linear-gradient(90deg, #00B379 0%, #47D3A6 37.50%, #78F5CD 52.60%, #47D3A6 67.19%, #00B379 100%));
         color: $white;
         padding: 0.5rem;
         margin-bottom: 0.4rem;
         .fa-solid{
           font-size: 2rem;
         }
-        .emerald{
-          font-size: 1.3rem;
-          margin-left: 1rem;
-          line-height: 2rem;
-        }
       }
     }
     .sales_batch{
       position: relative;
-      right: 4rem;
+      right: 3rem;
       bottom: 0.5rem;
       @include responsive_media(sp_320){
         right: 1.3rem;
@@ -550,7 +566,16 @@ main{
     }
   }
 }
-
+.svg-inline--fa{
+  height: 1.5em;
+}
+.profile_my_image{
+  height: 30rem;
+  img{
+    height: 100%;
+    object-fit: cover;
+  }
+}
 // uranai
 .uranai_link{
   display: block;
@@ -634,6 +659,14 @@ main{
   }
 }
 
+.user_image{
+  width: 20%;
+  height: 20rem;
+  img{
+    height: 100%;
+  }
+}
+
 // セミナー予約画面
 .pankuzu{
   margin: 1.6rem 0;
@@ -680,7 +713,7 @@ main{
 }
 
 
-.search select{
+.search select, .cap_adjust_ments_search select{
   padding: 0.5rem 1rem;
   border: 1px solid #AFAFAF;
   font-size: 1.3rem;
@@ -716,7 +749,7 @@ main{
     font-size: 2.5rem;
   }
 }
-.search .search_btn{
+.search .search_btn, .cap_adjust_ments_search .search_btn{
   width: 6.1rem;
   height: 3rem;
   border-radius: 2px;
@@ -878,7 +911,7 @@ main{
     width: 52rem;
   }
   @include responsive_media(sp){
-    width: 77%;
+    width: 82%;
     a{
       width: 48%;
     }
@@ -1147,6 +1180,34 @@ main{
 .contact_btn a{
   margin: 5rem auto;
 }
+.service_contact_container{
+  padding: 2rem;
+  p{
+    margin-bottom: 2rem;
+  }
+}
+.service_contact_label{
+  color: #5c5c5c;
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  span{
+    background: #C33;
+    border-radius: 0.5rem;
+    padding: 0.3rem 1rem;
+    margin-left: 0.9rem;
+    color: white;
+    font-size: 1.3rem;
+  }
+}
+.service_contact_text{
+  width: 50%;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+.service_contact_textarea{
+  width: 100%;
+}
 
 // bonus
 .bonus_container{
@@ -1209,8 +1270,86 @@ main{
     }
   }
 }
-
+.reward_top_content{
+  display: flex;
+}
+.reward_top_right, .reward_cap_button{
+  margin-left: auto;
+  button, a{
+    border: 1px solid #d6ae7b;
+    color: #d6ae7b;
+    width: 10rem;
+    height: 3rem;
+    text-align: center;
+    border-radius: 0.3rem !important;
+    padding: 0.3rem;
+    display: block;
+    @include responsive_media(tab){
+      width: 11rem;
+      height: 4rem;
+    }
+  }
+  .pdf_btn{
+    padding: 1rem 0 0 0;
+  }
+  .sp_button{
+    padding: 0.9rem 0 0 0;
+    @include responsive_media(tab){
+      padding: 1.5rem 0 0 0;
+      width:13rem;
+      height: 5rem;
+    }
+  }
+}
+.not_pdf{
+  display: none !important;
+}
 // title
+.not_title{
+  background: $normal_background;
+  color: white;
+}
+.normal{
+  background: $blue_background;
+  color: white;
+}
+.not_title_font_size{
+  font-size: 2rem;
+  margin-left: 1rem;
+  line-height: 2rem;
+}
+.normal_font_size{
+  font-size: 2rem;
+  margin-left: 1rem;
+  line-height: 2rem;
+}
+.ruby_font_size{
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  line-height: 2rem;
+}
+.emerald_font_size{
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  line-height: 2rem;
+}
+.ruby{
+  background: $ruby_background;
+  color: white;
+}
+.emerald{
+  background: $emerald_background;
+  color: white;
+}
+.normal_border{
+  border: 1px solid $blue_color;
+}
+.ruby_border{
+  border: 1px solid $ruby_color;
+}
+.emerald_border{
+  border: 1px solid $emerald_color;
+}
 .my_title{
   display: flex;
   @include responsive_media(sp){
@@ -1220,11 +1359,9 @@ main{
     margin-right: 7rem;
     .my_title_batch{
       border-radius: 0.5rem;
-      background: $blue_background;
       display: flex;
       width: 31rem;
       padding: 1.7rem;
-      color: white;
       justify-content: center;
       margin: 2rem 0;
       .title_card{
@@ -1232,12 +1369,12 @@ main{
         margin-right: 2rem;
       }
     }
+
     @include responsive_media(tab){
       width: 35%;
     }
   }
   .my_title_right{
-    border: 1px solid $ruby_color;
     padding: 2.5rem 4rem;
     border-radius: 0.5rem;
     text-align: center;
@@ -1255,7 +1392,6 @@ main{
       justify-content: center;
       margin: 2rem 0;
       span{
-        background: $ruby_background;
         color: white;
         padding: 1rem 2rem;
         display: block;
@@ -1310,9 +1446,9 @@ main{
     }
   }
   .conditions_part:nth-child(3){
-    border: 1px solid $sapphire_color;
+    border: 1px solid $emerald_color;
     .conditons_title{
-      background: $sapphire_background;
+      background: $emerald_background;
     }
   }
   @include responsive_media(sp){
@@ -1389,6 +1525,28 @@ main{
   p{
     font-size: 1.5rem;
   }
+  .not_video{
+    position: relative;
+    img{
+      position: absolute;
+      width: 8rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+    }
+  }
+  .not_video::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #00000080;
+    bottom: 0rem;
+    border-radius: 0.5rem;
+  }
 }
 .pagenation{
   text-align: center;
@@ -1433,6 +1591,7 @@ main{
     }
   }
 }
+
 
 
 // introducer
@@ -2064,6 +2223,7 @@ main{
     font-size: 2rem;
     font-weight: normal;
     margin-right: 3.2rem;
+    margin-top: 2rem;
   }
   a:nth-child(3){
     line-height: normal;
@@ -2072,10 +2232,13 @@ main{
   @include responsive_media(sp){
     justify-content: space-between;
     a{
-      margin: 0 0 2rem 0;
+      margin: 2rem 0 0 0;
       width: 49%;
     }
   }
+}
+.cap_adjust_ments_search{
+  margin-top: 1rem;
 }
 // admin_seminar
 .seminar_add_part{
@@ -2085,7 +2248,7 @@ main{
     font-size: 1.6rem;
     line-height: 2.5rem;
     font-weight: bold;
-    width: 9rem;
+    width: 13rem;
   }
   .form_time input{
     height: 3rem;
@@ -2204,7 +2367,26 @@ main{
   font-size: 1.5rem;
   margin: 0.1rem 0 0.6rem 0;
 }
-
+.seminar_entry_btns{
+  margin-bottom: 2rem;
+  button{
+    width: 14%;
+    border: 1px solid #9f9f9f;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 1px 1px 2px 0px lightgray;
+    font-weight: bold;
+    margin-right: 1rem;
+    @include responsive_media(sp){
+      width: 30%;
+    }
+  }
+}
+.seminar_type_content{
+  margin-right: 2rem;
+  font-size: 1.5rem;
+}
 /* css/index.css */
 
 @media (max-width: 1024px) {
@@ -2303,17 +2485,18 @@ main{
 
 @media (max-width: 767px) {
   #nav-icon{
+    width: 4rem;
     padding-top: 0;
-    margin-top: 0;
+    margin-top: -5px;
   }
   #nav-icon span:nth-child(1) {
-    top:13px
+    top:16px
   }
   #nav-icon span:nth-child(2) {
-    top: 24px
+    top: 25px
   }
   #nav-icon span:nth-child(3) {
-    top: 36px
+    top: 35px
   }
 }
 
@@ -2456,7 +2639,7 @@ main{
   opacity: 0.8;
   padding: 12px 10px;
   width: 50%;
-  margin: 1rem auto 1rem 0;
+  margin: 1rem auto 1rem auto;
   font-size: 1.5rem;
   @include responsive_media(sp){
     width: 100%;
@@ -2656,4 +2839,9 @@ main{
 }
 .m-1{
   margin: 1rem 0;
+}
+
+.disabled {
+  background-color: #d3d3d3;
+  pointer-events: none;
 }

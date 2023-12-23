@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   private
 
   def user_base_info_params
-    params.require(:user).permit(:login_id, :name, :name_kana, :email, :phone, :birthday, :gender_id)
+    params.require(:user).permit(:login_id, :name, :name_kana, :email, :phone, :birthday, :gender_id, :user_image)
   end
 
   def user_address_info_params

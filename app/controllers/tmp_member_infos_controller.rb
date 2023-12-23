@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "line_notifier"
+
 class TmpMemberInfosController < ApplicationController
   before_action :set_tmp_member_info, only: %i(new confirm get_confirm create)
   skip_before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session
@@ -14,7 +16,7 @@ class TmpMemberInfosController < ApplicationController
         flash[:error] = ["入力したメールアドレスは他のユーザ使っています。別のものにしてください。"]
       end
     end
-    
+
     @current_step = if params["current_step"].present?
                       params["current_step"].to_i
                     else
@@ -42,14 +44,15 @@ class TmpMemberInfosController < ApplicationController
   def get_confirm
     @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data])
     @introducer = User.find(@set_tmp_member_info.introducer_id).name
-    @saler = User.find(@set_tmp_member_info.sales_id).name    
+    @saler = User.find(@set_tmp_member_info.sales_id).name
     set_conversion_account_number
   end
 
   def create
     @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data].merge("approval_id" => "2"))
     set_conversion_account_number
-    if @set_tmp_member_info.save
+    if @set_tmp_member_info
+      LineNotifier.notify_tmp_entry(@set_tmp_member_info)
       session[:tmp_member_info_data] = nil
       session[:current_step] = nil
       redirect_to complete_tmp_member_infos_path
@@ -118,7 +121,7 @@ class TmpMemberInfosController < ApplicationController
   end
 
   def user_contract_info_params
-    params.require(:tmp_member_info).permit(:introducer_id, :sales_id, :incentive_id, :left_or_right, :a_san_flg)
+    params.require(:tmp_member_info).permit(:introducer_id, :sales_id, :incentive_id, :a_san_flg)
   end
 
   def set_conversion_account_number

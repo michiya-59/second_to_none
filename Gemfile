@@ -27,6 +27,10 @@ gem "sassc-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
 # gem "turbo-rails"
+gem "dotenv-rails"
+gem "gon"
+gem "prawn"
+gem "prawn-table"
 
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 

@@ -1,0 +1,137 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %>
+  >
+  <% if current_user.admin_flg == 1 %>
+    <%= link_to '会員一覧 ボーナス ', user_list_rewards_path, class: 'common_a' %>
+  <% end %>
+  >
+  ボーナス情報
+</p>
+<div class="top_background"></div>
+<h2 class="top_title">ボーナス情報</h2>
+<div class="bonus_container common_btn_shape">
+  <div class="reward_top_content">
+    <%= form_with url: rewards_path(id: params[:id]), local: true, method: :get, class: "search" do |form| %>
+      <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year) %>
+      <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month) %>
+      <%= form.hidden_field :id , value: params[:id]%>
+      <%= form.submit "検索", class: "search_btn common_box_beige" %>
+    <% end %>
+
+    <div class="reward_top_right">
+      <% class_name = Time.now.day <= 19 ? 'pdf_btn not_pdf' : 'pdf_btn' %>
+      <%= link_to 'PDF出力', pdf_output_reward_path(params[:id], format: "pdf"), target: '_blank', class: class_name %>
+    </div>
+  </div>
+
+  <h2 class="mt-2"><b><%= @target_user.name %></b>さんのボーナス情報</h2>
+
+  <div class="bonus_list">
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">対象日</p>
+        <div class="triangle">
+          <%= image_tag 'triangle.svg', alt: '' %>
+        </div>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18"><%= @search_year %>年<%= @search_month %>月度</p>
+      </div>
+    </div>
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">直紹介ボーナス</p>
+        <div class="triangle">
+          <%= image_tag 'triangle.svg', alt: '' %>
+        </div>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18">¥ <%= @reward_bonus_total %></p>
+      </div>
+    </div>
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">２ティアボーナス</p>
+        <div class="triangle">
+          <%= image_tag 'triangle.svg', alt: '' %>
+        </div>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18">¥ <%= @two_tier_bonus_total %></p>
+      </div>
+    </div>
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">タイトルボーナス</p>
+        <div class="triangle">
+          <%= image_tag 'triangle.svg', alt: '' %>
+        </div>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18">¥ <%= @title_bonus_total %></p>
+      </div>
+    </div>
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">aさんボーナス</p>
+        <div class="triangle">
+          <%= image_tag 'triangle.svg', alt: '' %>
+        </div>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18">¥ <%= @a_san_bonus_total %></p>
+      </div>
+    </div>
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">源泉徴収</p>
+        <div class="triangle">
+          <%= image_tag 'triangle.svg', alt: '' %>
+        </div>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18">¥ <%= return_deduction_price @total_payment_price, @certificate_of_tax_deducted_price %></p>
+      </div>
+    </div>
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">事務手数料</p>
+        <div class="triangle">
+          <%= image_tag 'triangle.svg', alt: '' %>
+        </div>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18">¥ <%= return_deduction_price @total_payment_price, 500 %></p>
+      </div>
+    </div>
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">キャップ調整金</p>
+        <div class="triangle">
+          <%= image_tag 'triangle.svg', alt: '' %>
+        </div>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18">¥ <%= @cap_adjustment_money.present? ? "-#{@cap_adjustment_money}" : 0 %></p>
+      </div>
+    </div>
+    <div class="bonus_part">
+      <div class="bonus_title">
+        <p class="common_size18">総支払額</p>
+      </div>
+      <div class="bonus_data">
+        <p class="common_size18">¥ <%= @total_payment_price %></p>
+      </div>
+    </div>
+    <% if current_user.admin_flg == 1 %>
+      <div class="reward_cap_button">
+        <%= link_to "キャップ調整金", edit_admin_cap_adjust_ment_path(params[:id], type: "reward"), class: "sp_button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% if current_user.admin_flg == 1 %>
+  <%= link_to '戻る', user_list_rewards_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+<% else %>
+  <%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+<% end %>

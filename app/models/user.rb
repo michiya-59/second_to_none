@@ -4,19 +4,23 @@ class User < ApplicationRecord
   attr_accessor :type
 
   has_one_attached :image
+  has_one_attached :user_image
   has_secure_password
   has_many :learns, dependent: :nullify
-  # 以下の2つの関連名を修正します
   has_many :introduced_tmp_member_infos, foreign_key: "introducer_id", class_name: "TmpMemberInfo", dependent: :nullify, inverse_of: :introducer
   has_many :sales_tmp_member_infos, foreign_key: "sales_id", class_name: "TmpMemberInfo", dependent: :nullify, inverse_of: :sales
-  belongs_to :incentive, optional: true
-  # 親としての関連
   has_many :child_relationships, foreign_key: "parent_id", class_name: "Relationship", dependent: :nullify, inverse_of: :parent
-  # 子としての関連
+  has_many :children, through: :child_relationships, source: :child
   has_many :parent_relationships, foreign_key: "child_id", class_name: "Relationship", dependent: :nullify, inverse_of: :child
   has_many :rewards, dependent: :destroy
-  belongs_to :introducer, class_name: "User", optional: true, dependent: :destroy
   has_many :introduced_users, class_name: "User", foreign_key: "introducer_id", dependent: :destroy, inverse_of: :introducer
+  has_one :cap_adjustment_money, dependent: :destroy
+  has_many :video_views, dependent: :nullify
+
+  belongs_to :parent, class_name: "User", optional: true
+  belongs_to :grade
+  belongs_to :incentive, optional: true
+  belongs_to :introducer, class_name: "User", optional: true, dependent: :destroy
   VALID_ALPHANUMERIC_REGEX = /\A[a-zA-Z0-9]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -40,7 +44,6 @@ class User < ApplicationRecord
         password_digest: approval&.password_digest,
         status: 1,
         introducer_id: approval&.introducer_id,
-        left_or_right: approval&.left_or_right,
         admin_flg: 9,
         gender_id: approval&.gender_id,
         online_flg: 9,
@@ -50,15 +53,21 @@ class User < ApplicationRecord
     end
 
     def introducer_search params, introduce_users
-      if params[:left_or_right].present?
-        introduce_users = introduce_users.where(left_or_right: params[:left_or_right])
-      end
       if params[:name].present?
         introduce_users = introduce_users.where("name LIKE ?", "%#{params[:name]}%")
       end
       introduce_users = introduce_users.where(status: params[:status]) if params[:status].present?
 
       introduce_users
+    end
+
+    def calculate_rewards_for_month year, month
+      start_date = Date.new(year, month, 1)
+      end_date = start_date.end_of_month
+
+      rewards.includes(:incentive)
+        .where(created_at: start_date..end_date)
+        .sum{|reward| reward.incentive.incentive_price}
     end
   end
 end

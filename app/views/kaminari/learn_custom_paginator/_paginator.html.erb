@@ -1,10 +1,18 @@
 <% if @learns.size > 6 %>
   <div class="pagination">
     <%# 最初のページへのリンク %>
-    <%= link_to '<<', url_for(page: 1, id: params[:id]), class: "common_box_beige common_size13 padding05" unless @learn_infos.first_page? %>
+    <% if params && params["type"] == "新規MT" %>
+      <%= link_to '<<', url_for(page: 1, id: params[:id], type: "新規MT"), class: "common_box_beige common_size13 padding05" unless @learn_infos.first_page? %>
+    <% else %>
+      <%= link_to '<<', url_for(page: 1, id: params[:id]), class: "common_box_beige common_size13 padding05" unless @learn_infos.first_page? %>
+    <% end %>
 
     <%# 前のページへのリンク %>
-    <%= link_to '<', url_for(page: @learn_infos.prev_page, id: params[:id]), class: "common_box_beige common_size13 padding05" if @learn_infos.prev_page %>
+    <% if params && params["type"] == "新規MT" %>
+      <%= link_to '<', url_for(page: @learn_infos.prev_page, id: params[:id], type: "新規MT"), class: "common_box_beige common_size13 padding05" if @learn_infos.prev_page %>
+    <% else %>
+      <%= link_to '<', url_for(page: @learn_infos.prev_page, id: params[:id]), class: "common_box_beige common_size13 padding05" if @learn_infos.prev_page %>
+    <% end %>
 
     <%# 中央のページリンク（最大5ページ） %>
     <% start_page = [@learn_infos.current_page - 2, 1].max %>
@@ -14,14 +22,26 @@
       <% if page == @learn_infos.current_page %>
         <span class="common_btn_beige_background common_size13 padding05"><%= page %></span>
       <% else %>
-        <%= link_to page, url_for(page: page, id: params[:id]), class: "common_box_beige common_size13 padding05" %>
+        <% if params && params["type"] == "新規MT" %>
+          <%= link_to page, url_for(page: page, id: params[:id], type: "新規MT"), class: "common_box_beige common_size13 padding05" %>
+        <% else %>
+          <%= link_to page, url_for(page: page, id: params[:id]), class: "common_box_beige common_size13 padding05" %>
+        <% end %>
       <% end %>
     <% end %>
 
     <%# 次のページへのリンク %>
-    <%= link_to '>', url_for(page: @learn_infos.next_page, id: params[:id]), class: "common_box_beige common_size13 padding05" if @learn_infos.next_page %>
+    <% if params && params["type"] == "新規MT" %>
+      <%= link_to '>', url_for(page: @learn_infos.next_page, id: params[:id], type: "新規MT"), class: "common_box_beige common_size13 padding05" if @learn_infos.next_page %>
+    <% else %>
+      <%= link_to '>', url_for(page: @learn_infos.next_page, id: params[:id]), class: "common_box_beige common_size13 padding05" if @learn_infos.next_page %>
+    <% end %>
 
     <%# 最後のページへのリンク %>
-    <%= link_to '>>', url_for(page: @learn_infos.total_pages, id: params[:id]), class: "common_box_beige common_size13 padding05" unless @learn_infos.last_page? %>
+    <% if params && params["type"] == "新規MT" %>
+      <%= link_to '>>', url_for(page: @learn_infos.total_pages, id: params[:id], type: "新規MT"), class: "common_box_beige common_size13 padding05" unless @learn_infos.last_page? %>
+    <% else %>
+      <%= link_to '>>', url_for(page: @learn_infos.total_pages, id: params[:id]), class: "common_box_beige common_size13 padding05" unless @learn_infos.last_page? %>
+    <% end %>
   </div>
 <% end %>

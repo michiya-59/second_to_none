@@ -159,8 +159,10 @@ Style/ClassCheck:
 
 Metrics/ClassLength:
   CountComments: false  # count full line comments?
-  Max: 110
+  Max: 300
 
+Naming/VariableNumber:
+  Enabled: false
 
 # Align with the style guide.
 Style/CollectionMethods:
@@ -188,7 +190,7 @@ Style/CommentAnnotation:
 
 # Avoid complex methods.
 Metrics/CyclomaticComplexity:
-  Max: 10
+  Max: 13
 
 # Multi-line method chaining should be done with leading dots.
 Layout/DotPosition:

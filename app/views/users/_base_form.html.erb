@@ -94,6 +94,26 @@
         </p>
       </div>
     </div>
+
+    <!-- 画像 -->
+    <div class="form_edit_part">
+      <div class="form_part_title common_list_title">
+        <p class="common_size16">プロフィール画像</p>
+      </div>
+      <div class="form_part_input">
+        <% if @user_info.user_image.attached? %>
+          <p class="gender_content">
+            <div class="image_show">
+              <%= f.file_field :user_image, accept: "image/png,image/jpeg,image/svg,image/jpg,image/webp", class: "common_size13 event_image" %>
+              <p>現在の写真</p>
+              <%= image_tag @user_info.user_image, class: 'img-thumbnail' %>
+            </div>
+          </p>
+        <% else %>
+          <%= f.file_field :user_image, accept: "image/png,image/jpeg,image/svg,image/jpg,image/webp", class: "common_size13 event_image" %>
+        <% end %>
+      </div>
+    </div>
     <%= f.hidden_field :type, value: params[:type] %>
 
   </div>

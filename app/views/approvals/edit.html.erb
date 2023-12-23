@@ -85,10 +85,6 @@
       <p>営業担当者</p>
       <p><%= @approval.sales.name %></p>
     </div>
-    <div class="common_list_part common_size16">
-      <p>組織図 位置</p>
-      <p><%= @approval.left_or_right.upcase %></p>
-    </div>
     <div class="common_list_part common_size16 not_border">
       <p>契約日時</p>
       <p><%= @approval.created_at.strftime('%Y/%m/%d %H:%M') %></p>

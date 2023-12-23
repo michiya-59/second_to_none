@@ -1,22 +1,27 @@
 <section class="profile">
   <div class="profile_self_image">
-    <%= image_tag 'self_image.webp', alt: 'プロフィール写真' %>
+    <% if @user.user_image.attached? %>
+      <%= image_tag @user.user_image, class: 'img-thumbnail', alt: 'プロフィール写真' %>
+    <% else %>
+      <%= image_tag 'default.png', alt: 'プロフィール写真' %>
+    <% end %>
   </div>
   <div class="profile_info">
     <div class="profile_info_details">
-      <p class="common_size20">西野 倫也</p>
-      <p class="common_size16">会員ID： 1</p>
+      <p class="common_size20 sp_320_font_size">名前：<%= @user&.name %></p>
+      <p class="common_size16 sp_320_font_size">会員ID：<%= @user&.id %></p>
     </div>
     <div class="profile_info_details">
-      <div class="profile_grade">
+      <div class="profile_grade <%= get_title_color @user %>">
         <i class="fa-solid fa-address-card"></i>
-        <p class="emerald">エメラルドエグゼティブ</p>
+        <p class="<%= get_title_color @user %>_font_size"><%= @user&.grade&.grade_name %></p>
       </div>
-      <p class="common_size16">登録日時：2023/06/21</p>
+      <p class="common_size16 sp_320_font_size">契約日時：<%= @user&.created_at.strftime("%Y/%m/%d") %></p>
     </div>
-    <div class="sales_batch">
-      <%= image_tag 'business.svg', alt: '営業する人のアイコン' %>
-    </div>
+    
+    <%# <div class="sales_batch"> %>
+      <%#= image_tag 'business.svg', alt: '営業する人のアイコン' %>
+    <%# </div> %>
   </div>
 </section>
 <a href="#" class="uranai_link">
@@ -36,7 +41,7 @@
       <p class="common_size16">セミナー予約</p>
     </div>
   <% end %>
-  <%= link_to '#' do %>
+  <%= link_to organizations_path do %>
     <div class="menu_part common_btn_shape">
       <div class="menu_icon">
         <%= image_tag 'organization.svg', alt: '組織図のアイコン' %>
@@ -60,15 +65,26 @@
       <p class="common_size16">連携先</p>
     </div>
   <% end %>
-  <%= link_to '#' do %>
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
+  <% if current_user.admin_flg == 1 %>
+    <%= link_to user_list_rewards_path do %>
+      <div class="menu_part common_btn_shape">
+        <div class="menu_icon">
+          <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
+        </div>
+        <p class="common_size16">ボーナス情報</p>
       </div>
-      <p class="common_size16">ボーナス情報</p>
-    </div>
+    <% end %>
+  <% else %>
+    <%= link_to rewards_path(id: current_user.id) do %>
+      <div class="menu_part common_btn_shape">
+        <div class="menu_icon">
+          <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
+        </div>
+        <p class="common_size16">ボーナス情報</p>
+      </div>
+    <% end %>
   <% end %>
-  <%= link_to '#' do %>
+  <%= link_to titles_path do %>
     <div class="menu_part common_btn_shape">
       <div class="menu_icon">
         <%= image_tag 'title.svg', alt: 'タイトルのアイコン' %>
@@ -82,6 +98,14 @@
         <%= image_tag 'study.svg', alt: '学びの資料のアイコン' %>
       </div>
       <p class="common_size16">学びの資料</p>
+    </div>
+  <% end %>
+  <%= link_to learn_list_learns_path(type: "新規MT") do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'study.svg', alt: '新規MT' %>
+      </div>
+      <p class="common_size16">新規MT</p>
     </div>
   <% end %>
   <%= link_to introducers_path do %>

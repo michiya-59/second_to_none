@@ -12,7 +12,6 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :password_digest, null: false
       t.integer :status, null: false
       t.integer :introducer_id, null: false
-      t.string :left_or_right
       t.integer :admin_flg, null: false
       t.datetime :last_login_at
       t.string :image

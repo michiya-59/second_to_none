@@ -7,11 +7,15 @@
       <div class="header_right">
         <ul>
           <li><%= link_to 'セミナー予約', reservations_path %></li>
-          <li><%= link_to '組織図', '#' %></li>
+          <li><%= link_to '組織図', organizations_path %></li>
           <li><%= link_to 'イベント情報', events_path %></li>
           <li><%= link_to '連携先', connect_services_path %></li>
-          <li><%= link_to 'ボーナス情報', '#' %></li>
-          <li><%= link_to 'タイトル', '#' %></li>
+          <% if current_user.admin_flg == 1 %>
+            <li><%= link_to 'ボーナス情報', user_list_rewards_path %></li>
+          <% else %>
+            <li><%= link_to 'ボーナス情報', rewards_path(id: current_user.id) %></li>
+          <% end %>
+          <li><%= link_to 'タイトル', titles_path %></li>
           <li><%= link_to '学びの資料', learns_path %></li>
           <li><%= link_to '紹介者一覧', introducers_path %></li>
           <li><%= link_to '登録情報', user_path(current_user) %></li>
@@ -31,13 +35,13 @@
         </div>
         <ul id="mobile-nav">
           <li>
-            <%= link_to 'セミナー予約', '#' %>
+            <%= link_to 'セミナー予約', reservations_path %>
             <div>
               <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <li>
-            <%= link_to '組織図', '#' %>
+            <%= link_to '組織図', organizations_path %>
             <div>
               <%= image_tag 'hamburger_arrow.svg' %>
             </div>
@@ -55,13 +59,17 @@
             </div>
           </li>
           <li>
-            <%= link_to 'ボーナス情報', '#' %>
+            <% if current_user.admin_flg == 1 %>
+              <%= link_to 'ボーナス情報', user_list_rewards_path %>
+            <% else %>
+              <%= link_to 'ボーナス情報', rewards_path(id: current_user.id) %>
+            <% end %>
             <div>
               <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
           <li>
-            <%= link_to 'タイトル', '#' %>
+            <%= link_to 'タイトル', titles_path %>
             <div>
               <%= image_tag 'hamburger_arrow.svg' %>
             </div>

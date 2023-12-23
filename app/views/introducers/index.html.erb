@@ -9,10 +9,6 @@
   <%= form_with url: search_introducers_path, method: :get, class: "search" do |f| %>
     <div class="introducer_list common_btn_shape">
       <!-- 組織図 配置位置 -->
-      <div class="introducer_part common_size16">
-        <%= f.label :left_or_right, '組織図 配置位置' %>
-        <%= f.select :left_or_right, options_for_select([['Left', 'left'], ['Right', 'right']], session[:search_introduce_position]) %>
-      </div>
       <!-- 氏名 -->
       <div class="introducer_part common_size16">
         <%= f.label :name, '氏名' %>

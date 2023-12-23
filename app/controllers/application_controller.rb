@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require "line_notifier"
+
 class ApplicationController < ActionController::Base
   include(SessionsHelper)
+  include(OrganizationsHelper)
   before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session, :set_session_expiration
+  around_action :catch_exception if Rails.env.production?
 
   # ログインされていない場合またはURLが直接操作されてた場合の処理
   def authenticate_user
@@ -48,7 +52,6 @@ class ApplicationController < ActionController::Base
     request.referer.present? && request.referer.include?(request.base_url)
   end
 
-  # 管理項目 リストの検索処理
   def set_search_date params, search_seminars_year, search_seminars_month
     if search_seminars_year.present? && search_seminars_month.present?
       search_year = search_seminars_year
@@ -71,5 +74,39 @@ class ApplicationController < ActionController::Base
     end
 
     true if uniq_value.present?
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html{render "errors/not_found", status: :not_found}
+      format.json{render json: {error: "Not found"}, status: :not_found}
+      format.any{head :not_found}
+    end
+  end
+
+  private
+
+  def catch_exception
+    yield
+  rescue ActiveRecord::RecordNotFound, ActionController::RoutingError => e
+    render_404(e)
+  rescue StandardError => e
+    notify_and_render_exception(e)
+  end
+
+  def render_500 exception
+    LineNotifier.notify_error(exception)
+    logger.error "Internal Server Error: #{exception.message}"
+    render "errors/internal_server_error", status: :internal_server_error
+  end
+
+  # 通知してから例外を再発生させるメソッド
+  def notify_and_render_exception exception
+    case exception
+    when ActiveRecord::RecordNotFound, ActionController::RoutingError
+      render_404(exception)
+    else
+      render_500(exception)
+    end
   end
 end

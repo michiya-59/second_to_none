@@ -9,6 +9,18 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
 
+  resources :video_views, only: %i(create)
+  resources :organizations, only: %i(index)
+  resources :rewards, only: %i(index) do
+    collection do
+      get "user_list"
+    end
+    member do
+      get "pdf_output"
+    end
+  end
+
+  resources :titles, only: %i(index)
   resources :introducers, only: %i(index) do
     collection do
       get "search"
@@ -21,7 +33,7 @@ Rails.application.routes.draw do
       get "learn_list"
     end
   end
-  resources :connect_services, only: %i(index) do
+  resources :connect_services, only: %i(index new create) do
     collection do
       get "whitening"
       get "photography"
@@ -63,5 +75,13 @@ Rails.application.routes.draw do
     resources :incentives, only: %i(index edit update)
     resources :learns
     resources :learn_categories
+    resources :cap_adjust_ments, only: %i(index edit update create)
+  end
+
+  # エラーページ用のルート
+  if Rails.env.production?
+    match "/404", to: "errors#not_found", via: :all
+    match "/500", to: "errors#internal_server_error", via: :all
+    match "*path", to: "application#render_404", via: :all
   end
 end

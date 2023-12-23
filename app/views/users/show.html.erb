@@ -52,6 +52,17 @@
         <p>性別</p>
         <p><%= @user&.gender_id == 1 ? "男" : "女" %></p>
       </div>
+      
+      <div class="common_list_part common_size16">
+        <p>プロフィール画像</p>
+        <% if @user.user_image.attached? %>
+          <p class="profile_my_image">
+            <%= image_tag @user.user_image, class: 'img-thumbnail' %>
+          </p>
+        <% else %>
+          写真なし
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -88,10 +99,6 @@
       <div class="common_list_part common_size16">
         <p>紹介者</p>
         <p><%= @user&.introducer&.name %></p>
-      </div>
-      <div class="common_list_part common_size16">
-        <p>組織図 位置</p>
-        <p><%= @user&.left_or_right.upcase %></p>
       </div>
       <div class="common_list_part common_size16">
         <p>契約日時</p>

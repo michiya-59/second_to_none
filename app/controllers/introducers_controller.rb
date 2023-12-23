@@ -23,7 +23,6 @@ class IntroducersController < ApplicationController
 
   def introducer_search introduce_users
     search_params = {
-      left_or_right: params[:left_or_right],
       name: params[:name],
       status: params[:status]
     }.compact
@@ -38,12 +37,6 @@ class IntroducersController < ApplicationController
   end
 
   def set_search_session
-    session[:search_introduce_position] = if params[:left_or_right].present?
-                                            valid_position?(params[:left_or_right]) ? params[:left_or_right] : "left"
-                                          else
-                                            params[:left_or_right]
-                                          end
-  
     session[:search_introduce_name] = params[:name]
   
     session[:search_introduce_status] = if params[:status].present?
