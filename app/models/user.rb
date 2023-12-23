@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :parent_relationships, foreign_key: "child_id", class_name: "Relationship", dependent: :nullify, inverse_of: :child
   has_many :rewards, dependent: :destroy
   has_many :introduced_users, class_name: "User", foreign_key: "introducer_id", dependent: :destroy, inverse_of: :introducer
-  has_one :cap_adjustment_money
+  has_one :cap_adjustment_money, dependent: :destroy
   has_many :video_views, dependent: :nullify
 
   belongs_to :parent, class_name: "User", optional: true

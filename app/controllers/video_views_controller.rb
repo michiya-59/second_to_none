@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VideoViewsController < ApplicationController
   def create
     video_view = VideoView.find_or_initialize_by(video_view_params)

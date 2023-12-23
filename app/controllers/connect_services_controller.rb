@@ -19,7 +19,7 @@ class ConnectServicesController < ApplicationController
 
     if @contact.save
       LineNotifier.notify_service_contact(contact_message)
-      flash[:success] = 'お問い合わせありがとうございます！<br>担当者より追ってメールアドレス、または直接ご連絡いたします。'
+      flash[:success] = "お問い合わせありがとうございます！<br>担当者より追ってメール、または直接ご連絡いたします。"
       redirect_to new_connect_service_path(type: params[:contact][:type])
     else
       render :new
@@ -59,32 +59,31 @@ class ConnectServicesController < ApplicationController
   def get_connect_service_title type_name
     case type_name
     when "beauty_clinic"
-      name = "美容クリニック"
+      "美容クリニック"
     when "hair_removal_beauty"
-      name = "脱毛【美容】"
+      "脱毛【美容】"
     when "hair_removal_medical"
-      name = "脱毛【医療】"
+      "脱毛【医療】"
     when "job_change_agent"
-      name = "転職エージェント"
+      "転職エージェント"
     when "mobile_communicating_charge_rethink"
-      name = "携帯通信料見直し"
+      "携帯通信料見直し"
     when "movie_edit"
-      name = "動画編集依頼"
+      "動画編集依頼"
     when "moving"
-      name = "引越し"
+      "引越し"
     when "personal_color"
-      name = "パーソナルカラー"
+      "パーソナルカラー"
     when "photography"
-      name = "写真撮影"
+      "写真撮影"
     when "rent"
-      name = "賃貸"
+      "賃貸"
     when "web_site_creation"
-      name = "ホームページ作成依頼"
+      "ホームページ作成依頼"
     when "whitening"
-      name = "ホワイトニング"
+      "ホワイトニング"
     else
-      name = "連携先"
+      "連携先"
     end
-    name
   end
 end

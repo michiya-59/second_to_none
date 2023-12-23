@@ -18,8 +18,12 @@
 <div class="learn_detail_list">
   <% if @learn_infos.present? %>
     <% @learn_infos.each_with_index do |learn, index| %>
-      <% can_view = index < 3 || video_viewed?(learn.id, index) %>
-      <% video_class = can_view ? '' : 'not_video' %>
+      <% if learn.learn_category_id == 1 && current_user.admin_flg != 1%>
+        <% can_view = index < 3 || video_viewed?(learn.id, index) %>
+        <% video_class = can_view ? '' : 'not_video' %>
+      <% else %>
+        <% video_class = '' %>
+      <% end %>
       <div class="learn_part black">
         <p class="common_size20"><%= learn.created_at.strftime('%Y/%m/%d') %></p>
         <p class="common_size16"><%= learn.name %></p>

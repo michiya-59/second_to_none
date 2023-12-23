@@ -470,12 +470,12 @@ main{
     display: none;
     margin-left: auto;
     @include responsive_media(tab){
-      padding-top: 0.5rem;
+      padding-top: 0.3rem;
       display: block;
       margin-right: 2rem;
     }
     @include responsive_media(tab_820){
-      padding-top: 1.5rem;
+      padding-top: 1rem;
       display: block;
       margin-right: 2rem;
     }
@@ -486,7 +486,7 @@ main{
     }
   }
   @include responsive_media(tab_820){
-    height: 10rem;
+    height: 9rem;
     .header_left{
       width: 40%;
     }
@@ -567,7 +567,7 @@ main{
   }
 }
 .svg-inline--fa{
-  height: 2em;
+  height: 1.5em;
 }
 .profile_my_image{
   height: 30rem;
@@ -1180,6 +1180,34 @@ main{
 .contact_btn a{
   margin: 5rem auto;
 }
+.service_contact_container{
+  padding: 2rem;
+  p{
+    margin-bottom: 2rem;
+  }
+}
+.service_contact_label{
+  color: #5c5c5c;
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  span{
+    background: #C33;
+    border-radius: 0.5rem;
+    padding: 0.3rem 1rem;
+    margin-left: 0.9rem;
+    color: white;
+    font-size: 1.3rem;
+  }
+}
+.service_contact_text{
+  width: 50%;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+.service_contact_textarea{
+  width: 100%;
+}
 
 // bonus
 .bonus_container{
@@ -1273,7 +1301,9 @@ main{
     }
   }
 }
-
+.not_pdf{
+  display: none !important;
+}
 // title
 .not_title{
   background: $normal_background;
@@ -2457,7 +2487,7 @@ main{
   #nav-icon{
     width: 4rem;
     padding-top: 0;
-    margin-top: 0;
+    margin-top: -5px;
   }
   #nav-icon span:nth-child(1) {
     top:16px
@@ -2609,7 +2639,7 @@ main{
   opacity: 0.8;
   padding: 12px 10px;
   width: 50%;
-  margin: 1rem auto 1rem 0;
+  margin: 1rem auto 1rem auto;
   font-size: 1.5rem;
   @include responsive_media(sp){
     width: 100%;

@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/BlockLength
+
 class RewardsController < ApplicationController
   before_action :reward_load_data
   before_action :set_date
@@ -352,3 +356,7 @@ class RewardsController < ApplicationController
     [certificate_of_tax_deducted_price.to_i, fee_price.to_i]
   end
 end
+
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/BlockLength

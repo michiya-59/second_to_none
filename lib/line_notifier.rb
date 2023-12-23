@@ -79,7 +79,7 @@ module LineNotifier
     MESSAGE
   end
 
-  def self.contact_format_message(contact_message)
+  def self.contact_format_message contact_message
     <<~MESSAGE
       【#{contact_message[:service_name]}の問い合わせ】
 
