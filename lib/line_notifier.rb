@@ -6,16 +6,16 @@ require "uri"
 require "json"
 
 module LineNotifier
-  LINE_NOTIFY_TOKEN = ENV.fetch("LINE_NOTIFY_TOKEN", nil)
   LINE_NOTIFY_URL = "https://notify-api.line.me/api/notify"
 
   def self.notify_error error
+    error_line_notify_token = ENV.fetch("ERROR_LINE_NOTIFY_TOKEN", nil)
     return unless Rails.env.production? # 本番環境のみ実行
 
     message = format_message(error)
     uri = URI.parse(LINE_NOTIFY_URL)
     request = Net::HTTP::Post.new(uri)
-    request["Authorization"] = "Bearer #{LINE_NOTIFY_TOKEN}"
+    request["Authorization"] = "Bearer #{error_line_notify_token}"
     request.set_form_data(message:)
 
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -26,14 +26,13 @@ module LineNotifier
   end
 
   def self.notify_tmp_entry message
-    # 本番環境のみ実行のコメントアウトを解除してください
-    return unless Rails.env.production?
+    entryline_notify_token = ENV.fetch("ENTRYLINE_NOTIFY_TOKEN", nil)
+    return unless Rails.env.production? # 本番環境のみ実行
 
     send_message = tmp_entry_format_message message
-
     uri = URI.parse(LINE_NOTIFY_URL)
     request = Net::HTTP::Post.new(uri)
-    request["Authorization"] = "Bearer #{LINE_NOTIFY_TOKEN}"
+    request["Authorization"] = "Bearer #{entryline_notify_token}"
     request.set_form_data(message: send_message)
 
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
@@ -74,10 +73,13 @@ module LineNotifier
     <<~MESSAGE
       エラーが発生しました:
       #{error.message}
+
       発生場所:
       #{location}
+
       発生時刻:
       #{Time.current.strftime('%Y/%m/%d %H:%M:%S')}
+
       バックトレースの先頭10行:
       #{error.backtrace.take(10).join("\n")}
     MESSAGE

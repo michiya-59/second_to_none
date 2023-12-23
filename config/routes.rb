@@ -77,4 +77,9 @@ Rails.application.routes.draw do
     resources :learn_categories
     resources :cap_adjust_ments, only: %i(index edit update create)
   end
+
+  # エラーページ用のルート
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+  match "*path", to: "application#render_404", via: :all
 end
