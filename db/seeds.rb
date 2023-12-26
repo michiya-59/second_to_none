@@ -27,7 +27,7 @@ learn_categories = [
 
 # 会員のマスターデータ
 users = [
-  { login_id: "admin001", email: "stn230501@gmail.com", name: "鈴木晴也", name_kan＝Pa: "スズキセイヤ", birthday: Date.new(1999, 12, 9), phone: "08035535646", password: "Admin001!", password_confirmation: "Admin001!", status: 1, introducer_id: 99999, admin_flg: 1, gender_id: 1, online_flg: 9, grade_id: 3, created_at: Time.current, updated_at: nil }
+  { login_id: "admin001", email: "stn230501@gmail.com", name: "鈴木晴也", name_kana: "スズキセイヤ", birthday: Date.new(1999, 12, 9), phone: "08035535646", password: "Admin001!", password_confirmation: "Admin001!", status: 1, introducer_id: 99999, admin_flg: 1, gender_id: 1, online_flg: 9, grade_id: 3, created_at: Time.current, updated_at: nil }
 ]
 
 user_addresses = [
