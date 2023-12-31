@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "learns/index"
   get "connect_services/index"
   root "homes#index"
+  get "/get_entry_url", to: "homes#get_entry_url"
   get "/login", to: "sessions#new"
   get "/logout", to: "sessions#destroy"
   post "/login", to: "sessions#create"

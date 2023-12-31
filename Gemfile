@@ -27,11 +27,11 @@ gem "sassc-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
 # gem "turbo-rails"
+gem "aws-sdk-s3"
 gem "dotenv-rails"
 gem "gon"
 gem "prawn"
 gem "prawn-table"
-gem "aws-sdk-s3"
 
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 

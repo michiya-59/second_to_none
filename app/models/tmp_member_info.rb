@@ -60,7 +60,7 @@ class TmpMemberInfo < ApplicationRecord
   def check_password
     return if password.blank?
 
-    if password.length <= 8
+    if password.length <= 7
       errors.add(:password, "は8文字以上でなければなりません。")
       return
     end

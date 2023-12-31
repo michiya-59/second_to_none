@@ -1,0 +1,12 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  会員登録用QRコード画面
+</p>
+<div class="url_content">
+  <% if Rails.env.production? %>
+    <%= image_tag 'production_entry.png' %>
+  <% else %>
+    <img src="" alt="">
+    <%= image_tag 'develop_entry.png' %>
+  <% end %>
+</div>

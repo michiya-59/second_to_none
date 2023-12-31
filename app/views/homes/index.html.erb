@@ -124,6 +124,14 @@
       <p class="common_size16">会員登録情報</p>
     </div>
   <% end %>
+  <%= link_to get_entry_url_path do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'registration_information.svg', alt: '会員登録画面URLへのアイコン' %>
+      </div>
+      <p class="common_size16">会員登録QRコード</p>
+    </div>
+  <% end %>
   <% if current_user.admin_flg == 1 %>
     <%= link_to approvals_path(type: "new") do %>
       <div class="menu_part common_btn_shape">
