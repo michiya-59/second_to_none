@@ -51,7 +51,7 @@ class TmpMemberInfosController < ApplicationController
   def create
     @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data].merge("approval_id" => "2"))
     set_conversion_account_number
-    if @set_tmp_member_info
+    if @set_tmp_member_info.save
       LineNotifier.notify_tmp_entry(@set_tmp_member_info)
       session[:tmp_member_info_data] = nil
       session[:current_step] = nil

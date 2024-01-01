@@ -9,12 +9,30 @@
   <div class="underline"></div>
 </div>
 
+<% if flash[:success].present? %>
+  <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
+<% end %>
+
+<%= form_with url: cap_adjust_ments_search_admin_cap_adjust_ments_path, local: true, method: :get, class: "search mb-1" do |form| %>
+  <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year) %>
+  <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month) %>
+  <%= form.hidden_field :id , value: params[:id]%>
+  <%= form.submit "検索", class: "search_btn common_box_beige" %>
+<% end %>
+
 <%= form_with model: @cap_adjustment_money, url: (@cap_adjustment_money&.new_record? ? admin_cap_adjust_ments_path : admin_cap_adjust_ment_path(@cap_adjustment_money)), local: true do |form| %>
   <%= render 'shared/admin_error', object: @incentive %>
   <div class="admin_bonus_form_part">
     <h2><%= @user&.name %>さん</h2>
     <%= form.hidden_field :user_id, value: @user.id %>
   </div>
+
+  <div class="admin_bonus_form_part">
+    <h2><%= "#{@search_year}年#{@search_month}月" %></h2>
+    <%= form.hidden_field :cap_date, value: DateTime.new(@search_year, @search_month) %>
+  </div>
+
+
   <div class="admin_bonus_form_part">
     <%= form.label :price, "キャップ調整金<span>必須</span>".html_safe, class: "common_size16" %>
     <div>

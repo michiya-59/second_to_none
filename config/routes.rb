@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     member do
       get "reserve_confirm"
       post "reserved_confirmation"
+      get "member_reservation_list"
     end
   end
   resources :tmp_member_infos, only: %i(new create) do
@@ -76,13 +77,14 @@ Rails.application.routes.draw do
     resources :incentives, only: %i(index edit update)
     resources :learns
     resources :learn_categories
-    resources :cap_adjust_ments, only: %i(index edit update create)
+    resources :cap_adjust_ments, only: %i(index edit update create) do
+      collection do
+        get "cap_adjust_ments_search"
+      end
+    end
   end
 
-  # エラーページ用のルート
-  if Rails.env.production?
-    match "/404", to: "errors#not_found", via: :all
-    match "/500", to: "errors#internal_server_error", via: :all
-    match "*path", to: "application#render_404", via: :all
-  end
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+  match "*path", to: "application#render_404", via: :all
 end

@@ -90,7 +90,7 @@
         </div>
       </div>
       <div class="bonus_data">
-        <p class="common_size18">¥ <%= return_deduction_price @total_payment_price, @certificate_of_tax_deducted_price %></p>
+        <p class="common_size18">¥ <%= return_deduction_price @totle_payment_price, @certificate_of_tax_deducted_price %></p>
       </div>
     </div>
     <div class="bonus_part">
@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="bonus_data">
-        <p class="common_size18">¥ <%= return_deduction_price @total_payment_price, 500 %></p>
+        <p class="common_size18">¥ <%= return_deduction_price @totle_payment_price, 500 %></p>
       </div>
     </div>
     <div class="bonus_part">
@@ -112,7 +112,7 @@
         </div>
       </div>
       <div class="bonus_data">
-        <p class="common_size18">¥ <%= @cap_adjustment_money.present? ? "-#{@cap_adjustment_money}" : 0 %></p>
+        <p class="common_size18">¥ <%= @cap_adjustment_money.present? ? "#{@cap_adjustment_money}" : 0 %></p>
       </div>
     </div>
     <div class="bonus_part">

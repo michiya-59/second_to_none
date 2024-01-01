@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_23_020222) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_31_100834) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_020222) do
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "cap_date", precision: nil
     t.index ["user_id"], name: "index_cap_adjustment_moneys_on_user_id"
   end
 
@@ -100,7 +101,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_020222) do
   create_table "relationships", force: :cascade do |t|
     t.integer "parent_id", null: false
     t.integer "child_id", null: false
-    t.string "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_relationships_on_child_id"
@@ -218,6 +218,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_020222) do
     t.integer "failed_login_count", default: 0
     t.boolean "locked", default: false, null: false
     t.integer "incentive_id"
+    t.datetime "cap_date", precision: nil
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["grade_id"], name: "index_users_on_grade_id"
     t.index ["login_id"], name: "index_users_on_login_id", unique: true
