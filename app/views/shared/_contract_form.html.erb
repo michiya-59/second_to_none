@@ -76,7 +76,7 @@
         <span>必須</span>
       </div>
       <div class="contract_info form_part_input">
-        <%= f.select :incentive_id, @incentives&.map { |i| [i.course_name, i.id] }, { selected: get_default_value("sales_id", "select") }%>
+        <%= f.select :incentive_id, @incentives&.map { |i| [i.course_name, i.id] }, { selected: get_default_value("incentive_id", "select") }%>
       </div>
     </div>
 

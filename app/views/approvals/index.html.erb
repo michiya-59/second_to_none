@@ -2,6 +2,11 @@
   <%= link_to 'トップページ', root_path, class: 'common_a' %> >
   承認画面
 </p>
+
+<% if flash[:success].present? %>
+  <p class="success_dsn" style="padding-top: 1rem;"><i class="fa fa-check "></i><%= flash[:success].html_safe %><p>
+<% end %>
+
 <div class="common_field_title">
   <h1>会員本登録承認待ち一覧</h1>
   <div class="underline"></div>

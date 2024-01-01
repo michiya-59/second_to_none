@@ -15,10 +15,10 @@ class RewardsController < ApplicationController
       @target_user = User.find(params[:id])
     end
 
-    totle_payment_price = get_totle_payment_price
-    @certificate_of_tax_deducted_price, fee_price = calculate_y(totle_payment_price)
-    @cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: params[:id])&.price
-    @total_payment_price = totle_payment_price - @certificate_of_tax_deducted_price - fee_price - @cap_adjustment_money.to_i
+    @totle_payment_price = get_totle_payment_price
+    @certificate_of_tax_deducted_price, fee_price = calculate_y(@totle_payment_price)
+    @cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: params[:id], cap_date: DateTime.new(@search_year.to_i, @search_month.to_i))&.price
+    @total_payment_price = @totle_payment_price - @certificate_of_tax_deducted_price + @cap_adjustment_money.to_i - fee_price
   end
 
   def user_list
