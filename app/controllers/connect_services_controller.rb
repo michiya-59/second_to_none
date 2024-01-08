@@ -60,8 +60,6 @@ class ConnectServicesController < ApplicationController
     case type_name
     when "beauty_clinic"
       "美容クリニック"
-    when "hair_removal_beauty"
-      "脱毛【美容】"
     when "hair_removal_medical"
       "脱毛【医療】"
     when "job_change_agent"

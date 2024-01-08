@@ -32,7 +32,7 @@ users = [
   # id: 2 篠本拓海
   { login_id: "dekmegh001", email: "dekmegh@gmail.com", name: "篠本拓海", password: "Nsa02moa!?", password_confirmation: "Nsa02moa!?", name_kana: "シノモトタクミ", birthday: Date.new(1997, 8, 23), phone: "08058394411", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 1, created_at: Time.current, updated_at: nil, incentive_id: 2 },
   # id: 3 細谷菜奈
-  { login_id: "nanarapunzel0121", email: "nanarapunzel.0121@gmail.com", name: "細谷菜奈", password: "Nana0121!", password_confirmation: "Nana0121!", name_kana: "ホソヤナナ", birthday: Date.new(1990, 1, 21), phone: "08093891466", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 2, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "nanarapunzel0121", email: "nanarapunzel.0121@gmail.com", name: "細谷菜奈", password: "Nana0121!", password_confirmation: "Nana0121!", name_kana: "ホソヤナナ", birthday: Date.new(1990, 1, 21), phone: "08093891466", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 2, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 4 山田尚登
   { login_id: "23832383", email: "draw926926@gmail.com", name: "山田尚登", password: "Jojo23832383!?", password_confirmation: "Jojo23832383!?", name_kana: "ヤマダナオト", birthday: Date.new(1999, 9, 26), phone: "08088778467", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 2, created_at: Time.current, updated_at: nil, incentive_id: 2 },
   # id: 5 尾塩彩乃　退会済み
@@ -404,7 +404,7 @@ user_addresses = [
   { user_id: 56, zip_str3: "294", zip_str4: "0312", ken: "千葉県", city: "館山市小沼352", other_address: nil },
   # id: 57 柳村康貴 退会済み
   { user_id: 57, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
-  # id: 58 佐々木緑碧
+  # id: 58 堀田陽太
   { user_id: 58, zip_str3: "360", zip_str4: "0635", ken: "埼玉県", city: "熊谷市大麻生979-7", other_address: "ハイマートラオム101" },
   # id: 59 宮崎綾美
   { user_id: 59, zip_str3: "134", zip_str4: "0091", ken: "東京都", city: "江戸川区船堀7-17-21", other_address: "コンフォート船堀205" },
@@ -579,7 +579,7 @@ user_banks = [
   { user_id: 56, bank_name: "楽天銀行", account_type: 1, branch_name: "ハウス支店", branch_number: "231", account_number_hash: "2705888", account_number_tail: "*****888", account_holder: "SASAKI RIO" },
   # id: 57 柳村康貴 退会済み
   { user_id: 57, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "YANAGIMURA KOUUKI" },
-  # id: 58 佐々木緑碧
+  # id: 58 堀田陽太
   { user_id: 58, bank_name: "埼玉りそな銀行", account_type: 1, branch_name: "深谷支店", branch_number: "580", account_number_hash: "4873890", account_number_tail: "*****890", account_holder: "HOTTA HINATA" },
   # id: 59 宮崎綾美
   { user_id: 59, bank_name: "ゆうちょ銀行", account_type: 1, branch_name: "一一八", branch_number: "118", account_number_hash: "1092021", account_number_tail: "*****021", account_holder: "MIYAZAKI AYAMI" },
