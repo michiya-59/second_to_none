@@ -1,0 +1,64 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  メンバー予約一覧
+</p>
+<div class="common_field_title">
+  <h1>メンバー予約一覧</h1>
+  <div class="underline"></div>
+</div>
+
+<% if flash[:success].present? %>
+  <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
+<% end %>
+
+<%= form_with url: member_reservation_list_reservation_path(current_user), local: true, method: :get, class: "search" do |form| %>
+  <%= form.select :search_year, options_for_select((2023..2040).to_a.map { |y| ["#{y}年", y] }, selected: @search_year), include_blank: '年を選択' %>
+  <%= form.select :search_month, options_for_select((1..12).to_a.map { |m| ["#{m}月", m] }, selected: @search_month), include_blank: '月を選択' %>
+  <%= form.submit "検索", class: "search_btn common_box_beige" %>
+<% end %>
+
+<div class="seminar_date_title">
+  <p class="mt-2"><%= "#{@search_year}年#{@search_month}月のセミナー枠" %></p>
+</div>
+
+<div class="reservation_list">
+  <% if @seminars.present? %>
+    <% @seminars.each_with_index do |seminar, index| %>
+      <div class="reservation_part">
+        <div class="reservation_left">
+          <p class="common_size13"><%= "#{seminar.year}年#{seminar.month}月" %></p>
+          <p class="common_size20"><%= seminar.day %>日</p>
+          <p class="common_size13">（<%= "#{weekday_conversion seminar.year, seminar.month, seminar.day}曜日" %>）</p>
+        </div>
+        <div class="reservation_right common_btn_shape">
+          <div class="reservation_info_top">
+            <div class="reservation_info_top_left">
+              <p><%= seminar.title %></p>
+              <p class="common_size13"><%= seminar.start_time %> ~ <%= seminar.end_time %></p>
+            </div>
+            <div class="reservation_info_top_right member_list_btn">
+              <%= link_to member_reservation_list_detail_reservation_path(seminar, parent_id: current_user&.id), class: 'reservation_btn common_btn_beige common_btn_beige_background' do %>
+                <div class="reservation_calender">
+                  <%= image_tag 'calender.svg', alt: 'カレンダー' %>
+                </div>
+                <p>メンバー予約確認</p>
+              <% end %>
+            </div>
+          </div>
+          <div class="reservation_info_bottom">
+            <div class="reservation_info_bottom_left">
+              <p>講師</p>
+            </div>
+            <div class="reservation_info_bottom_right">
+              <p><%= seminar.teacher %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>存在しているセミナーがありません。</p>
+  <% end %>
+</div>
+
+<%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

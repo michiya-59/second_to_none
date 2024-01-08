@@ -2,7 +2,7 @@
 
 class ReservationsController < ApplicationController
   before_action :seminar_load_data
-  before_action :set_date, only: %i(index reserved_list update)
+  before_action :set_date, only: %i(index reserved_list update member_reservation_list)
 
   def index; end
 
@@ -45,6 +45,20 @@ class ReservationsController < ApplicationController
     redirect_to reserved_list_reservations_path
   end
 
+  def member_reservation_list
+  end
+
+  def member_reservation_list_detail
+    # 選択肢したセミナーの情報を取得
+    @chose_serminar = Seminar.find params[:id]
+    # 現在ログインしているユーザから派生している全ユーザのユーザIDを取得
+    descendants = Relationship.find_descendants params[:parent_id]
+    # 現在ログインしているユーザから派生している全ユーザが予約している予約情報を取得
+    child_account_reservations = Reservation.get_child_accounts_reservations descendants
+    # 選択したセミナー情報を取得する
+    @chose_serminars = child_account_reservations.select{|child_account_reservation| child_account_reservation.seminar_id == @chose_serminar&.id}
+  end
+
   private
 
   def seminar_load_data
@@ -77,7 +91,7 @@ class ReservationsController < ApplicationController
       start_hour, start_minute = seminar.start_time.split(":").map(&:to_i)
       # セミナー実施時間をDateTimeオブジェクトに変換
       seminar_time = Time.zone.local(seminar.year, seminar.month, seminar.day, start_hour, start_minute)
-        
+
       # 現在時刻より後の場合にjoin_statusを1に更新
       if seminar_time <= Time.current
         Reservation.where(id: seminar.reservation_id).update(join_status: 1)

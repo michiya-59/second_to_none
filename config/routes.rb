@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       get "reserve_confirm"
       post "reserved_confirmation"
       get "member_reservation_list"
+      get "member_reservation_list_detail"
     end
   end
   resources :tmp_member_infos, only: %i(new create) do

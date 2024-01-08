@@ -418,6 +418,9 @@ $border_radius: 0.5rem;
     margin-right: 1rem;
   }
 }
+.fz-2{
+  font-size: 2rem;
+}
 .sp_320_font_size{
   @include responsive_media(sp_320){
     font-size: 1.7rem;
@@ -766,6 +769,12 @@ main{
     height: 4rem;
   }
 }
+.seminar_date_title{
+  p{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
 .reservation_list{
   margin: 1.5rem 0 10rem 0;
   .reservation_part{
@@ -787,6 +796,9 @@ main{
       width: 8rem;
       padding: 1rem 0 0 0;
       line-height: 2.2rem;
+      @include responsive_media(tab){
+        width: 10rem;
+      }
       @include responsive_media(sp){
         text-align: center;
         padding-top: 2.2rem;
@@ -844,6 +856,11 @@ main{
                 vertical-align: baseline;
               }
             }
+          }
+        }
+        .member_list_btn{
+          @include responsive_media(tab){
+            width: 20rem;
           }
         }
       }
@@ -1090,7 +1107,8 @@ main{
   p{
     color: #5C5C5C;
     margin: 2rem 0 0 0;
-    font-size: 1.6rem;
+    font-size: 2rem;
+    font-weight: bold;
     word-wrap: break-word;
     overflow-wrap: break-word;
     overflow: auto;

@@ -9,7 +9,6 @@
   <div class="profile_info">
     <div class="profile_info_details">
       <p class="common_size20 sp_320_font_size">名前：<%= @user&.name %></p>
-      <p class="common_size16 sp_320_font_size">会員ID：<%= @user&.id %></p>
     </div>
     <div class="profile_info_details">
       <div class="profile_grade <%= get_title_color @user %>">
@@ -39,6 +38,14 @@
         <%= image_tag 'seminer.svg', alt: 'セミナーのアイコン' %>
       </div>
       <p class="common_size16">セミナー予約</p>
+    </div>
+  <% end %>
+  <%= link_to member_reservation_list_reservation_path(current_user) do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'seminer.svg', alt: 'セミナーのアイコン' %>
+      </div>
+      <p class="common_size16">メンバー予約一覧</p>
     </div>
   <% end %>
   <%= link_to organizations_path do %>

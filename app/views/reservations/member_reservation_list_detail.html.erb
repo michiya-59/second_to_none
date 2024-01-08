@@ -1,0 +1,32 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to 'メンバー予約一覧', member_reservation_list_reservation_path(current_user), class: 'common_a' %> >
+  <%= "#{@chose_serminar&.year}年#{@chose_serminar&.month}月#{@chose_serminar&.day}日のセミナー メンバー予約一覧" %>
+</p>
+<div class="admin_seminar_content">
+  <div class="common_field_title">
+    <h1 class="sp_320_font_size"><%= "#{@chose_serminar&.year}年#{@chose_serminar&.month}月#{@chose_serminar&.day}日セミナー" %><br>メンバー予約一覧</h1>
+    <div class="underline"></div>
+  </div>
+
+  <div class="common_admin_list">
+    <div class="common_list_head">
+      <p class="w6"></p>
+      <p class="w41 common_size16">氏名</p>
+    </div>
+
+    <% if @chose_serminars.present? %>
+      <div class="common_list_body">
+        <% @chose_serminars.each_with_index do |chose_serminar, index| %>
+          <div class="common_list_body_part">
+            <p class="w6 common_size16"><%= index + 1 %>.</p>
+            <p class="w41 common_size16"><%= User.find(chose_serminar.user_id).name %></p>
+          </div>
+        <% end %>
+      </div>
+  <% else %>
+    <p class="fz-2 mt-2 sp_320_font_size"><%= "#{@chose_serminar&.year}年#{@chose_serminar&.month}月のセミナーに予約しているメンバーはいません。" %></p>
+  <% end %>
+  </div>
+  <%= link_to '戻る', member_reservation_list_reservation_path(current_user), class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+</div>
