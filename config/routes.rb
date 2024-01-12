@@ -10,6 +10,14 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
 
+  resources :tasks, only: %i(new create) do
+    collection do
+      get "confirm"
+    end
+    member do
+      get "member_detail"
+    end
+  end
   resources :video_views, only: %i(create)
   resources :organizations, only: %i(index)
   resources :rewards, only: %i(index) do

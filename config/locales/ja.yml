@@ -52,6 +52,12 @@ ja:
           attributes:
             name: "を入力してください。"
             too_long: "は15文字以内で入力してください。"
+        task:
+          attributes:
+            learn:
+              blank: "を選択してください。"
+            comment:
+              blank: "を入力してください。"
     attributes:
       tmp_member_info:
         user_id: ユーザID
@@ -119,6 +125,9 @@ ja:
         branch_number: 支店番号
         account_number_hash: 口座番号
         account_holder: 口座名義
+      task:
+        learn: 新規MT
+        commont: 感想
   date:
     abbr_day_names:
     - 日

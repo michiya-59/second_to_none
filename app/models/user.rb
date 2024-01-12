@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :user_image
   has_secure_password
   has_many :learns, dependent: :nullify
+  has_many :tasks, dependent: :destroy
   has_many :introduced_tmp_member_infos, foreign_key: "introducer_id", class_name: "TmpMemberInfo", dependent: :nullify, inverse_of: :introducer
   has_many :sales_tmp_member_infos, foreign_key: "sales_id", class_name: "TmpMemberInfo", dependent: :nullify, inverse_of: :sales
   has_many :child_relationships, foreign_key: "parent_id", class_name: "Relationship", dependent: :nullify, inverse_of: :parent
