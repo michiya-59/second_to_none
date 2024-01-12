@@ -13,8 +13,8 @@ class Reservation < ApplicationRecord
     end
 
     def get_child_accounts_reservations descendants
-      child_reservations = Reservation.where(user_id: descendants)
-      child_reservations
+      Reservation.where(user_id: descendants)
+      
     end
   end
 end

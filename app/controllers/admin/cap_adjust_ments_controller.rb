@@ -11,7 +11,6 @@ module Admin
       return if params[:id].blank?
 
       @cap_adjustment_money = CapAdjustmentMoney.find_or_initialize_by(user_id: params[:id], cap_date: DateTime.new(@search_year, @search_month))
-
     end
 
     def create
@@ -37,7 +36,9 @@ module Admin
 
     def cap_adjust_ments_search
       session[:search_cap_adjust_ment_year] = params[:search_year] if params[:search_year].present?
-      session[:search_cap_adjust_ment_month] = params[:search_month] if params[:search_month].present?
+      if params[:search_month].present?
+        session[:search_cap_adjust_ment_month] = params[:search_month]
+      end
       redirect_to edit_admin_cap_adjust_ment_path(params[:id])
     end
 
@@ -50,17 +51,17 @@ module Admin
         @user_all = User.select(:id, :name).all
       end
 
-      if session[:search_cap_adjust_ment_year].present?
-        @search_year = session[:search_cap_adjust_ment_year].to_i
-      else
-        @search_year = Time.zone.today.year
-      end
+      @search_year = if session[:search_cap_adjust_ment_year].present?
+                       session[:search_cap_adjust_ment_year].to_i
+                     else
+                       Time.zone.today.year
+                     end
 
-      if session[:search_cap_adjust_ment_month].present?
-        @search_month = session[:search_cap_adjust_ment_month].to_i
-      else
-        @search_month = Time.zone.today.month
-      end
+      @search_month = if session[:search_cap_adjust_ment_month].present?
+                        session[:search_cap_adjust_ment_month].to_i
+                      else
+                        Time.zone.today.month
+                      end
     end
 
     def cap_adjustment_money_params

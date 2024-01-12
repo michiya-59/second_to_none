@@ -17,20 +17,19 @@
       </div>
       <p class="common_size16 sp_320_font_size">契約日時：<%= @user&.created_at.strftime("%Y/%m/%d") %></p>
     </div>
-    
     <%# <div class="sales_batch"> %>
       <%#= image_tag 'business.svg', alt: '営業する人のアイコン' %>
     <%# </div> %>
   </div>
 </section>
-<a href="#" class="uranai_link">
+<%= link_to new_task_path, class: "uranai_link" do %>
   <div class="uranai">
     <div class="uranai_icon">
-      <%= image_tag 'cil_badge.svg', alt: '占いのアイコン' %>
+      <%= image_tag 'cil_badge.svg', alt: '課題提出のアイコン' %>
     </div>
-    <p class="common_size16">今日の占い</p>
+    <p class="common_size16">課題提出</p>
   </div>
-</a>
+<% end %>
 <section class="menu_list">
   <%= link_to reservations_path do %>
     <div class="menu_part common_btn_shape">

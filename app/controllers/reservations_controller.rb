@@ -45,8 +45,7 @@ class ReservationsController < ApplicationController
     redirect_to reserved_list_reservations_path
   end
 
-  def member_reservation_list
-  end
+  def member_reservation_list; end
 
   def member_reservation_list_detail
     # 選択肢したセミナーの情報を取得

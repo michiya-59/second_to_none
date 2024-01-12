@@ -371,24 +371,29 @@ $border_radius: 0.5rem;
     }
   }
 }
-.edit_btn, .add_btn, .back_btn{
+.edit_btn, .add_btn, .back_btn, .confirm_btn{
   background: white;
   line-height: 2.6rem;
   margin-left: auto;
   font-size: 1.6rem;
-  width: 6.4rem;
+  width: 10%;
   text-align: center;
   @include responsive_media(sp){
     line-height: 3.5rem;
     width: 11rem;
   }
 }
-
-.edit_btn{
+.edit_btn, .confirm_btn{
   @include responsive_media(sp){
     height: 5rem;
     line-height: 4.8rem;
     width: 9rem;
+  }
+}
+.confirm_btn{
+  width: 15%;
+  @include responsive_media(sp){
+    width: 25%;
   }
 }
 .user_info_edit{
@@ -420,6 +425,14 @@ $border_radius: 0.5rem;
 }
 .fz-2{
   font-size: 2rem;
+}
+.fz-1_5{
+  font-size: 1.5rem;
+}
+.disabled_form{
+  border: 1px solid #afafaf;
+  border-radius: 0.3rem;
+  padding: 1rem;
 }
 .sp_320_font_size{
   @include responsive_media(sp_320){
@@ -1984,7 +1997,7 @@ main{
   margin: 0 auto;
   margin-top: 6rem;
   @include responsive_media(tab){
-    margin-top: 32rem;
+    margin-top: 29rem;
   }
   @include responsive_media(sp){
     margin-top: 37rem;
@@ -2288,6 +2301,7 @@ main{
       display: flex;
       border-bottom: 0.1rem solid #dab483;
       padding-bottom: 0.5rem;
+      font-weight: bold;
     }
     .common_list_body .common_list_body_part{
       border-bottom: 1px dotted #CDCDCD;
@@ -2304,7 +2318,7 @@ main{
     margin-left: auto;
   }
 }
-.admin_event_form_part, .admin_bonus_form_part, .learn_add_categeory_part, .learn_add_part, .learn_edit_part{
+.admin_event_form_part, .admin_bonus_form_part, .learn_add_categeory_part, .learn_add_part, .learn_edit_part, .task_form_part{
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;

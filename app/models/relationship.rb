@@ -15,7 +15,7 @@ class Relationship < ApplicationRecord
     end
 
     def find_descendants parent_id
-      direct_children = Relationship.where(parent_id: parent_id).pluck(:child_id)
+      direct_children = Relationship.where(parent_id:).pluck(:child_id)
       return [] if direct_children.blank?
 
       # 子孫を再帰的に探索する

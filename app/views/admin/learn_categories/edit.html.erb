@@ -12,7 +12,7 @@
   <%= form_with model: @learn_category, url: admin_learn_category_path(@learn_category), local: true do |form| %>
     <%= render 'shared/admin_error', object: @learn_category %>
     <div class="admin_bonus_form_part">
-      <%= form.label :name, "カテゴリー名", class: "common_size16" %><span>必須</span>
+      <%= form.label :name, "カテゴリー名<span>必須</span>".html_safe, class: "common_size16" %>
       <%= form.text_field :name, class: "course_name text_box common_size16", maxlength: 15 %>
       <p class="gray common_size13">※15文字以内で入力してください。</p>
     </div>
