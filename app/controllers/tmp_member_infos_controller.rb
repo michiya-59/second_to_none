@@ -31,7 +31,7 @@ class TmpMemberInfosController < ApplicationController
 
   def confirm
     @current_step = params["current_step"].to_i || 1
-
+    session[:tmp_member_info_data] ||= {}
     update_tmp_member_info
 
     if @set_tmp_member_info.valid?
