@@ -75,7 +75,7 @@ class TmpMemberInfosController < ApplicationController
 
     if step_mapping[@current_step]
       params_method = step_mapping[@current_step][:method]
-      session[:tmp_member_info_data].merge!(send(params_method))
+      session[:tmp_member_info_data]&.merge!(send(params_method))
       @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data])
       @set_tmp_member_info.current_step = step_mapping[@current_step][:step]
     else
