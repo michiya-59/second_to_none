@@ -1622,8 +1622,22 @@ main{
     }
   }
 }
-
-
+.danger_message{
+  font-size: 1.5rem;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 2px 2px 4px 1px #d7d7d7;
+  p:nth-child(1){
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  p:nth-child(3), p:nth-child(4){
+    color: red;
+  }
+}
 
 // introducer
 .introducer_container{

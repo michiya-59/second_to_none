@@ -1,6 +1,5 @@
 <% content_for :js do %>
   <%= javascript_import_module_tag "controllers/video_replay" %>
-  <%# <%= javascript_import_module_tag "controllers/video_play_completed" %> %>
 <% end %>
 
 <p class="pankuzu">
@@ -13,6 +12,16 @@
 <div class="common_field_title">
   <h1><%= @learn_category_name %></h1>
   <div class="underline"></div>
+</div>
+
+<div class="danger_message">
+  <p>注意</p>
+  <p>STNのコンテンツになるので、</p>
+  <p>・ファイルをSNSで共有する</p>
+  <p>・動画を拡散する。(SNSも含む。)</p>
+  <p>この2点をお守りください。</p><br>
+  <p>上記2点を含む悪質な行為と判断した場合は損害賠償請求をさせていただく場合がございます。</p>
+  <p>了承した方のみコンテンツをご覧ください。</p>
 </div>
 
 <div class="learn_detail_list">
