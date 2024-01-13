@@ -7,7 +7,11 @@ class TmpMemberInfosController < ApplicationController
   skip_before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session
 
   def new
-    session[:tmp_member_info_data] ||= {}
+    if session[:tmp_member_info_data].present?
+      session[:tmp_member_info_data] = session[:tmp_member_info_data]
+    else
+      session[:tmp_member_info_data] = {}
+    end
 
     if session[:tmp_member_info_data]["login_id"]
       if validete_uniq? session[:tmp_member_info_data]["login_id"], "login_id"
