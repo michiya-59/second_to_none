@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session, only: %i(new create)
 
   def new; end

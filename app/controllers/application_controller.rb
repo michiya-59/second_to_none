@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include(OrganizationsHelper)
   before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session, :set_session_expiration
   around_action :catch_exception if Rails.env.production?
+  skip_before_action :verify_authenticity_token
 
   # ログインされていない場合またはURLが直接操作されてた場合の処理
   def authenticate_user
