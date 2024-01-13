@@ -2039,7 +2039,8 @@ main{
     justify-content: center;
     margin-bottom: 1rem;
     .login_form_left{
-      background: var(--unnamed, linear-gradient(90deg, #EACDA3 0%, #d6ae7b 100%));
+      // background: var(--unnamed, linear-gradient(90deg, #EACDA3 0%, #d6ae7b 100%));
+      background: gray;
       padding: 1.1rem 2.5rem;
       border-radius: 8px 0px 0px 8px;
       .login_icon_img{
