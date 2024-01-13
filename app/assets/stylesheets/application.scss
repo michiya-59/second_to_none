@@ -2018,7 +2018,7 @@ main{
   margin: 0 auto;
   margin-top: 6rem;
   @include responsive_media(tab){
-    margin-top: 23rem;
+    margin-top: 29rem;
   }
   @include responsive_media(sp_394){
     margin-top: 23rem;
@@ -2039,8 +2039,7 @@ main{
     justify-content: center;
     margin-bottom: 1rem;
     .login_form_left{
-      // background: var(--unnamed, linear-gradient(90deg, #EACDA3 0%, #d6ae7b 100%));
-      background: gray;
+      background: var(--unnamed, linear-gradient(90deg, #EACDA3 0%, #d6ae7b 100%));
       padding: 1.1rem 2.5rem;
       border-radius: 8px 0px 0px 8px;
       .login_icon_img{
