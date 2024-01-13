@@ -392,6 +392,9 @@ $border_radius: 0.5rem;
 }
 .confirm_btn{
   width: 15%;
+  margin-left: auto;
+  padding: 1px 10px;
+  border-radius: 2px;
   @include responsive_media(sp){
     width: 25%;
   }
@@ -872,8 +875,12 @@ main{
           }
         }
         .member_list_btn{
+          width: 21rem;
           @include responsive_media(tab){
             width: 20rem;
+          }
+          @include responsive_media(sp){
+            width: 19rem;
           }
         }
       }
@@ -2146,10 +2153,10 @@ main{
     }
   }
   @include responsive_media(sp_430){
-    height: 34%;
+    height: 30%;
   }
   @include responsive_media(sp_390){
-    height: 29%;
+    height: 26%;
   }
 }
 .wave svg {
