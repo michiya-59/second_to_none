@@ -6,10 +6,10 @@ class LearnsController < ApplicationController
 
   def learn_list
     if params && params["type"] == "新規MT"
-      @learns = Learn.where(learn_category_id: 1)
+      @learns = Learn.where(learn_category_id: 1).includes(document_file_attachment: :blob, video_file_attachment: :blob)
       @learn_category_name = LearnCategory.find(1).name
     else
-      @learns = Learn.where(learn_category_id: params[:id])
+      @learns = Learn.where(learn_category_id: params[:id]).includes(document_file_attachment: :blob, video_file_attachment: :blob)
       @learn_category_name = LearnCategory.find(params[:id]).name
     end
     @learn_infos = Kaminari.paginate_array(@learns).page(params[:page]).per(12)
