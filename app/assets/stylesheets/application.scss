@@ -2020,9 +2020,6 @@ main{
   @include responsive_media(tab){
     margin-top: 29rem;
   }
-  @include responsive_media(sp){
-    margin-top: 32rem;
-  }
   @include responsive_media(sp_390){
     margin-top: 23rem;
   }
