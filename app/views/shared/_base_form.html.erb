@@ -53,7 +53,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :login_id, class: 'input_text_form', value: get_default_value("login_id"), required: true  %>
+        <%= f.text_field :login_id, class: 'input_text_form', value: get_default_value("login_id") %>
         <p>※半角英数字で入力してください。</p>
       </div>
     </div>
@@ -65,7 +65,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.password_field :password, class: 'input_text_form', value: get_default_value("password"), required: true  %>
+        <%= f.password_field :password, class: 'input_text_form', value: get_default_value("password") %>
         <p>※8文字以上でそれぞれ一つ以上の小文字、大文字、特殊文字を含めてください。</p>
       </div>
     </div>
@@ -77,7 +77,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.password_field :password_confirmation, class: 'input_text_form', value: get_default_value("password_confirmation"), required: true  %>
+        <%= f.password_field :password_confirmation, class: 'input_text_form', value: get_default_value("password_confirmation") %>
         <p>※8文字以上でそれぞれ一つ以上の小文字、大文字、特殊文字を含めてください。</p>
       </div>
     </div>
@@ -89,7 +89,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :name, class: 'input_text_form', value: get_default_value("name"), required: true  %>
+        <%= f.text_field :name, class: 'input_text_form', value: get_default_value("name") %>
       </div>
     </div>
 
@@ -100,7 +100,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :name_kana, class: 'input_text_form', value: get_default_value("name_kana"), required: true  %>
+        <%= f.text_field :name_kana, class: 'input_text_form', value: get_default_value("name_kana") %>
       </div>
     </div>
 
@@ -111,7 +111,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.email_field :email, class: 'input_text_form', value: get_default_value("email"), required: true  %>
+        <%= f.email_field :email, class: 'input_text_form', value: get_default_value("email") %>
       </div>
     </div>
 
@@ -122,7 +122,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.telephone_field :phone, class: 'input_text_form', value: get_default_value("phone"), required: true  %>
+        <%= f.telephone_field :phone, class: 'input_text_form', value: get_default_value("phone") %>
         <p>※ハイフンを含めないで入力してください。</p>
       </div>
     </div>
