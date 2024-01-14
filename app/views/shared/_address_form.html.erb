@@ -51,7 +51,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :zip_str3, class: "zip_three", maxlength: 3, value: get_default_value("zip_str3")%>　ー　<%= f.text_field :zip_str4, class: "zip_four", maxlength: 4, value: get_default_value("zip_str4") %>
+        <%= f.text_field :zip_str3, class: "zip_three", maxlength: 3, value: get_default_value("zip_str3", "text" , @set_tmp_member_info)%>　ー　<%= f.text_field :zip_str4, class: "zip_four", maxlength: 4, value: get_default_value("zip_str4", "text" , @set_tmp_member_info), required: true %>
         <p>※半角英数字で入力してください。</p>
       </div>
     </div>
@@ -61,7 +61,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :ken, class: "input_text_form", value: get_default_value("ken") %>
+        <%= f.text_field :ken, class: "input_text_form", value: get_default_value("ken", "text" , @set_tmp_member_info), required: true %>
       </div>
     </div>
     <div class="form_edit_part">
@@ -70,7 +70,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :city, class: "input_text_form", value: get_default_value("city") %>
+        <%= f.text_field :city, class: "input_text_form", value: get_default_value("city", "text" , @set_tmp_member_info), required: true %>
       </div>
     </div>
 
@@ -79,7 +79,7 @@
         <p class="common_size16">建物名・部屋番号</p>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :other_address, class: "input_text_form", value: get_default_value("other_address")  %>
+        <%= f.text_field :other_address, class: "input_text_form", value: get_default_value("other_address", "text" , @set_tmp_member_info)  %>
       </div>
     </div>          
   </div>
@@ -87,8 +87,11 @@
   <% if params["back_flg"].present? %>
     <%= f.hidden_field :back_flg, value: 1 %>
   <% end %>
+  <% if @tmp_member_info_id.present? %>
+    <%= f.hidden_field :id, value: @tmp_member_info_id %>
+  <% end %>
   <div class="submit_btn common_merge">
-    <%= link_to '戻る', new_tmp_member_info_path(current_step: @current_step - 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    <%= link_to '戻る', new_tmp_member_info_path(current_step: @current_step - 1, tmp_member_info_id: @tmp_member_info_id), class: 'common_btn_beige common_btn_content common_box_beige' %>
     <%= f.submit '次へ', class: 'common_btn_beige common_btn_content common_box_beige' %>
   </div>
 <% end %>

@@ -21,7 +21,7 @@
 
 </div>
 
-<%= form_with model: @set_tmp_member_info, url: tmp_member_infos_path, local: true do |f| %>
+<%= form_with model: @set_tmp_member_info, url: tmp_member_info_path(@set_tmp_member_info), local: true do |f| %>
   <% if flash[:edit].present? %>
     <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:edit] %><p>
   <% end %>
@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="submit_btn common_merge">
-      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 1, back_flg: 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 1, back_flg: 1, tmp_member_info_id: @tmp_member_info_id), class: 'common_btn_beige common_btn_content common_box_beige' %>
     </div>
   </div>
 
@@ -141,7 +141,7 @@
       </div>
     </div>
     <div class="submit_btn common_merge">
-      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 2, back_flg: 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 2, back_flg: 1, tmp_member_info_id: @tmp_member_info_id), class: 'common_btn_beige common_btn_content common_box_beige' %>
     </div>
   </div>
 
@@ -199,7 +199,7 @@
       </div>
     </div>
     <div class="submit_btn common_merge">
-      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 3, back_flg: 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 3, back_flg: 1, tmp_member_info_id: @tmp_member_info_id), class: 'common_btn_beige common_btn_content common_box_beige' %>
     </div>
   </div>
 
@@ -250,8 +250,12 @@
       </div>
     </div>
     <div class="submit_btn common_merge">
-      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 4, back_flg: 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+      <%= link_to '編集へ戻る', new_tmp_member_info_path(current_step: 4, back_flg: 1, tmp_member_info_id: @tmp_member_info_id), class: 'common_btn_beige common_btn_content common_box_beige' %>
     </div>
   </div>
+  <% if @set_tmp_member_info&.id.present? %>
+    <%= f.hidden_field :id, value: @set_tmp_member_info.id %>
+  <% end %>
+
   <%= f.submit "登録を完了する", class: "common_btn_shape common_btn_content common_btn_beige_background common_merge entry_btn_finish" %>
 <% end %>

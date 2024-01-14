@@ -53,7 +53,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :login_id, class: 'input_text_form', value: get_default_value("login_id") %>
+        <%= f.text_field :login_id, class: 'input_text_form', value: get_default_value("login_id", "text" , @set_tmp_member_info), required: true  %>
         <p>※半角英数字で入力してください。</p>
       </div>
     </div>
@@ -65,7 +65,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.password_field :password, class: 'input_text_form', value: get_default_value("password") %>
+        <%= f.password_field :password, class: 'input_text_form', required: true  %>
         <p>※8文字以上でそれぞれ一つ以上の小文字、大文字、特殊文字を含めてください。</p>
       </div>
     </div>
@@ -77,7 +77,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.password_field :password_confirmation, class: 'input_text_form', value: get_default_value("password_confirmation") %>
+        <%= f.password_field :password_confirmation, class: 'input_text_form', required: true  %>
         <p>※8文字以上でそれぞれ一つ以上の小文字、大文字、特殊文字を含めてください。</p>
       </div>
     </div>
@@ -89,7 +89,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :name, class: 'input_text_form', value: get_default_value("name") %>
+        <%= f.text_field :name, class: 'input_text_form', value: get_default_value("name", "text" , @set_tmp_member_info), required: true  %>
       </div>
     </div>
 
@@ -100,7 +100,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :name_kana, class: 'input_text_form', value: get_default_value("name_kana") %>
+        <%= f.text_field :name_kana, class: 'input_text_form', value: get_default_value("name_kana", "text" , @set_tmp_member_info), required: true  %>
       </div>
     </div>
 
@@ -111,7 +111,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.email_field :email, class: 'input_text_form', value: get_default_value("email") %>
+        <%= f.email_field :email, class: 'input_text_form', value: get_default_value("email", "text" , @set_tmp_member_info), required: true  %>
       </div>
     </div>
 
@@ -122,7 +122,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.telephone_field :phone, class: 'input_text_form', value: get_default_value("phone") %>
+        <%= f.telephone_field :phone, class: 'input_text_form', value: get_default_value("phone", "text" , @set_tmp_member_info), required: true  %>
         <p>※ハイフンを含めないで入力してください。</p>
       </div>
     </div>
@@ -135,7 +135,7 @@
       </div>
       <div class="form_part_input">
         <div class="form_select">
-          <% f.object.birthday = get_default_birthday_value %>
+          <% f.object.birthday = get_default_birthday_value @set_tmp_member_info %>
           <%= f.date_select :birthday, use_month_numbers: true, start_year: 1970, end_year: Date.today.year%>
         </div>
       </div>
@@ -149,16 +149,20 @@
       </div>
       <div class="form_part_input">
         <p class="gender_content">
-          <%= f.radio_button :gender_id, 1, checked: (get_default_value("gender_id", "radio") == 1) %> 男性
+          <%= f.radio_button :gender_id, 1, checked: (get_default_value("gender_id", "radio", @set_tmp_member_info) == 1) %> 男性
         </p>
         <p class="gender_content">
-          <%= f.radio_button :gender_id, 0, checked: (get_default_value("gender_id", "radio") == 0) %> 女性
+          <%= f.radio_button :gender_id, 0, checked: (get_default_value("gender_id", "radio", @set_tmp_member_info) == 0) %> 女性
         </p>
       </div>
     </div>
 
     <% if params["back_flg"].present? %>
       <%= f.hidden_field :back_flg, value: 1 %>
+    <% end %>
+
+    <% if @tmp_member_info_id.present? %>
+      <%= f.hidden_field :id, value: @tmp_member_info_id %>
     <% end %>
   </div>
   <!-- 送信ボタン -->

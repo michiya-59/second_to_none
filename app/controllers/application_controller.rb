@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
       uniq_value = User.find_by(email: value)
     end
 
-    true if uniq_value.present?
+    uniq_value.present?
   end
 
   def render_404

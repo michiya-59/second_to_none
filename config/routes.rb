@@ -71,9 +71,10 @@ Rails.application.routes.draw do
       get "member_reservation_list_detail"
     end
   end
-  resources :tmp_member_infos, only: %i(new create) do
+  resources :tmp_member_infos do
     collection do
       post "confirm"
+      patch "confirm"
       get "get_confirm"
       get "complete"
     end
@@ -94,6 +95,6 @@ Rails.application.routes.draw do
   end
 
   match "/404", to: "errors#not_found", via: :all
-  match "/500", to: "errors#internal_server_error", via: :all
-  match "*path", to: "application#render_404", via: :all
+  # match "/500", to: "errors#internal_server_error", via: :all
+  # match "*path", to: "application#render_404", via: :all
 end

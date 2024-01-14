@@ -4,30 +4,17 @@ require "line_notifier"
 
 class TmpMemberInfosController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_tmp_member_info, only: %i(new confirm get_confirm create)
+  before_action :set_tmp_member_info, only: %i(new confirm get_confirm update)
   skip_before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session
 
   def new
-    if session[:tmp_member_info_data].present?
-      session[:tmp_member_info_data] = session[:tmp_member_info_data]
-    else
-      session[:tmp_member_info_data] = {}
-    end
-
-    if session[:tmp_member_info_data]["login_id"]
-      if validete_uniq? session[:tmp_member_info_data]["login_id"], "login_id"
-        flash[:error] = ["入力したログインIDは他のユーザ使っています。別のものにしてください。"]
-      elsif validete_uniq? session[:tmp_member_info_data]["email"], "email"
-        flash[:error] = ["入力したメールアドレスは他のユーザ使っています。別のものにしてください。"]
-      end
-    end
-
     @current_step = if params["current_step"].present?
                       params["current_step"].to_i
                     else
                       1
                     end
 
+    @tmp_member_info_id = params[:tmp_member_info_id] if params[:tmp_member_info_id].present?
     return unless @current_step == TmpMemberInfo::CURRENT_STEP["contract"]
 
     @incentives = Incentive.where(id: [1, 2])
@@ -37,29 +24,28 @@ class TmpMemberInfosController < ApplicationController
   def confirm
     @current_step = params["current_step"].to_i || 1
 
-    update_tmp_member_info
+    tmp_member_info_id = update_tmp_member_info
+    return if tmp_member_info_id.nil?
 
     if @set_tmp_member_info.valid?
-      process_next_step
+      process_next_step tmp_member_info_id
     else
       handle_invalid_info
     end
   end
 
   def get_confirm
-    @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data])
+    @tmp_member_info_id = params[:tmp_member_info_id] if params[:tmp_member_info_id].present?
     @introducer = User.find(@set_tmp_member_info.introducer_id).name
     @saler = User.find(@set_tmp_member_info.sales_id).name
     set_conversion_account_number
   end
 
-  def create
-    @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data].merge("approval_id" => "2"))
+  def update
+    @set_tmp_member_info.assign_attributes("approval_id" => "2")
     set_conversion_account_number
     if @set_tmp_member_info.save
       LineNotifier.notify_tmp_entry(@set_tmp_member_info)
-      session[:tmp_member_info_data] = nil
-      session[:current_step] = nil
       redirect_to complete_tmp_member_infos_path
     else
       render :new
@@ -80,36 +66,73 @@ class TmpMemberInfosController < ApplicationController
 
     if step_mapping[@current_step]
       params_method = step_mapping[@current_step][:method]
-      session[:tmp_member_info_data].merge!(send(params_method))
-      @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data])
+      if send(params_method)["login_id"]
+        flash.now[:error] = if validete_uniq? send(params_method)["login_id"], "login_id"
+                              ["入力したログインIDは他のユーザ使っています。別のものにしてください。"]
+                            end
+      end
+
+      if send(params_method)["password"]
+        if send(params_method)["password"] == send(params_method)["password_confirmation"]
+          flash.now[:error] = nil
+        else
+          flash.now[:error] = ["パスワードが確認の値と違っています。同じパスワードを入力してください。"]
+        end
+      end
+
+      @set_tmp_member_info.assign_attributes(send(params_method))
       @set_tmp_member_info.current_step = step_mapping[@current_step][:step]
-    else
-      @set_tmp_member_info.assign_attributes(session[:tmp_member_info_data])
+      if @set_tmp_member_info.valid?
+        if @set_tmp_member_info.save
+          tmp_member_info_id = @set_tmp_member_info.id
+        else
+          render :new and return
+        end
+      else
+        if @set_tmp_member_info.errors.full_messages.present?
+          flash.now[:error] = @set_tmp_member_info.errors.full_messages
+        end
+        render :new and return
+      end
     end
+
+    render :new and return if flash.now[:error].present?
+
+    tmp_member_info_id
   end
 
-  def process_next_step
+  def process_next_step tmp_member_info_id
     if params["tmp_member_info"]["back_flg"].present?
       @current_step = 5
-      flash[:edit] = "修正が完了しました。"
+      flash.now[:edit] = "修正が完了しました。"
     else
       @current_step += 1
     end
 
     if @current_step > 4
-      redirect_to get_confirm_tmp_member_infos_path
+      redirect_to get_confirm_tmp_member_infos_path(tmp_member_info_id:)
     else
-      redirect_to new_tmp_member_info_path(current_step: @current_step)
+      redirect_to new_tmp_member_info_path(current_step: @current_step, tmp_member_info_id:)
     end
   end
 
   def handle_invalid_info
-    flash[:error] = @set_tmp_member_info.errors.full_messages
-    redirect_to new_tmp_member_info_path(current_step: @current_step)
+    flash.now[:error] = @set_tmp_member_info.errors.full_messages
+    redirect_to new_tmp_member_info_path(current_step: @current_step) and return
   end
 
   def set_tmp_member_info
-    @set_tmp_member_info ||= TmpMemberInfo.new
+    tmp_member_info_id = if params[:tmp_member_info] && params[:tmp_member_info][:id]
+                           params[:tmp_member_info][:id]
+                         elsif params[:tmp_member_info_id].present?
+                           params[:tmp_member_info_id]
+                         end
+
+    @set_tmp_member_info = if tmp_member_info_id
+                             TmpMemberInfo.find(tmp_member_info_id)
+                           else
+                             TmpMemberInfo.new
+                           end
   end
 
   def user_base_info_params

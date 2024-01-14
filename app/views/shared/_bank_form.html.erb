@@ -51,7 +51,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :bank_name, class: "input_text_form", value: get_default_value("bank_name")  %>
+        <%= f.text_field :bank_name, class: "input_text_form", value: get_default_value("bank_name", "text" , @set_tmp_member_info), required: true  %>
       </div>
     </div>
 
@@ -61,7 +61,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :branch_name, class: "input_text_form", value: get_default_value("branch_name")  %>
+        <%= f.text_field :branch_name, class: "input_text_form", value: get_default_value("branch_name", "text" , @set_tmp_member_info), required: true  %>
       </div>
     </div>
 
@@ -71,7 +71,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :branch_number, class: "input_text_form", value: get_default_value("branch_number")  %>
+        <%= f.text_field :branch_number, class: "input_text_form", value: get_default_value("branch_number", "text" , @set_tmp_member_info), required: true %>
       </div>
     </div>
 
@@ -81,7 +81,7 @@
         <span>必須</span>
       </div>
       <div class="deposit_type form_part_input">
-        <%= f.select :account_type, [['普通預金', 1], ['当座預金', 2], ['定期預金', 3]], { selected: get_default_value("account_type", "select") }, class: "select_class_name" %>         
+        <%= f.select :account_type, [['普通預金', 1], ['当座預金', 2], ['定期預金', 3]], { selected: get_default_value("account_type", "select", @set_tmp_member_info) }, class: "select_class_name" %>         
       </div>
     </div>
 
@@ -91,7 +91,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :account_number_hash, class: "input_text_form", value: get_default_value("account_number_hash") %>
+        <%= f.text_field :account_number_hash, class: "input_text_form", value: get_default_value("account_number_hash", "text" , @set_tmp_member_info), required: true %>
       </div>
     </div>
 
@@ -101,7 +101,7 @@
         <span>必須</span>
       </div>
       <div class="form_part_input">
-        <%= f.text_field :account_holder, class: "input_text_form", value: get_default_value("account_holder") %>
+        <%= f.text_field :account_holder, class: "input_text_form", value: get_default_value("account_holder", "text" , @set_tmp_member_info), required: true %>
       </div>
     </div>        
   </div>
@@ -109,9 +109,12 @@
   <% if params["back_flg"].present? %>
     <%= f.hidden_field :back_flg, value: 1 %>
   <% end %>
+  <% if @tmp_member_info_id.present? %>
+    <%= f.hidden_field :id, value: @tmp_member_info_id %>
+  <% end %>
 
   <div class="submit_btn common_merge">
-    <%= link_to '戻る', new_tmp_member_info_path(current_step: @current_step - 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    <%= link_to '戻る', new_tmp_member_info_path(current_step: @current_step - 1, tmp_member_info_id: @tmp_member_info_id), class: 'common_btn_beige common_btn_content common_box_beige' %>
     <%= f.submit "次へ", class: "common_btn_beige common_btn_content common_box_beige" %>
   </div>
 <% end %>
