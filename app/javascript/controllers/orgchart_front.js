@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
     nodeMenu: {
       details: { text: "詳細", onClick: showUserDetails }
     },
+    searchFields : ["name"],
     scroll: {
       enable: true, // スクロールを有効にする
     },
