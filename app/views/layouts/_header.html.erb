@@ -15,7 +15,9 @@
           <% else %>
             <li><%= link_to 'ボーナス情報', rewards_path(id: current_user.id) %></li>
           <% end %>
-          <li><%= link_to 'タイトル', titles_path %></li>
+          <% if current_user.admin_flg != 1 %>
+            <li><%= link_to 'タイトル', titles_path %></li>
+          <% end %>
           <li><%= link_to '学びの資料', learns_path %></li>
           <li><%= link_to '紹介者一覧', introducers_path %></li>
           <li><%= link_to '登録情報', user_path(current_user) %></li>

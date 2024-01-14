@@ -6,7 +6,8 @@ class TmpMemberInfo < ApplicationRecord
   belongs_to :introducer, class_name: "User", optional: true
   belongs_to :sales, class_name: "User", optional: true
 
-  has_secure_password
+  has_secure_password validations: false
+
   VALID_ALPHANUMERIC_REGEX = /\A[a-zA-Z0-9]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_ZIP_CODE3_REGEX = /\A[0-9]{3}\z/

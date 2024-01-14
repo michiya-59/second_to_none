@@ -28,7 +28,7 @@ class User < ApplicationRecord
   validates :login_id, uniqueness: true, format: {with: VALID_ALPHANUMERIC_REGEX, message: "は半角英数字のみで入力してください。"}
   validates :name, presence: true, length: {maximum: 30}
   validates :name_kana, presence: true
-  validates :email, uniqueness: true, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}
+  validates :email, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}
   validates :phone, length: {in: 10..11, message: "は10文字または11文字で入力してください。"}
   validates :birthday, presence: true
   validates :gender_id, presence: true

@@ -44,7 +44,7 @@ module LineNotifier
 
   def self.notify_tmp_entry message
     entryline_notify_token = ENV.fetch("ENTRYLINE_NOTIFY_TOKEN", nil)
-    return unless Rails.env.production? # 本番環境のみ実行
+    # return unless Rails.env.production? # 本番環境のみ実行
 
     send_message = tmp_entry_format_message message
     uri = URI.parse(LINE_NOTIFY_URL)

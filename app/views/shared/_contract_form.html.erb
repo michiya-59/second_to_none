@@ -56,7 +56,7 @@
         <span>必須</span>
       </div>
       <div class="contract_info form_part_input">
-        <%= f.select :introducer_id, @users&.map { |i| [i.name, i.id] }, { selected: get_default_value("introducer_id", "select")}, { id: 'select2' } %>
+        <%= f.select :introducer_id, @users&.map { |i| [i.name, i.id] }, { selected: get_default_value("introducer_id", "select", @set_tmp_member_info)}, { id: 'select2' } %>
       </div>
     </div>
 
@@ -66,7 +66,7 @@
         <span>必須</span>
       </div>
       <div class="contract_info form_part_input">
-        <%= f.select :sales_id, @users&.map { |i| [i.name, i.id] }, { selected: get_default_value("sales_id", "select") }, { id: 'select2' } %>
+        <%= f.select :sales_id, @users&.map { |i| [i.name, i.id] }, { selected: get_default_value("sales_id", "select", @set_tmp_member_info) }, { id: 'select2' } %>
       </div>
     </div>
     
@@ -76,7 +76,7 @@
         <span>必須</span>
       </div>
       <div class="contract_info form_part_input">
-        <%= f.select :incentive_id, @incentives&.map { |i| [i.course_name, i.id] }, { selected: get_default_value("incentive_id", "select") }%>
+        <%= f.select :incentive_id, @incentives&.map { |i| [i.course_name, i.id] }, { selected: get_default_value("incentive_id", "select", @set_tmp_member_info) }%>
       </div>
     </div>
 
@@ -93,17 +93,17 @@
       </p>
       
       <div class="two_thier_radio">
-        <%= f.radio_button :a_san_flg, 1, checked: (get_default_value("a_san_flg", "radio") == 1) %>
+        <%= f.radio_button :a_san_flg, 1, checked: (get_default_value("a_san_flg", "radio", @set_tmp_member_info) == 1), required: true %>
         <%= f.label :a_san_flg, '自組織の３列目以降' %>
       </div>
       
       <div class="two_thier_radio">
-        <%= f.radio_button :a_san_flg, 2, checked: (get_default_value("a_san_flg", "radio") == 2) %>
+        <%= f.radio_button :a_san_flg, 2, checked: (get_default_value("a_san_flg", "radio", @set_tmp_member_info) == 2), required: true %>
         <%= f.label :a_san_flg, '他系列'%>
       </div>
       
       <div class="two_thier_radio">
-        <%= f.radio_button :a_san_flg, 9, checked: (get_default_value("a_san_flg", "radio") == 9) %>
+        <%= f.radio_button :a_san_flg, 9, checked: (get_default_value("a_san_flg", "radio", @set_tmp_member_info) == 9), required: true %>
         <%= f.label :a_san_flg, 'どれでもない' %>
       </div>
     </div>
@@ -112,9 +112,13 @@
   <% if params["back_flg"].present? %>
     <%= f.hidden_field :back_flg, value: 1 %>
   <% end %>
+
+  <% if @tmp_member_info_id.present? %>
+    <%= f.hidden_field :id, value: @tmp_member_info_id %>
+  <% end %>
   
   <div class="submit_btn common_merge">
-    <%= link_to '戻る', new_tmp_member_info_path(current_step: @current_step - 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
+    <%= link_to '戻る', new_tmp_member_info_path(current_step: @current_step - 1, tmp_member_info_id: @tmp_member_info_id), class: 'common_btn_beige common_btn_content common_box_beige' %>
     <%= f.submit "次へ", class: "common_btn_beige common_btn_content common_box_beige" %>
   </div>
 <% end %>
