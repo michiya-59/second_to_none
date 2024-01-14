@@ -103,7 +103,7 @@
           <div class="common_list_body_part">
             <p class="w6 common_size16"><%= starting_index %></p>
             <p class="w33 common_size16"><%= seminar_info&.formatted_start_time %></p>
-            <p class="w34 common_size16"><%= seminar_info&.seminar_type == 1 ? "対面" : "オンライン" %></p>
+            <p class="w34 common_size16"><%= seminar_info&.seminar_type == 0 ? "対面" : "オンライン" %></p>
             <p class="w41 common_size16"><%= seminar_info&.title %></p>
             <p class="w20 common_size16"><%= seminar_info&.teacher %></p>
             <%= link_to "編集", edit_admin_seminar_path(seminar_info), class: "edit_btn common_box_beige" %>
