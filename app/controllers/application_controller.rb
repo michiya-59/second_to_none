@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   # ログインされていない場合またはURLが直接操作されてた場合の処理
   def authenticate_user
     return if logged_in? && valid_referrer?
+    return if request.original_url.include?("tmp_member_infos")
 
     reset_session
     flash[:logout] = "不正なアクセスがありました。<br>再度ログインをしてください。"
@@ -20,6 +21,7 @@ class ApplicationController < ActionController::Base
   # ログインされていない場合は、ログイン画面にリダイレクトさせる処理
   def redirect_not_logged_in
     return if current_user
+    return if request.original_url.include?("tmp_member_infos")
 
     reset_session
     flash[:logout] = "ログインされてません。ログインしてください。"
@@ -29,6 +31,7 @@ class ApplicationController < ActionController::Base
   # 60分でセッションが切れて、ログアウトする処理
   def redirect_not_session
     return unless session[:expires_at]
+    return if request.original_url.include?("tmp_member_infos")
 
     # session[:expires_at] を Time オブジェクトとして読み込み
     expires_at = Time.zone.parse(session[:expires_at].to_s)
