@@ -87,6 +87,9 @@
   <% if params["back_flg"].present? %>
     <%= f.hidden_field :back_flg, value: 1 %>
   <% end %>
+  <% if @tmp_member_info_id.present? %>
+    <%= f.hidden_field :id, value: @tmp_member_info_id %>
+  <% end %>
   <div class="submit_btn common_merge">
     <%= link_to '戻る', new_tmp_member_info_path(current_step: @current_step - 1), class: 'common_btn_beige common_btn_content common_box_beige' %>
     <%= f.submit '次へ', class: 'common_btn_beige common_btn_content common_box_beige' %>

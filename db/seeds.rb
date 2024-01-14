@@ -102,7 +102,7 @@ users = [
   # id: 37 倉内未来
   { login_id: "mikukamen5656", email: "asdg08122635@icloud.com", name: "倉内未来", password: "Miku0812!?", password_confirmation: "Miku0812!?", name_kana: "クラウチミク", birthday: Date.new(2002, 8, 12), phone: "07014549903", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-04-16 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 38 堀田大輝
-  { login_id: "hottadaiki", email: "hottadaiki@icloud.com", name: "堀田大輝", password: "Nanasuzu0911!?", password_confirmation: "Nanasuzu0911!?", name_kana: "クラウチミク", birthday: Date.new(2002, 4, 18), phone: "09044137492", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-11-19 00:00:00, updated_at: nil, incentive_id: 2 },
+  { login_id: "hottadaiki", email: "hottadaiki@icloud.com", name: "堀田大輝", password: "Nanasuzu0911!?", password_confirmation: "Nanasuzu0911!?", name_kana: "クラウチミク", birthday: Date.new(2002, 4, 18), phone: "09044137492", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-11-19 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 39 中坂元紀 退会済み
   { login_id: "unknown0024", email: "unknown24@gmail.com", name: "中坂元紀", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナカサカモトノリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-01 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 40 楊光 退会済み
@@ -142,7 +142,7 @@ users = [
   # id: 57 柳村康貴 退会済み
   { login_id: "unknown0034", email: "unknown34@gmail.com", name: "柳村康貴", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヤナギムラコウキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 44, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-14 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 58 堀田陽太
-  { login_id: "20020114", email: "hinata114@icloud.com", name: "堀田陽太", password: "Hottahinata114!?", password_confirmation: "Hottahinata114!?", name_kana: "ホッタヒナタ", birthday: Date.new(2002, 1, 14), phone: "09061454507", status: 1, introducer_id: 44, admin_flg: 9, gender_id: 1, online_flg: 99, grade_id: 99, created_at: "2023-12-01 00:00:00", updated_at: nil, incentive_id: 1 },
+  { login_id: "20020114", email: "hinata114@icloud.com", name: "堀田陽太", password: "Hottahinata114!?", password_confirmation: "Hottahinata114!?", name_kana: "ホッタヒナタ", birthday: Date.new(2002, 1, 14), phone: "09061454507", status: 1, introducer_id: 44, admin_flg: 9, gender_id: 1, online_flg: 99, grade_id: 99, created_at: "2023-12-01 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 59 宮崎綾美
   { login_id: "2810", email: "ayami1955@icloud.com", name: "宮崎綾美", password: "Miya.1382", password_confirmation: "Miya.1382", name_kana: "ミヤザキアヤミ", birthday: Date.new(1999, 5, 19), phone: "08013634963", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 99, created_at: "2023-07-08 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 60 藤田剛 退会済み
@@ -646,6 +646,20 @@ user_banks = [
   { user_id: 87, bank_name: "ゆうちょ銀行", account_type: 1, branch_name: "二〇八", branch_number: "208", account_number_hash: "1259103", account_number_tail: "*****103", account_holder: "KAWAJI KURUMI" }
 ]
 
+rewards = [
+  user_id: 44, incentive_id: 2, incentive_price: nil,
+  user_id: 13, incentive_id: 4, incentive_price: nil,
+  user_id: 36, incentive_id: 2, incentive_price: nil,
+  user_id: 3, incentive_id: 4, incentive_price: nil,
+  user_id: 53, incentive_id: 1, incentive_price: nil,
+  user_id: 35, incentive_id: 3, incentive_price: nil,
+  user_id: 3, incentive_id: 7, incentive_price: nil,
+  user_id: 59, incentive_id: 2, incentive_price: nil,
+  user_id: 48, incentive_id: 4, incentive_price: nil,
+  user_id: 48, incentive_id: 2, incentive_price: nil,
+  user_id: 16, incentive_id: 4, incentive_price: nil
+]
+
 Incentive.create!(incentives)
 LearnCategory.create!(learn_categories)
 Grade.create!(grades)
@@ -653,3 +667,4 @@ User.create!(users)
 UserAddress.create!(user_addresses)
 UserBank.create!(user_banks)
 Relationship.create!(relation_ships)
+Reward.create!(rewards)
