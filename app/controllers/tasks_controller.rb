@@ -47,6 +47,6 @@ class TasksController < ApplicationController
   end
 
   def task_load_data
-    @learns = Learn.select(:name, :id).all
+    @learns = Learn.select(:name, :id).where(learn_category_id: 1)
   end
 end
