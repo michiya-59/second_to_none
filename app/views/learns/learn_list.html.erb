@@ -28,7 +28,7 @@
   <% if @learn_infos.present? %>
     <% @learn_infos.each_with_index do |learn, index| %>
       <% if learn.learn_category_id == 1 && current_user.admin_flg != 1%>
-        <% can_view = task_submitted?(learn.id, current_user.id) %>
+        <% can_view = task_submitted?(learn.id, current_user.id, index + 1) %>
         <% video_class = can_view ? '' : 'not_video' %>
       <% else %>
         <% video_class = '' %>

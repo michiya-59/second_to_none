@@ -54,8 +54,8 @@
     </div>
 
     <div class="task_form_part">
-      <%= form.label :files, "ファイルを選択（最大3つ）<span>必須</span>".html_safe, class: "common_size16" %>
-      <%= form.file_field :files, multiple: true, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true, id: 'file_field' %>
+      <%= form.label :files, "ファイルを選択（最大3つ）", class: "common_size16" %>
+      <%= form.file_field :files, multiple: true, accept: 'image/jpeg,image/gif,image/png,application/pdf', id: 'file_field' %>
     </div>
 
     <div class="task_form_part">

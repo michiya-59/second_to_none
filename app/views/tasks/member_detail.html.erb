@@ -23,13 +23,17 @@
   <div class="task_form_part">
     <%= form.label :files, "登録されたファイル", class: "common_size16" %>
     <ul>
-      <% @task.files.each do |file| %>
-        <li class="fz-1_5 disabled_form mb-1">
-          <%= file.filename.to_s %>
-          <%= link_to rails_blob_path(file, disposition: "attachment"), style: "color:#3899bb;margin-left: 1rem;" do %>
-            <i class="fas fa-download"></i>
-          <% end %>
-        </li>
+      <% if @task.files.present? %>
+        <% @task.files.each do |file| %>
+          <li class="fz-1_5 disabled_form mb-1">
+            <%= file.filename.to_s %>
+            <%= link_to rails_blob_path(file, disposition: "attachment"), style: "color:#3899bb;margin-left: 1rem;" do %>
+              <i class="fas fa-download"></i>
+            <% end %>
+          </li>
+        <% end %>
+      <% else %>
+        <li class="fz-1 disabled_form mb-1"><%= "登録されたファイルがありません。"%></li>
       <% end %>
     </ul>
   </div>
