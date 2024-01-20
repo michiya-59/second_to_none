@@ -118,7 +118,10 @@ class RewardsController < ApplicationController
     end
   end
 
-  def bonus_pay; end
+  def bonus_pay_list
+    # ボーナス情報がバッチ処理にて確定した値を取り出す処理
+    @bonus_datas = get_bonus_snapshot @search_year, @search_month
+  end
 
   # ボーナス確定させるバッチ処理
   def bonus_pay_bat
@@ -168,13 +171,51 @@ class RewardsController < ApplicationController
     end
   end
 
+  def bonus_pay_detail
+    snapshot = BonusSnapshot.find(params[:id])
+    if snapshot
+      # 総支払額
+      @total_payment_price = snapshot&.total_payment_price
+      # 直紹介ボーナス
+      @reward_bonus_total = snapshot&.reward_bonus_total
+      # 2ティアボーナス
+      @two_tier_bonus_total = snapshot&.two_tier_bonus_total
+      # タイトルボーナス
+      @title_bonus_total = snapshot&.title_bonus_total
+      # aさんボーナス
+      @a_san_bonus_total = snapshot&.a_san_bonus_total
+      # 源泉所得税
+      @certificate_of_tax_deducted_price_final = snapshot&.tax_withholding
+      # キャップ調整金
+      @cap_adjustment_money = snapshot&.cap_adjustment_money
+
+      # 振り込み対象の年月
+      transfer_month_and_day = snapshot&.reward_snapshots_date&.to_datetime
+      @transfer_month_and_day = "#{transfer_month_and_day.year}年#{transfer_month_and_day.month}月"
+      # 振り込み対象の会員名
+      @target_user = User.select(:name).find(snapshot&.user_id)
+      @user_bank = UserBank.find_by(user_id: snapshot&.user_id)
+    else
+      redirect_to bonus_pay_list_rewards_path
+    end
+  end
+
   private
 
-  def get_bonus_snapshot search_year, search_month, user_id
+  def get_bonus_snapshot search_year, search_month, user_id = nil
     start_date = Date.new(search_year.to_i, search_month.to_i, 1)
     end_date = start_date.end_of_month
-    # 指定された年月の範囲内でレコードを検索
-    BonusSnapshot.find_by(user_id:, reward_snapshots_date: start_date.beginning_of_day..end_date.end_of_day)
+
+    # user_idが指定されている場合はfind_byを使って特定のレコードを取得
+    if user_id.present?
+      BonusSnapshot.includes(:user)
+        .find_by(user_id:, reward_snapshots_date: start_date.beginning_of_day..end_date.end_of_day)
+    else
+      # user_idが指定されていない場合はwhereを使って条件に合うレコードをすべて取得し、並び替えを適用
+      BonusSnapshot.includes(:user)
+        .where(reward_snapshots_date: start_date.beginning_of_day..end_date.end_of_day)
+        .order(total_payment_price: :desc)
+    end
   end
 
   def create_pdf reward_info

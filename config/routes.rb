@@ -23,11 +23,12 @@ Rails.application.routes.draw do
   resources :rewards, only: %i(index) do
     collection do
       get "user_list"
-      get "bonus_pay"
+      get "bonus_pay_list"
       get "bonus_pay_bat"
     end
     member do
       get "pdf_output"
+      get "bonus_pay_detail"
     end
   end
 
