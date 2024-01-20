@@ -41,7 +41,7 @@
   <%= link_to '戻る', reservations_path, class: 'common_btn_content' %>
 
   <%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :user_id, value: current_user&.id %>
     <%= f.hidden_field :seminar_id, value: @seminar.id %>
     <%= f.hidden_field :join_status, value: 9 %>
 

@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="login_form_right">
-          <%= f.text_field :login_id, placeholder: "ログインID" %>
+          <%= f.text_field :login_id, placeholder: "ログインID", required: true %>
         </div>
       </div>
       <% if @id_error_msg.present? %>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="login_form_right">
-          <%= f.password_field :password, placeholder: "パスワード" %>
+          <%= f.password_field :password, placeholder: "パスワード", required: true %>
         </div>
       </div>
       <% if @pass_error_msg.present? %>

@@ -2,7 +2,7 @@
 
 class TitlesController < ApplicationController
   def index
-    @user = User.find(current_user.id)
+    @user = User.find(current_user&.id)
     @first_level_count, @second_level_count = get_introduce_count @user.id
     @next_grade, @needed_first_level, @needed_second_level = calculate_needed_for_next_grade @first_level_count, @second_level_count
   end
@@ -41,5 +41,5 @@ class TitlesController < ApplicationController
       # 最上位グレード
       ["最上位グレード", 0, 0]
     end
-  end  
+  end
 end

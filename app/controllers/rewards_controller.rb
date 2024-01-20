@@ -7,6 +7,7 @@
 class RewardsController < ApplicationController
   before_action :reward_load_data
   before_action :set_date
+  skip_before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session, only: %i(bonus_pay_bat)
 
   def index
     # 管理者が各会員の報酬詳細を確認する際に、ユーザのIDで検索した際に、渡ってくる会員ID
@@ -15,10 +16,35 @@ class RewardsController < ApplicationController
       @target_user = User.find(params[:id])
     end
 
-    @totle_payment_price = get_totle_payment_price
-    @certificate_of_tax_deducted_price, fee_price = calculate_y(@totle_payment_price)
-    @cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: params[:id], cap_date: DateTime.new(@search_year.to_i, @search_month.to_i))&.price
-    @total_payment_price = @totle_payment_price - @certificate_of_tax_deducted_price + @cap_adjustment_money.to_i - fee_price
+    # ボーナス情報がバッチ処理にて確定した値を取り出す処理
+    snapshot = get_bonus_snapshot @search_year, @search_month, params[:id]
+
+    if snapshot
+      # 総支払額
+      @total_payment_price = snapshot.total_payment_price
+      # 直紹介ボーナス
+      @reward_bonus_total = snapshot.reward_bonus_total
+      # 2ティアボーナス
+      @two_tier_bonus_total = snapshot.two_tier_bonus_total
+      # タイトルボーナス
+      @title_bonus_total = snapshot.title_bonus_total
+      # aさんボーナス
+      @a_san_bonus_total = snapshot.a_san_bonus_total
+      # 源泉所得税
+      @certificate_of_tax_deducted_price_final = snapshot.tax_withholding
+      # キャップ調整金
+      @cap_adjustment_money = snapshot.cap_adjustment_money
+    else
+      # 直紹介ボーナス、2ティアボーナス、タイトルボーナス、aさんボーナスの合計
+      tmp_total_payment_price = get_totle_payment_price
+      # キャップ調整金
+      @cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: params[:id], cap_date: DateTime.new(@search_year.to_i, @search_month.to_i))&.price
+      tmp_total_payment_price += @cap_adjustment_money.to_i
+      # 源泉所得税と振り込み事務手数料
+      @certificate_of_tax_deducted_price, fee_price = calculate_y(tmp_total_payment_price)
+      # 総支払額
+      @total_payment_price = tmp_total_payment_price - @certificate_of_tax_deducted_price - fee_price
+    end
   end
 
   def user_list
@@ -32,40 +58,54 @@ class RewardsController < ApplicationController
   end
 
   def pdf_output
-    # ボーナス合計
-    total_price = get_totle_payment_price
-    certificate_of_tax_deducted_price, fee_price = calculate_y(total_price)
-    # キャップ調整金
-    cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: params[:id])&.price
-    # 総支払額
-    total_payment_price = total_price - certificate_of_tax_deducted_price - fee_price - cap_adjustment_money.to_i
-    # 源泉徴収
-    tax_withholding = return_deduction_price total_payment_price, certificate_of_tax_deducted_price
-    user = User.find(params[:id])
-    reward_info = {
-      # ボーナス月日
-      reward_month: "#{@search_year}年#{@search_month}月",
-      # ユーザ情報
-      user:,
-      # 直商会ボーナス
-      reward_bonus_total: @reward_bonus_total,
-      # ２ティアボーナス
-      two_tier_bonus_total: @two_tier_bonus_total,
-      # タイトルボーナス
-      title_bonus_total: @title_bonus_total,
-      # aさんボーナス
-      a_san_bonus_total: @a_san_bonus_total,
-      # 源泉徴収
-      tax_withholding:,
-      # 事務手数料
-      administration_fee: "-500",
+    # ボーナス情報がバッチ処理にて確定した値を取り出す処理
+    snapshot = get_bonus_snapshot @search_year, @search_month, params[:id]
+
+    # 確定したボーナス情報があれば、それをPDF出力に使う
+    if snapshot
+      user = User.find(snapshot[:user_id])
+      # snapshotの属性に:userキーを追加し、Userオブジェクトを割り当てる
+      reward_info = snapshot.attributes.symbolize_keys
+      reward_info[:user] = user
+      reward_info[:reward_month] = "#{@search_year}年#{@search_month}月"
+    else
+      # 直紹介ボーナス、2ティアボーナス、タイトルボーナス、aさんボーナスの合計
+      total_price = get_totle_payment_price
       # キャップ調整金
-      cap_adjustment_money:,
-      # ボーナス合計
-      total_price:,
-      # 総支払額
-      total_payment_price:
-    }
+      cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: params[:id], cap_date: DateTime.new(@search_year.to_i, @search_month.to_i))&.price
+      tmp_total_payment_price = total_price + cap_adjustment_money.to_i
+      # 源泉所得税と振り込み事務手数料
+      certificate_of_tax_deducted_price, fee_price = calculate_y(tmp_total_payment_price)
+      total_payment_price = tmp_total_payment_price - certificate_of_tax_deducted_price - fee_price
+      # 源泉徴収
+      tax_withholding = return_deduction_price total_payment_price, certificate_of_tax_deducted_price
+      user = User.find(params[:id])
+
+      reward_info = {
+        # ボーナス月日
+        reward_month: "#{@search_year}年#{@search_month}月",
+        # ユーザ情報
+        user:,
+        # 直商会ボーナス
+        reward_bonus_total: @reward_bonus_total,
+        # ２ティアボーナス
+        two_tier_bonus_total: @two_tier_bonus_total,
+        # タイトルボーナス
+        title_bonus_total: @title_bonus_total,
+        # aさんボーナス
+        a_san_bonus_total: @a_san_bonus_total,
+        # 源泉徴収
+        tax_withholding:,
+        # 事務手数料
+        administration_fee: "-500",
+        # キャップ調整金
+        cap_adjustment_money:,
+        # ボーナス合計
+        total_price:,
+        # 総支払額
+        total_payment_price:
+      }
+    end
 
     respond_to do |format|
       format.html
@@ -78,7 +118,64 @@ class RewardsController < ApplicationController
     end
   end
 
+  def bonus_pay; end
+
+  # ボーナス確定させるバッチ処理
+  def bonus_pay_bat
+    user_all = User.select(:id).all
+    current_year = Time.zone.today.year
+    current_month = Time.zone.today.month
+
+    user_all.each do |user|
+      # 直紹介ボーナス、2ティアボーナス、タイトルボーナス、aさんボーナスの合計
+      total_price = get_totle_payment_price user.id
+      # キャップ調整金
+      cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: user.id, cap_date: DateTime.new(current_year, current_month))&.price
+      tmp_total_payment_price = total_price + cap_adjustment_money.to_i
+      # 源泉所得税と振り込み事務手数料
+      certificate_of_tax_deducted_price, fee_price = calculate_y(tmp_total_payment_price)
+      total_payment_price = tmp_total_payment_price - certificate_of_tax_deducted_price - fee_price
+      # 源泉徴収
+      tax_withholding = return_deduction_price total_payment_price, certificate_of_tax_deducted_price
+      user = User.find(user.id)
+
+      bonus_info = {
+        # ボーナス月日
+        reward_snapshots_date: Time.current,
+        # ユーザ情報
+        user_id: user.id,
+        # 直商会ボーナス
+        reward_bonus_total: @reward_bonus_total,
+        # ２ティアボーナス
+        two_tier_bonus_total: @two_tier_bonus_total,
+        # タイトルボーナス
+        title_bonus_total: @title_bonus_total,
+        # aさんボーナス
+        a_san_bonus_total: @a_san_bonus_total,
+        # 源泉徴収
+        tax_withholding:,
+        # 事務手数料
+        administration_fee: "-500",
+        # キャップ調整金
+        cap_adjustment_money:,
+        # ボーナス合計
+        total_price:,
+        # 総支払額
+        total_payment_price:
+      }
+
+      BonusSnapshot.create_snapshot(bonus_info) if bonus_info[:total_payment_price].to_i > 0
+    end
+  end
+
   private
+
+  def get_bonus_snapshot search_year, search_month, user_id
+    start_date = Date.new(search_year.to_i, search_month.to_i, 1)
+    end_date = start_date.end_of_month
+    # 指定された年月の範囲内でレコードを検索
+    BonusSnapshot.find_by(user_id:, reward_snapshots_date: start_date.beginning_of_day..end_date.end_of_day)
+  end
 
   def create_pdf reward_info
     Prawn::Document.new(page_size: "A4") do |pdf|
@@ -171,9 +268,9 @@ class RewardsController < ApplicationController
 
       # テーブルの幅を計算（ページの幅の半分）
       half_width = pdf.bounds.width / 2.1
-      cap_cap_adjustment_money = reward_info[:cap_adjustment_money].present? ? "-#{reward_info[:cap_adjustment_money]}" : 0
+      cap_cap_adjustment_money = reward_info[:cap_adjustment_money].present? ? (reward_info[:cap_adjustment_money]).to_s : 0
       cap_money = (reward_info[:cap_adjustment_money].presence || 0)
-      now_month_bonus = reward_info[:total_price].to_i - cap_money.to_i
+      now_month_bonus = reward_info[:total_price].to_i + cap_money.to_i
 
       free_pay = reward_info[:total_payment_price] > 500 ? -500 : 0
       # 左側のテーブル（ボーナス詳細）
@@ -289,13 +386,13 @@ class RewardsController < ApplicationController
     session[:search_rewards_month] = params[:search_month] if params[:search_month].present?
   end
 
-  def get_totle_payment_price
+  def get_totle_payment_price bat_user_id = nil
     reward_bonus_incentive_ids = [1, 2]
     two_tier_bonus_incentive_ids = [3, 4]
     a_san_bonus_incentive_ids = [5, 6]
     title_bonus_incentive_ids = [7, 8]
 
-    user_id = (session[:reward_only_user_id].presence || current_user.id)
+    user_id = (bat_user_id || session[:reward_only_user_id].presence || current_user&.id)
     if session[:search_rewards_year].present? && session[:search_rewards_month].present?
       @reward_bonus_total = calculate_monthly_user_rewards(user_id, *reward_bonus_incentive_ids, session[:search_rewards_year].to_i, session[:search_rewards_month].to_i)
       @two_tier_bonus_total = calculate_monthly_user_rewards(user_id, *two_tier_bonus_incentive_ids, session[:search_rewards_year].to_i, session[:search_rewards_month].to_i)

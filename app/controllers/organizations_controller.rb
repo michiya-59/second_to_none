@@ -2,12 +2,12 @@
 
 class OrganizationsController < ApplicationController
   def index
-    if current_user.admin_flg == 1
+    if current_user&.admin_flg == 1
       @users = User.includes(:user_image_attachment, :grade).all
     else
       # 現在ログインしているユーザから派生している全ユーザのユーザIDを取得
-      descendants = Relationship.find_descendants current_user.id
-      user_ids = descendants.unshift current_user.id
+      descendants = Relationship.find_descendants current_user&.id
+      user_ids = descendants.unshift current_user&.id
       @users = User.where(id: user_ids)
     end
     gon.users = format_org_data(@users)

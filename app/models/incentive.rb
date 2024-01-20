@@ -26,16 +26,16 @@ class Incentive < ApplicationRecord
     def calculate_monthly_user_rewards(user_id, *incentive_ids)
       start_date = Date.current.beginning_of_month
       end_date = Date.current.end_of_month
-    
+
       # Rewardモデルから、関連するレコードを検索
       rewards = Reward.where(user_id:, incentive_id: incentive_ids, created_at: start_date..end_date)
-    
+
       # Incentiveモデルと結合して、incentive_priceの合計を計算
       incentives_total = rewards.joins(:incentive).sum("incentives.incentive_price")
-    
+
       # Rewardモデルのincentive_priceの合計を計算
       rewards_total = rewards.sum(:incentive_price)
-    
+
       # 両方の合計を足し合わせる
       incentives_total + rewards_total
     end

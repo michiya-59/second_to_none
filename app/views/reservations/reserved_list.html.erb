@@ -43,7 +43,7 @@
           </div>
 
           <%= form_with url: reserved_confirmation_reservation_path(seminar.reservation_id), local: true, html: { style: "margin-left: auto;" } do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :user_id, value: current_user&.id %>
             <%= f.hidden_field :id, value: seminar.reservation_id %>
 
             <% if seminar.join_status == 1 %>

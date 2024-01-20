@@ -27,8 +27,8 @@
 <div class="learn_detail_list">
   <% if @learn_infos.present? %>
     <% @learn_infos.each_with_index do |learn, index| %>
-      <% if learn.learn_category_id == 1 && current_user.admin_flg != 1%>
-        <% can_view = task_submitted?(learn.id, current_user.id, index + 1) %>
+      <% if learn.learn_category_id == 1 && current_user&.admin_flg != 1%>
+        <% can_view = task_submitted?(learn.id, current_user&.id, index + 1) %>
         <% video_class = can_view ? '' : 'not_video' %>
       <% else %>
         <% video_class = '' %>
@@ -46,7 +46,7 @@
               <%= link_to '資料', rails_blob_path(learn.document_file, disposition: "inline"), target: "_blank", class: 'common_box_beige common_size16' %>
             <% end %>
             <% if learn.video_file.attached? %>
-              <%= link_to '動画', '#', class: 'common_box_beige common_size16 play-video', data: { video_id: learn.id, user_id: current_user.id, video_url: rails_blob_path(learn.video_file, disposition: "inline") } %>
+              <%= link_to '動画', '#', class: 'common_box_beige common_size16 play-video', data: { video_id: learn.id, user_id: current_user&.id, video_url: rails_blob_path(learn.video_file, disposition: "inline") } %>
             <% end %>
           </div>
         </div>

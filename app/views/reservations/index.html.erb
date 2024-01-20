@@ -39,7 +39,7 @@
               <p class="common_size13"><%= seminar.start_time %> ~ <%= seminar.end_time %></p>
             </div>
             <div class="reservation_info_top_right">
-              <% if is_seminar_reserved? seminar.id, current_user.id %>
+              <% if is_seminar_reserved? seminar.id, current_user&.id %>
                 <!-- 予約済みの場合のリンク（非活性） -->
                 <div class="reservation_btn common_btn_beige common_btn_beige_background not_reservation">
                   <div class="reservation_calender">
