@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveNotNullFromTmpMemberInfos < ActiveRecord::Migration[7.0]
   def change
     change_column_null :tmp_member_infos, :email, true

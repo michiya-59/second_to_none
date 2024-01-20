@@ -81,7 +81,7 @@ class ConnectServicesController < ApplicationController
     when "whitening"
       "ホワイトニング"
     else
-      "連携先"
+      "提携先"
     end
   end
 end

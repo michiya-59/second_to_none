@@ -14,11 +14,11 @@ class TmpMemberInfo < ApplicationRecord
   VALID_ZIP_CODE4_REGEX = /\A[0-9]{4}\z/
 
   with_options if: ->{current_step == "base"} do
-    validates :login_id, format: {with: VALID_ALPHANUMERIC_REGEX, message: "は半角英数字のみで入力してください。"}, uniqueness: { case_sensitive: false, message: "はすでに存在します" }
+    validates :login_id, format: {with: VALID_ALPHANUMERIC_REGEX, message: "は半角英数字のみで入力してください。"}, uniqueness: {case_sensitive: false, message: "はすでに存在します"}
     validate :check_password
     validates :name, presence: true, length: {maximum: 30}
     validates :name_kana, presence: true
-    validates :email, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}, uniqueness: { case_sensitive: false, message: "はすでに存在します" }
+    validates :email, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}
     validates :phone, length: {in: 10..11, message: "は10文字または11文字で入力してください。"}
     validates :birthday, presence: true
     validates :gender_id, presence: true
