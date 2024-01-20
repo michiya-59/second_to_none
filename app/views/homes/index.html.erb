@@ -66,12 +66,12 @@
   <%= link_to connect_services_path do %>
     <div class="menu_part common_btn_shape">
       <div class="menu_icon">
-        <%= image_tag 'connect_service.svg', alt: '連携先のアイコン' %>
+        <%= image_tag 'connect_service.svg', alt: '提携先のアイコン' %>
       </div>
-      <p class="common_size16">連携先</p>
+      <p class="common_size16">提携先</p>
     </div>
   <% end %>
-  <% if current_user.admin_flg == 1 %>
+  <% if current_user&.admin_flg == 1 %>
     <%= link_to user_list_rewards_path do %>
       <div class="menu_part common_btn_shape">
         <div class="menu_icon">
@@ -81,7 +81,7 @@
       </div>
     <% end %>
   <% else %>
-    <%= link_to rewards_path(id: current_user.id) do %>
+    <%= link_to rewards_path(id: current_user&.id) do %>
       <div class="menu_part common_btn_shape">
         <div class="menu_icon">
           <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
@@ -90,7 +90,17 @@
       </div>
     <% end %>
   <% end %>
-  <% if current_user.admin_flg != 1 %>
+  <% if current_user&.admin_flg == 1 %>
+    <%= link_to bonus_pay_list_rewards_path do %>
+      <div class="menu_part common_btn_shape">
+        <div class="menu_icon">
+          <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
+        </div>
+        <p class="common_size16">ボーナス支払い</p>
+      </div>
+    <% end %>
+  <% end %>
+  <% if current_user&.admin_flg != 1 %>
     <%= link_to titles_path do %>
       <div class="menu_part common_btn_shape">
         <div class="menu_icon">
@@ -140,7 +150,7 @@
       <p class="common_size16">会員登録QRコード</p>
     </div>
   <% end %>
-  <% if current_user.admin_flg == 1 %>
+  <% if current_user&.admin_flg == 1 %>
     <%= link_to approvals_path(type: "new") do %>
       <div class="menu_part common_btn_shape">
         <div class="menu_icon">

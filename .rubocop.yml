@@ -159,7 +159,7 @@ Style/ClassCheck:
 
 Metrics/ClassLength:
   CountComments: false  # count full line comments?
-  Max: 300
+  Max: 350
 
 Naming/VariableNumber:
   Enabled: false

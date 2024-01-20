@@ -8,7 +8,11 @@
 <% end %>
 
 <div class="common_field_title">
-  <h1>会員本登録承認待ち一覧</h1>
+  <% if params[:type] == "new" %>
+    <h1>会員本登録承認待ち一覧</h1>
+  <% elsif params[:type] == "done" %>
+    <h1>会員本登録承認済み一覧</h1>
+  <% end %>
   <div class="underline"></div>
 </div>
 <div class="approval_switch_btn">

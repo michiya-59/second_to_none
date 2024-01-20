@@ -27,9 +27,9 @@ class ReservationsController < ApplicationController
 
   def reserved_list
     @seminars = if session[:search_seminars_year].present? && session[:search_seminars_month].present?
-                  Seminar.find_user_seminars current_user.id, session[:search_seminars_year].to_i, session[:search_seminars_month].to_i, @join_status
+                  Seminar.find_user_seminars current_user&.id, session[:search_seminars_year].to_i, session[:search_seminars_month].to_i, @join_status
                 else
-                  Seminar.find_user_seminars current_user.id, Time.zone.now.year.to_i, Time.zone.now.month.to_i, @join_status
+                  Seminar.find_user_seminars current_user&.id, Time.zone.now.year.to_i, Time.zone.now.month.to_i, @join_status
                 end
     update_join_status_if_necessary @seminars
   end

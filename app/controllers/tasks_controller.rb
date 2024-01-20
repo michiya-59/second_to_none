@@ -10,10 +10,10 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.assign_attributes(user_id: current_user.id)
+    @task.assign_attributes(user_id: current_user&.id)
 
     # 重複チェック
-    existing_task = Task.find_by(user_id: current_user.id, learn_id: @task.learn_id)
+    existing_task = Task.find_by(user_id: current_user&.id, learn_id: @task.learn_id)
     if existing_task
       flash[:error] = "すでに同じ課題が登録されています。"
       redirect_to new_task_path

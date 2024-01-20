@@ -23,9 +23,12 @@ Rails.application.routes.draw do
   resources :rewards, only: %i(index) do
     collection do
       get "user_list"
+      get "bonus_pay_list"
+      get "bonus_pay_bat"
     end
     member do
       get "pdf_output"
+      get "bonus_pay_detail"
     end
   end
 
@@ -95,6 +98,6 @@ Rails.application.routes.draw do
   end
 
   match "/404", to: "errors#not_found", via: :all
-  # match "/500", to: "errors#internal_server_error", via: :all
-  # match "*path", to: "application#render_404", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+  match "*path", to: "application#render_404", via: :all
 end

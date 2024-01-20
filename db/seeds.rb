@@ -30,175 +30,177 @@ users = [
   # id: 1 鈴木晴也
   { login_id: "seiyasuzuki18", email: "seiyasuzuki18@gmail.com", name: "鈴木晴也", password: "Seiya1025!?", password_confirmation: "Seiya1025!?", name_kana: "スズキセイヤ", birthday: Date.new(1999, 12, 9), phone: "08035535646", status: 1, introducer_id: 99999, admin_flg: 1, gender_id: 1, online_flg: 9, grade_id: 3, created_at: Time.current, updated_at: nil, incentive_id: 2 },
   # id: 2 篠本拓海
-  { login_id: "dekmegh001", email: "dekmegh@gmail.com", name: "篠本拓海", password: "Nsa02moa!?", password_confirmation: "Nsa02moa!?", name_kana: "シノモトタクミ", birthday: Date.new(1997, 8, 23), phone: "08058394411", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 1, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "dekmegh001", email: "dekmegh@gmail.com", name: "篠本拓海", password: "Nsa02moa!?", password_confirmation: "Nsa02moa!?", name_kana: "シノモトタクミ", birthday: Date.new(1997, 8, 23), phone: "08058394411", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 1, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 3 細谷菜奈
   { login_id: "nanarapunzel0121", email: "nanarapunzel.0121@gmail.com", name: "細谷菜奈", password: "Nana0121!", password_confirmation: "Nana0121!", name_kana: "ホソヤナナ", birthday: Date.new(1990, 1, 21), phone: "08093891466", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 2, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 4 山田尚登
-  { login_id: "23832383", email: "draw926926@gmail.com", name: "山田尚登", password: "Jojo23832383!?", password_confirmation: "Jojo23832383!?", name_kana: "ヤマダナオト", birthday: Date.new(1999, 9, 26), phone: "08088778467", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 2, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "23832383", email: "draw926926@gmail.com", name: "山田尚登", password: "Jojo23832383!?", password_confirmation: "Jojo23832383!?", name_kana: "ヤマダナオト", birthday: Date.new(1999, 9, 26), phone: "08088778467", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 2, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 5 尾塩彩乃　退会済み
-  {login_id: "unknown001", email: "unknown@gmail.com", name: "尾塩彩乃", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オシオアヤノ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 2, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  {login_id: "unknown001", email: "unknown@gmail.com", name: "尾塩彩乃", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オシオアヤノ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 2, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-03-01 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 6 本間紗矢香　退会済み
-  { login_id: "unknown002", email: "unknown2@gmail.com", name: "本間紗矢香", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ホンマサヤカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 2, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown002", email: "unknown2@gmail.com", name: "本間紗矢香", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ホンマサヤカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 2, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-04-27 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 7 奈良亜香希
-  { login_id: "curonecogoro57", email: "curoneco.goro.5.7@docomo.ne.jp", name: "奈良亜香希", password: "curonecogoro57!?", password_confirmation: "curonecogoro57!?", name_kana: "ナラアカネ", birthday: Date.new(1998, 4, 13), phone: "09029419538", status: 1, introducer_id: 2, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 1, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "curonecogoro57", email: "curoneco.goro.5.7@docomo.ne.jp", name: "奈良亜香希", password: "curonecogoro57!?", password_confirmation: "curonecogoro57!?", name_kana: "ナラアカネ", birthday: Date.new(1998, 4, 13), phone: "09029419538", status: 1, introducer_id: 2, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 1, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 8 大島優希　退会済み
-  { login_id: "unknown003", email: "unknown3@gmail.com", name: "大島優希", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オオシマユウキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 2, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown003", email: "unknown3@gmail.com", name: "大島優希", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オオシマユウキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 2, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-07-10 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 9 伊藤美紀　退会済み
-  { login_id: "unknown004", email: "unknown4@gmail.com", name: "伊藤美紀", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イトウミキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 2, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown004", email: "unknown4@gmail.com", name: "伊藤美紀", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イトウミキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 2, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-07-16 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 10 乗田愛菜　退会済み
-  { login_id: "unknown005", email: "unknown5@gmail.com", name: "乗田愛菜", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "トイタマナ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown005", email: "unknown5@gmail.com", name: "乗田愛菜", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "トイタマナ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-03-03 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 11 南杜萌　退会済み
-  { login_id: "unknown006", email: "unknown6@gmail.com", name: "南杜萌", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ミナミトモエ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
-  # id: 12 三改木穂　退会済み
-  { login_id: "unknown007", email: "unknown7@gmail.com", name: "三改木穂", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ミゾロギホノ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown006", email: "unknown6@gmail.com", name: "南杜萌", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ミナミトモエ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
+  # id: 12 三改木穂乃　退会済み
+  { login_id: "unknown007", email: "unknown7@gmail.com", name: "三改木穂乃", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ミゾロギホノ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 13 酒井響己
-  { login_id: "19981002", email: "hibiki.bsbll1002@icloud.com", name: "酒井響己", password: "Hibiki1002!?", password_confirmation: "Hibiki1002!?", name_kana: "サカイヒビキ", birthday: Date.new(1998, 10, 2), phone: "08098244926", status: 1, introducer_id: 4, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "19981002", email: "hibiki.bsbll1002@icloud.com", name: "酒井響己", password: "Hibiki1002!?", password_confirmation: "Hibiki1002!?", name_kana: "サカイヒビキ", birthday: Date.new(1998, 10, 2), phone: "08098244926", status: 1, introducer_id: 4, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 14 本間千尋
-  { login_id: "adc10", email: "chihhiro3162@gmail.com", name: "本間千尋", password: "Adc00000!?", password_confirmation: "Adc00000!?", name_kana: "ホンマチヒロ", birthday: Date.new(1998, 9, 29), phone: "08064383438", status: 1, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "adc10", email: "chihhiro3162@gmail.com", name: "本間千尋", password: "Adc00000!?", password_confirmation: "Adc00000!?", name_kana: "ホンマチヒロ", birthday: Date.new(1998, 9, 29), phone: "08064383438", status: 1, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 15 鴨作瑠美
-  { login_id: "saku02ra", email: "rums.agwa@gmail.com", name: "本間千尋", password: "saku02raSTN!?", password_confirmation: "saku02raSTN!?", name_kana: "カモサクルミ", birthday: Date.new(1998, 2, 24), phone: "08068051998", status: 1, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "saku02ra", email: "rums.agwa@gmail.com", name: "鴨作瑠美", password: "saku02raSTN!?", password_confirmation: "saku02raSTN!?", name_kana: "カモサクルミ", birthday: Date.new(1998, 2, 24), phone: "08068051998", status: 1, introducer_id: 4, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-03-07 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 16 坂妻永遠
-  { login_id: "8251", email: "zinygig9qaxi4bgzjrwm@docomo.ne.jp", name: "坂妻永遠", password: "csjeicA22!", password_confirmation: "csjeicA22!", name_kana: "サカツマトワ", birthday: Date.new(1999, 10, 19), phone: "09074263504", status: 1, introducer_id: 4, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "8251", email: "zinygig9qaxi4bgzjrwm@docomo.ne.jp", name: "坂妻永遠", password: "csjeicA22!", password_confirmation: "csjeicA22!", name_kana: "サカツマトワ", birthday: Date.new(1999, 10, 19), phone: "09074263504", status: 1, introducer_id: 4, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 17 前田光成
-  { login_id: "2808", email: "maekou20011224@gmail.com", name: "前田光成", password: "mKBRZ61!?", password_confirmation: "mKBRZ61!?", name_kana: "マエダコウセイ", birthday: Date.new(1999, 12, 24), phone: "09025041754", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "2808", email: "maekou20011224@gmail.com", name: "前田光成", password: "mKBRZ61!?", password_confirmation: "mKBRZ61!?", name_kana: "マエダコウセイ", birthday: Date.new(1999, 12, 24), phone: "09025041754", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-04 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 18 菊池晃也 退会済み
-  { login_id: "unknown008", email: "unknown8@gmail.com", name: "菊池晃也", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "キクチコウヤ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown008", email: "unknown8@gmail.com", name: "菊池晃也", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "キクチコウヤ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-08-26 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 19 落合悠吏 退会済み
-  { login_id: "unknown009", email: "unknown9@gmail.com", name: "菊池晃也", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オチアイユウリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown009", email: "unknown9@gmail.com", name: "落合悠吏", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オチアイユウリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-08-15 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 20 佐野悠翔 退会済み
-  { login_id: "unknown0010", email: "unknown10@gmail.com", name: "佐野悠翔", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "サノユウト", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0010", email: "unknown10@gmail.com", name: "佐野悠翔", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "サノユウト", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-10-19 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 21 木村健太 退会済み
-  { login_id: "unknown0011", email: "unknown11@gmail.com", name: "木村健太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "キムラケンタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0011", email: "unknown11@gmail.com", name: "木村健太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "キムラケンタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-12 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 22 髙橋亮平 退会済み
-  { login_id: "unknown0012", email: "unknown12@gmail.com", name: "髙橋亮平", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシリョウヘイ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0012", email: "unknown12@gmail.com", name: "髙橋亮平", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシリョウヘイ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-19 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 23 辺戸嘉胤 退会済み
-  { login_id: "unknown0013", email: "unknown13@gmail.com", name: "辺戸嘉胤", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヘドヨシツグ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0013", email: "unknown13@gmail.com", name: "辺戸嘉胤", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヘドヨシツグ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-26 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 24 鈴木航輔 退会済み
-  { login_id: "unknown0014", email: "unknown14@gmail.com", name: "鈴木航輔", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "スズキコウスケ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0014", email: "unknown14@gmail.com", name: "鈴木航輔", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "スズキコウスケ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-06-16 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 25 鈴木純輝 退会済み
-  { login_id: "unknown0015", email: "unknown15@gmail.com", name: "鈴木純輝", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "スズキジュンキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0015", email: "unknown15@gmail.com", name: "鈴木純輝", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "スズキジュンキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-06-17 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 26 及川陸 退会済み
-  { login_id: "unknown0016", email: "unknown16@gmail.com", name: "及川陸", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オヨカワリク", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0016", email: "unknown16@gmail.com", name: "及川陸", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オヨカワリク", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-04-14 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 27 井上結太 退会済み
-  { login_id: "unknown0017", email: "unknown17@gmail.com", name: "井上結太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イノウエユウタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0017", email: "unknown17@gmail.com", name: "井上結太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イノウエユウタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-04-14 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 28 成瀬豊 退会済み
-  { login_id: "unknown0018", email: "unknown18@gmail.com", name: "成瀬豊", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナルセユタカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0018", email: "unknown18@gmail.com", name: "成瀬豊", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナルセユタカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 29 鈴木康太 退会済み
-  { login_id: "unknown0019", email: "unknown19@gmail.com", name: "鈴木康太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "スズキコウタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0019", email: "unknown19@gmail.com", name: "鈴木康太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "スズキコウタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 30 長屋拓斗 退会済み
-  { login_id: "unknown0020", email: "unknown20@gmail.com", name: "長屋拓斗", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナガヤタクト", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0020", email: "unknown20@gmail.com", name: "長屋拓斗", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナガヤタクト", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-03-24 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 31 高岡聖也 退会済み
-  { login_id: "unknown0021", email: "unknown21@gmail.com", name: "高岡聖也", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカオカセイヤ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0021", email: "unknown21@gmail.com", name: "高岡聖也", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカオカセイヤ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 32 岩間輝太 退会済み
-  { login_id: "unknown0022", email: "unknown22@gmail.com", name: "岩間輝太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イワマコウタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0022", email: "unknown22@gmail.com", name: "岩間輝太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イワマコウタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-15 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 33 岩永翼
-  { login_id: "180309", email: "bskuhsb@gmail.com", name: "岩永翼", password: "Iwaiwa0!!", password_confirmation: "Iwaiwa0!!", name_kana: "イワナガツバサ", birthday: Date.new(1990, 3, 9), phone: "07020298402", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "180309", email: "bskuhsb@gmail.com", name: "岩永翼", password: "Iwaiwa0!!", password_confirmation: "Iwaiwa0!!", name_kana: "イワナガツバサ", birthday: Date.new(1990, 3, 9), phone: "07020298402", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 34 渡邉大真
-  { login_id: "hiroma130219", email: "0su38k226mb088s@au.com", name: "渡邉大真", password: "HIroma0219!?", password_confirmation: "HIroma0219!?", name_kana: "ワタナベヒロマ", birthday: Date.new(1990, 2, 19), phone: "07023490708", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "hiroma130219", email: "0su38k226mb088s@au.com", name: "渡邉大真", password: "HIroma0219!?", password_confirmation: "HIroma0219!?", name_kana: "ワタナベヒロマ", birthday: Date.new(1990, 2, 19), phone: "07023490708", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-10-16 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 35 国本朝陽
-  { login_id: "08108929", email: "kuni_asahi0515@icloud.com", name: "国本朝陽", password: "Asuka0810!?", password_confirmation: "Asuka0810!?", name_kana: "クニモトアサヒ", birthday: Date.new(1990, 5, 15), phone: "09064048929", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 1, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "08108929", email: "kuni_asahi0515@icloud.com", name: "国本朝陽", password: "Asuka0810!?", password_confirmation: "Asuka0810!?", name_kana: "クニモトアサヒ", birthday: Date.new(1990, 5, 15), phone: "09064048929", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 1, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 36 青木史哉 退会済み
-  { login_id: "unknown0023", email: "unknown23@gmail.com", name: "青木史哉", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "アオキフミヤ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0023", email: "unknown23@gmail.com", name: "青木史哉", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "アオキフミヤ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-17 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 37 倉内未来
-  { login_id: "mikukamen5656", email: "asdg08122635@icloud.com", name: "倉内未来", password: "Miku0812!?", password_confirmation: "Miku0812!?", name_kana: "クラウチミク", birthday: Date.new(2002, 8, 12), phone: "07014549903", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "mikukamen5656", email: "asdg08122635@icloud.com", name: "倉内未来", password: "Miku0812!?", password_confirmation: "Miku0812!?", name_kana: "クラウチミク", birthday: Date.new(2002, 8, 12), phone: "07014549903", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-04-16 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 38 堀田大輝
-  { login_id: "hottadaiki", email: "hottadaiki@icloud.com", name: "堀田大輝", password: "Nanasuzu0911!?", password_confirmation: "Nanasuzu0911!?", name_kana: "クラウチミク", birthday: Date.new(2002, 4, 18), phone: "09044137492", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "hottadaiki", email: "hottadaiki@icloud.com", name: "堀田大輝", password: "Nanasuzu0911!?", password_confirmation: "Nanasuzu0911!?", name_kana: "クラウチミク", birthday: Date.new(2002, 4, 18), phone: "09044137492", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-11-19 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 39 中坂元紀 退会済み
-  { login_id: "unknown0024", email: "unknown24@gmail.com", name: "中坂元紀", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナカサカモトノリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0024", email: "unknown24@gmail.com", name: "中坂元紀", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナカサカモトノリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-01 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 40 楊光 退会済み
-  { login_id: "unknown0025", email: "unknown25@gmail.com", name: "楊光", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヨウコウ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "unknown0025", email: "unknown25@gmail.com", name: "楊光", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヨウコウ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-07-23 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 41 佐藤琉聖 退会済み
-  { login_id: "unknown0026", email: "unknown26@gmail.com", name: "佐藤琉聖", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "サトウリュウセイ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
-  # id: 42 竹内伶
-  { login_id: "Resort861", email: "takeuchirei8631@icloud.com", name: "竹内伶", password: "Resort861$*@", password_confirmation: "Resort861$*@", name_kana: "タケウチレイ", birthday: Date.new(1990, 5, 3), phone: "07043087972", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0026", email: "unknown26@gmail.com", name: "佐藤琉聖", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "サトウリュウセイ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-07-29 00:00:00", updated_at: nil, incentive_id: 2 },
+  # id: 42 竹内響
+  { login_id: "Resort861", email: "takeuchirei8631@icloud.com", name: "竹内響", password: "Resort861$*@", password_confirmation: "Resort861$*@", name_kana: "タケウチレイ", birthday: Date.new(1990, 5, 3), phone: "07043087972", status: 1, introducer_id: 7, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-25 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 43 鬼崎愛香 退会済み
-  { login_id: "unknown0027", email: "unknown27@gmail.com", name: "鬼崎愛香", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オニザキアイカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 13, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0027", email: "unknown27@gmail.com", name: "鬼崎愛香", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オニザキアイカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 13, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-04-05 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 44 今井理乃
-  { login_id: "20220815", email: "ordchidee.27@icloud.com", name: "今井理乃", password: "Siitan1!?", password_confirmation: "Siitan1!?", name_kana: "イマイリノ", birthday: Date.new(2001, 10, 27), phone: "09050714386", status: 1, introducer_id: 13, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "20220815", email: "ordchidee.27@icloud.com", name: "今井理乃", password: "Siitan1!?", password_confirmation: "Siitan1!?", name_kana: "イマイリノ", birthday: Date.new(2001, 10, 27), phone: "09050714386", status: 1, introducer_id: 13, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 45 奥平竜司 退会済み
-  { login_id: "unknown0028", email: "unknown28@gmail.com", name: "奥平竜司", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オクダイラリュウジ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 15, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0028", email: "unknown28@gmail.com", name: "奥平竜司", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "オクダイラリュウジ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 15, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-09-02 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 46 山越迪斗
-  { login_id: "23108054", email: "kosha2380@gmail.com", name: "山越迪斗", password: "Kosha5423!?", password_confirmation: "Kosha5423!?", name_kana: "ヤマコシフミト", birthday: Date.new(1990, 8, 22), phone: "08042300822", status: 1, introducer_id: 15, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "23108054", email: "kosha2380@gmail.com", name: "山越迪斗", password: "Kosha5423!?", password_confirmation: "Kosha5423!?", name_kana: "ヤマコシフミト", birthday: Date.new(1990, 8, 22), phone: "08042300822", status: 1, introducer_id: 15, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-06-06 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 47 佐野俊介 退会済み
-  { login_id: "unknown0029", email: "unknown29@gmail.com", name: "佐野俊介", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "サノシュンスケ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 16, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0029", email: "unknown29@gmail.com", name: "佐野俊介", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "サノシュンスケ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 16, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-10-12 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 48 日比悠斗
-  { login_id: "hibiyuto", email: "hibi.yuto@icloud.com", name: "日比悠斗", password: "1997Yuto!?", password_confirmation: "1997Yuto!?", name_kana: "ヒビユウト", birthday: Date.new(1997, 12, 3), phone: "08090545583", status: 1, introducer_id: 16, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 1, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "hibiyuto", email: "hibi.yuto@icloud.com", name: "日比悠斗", password: "1997Yuto!?", password_confirmation: "1997Yuto!?", name_kana: "ヒビユウト", birthday: Date.new(1997, 12, 3), phone: "08090545583", status: 1, introducer_id: 16, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 1, created_at: "2023-02-25 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 49 田邉諒多
-  { login_id: "Gekyouenrai", email: "r123gekyou@gmail.com", name: "田邉諒多", password: "T0ntink@n", password_confirmation: "T0ntink@n", name_kana: "タナベリョウタ", birthday: Date.new(2001, 12, 23), phone: "08055602646", status: 1, introducer_id: 17, admin_flg: 9, gender_id: 1, online_flg: 99, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "Gekyouenrai", email: "r123gekyou@gmail.com", name: "田邉諒多", password: "T0ntink@n", password_confirmation: "T0ntink@n", name_kana: "タナベリョウタ", birthday: Date.new(2001, 12, 23), phone: "08055602646", status: 1, introducer_id: 17, admin_flg: 9, gender_id: 1, online_flg: 99, grade_id: 99, created_at: "2023-08-24 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 50 後藤愛佳 退会済み
-  { login_id: "unknown0030", email: "unknown30@gmail.com", name: "後藤愛佳", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ゴトウアイカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 17, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0030", email: "unknown30@gmail.com", name: "後藤愛佳", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ゴトウアイカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 17, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-08-25 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 51 中山稜志 退会済み
-  { login_id: "unknown0031", email: "unknown31@gmail.com", name: "中山稜志", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナカヤマリョウジ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 34, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0031", email: "unknown31@gmail.com", name: "中山稜志", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ナカヤマリョウジ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 34, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-11-18 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 52 都丸琳子
-  { login_id: "Tzuyu0614", email: "tomaru0614@icloud.com", name: "都丸琳子", password: "Rin0815!", password_confirmation: "Rin0815!", name_kana: "トマルリンコ", birthday: Date.new(2002, 8, 15), phone: "07043267645", status: 1, introducer_id: 35, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "Tzuyu0614", email: "tomaru0614@icloud.com", name: "都丸琳子", password: "Rin0815!", password_confirmation: "Rin0815!", name_kana: "トマルリンコ", birthday: Date.new(2002, 8, 15), phone: "07043267645", status: 1, introducer_id: 35, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 53 伊藤悠夏
-  { login_id: "0710", email: "yu.ma.mo.0718@icloud.com", name: "伊藤悠夏", password: "Yumamo1213!?", password_confirmation: "Yumamo1213!?", name_kana: "イトウユウカ", birthday: Date.new(2002, 7, 18), phone: "08080800166", status: 1, introducer_id: 35, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 1, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "0710", email: "yu.ma.mo.0718@icloud.com", name: "伊藤悠夏", password: "Yumamo1213!?", password_confirmation: "Yumamo1213!?", name_kana: "イトウユウカ", birthday: Date.new(2002, 7, 18), phone: "08080800166", status: 1, introducer_id: 35, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 1, created_at: "2023-03-05 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 54 田中空 退会済み
-  { login_id: "unknown0032", email: "unknown32@gmail.com", name: "田中空", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タナカソラ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 35, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "unknown0032", email: "unknown32@gmail.com", name: "田中空", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タナカソラ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 35, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 55 関田ゆいか 退会済み
-  { login_id: "unknown0033", email: "unknown33@gmail.com", name: "関田ゆいか", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "セキタユイカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 35, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "unknown0033", email: "unknown33@gmail.com", name: "関田ゆいか", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "セキタユイカ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 35, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 56 佐々木緑碧
-  { login_id: "Simono0421", email: "simono04hiro21@gmail.com", name: "佐々木緑碧", password: "Hotarun0422!?", password_confirmation: "Hotarun0422!?", name_kana: "ササキリオ", birthday: Date.new(2002, 2, 25), phone: "07020070421", status: 1, introducer_id: 36, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "Simono0421", email: "simono04hiro21@gmail.com", name: "佐々木緑碧", password: "Hotarun0422!?", password_confirmation: "Hotarun0422!?", name_kana: "ササキリオ", birthday: Date.new(2002, 2, 25), phone: "07020070421", status: 1, introducer_id: 36, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 99, created_at: "2023-12-10 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 57 柳村康貴 退会済み
-  { login_id: "unknown0034", email: "unknown34@gmail.com", name: "柳村康貴", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヤナギムラコウキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 44, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0034", email: "unknown34@gmail.com", name: "柳村康貴", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヤナギムラコウキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 44, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-05-14 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 58 堀田陽太
-  { login_id: "20020114", email: "hinata114@icloud.com", name: "堀田陽太", password: "Hottahinata114!?", password_confirmation: "Hottahinata114!?", name_kana: "ホッタヒナタ", birthday: Date.new(2002, 1, 14), phone: "09061454507", status: 1, introducer_id: 44, admin_flg: 9, gender_id: 1, online_flg: 99, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "20020114", email: "hinata114@icloud.com", name: "堀田陽太", password: "Hottahinata114!?", password_confirmation: "Hottahinata114!?", name_kana: "ホッタヒナタ", birthday: Date.new(2002, 1, 14), phone: "09061454507", status: 1, introducer_id: 44, admin_flg: 9, gender_id: 1, online_flg: 99, grade_id: 99, created_at: "2023-12-01 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 59 宮崎綾美
-  { login_id: "2810", email: "ayami1955@icloud.com", name: "宮崎綾美", password: "Miya.1382", password_confirmation: "Miya.1382", name_kana: "ミヤザキアヤミ", birthday: Date.new(1999, 5, 19), phone: "08013634963", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "2810", email: "ayami1955@icloud.com", name: "宮崎綾美", password: "Miya.1382", password_confirmation: "Miya.1382", name_kana: "ミヤザキアヤミ", birthday: Date.new(1999, 5, 19), phone: "08013634963", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 99, grade_id: 99, created_at: "2023-07-08 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 60 藤田剛 退会済み
-  { login_id: "unknown0035", email: "unknown35@gmail.com", name: "藤田剛", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "フジタゴウ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0035", email: "unknown35@gmail.com", name: "藤田剛", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "フジタゴウ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-08-26 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 61 干場寧々 退会済み
-  { login_id: "unknown0036", email: "unknown36@gmail.com", name: "干場寧々", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ホシバネネ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "unknown0036", email: "unknown36@gmail.com", name: "干場寧々", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ホシバネネ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-09-03 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 62 杉山奈津実 退会済み
-  { login_id: "unknown0037", email: "unknown37@gmail.com", name: "杉山奈津実", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "スギヤマナツミ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0037", email: "unknown37@gmail.com", name: "杉山奈津実", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "スギヤマナツミ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-04-28 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 63 杉浦彰志
-  { login_id: "337225", email: "sugizou54@gmail.com", name: "杉浦彰志", password: "Mori#2ne", password_confirmation: "Mori#2ne", name_kana: "スギウラショウジ", birthday: Date.new(1998, 2, 15), phone: "08052778684", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "337225", email: "sugizou54@gmail.com", name: "杉浦彰志", password: "Mori#2ne", password_confirmation: "Mori#2ne", name_kana: "スギウラショウジ", birthday: Date.new(1998, 2, 15), phone: "08052778684", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-10-17 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 64 武井進吾
-  { login_id: "haru5588", email: "tamagawa641@gmail.com", name: "武井進吾", password: "Tamagawa.2303", password_confirmation: "Tamagawa.2303", name_kana: "タケイシンゴ", birthday: Date.new(1992, 7, 28), phone: "09064902362", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "haru5588", email: "tamagawa641@gmail.com", name: "武井進吾", password: "Tamagawa.2303", password_confirmation: "Tamagawa.2303", name_kana: "タケイシンゴ", birthday: Date.new(1992, 7, 28), phone: "09064902362", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-09-24 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 65 中山優衣
-  { login_id: "5724", email: "you-i-94@docomo.ne.jp", name: "中山優衣", password: "E@3Tjw&8P", password_confirmation: "E@3Tjw&8P", name_kana: "ナカヤマユイ", birthday: Date.new(1992, 9, 4), phone: "08092966051", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "5724", email: "you-i-94@docomo.ne.jp", name: "中山優衣", password: "E@3Tjw&8P", password_confirmation: "E@3Tjw&8P", name_kana: "ナカヤマユイ", birthday: Date.new(1992, 9, 4), phone: "08092966051", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-12-20 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 66 臼倉亮太
-  { login_id: "2105", email: "atoyr.unchain_never@icloud.com", name: "臼倉亮太", password: "Ryouta131?", password_confirmation: "Ryouta131?", name_kana: "ウスクラリョウタ", birthday: Date.new(1992, 1, 31), phone: "08066400871", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "2105", email: "atoyr.unchain_never@icloud.com", name: "臼倉亮太", password: "Ryouta131?", password_confirmation: "Ryouta131?", name_kana: "ウスクラリョウタ", birthday: Date.new(1992, 1, 31), phone: "08066400871", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-03-27 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 67 植木胡桃
-  { login_id: "1029", email: "kuu.d-e-b.1.10@docomo.ne.jp", name: "植木胡桃", password: "Kurumi0110!?", password_confirmation: "Kurumi0110!?", name_kana: "ウエキクルミ", birthday: Date.new(2000, 1, 10), phone: "09049777417", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "1029", email: "kuu.d-e-b.1.10@docomo.ne.jp", name: "植木胡桃", password: "Kurumi0110!?", password_confirmation: "Kurumi0110!?", name_kana: "ウエキクルミ", birthday: Date.new(2000, 1, 10), phone: "09049777417", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-07-01 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 68 駒城拓海
-  { login_id: "KOMA7716", email: "komakitakumi7716@gmail.com", name: "駒城拓海", password: "komaKoma7716!?", password_confirmation: "komaKoma7716!?", name_kana: "コマキ タクミ", birthday: Date.new(2000, 5, 25), phone: "08033621082", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "KOMA7716", email: "komakitakumi7716@gmail.com", name: "駒城拓海", password: "komaKoma7716!?", password_confirmation: "komaKoma7716!?", name_kana: "コマキ タクミ", birthday: Date.new(2000, 5, 25), phone: "08033621082", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-10-31 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 69 佐藤あかね 退会済み
-  { login_id: "unknown0038", email: "unknown38@gmail.com", name: "佐藤あかね", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "サトウアカネ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 49, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0038", email: "unknown38@gmail.com", name: "佐藤あかね", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "サトウアカネ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 49, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-09-09 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 70 板澤大地 退会済み
-  { login_id: "unknown0039", email: "unknown39@gmail.com", name: "板澤大地", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イタザワダイチ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 52, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0039", email: "unknown39@gmail.com", name: "板澤大地", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イタザワダイチ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 52, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 71 冨岡佑真 退会済み
-  { login_id: "unknown0040", email: "unknown40@gmail.com", name: "冨岡佑真", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "トミオカユウマ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0040", email: "unknown40@gmail.com", name: "冨岡佑真", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "トミオカユウマ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-08-12 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 72 稲垣優太 退会済み
-  { login_id: "unknown0041", email: "unknown41@gmail.com", name: "稲垣優太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イナガキユウタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0041", email: "unknown41@gmail.com", name: "稲垣優太", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "イナガキユウタ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-09-21 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 73 島袋瑞輝 退会済み
-  { login_id: "unknown0042", email: "unknown42@gmail.com", name: "島袋瑞輝", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "シマブクロミズキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
-  # id: 74 志村友里 退会済み
-  { login_id: "unknown0043", email: "unknown43@gmail.com", name: "志村友里", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "シムラユウリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0042", email: "unknown42@gmail.com", name: "島袋瑞輝", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "シマブクロミズキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-11-21 00:00:00", updated_at: nil, incentive_id: 2 },
+  # id: 74 志村悠里 退会済み
+  { login_id: "unknown0043", email: "unknown43@gmail.com", name: "志村悠里", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "シムラユウリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-05-07 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 75 髙橋ひかり 退会済み
-  { login_id: "unknown0044", email: "unknown44@gmail.com", name: "髙橋ひかり", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシヒカリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0044", email: "unknown44@gmail.com", name: "髙橋ひかり", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシヒカリ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-04-21 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 76 髙橋幹希 退会済み
-  { login_id: "unknown0045", email: "unknown45@gmail.com", name: "髙橋幹希", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシモトキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0045", email: "unknown45@gmail.com", name: "髙橋幹希", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシモトキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-08-24 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 77 佐藤竜寛
-  { login_id: "tatu", email: "tatu110403@yahoo.co.jp", name: "佐藤竜寛", password: "Tatu1430!?", password_confirmation: "Tatu1430!?", name_kana: "サトウタツヒロ", birthday: Date.new(2002, 4, 30), phone: "08098637968", status: 1, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "tatu", email: "tatu110403@yahoo.co.jp", name: "佐藤竜寛", password: "Tatu1430!?", password_confirmation: "Tatu1430!?", name_kana: "サトウタツヒロ", birthday: Date.new(2002, 4, 30), phone: "08098637968", status: 1, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-12-16 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 78 保坂滉人 退会済み
-  { login_id: "unknown0046", email: "unknown46@gmail.com", name: "保坂滉人", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシモトキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 59, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0046", email: "unknown46@gmail.com", name: "保坂滉人", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシモトキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 59, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-10-15 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 79 伊藤栞汰
-  { login_id: "stn34kan", email: "ito.2016.0327@gmail.com", name: "伊藤栞汰", password: "Kanta130304!?", password_confirmation: "Kanta130304!?", name_kana: "イトウカンタ", birthday: Date.new(2001, 3, 4), phone: "08028426794", status: 1, introducer_id: 59, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "stn34kan", email: "ito.2016.0327@gmail.com", name: "伊藤栞汰", password: "Kanta130304!?", password_confirmation: "Kanta130304!?", name_kana: "イトウカンタ", birthday: Date.new(2001, 3, 4), phone: "08028426794", status: 1, introducer_id: 59, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-12-11 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 80 山田真聡 退会済み
-  { login_id: "unknown0047", email: "unknown47@gmail.com", name: "山田真聡", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヤマダマサト", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 71, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0047", email: "unknown47@gmail.com", name: "山田真聡", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ヤマダマサト", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 71, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-09-21 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 81 西山優哉 退会済み
-  { login_id: "unknown0048", email: "unknown48@gmail.com", name: "西山優哉", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ニシヤマユウヤ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 71, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0048", email: "unknown48@gmail.com", name: "西山優哉", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ニシヤマユウヤ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 71, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-09-29 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 82 八木梨々亜
-  { login_id: "0527ygiiiin", email: "0527yagiiiin@gmail.com", name: "八木梨々亜", password: "Ygrra0527!?", password_confirmation: "Ygrra0527!?", name_kana: "ヤギリリア", birthday: Date.new(1998, 5, 27), phone: "08033621082", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "0527ygiiiin", email: "0527yagiiiin@gmail.com", name: "八木梨々亜", password: "Ygrra0527!?", password_confirmation: "Ygrra0527!?", name_kana: "ヤギリリア", birthday: Date.new(1998, 5, 27), phone: "08033621082", status: 1, introducer_id: 48, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-05-28 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 83 江良弘希
-  { login_id: "2659", email: "jianglianghongxi@gmail.com", name: "江良弘希", password: "Erakoki5522@", password_confirmation: "Erakoki5522@", name_kana: "エラコウキ", birthday: Date.new(2002, 12, 29), phone: "09068325522", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "2659", email: "jianglianghongxi@gmail.com", name: "江良弘希", password: "Erakoki5522@", password_confirmation: "Erakoki5522@", name_kana: "エラコウキ", birthday: Date.new(2002, 12, 29), phone: "09068325522", status: 1, introducer_id: 3, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-11-14 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 84 余吾美咲
-  { login_id: "misaki1208", email: "misaki_y.1208@i.softbank.jp", name: "余吾美咲", password: "3Misaki12!?", password_confirmation: "3Misaki12!?", name_kana: "ヨゴミサキ", birthday: Date.new(2000, 3, 12), phone: "08043246778", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 },
+  { login_id: "misaki1208", email: "misaki_y.1208@i.softbank.jp", name: "余吾美咲", password: "3Misaki12!?", password_confirmation: "3Misaki12!?", name_kana: "ヨゴミサキ", birthday: Date.new(2000, 3, 12), phone: "08043246778", status: 1, introducer_id: 1, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 1, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 85 丹羽早紀
-  { login_id: "sk99bty", email: "sk_99bty@yahoo.co.jp", name: "丹羽早紀", password: "Ssks2@7", password_confirmation: "Ssks2@7", name_kana: "ニワサキ", birthday: Date.new(1999, 7, 21), phone: "07092910836", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 1 },
+  { login_id: "sk99bty", email: "sk_99bty@yahoo.co.jp", name: "丹羽早紀", password: "Ssks2@7", password_confirmation: "Ssks2@7", name_kana: "ニワサキ", birthday: Date.new(1999, 7, 21), phone: "07092910836", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-07-28 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 86 林丹乙
-  { login_id: "Makomako884", email: "mako-884@ezweb.ne.jp", name: "林丹乙", password: "Makoto0321!?", password_confirmation: "Makoto0321!?", name_kana: "ハヤシマコト", birthday: Date.new(2000, 3, 21), phone: "09081659906", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: Time.current, updated_at: nil, incentive_id: 2 }
+  { login_id: "Makomako884", email: "mako-884@ezweb.ne.jp", name: "林丹乙", password: "Makoto0321!?", password_confirmation: "Makoto0321!?", name_kana: "ハヤシマコト", birthday: Date.new(2000, 3, 21), phone: "09081659906", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-06-20 00:00:00", updated_at: nil, incentive_id: 2 }
+  # id: 87 河路くるみ
+  { login_id: "0823", email: "k.tennis0823@gmail.com", name: "河路くるみ", password: "K_u2327ru!?", password_confirmation: "K_u2327ru!?", name_kana: "カワジクルミ", birthday: Date.new(2003, 08, 23), phone: "08082575549", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 }
 ]
 
 relation_ships = [
@@ -271,7 +273,7 @@ relation_ships = [
   {parent_id: 48, child_id: 66, created_at: Time.current, updated_at: nil},
   {parent_id: 48, child_id: 67, created_at: Time.current, updated_at: nil},
   {parent_id: 48, child_id: 68, created_at: Time.current, updated_at: nil},
-  {parent_id: 48, child_id: 81, created_at: Time.current, updated_at: nil},
+  {parent_id: 48, child_id: 82, created_at: Time.current, updated_at: nil},
   {parent_id: 49, child_id: 69, created_at: Time.current, updated_at: nil},
   {parent_id: 52, child_id: 70, created_at: Time.current, updated_at: nil},
   {parent_id: 53, child_id: 71, created_at: Time.current, updated_at: nil},
@@ -287,6 +289,7 @@ relation_ships = [
   {parent_id: 71, child_id: 81, created_at: Time.current, updated_at: nil},
   {parent_id: 84, child_id: 85, created_at: Time.current, updated_at: nil},
   {parent_id: 84, child_id: 86, created_at: Time.current, updated_at: nil}
+  {parent_id: 84, child_id: 87, created_at: Time.current, updated_at: nil}
 ]
 
 user_addresses = [
@@ -312,7 +315,7 @@ user_addresses = [
   { user_id: 10, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
   # id: 11 南杜萌　退会済み
   { user_id: 11, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
-  # id: 12 三改木穂　退会済み
+  # id: 12 三改木穂乃　退会済み
   { user_id: 12, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
   # id: 13 酒井響己
   { user_id: 13, zip_str3: "232", zip_str4: "0064", ken: "神奈川県", city: "横浜市南区別所3-12-13", other_address: "パークホームズ弐番館110号室" },
@@ -372,7 +375,7 @@ user_addresses = [
   { user_id: 40, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
   # id: 41 佐藤琉聖 退会済み
   { user_id: 41, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
-  # id: 42 竹内伶
+  # id: 42 竹内響
   { user_id: 42, zip_str3: "352", zip_str4: "0022", ken: "埼玉県", city: "新座市本多1-10-27", other_address: nil },
   # id: 43 鬼崎愛香 退会済み
   { user_id: 43, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
@@ -436,7 +439,7 @@ user_addresses = [
   { user_id: 72, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
   # id: 73 島袋瑞輝 退会済み
   { user_id: 73, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
-  # id: 74 志村友里 退会済み
+  # id: 74 志村悠里 退会済み
   { user_id: 74, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
   # id: 75 髙橋ひかり 退会済み
   { user_id: 75, zip_str3: "000", zip_str4: "1111", ken: "東京都", city: "新宿区市谷薬王寺町", other_address: nil },
@@ -462,6 +465,8 @@ user_addresses = [
   { user_id: 85, zip_str3: "504", zip_str4: "0926", ken: "岐阜県", city: "各務原市上中屋町1-72", other_address: nil },
   # id: 86 林丹乙
   { user_id: 86, zip_str3: "472", zip_str4: "0007", ken: "愛知県", city: "知立市牛田町前田7-3", other_address: "A.CITY牛田215" }
+  # id: 87 河路くるみ
+  { user_id: 87, zip_str3: "492", zip_str4: "8229", ken: "愛知県", city: "稲沢市稲島8-87-1", other_address: "ティアラC106" }
 ]
 
 user_banks = [
@@ -487,7 +492,7 @@ user_banks = [
   { user_id: 10, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "TOITA MANA" },
   # id: 11 南杜萌　退会済み
   { user_id: 11, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "MINAMI TOMOE" },
-  # id: 12 三改木穂　退会済み
+  # id: 12 三改木穂乃　退会済み
   { user_id: 12, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "MISOROGI HONO" },
   # id: 13 酒井響己
   { user_id: 13, bank_name: "ゆうちょ銀行", account_type: 1, branch_name: "〇二八", branch_number: "028", account_number_hash: "5290394", account_number_tail: "*****394", account_holder: "SAKAI HIBIKI" },
@@ -547,7 +552,7 @@ user_banks = [
   { user_id: 40, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "YOUKOU" },
   # id: 41 佐藤琉聖 退会済み
   { user_id: 41, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "SATOU RYUSEI" },
-  # id: 42 竹内伶
+  # id: 42 竹内響
   { user_id: 42, bank_name: "ゆうちょ銀行", account_type: 1, branch_name: "〇三九", branch_number: "039", account_number_hash: "8211978", account_number_tail: "*****978", account_holder: "TAKEUCHI REI" },
   # id: 43 鬼崎愛香 退会済み
   { user_id: 43, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "ONIZAKI AIKA" },
@@ -611,7 +616,7 @@ user_banks = [
   { user_id: 72, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "ITAGAKI YUUTA" },
   # id: 73 島袋瑞輝 退会済み
   { user_id: 73, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "SHIMABUKURO MIZUKI" },
-  # id: 74 志村友里 退会済み
+  # id: 74 志村悠里 退会済み
   { user_id: 74, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "SHIMURA YUURI" },
   # id: 75 髙橋ひかり 退会済み
   { user_id: 75, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "TAKAHASHI HIKARI" },
@@ -637,6 +642,22 @@ user_banks = [
   { user_id: 85, bank_name: "PayPay銀行", account_type: 1, branch_name: "ハヤブサ支店", branch_number: "003", account_number_hash: "6553890", account_number_tail: "*****890", account_holder: "NIWA SAKI" },
   # id: 86 林丹乙
   { user_id: 86, bank_name: "三井住友銀行", account_type: 1, branch_name: "加古川支店", branch_number: "431", account_number_hash: "5931412", account_number_tail: "*****412", account_holder: "HAYASHI MAKOTO" }
+  # id: 87 河路くるみ
+  { user_id: 87, bank_name: "ゆうちょ銀行", account_type: 1, branch_name: "二〇八", branch_number: "208", account_number_hash: "1259103", account_number_tail: "*****103", account_holder: "KAWAJI KURUMI" }
+]
+
+rewards = [
+  user_id: 44, incentive_id: 2, incentive_price: nil,
+  user_id: 13, incentive_id: 4, incentive_price: nil,
+  user_id: 36, incentive_id: 2, incentive_price: nil,
+  user_id: 3, incentive_id: 4, incentive_price: nil,
+  user_id: 53, incentive_id: 1, incentive_price: nil,
+  user_id: 35, incentive_id: 3, incentive_price: nil,
+  user_id: 3, incentive_id: 7, incentive_price: nil,
+  user_id: 59, incentive_id: 2, incentive_price: nil,
+  user_id: 48, incentive_id: 4, incentive_price: nil,
+  user_id: 48, incentive_id: 2, incentive_price: nil,
+  user_id: 16, incentive_id: 4, incentive_price: nil
 ]
 
 Incentive.create!(incentives)
@@ -646,3 +667,4 @@ User.create!(users)
 UserAddress.create!(user_addresses)
 UserBank.create!(user_banks)
 Relationship.create!(relation_ships)
+Reward.create!(rewards)

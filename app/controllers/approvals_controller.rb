@@ -35,7 +35,7 @@ class ApprovalsController < ApplicationController
       end
     end
     flash[:success] = "本登録完了しました。"
-    if session[:search_approval_year].present? && session[:search_approval_month].present? 
+    if session[:search_approval_year].present? && session[:search_approval_month].present?
       redirect_to approvals_path(search_year: session[:search_approval_year], search_month: session[:search_approval_month], type: "new")
     else
       redirect_to approvals_path(type: "new")
@@ -60,22 +60,32 @@ class ApprovalsController < ApplicationController
       if params[:type] == "new"
         # created_at列で範囲検索を行う
         @type = "new"
-        @approval = TmpMemberInfo.where(created_at: start_date.beginning_of_month..end_date, approval_id: 2).order(created_at: :desc)
+        @approval = TmpMemberInfo.includes(:introducer, :sales)
+          .where(created_at: start_date.beginning_of_month..end_date, approval_id: 2)
+          .order(created_at: :desc)
       elsif params[:type] == "done"
         # created_at列で範囲検索を行う
         @type = "done"
-        @approval = TmpMemberInfo.where(created_at: start_date.beginning_of_month..end_date, approval_id: 1).order(created_at: :desc)
+        @approval = TmpMemberInfo.includes(:introducer, :sales)
+          .where(created_at: start_date.beginning_of_month..end_date, approval_id: 1)
+          .order(created_at: :desc)
       end
     elsif params[:type] == "new"
       @type = "new"
-      @approval = TmpMemberInfo.created_this_month.where(approval_id: 2).order(created_at: :desc)
+      @approval = TmpMemberInfo.includes(:introducer, :sales)
+        .created_this_month
+        .where(approval_id: 2)
+        .order(created_at: :desc)
     # created_at列で範囲検索を行う
     elsif params[:type] == "done"
       # created_at列で範囲検索を行う
       @type = "done"
-      @approval = TmpMemberInfo.created_this_month.where(approval_id: 1).order(created_at: :desc)
+      @approval = TmpMemberInfo.includes(:introducer, :sales)
+        .created_this_month
+        .where(approval_id: 1)
+        .order(created_at: :desc)
     end
-    
+
     @approval_lists = Kaminari.paginate_array(@approval).page(params[:page]).per(15)
     @approval_lists
   end

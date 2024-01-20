@@ -1,0 +1,34 @@
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '提携先一覧', connect_services_path, class: 'common_a' %> >
+  脱毛【医療】
+</p>
+<div class="service_top">
+  <h1 class="service_detail_title">脱毛【医療】</h1>
+  <p class="service_catch_copy">SNT特別価格　通常価格より15%OFF</p>
+  <div class="underline"></div>
+</div>
+<div class="service_detail_bottom">
+  <p>
+    医療脱毛で理想のツルスベ肌を手に入れませんか？<br>
+    美しい肌への第一歩は、自分に合った医療脱毛から。毛穴の悩みや、気になる髭も、当院の専門スタッフが丁寧にカウンセリング。初めての方でも安心してご相談いただけます<br>
+    さらに、特別なお知らせです！<span class="beige">会員限定で、医療脱毛が今だけ驚きの15%OFF！！</span><br>
+    このチャンスに、<span class="beige">高品質な脱毛体験</span>を特別価格でご提供します。<br>
+    この機会に、プロの手による医療脱毛を体験し、自信に満ちた美しい肌を実感してください。<br><br>
+
+    明るく親しみやすい対応であなたをお迎えします。<br>
+    疑問や不安を抱えている方も、私たちが優しくサポート。一人ひとりの肌質や毛質に合わせた、<span class="beige">最適な脱毛プラン</span>をご提案します。<br>
+    <span class="beige">「肌を綺麗にしたい！」「自分磨きをしたい！」</span>と考えているあなたに、このサービスはまさにぴったり。<br><br>
+
+    輝くツルツル肌への一歩を踏み出しましょう。美肌への変身を、私たちと一緒に実現しませんか？<br>
+    ご予約をお待ちしております！
+  </p>
+</div>
+<p class="guide_text">体験したい人・何か質問がある人は以下からご連絡</p>
+<div class="guide_arrow">
+  <%= image_tag 'guide_arrow.svg', alt: '案内の矢印' %>
+</div>
+<div class="contact_btn">
+  <%= link_to 'お問い合わせ', new_connect_service_path(type: "beauty_clinic"), class: 'common_btn_beige common_btn_content common_box_beige' %>
+</div>
+<%= link_to '戻る', connect_services_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
