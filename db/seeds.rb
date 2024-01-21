@@ -198,9 +198,9 @@ users = [
   # id: 85 丹羽早紀
   { login_id: "sk99bty", email: "sk_99bty@yahoo.co.jp", name: "丹羽早紀", password: "Ssks2@7", password_confirmation: "Ssks2@7", name_kana: "ニワサキ", birthday: Date.new(1999, 7, 21), phone: "07092910836", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-07-28 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 86 林丹乙
-  { login_id: "Makomako884", email: "mako-884@ezweb.ne.jp", name: "林丹乙", password: "Makoto0321!?", password_confirmation: "Makoto0321!?", name_kana: "ハヤシマコト", birthday: Date.new(2000, 3, 21), phone: "09081659906", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-06-20 00:00:00", updated_at: nil, incentive_id: 2 }
+  { login_id: "Makomako884", email: "mako-884@ezweb.ne.jp", name: "林丹乙", password: "Makoto0321!?", password_confirmation: "Makoto0321!?", name_kana: "ハヤシマコト", birthday: Date.new(2000, 3, 21), phone: "09081659906", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-06-20 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 87 河路くるみ
-  { login_id: "0823", email: "k.tennis0823@gmail.com", name: "河路くるみ", password: "K_u2327ru!?", password_confirmation: "K_u2327ru!?", name_kana: "カワジクルミ", birthday: Date.new(2003, 08, 23), phone: "08082575549", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 }
+  { login_id: "0823", email: "k.tennis0823@gmail.com", name: "河路くるみ", password: "K_u2327ru!?", password_confirmation: "K_u2327ru!?", name_kana: "カワジクルミ", birthday: Date.new(2003, 8, 23), phone: "08082575549", status: 1, introducer_id: 84, admin_flg: 9, gender_id: 2, online_flg: 9, grade_id: 99, created_at: "2023-02-23 00:00:00", updated_at: nil, incentive_id: 2 }
 ]
 
 relation_ships = [
@@ -288,7 +288,7 @@ relation_ships = [
   {parent_id: 71, child_id: 80, created_at: Time.current, updated_at: nil},
   {parent_id: 71, child_id: 81, created_at: Time.current, updated_at: nil},
   {parent_id: 84, child_id: 85, created_at: Time.current, updated_at: nil},
-  {parent_id: 84, child_id: 86, created_at: Time.current, updated_at: nil}
+  {parent_id: 84, child_id: 86, created_at: Time.current, updated_at: nil},
   {parent_id: 84, child_id: 87, created_at: Time.current, updated_at: nil}
 ]
 
@@ -464,7 +464,7 @@ user_addresses = [
   # id: 85 丹羽早紀
   { user_id: 85, zip_str3: "504", zip_str4: "0926", ken: "岐阜県", city: "各務原市上中屋町1-72", other_address: nil },
   # id: 86 林丹乙
-  { user_id: 86, zip_str3: "472", zip_str4: "0007", ken: "愛知県", city: "知立市牛田町前田7-3", other_address: "A.CITY牛田215" }
+  { user_id: 86, zip_str3: "472", zip_str4: "0007", ken: "愛知県", city: "知立市牛田町前田7-3", other_address: "A.CITY牛田215" },
   # id: 87 河路くるみ
   { user_id: 87, zip_str3: "492", zip_str4: "8229", ken: "愛知県", city: "稲沢市稲島8-87-1", other_address: "ティアラC106" }
 ]
@@ -575,7 +575,7 @@ user_banks = [
   # id: 52 都丸琳子
   { user_id: 52, bank_name: "みずほ銀行", account_type: 1, branch_name: "大宮支店", branch_number: "447", account_number_hash: "3095659", account_number_tail: "*****659", account_holder: "TOMARU RINKO" },
   # id: 53 伊藤悠夏
-  { user_id: 52, bank_name: "三菱東京UFJ銀行", account_type: 1, branch_name: "津田沼支店", branch_number: "016", account_number_hash: "1887424", account_number_tail: "*****424", account_holder: "ITOU YUUKA" },
+  { user_id: 53, bank_name: "三菱東京UFJ銀行", account_type: 1, branch_name: "津田沼支店", branch_number: "016", account_number_hash: "1887424", account_number_tail: "*****424", account_holder: "ITOU YUUKA" },
   # id: 54 田中空 退会済み
   { user_id: 54, bank_name: "不明", account_type: 1, branch_name: "不明", branch_number: "000", account_number_hash: "1110000", account_number_tail: "*****000", account_holder: "TANAKA SORA" },
   # id: 55 関田ゆいか 退会済み
@@ -641,24 +641,24 @@ user_banks = [
   # id: 85 丹羽早紀
   { user_id: 85, bank_name: "PayPay銀行", account_type: 1, branch_name: "ハヤブサ支店", branch_number: "003", account_number_hash: "6553890", account_number_tail: "*****890", account_holder: "NIWA SAKI" },
   # id: 86 林丹乙
-  { user_id: 86, bank_name: "三井住友銀行", account_type: 1, branch_name: "加古川支店", branch_number: "431", account_number_hash: "5931412", account_number_tail: "*****412", account_holder: "HAYASHI MAKOTO" }
+  { user_id: 86, bank_name: "三井住友銀行", account_type: 1, branch_name: "加古川支店", branch_number: "431", account_number_hash: "5931412", account_number_tail: "*****412", account_holder: "HAYASHI MAKOTO" },
   # id: 87 河路くるみ
   { user_id: 87, bank_name: "ゆうちょ銀行", account_type: 1, branch_name: "二〇八", branch_number: "208", account_number_hash: "1259103", account_number_tail: "*****103", account_holder: "KAWAJI KURUMI" }
 ]
 
-rewards = [
-  user_id: 44, incentive_id: 2, incentive_price: nil,
-  user_id: 13, incentive_id: 4, incentive_price: nil,
-  user_id: 36, incentive_id: 2, incentive_price: nil,
-  user_id: 3, incentive_id: 4, incentive_price: nil,
-  user_id: 53, incentive_id: 1, incentive_price: nil,
-  user_id: 35, incentive_id: 3, incentive_price: nil,
-  user_id: 3, incentive_id: 7, incentive_price: nil,
-  user_id: 59, incentive_id: 2, incentive_price: nil,
-  user_id: 48, incentive_id: 4, incentive_price: nil,
-  user_id: 48, incentive_id: 2, incentive_price: nil,
-  user_id: 16, incentive_id: 4, incentive_price: nil
-]
+# rewards = [
+#   user_id: 44, incentive_id: 2, incentive_price: nil,
+#   user_id: 13, incentive_id: 4, incentive_price: nil,
+#   user_id: 36, incentive_id: 2, incentive_price: nil,
+#   user_id: 3, incentive_id: 4, incentive_price: nil,
+#   user_id: 53, incentive_id: 1, incentive_price: nil,
+#   user_id: 35, incentive_id: 3, incentive_price: nil,
+#   user_id: 3, incentive_id: 7, incentive_price: nil,
+#   user_id: 59, incentive_id: 2, incentive_price: nil,
+#   user_id: 48, incentive_id: 4, incentive_price: nil,
+#   user_id: 48, incentive_id: 2, incentive_price: nil,
+#   user_id: 16, incentive_id: 4, incentive_price: nil
+# ]
 
 Incentive.create!(incentives)
 LearnCategory.create!(learn_categories)
@@ -667,4 +667,4 @@ User.create!(users)
 UserAddress.create!(user_addresses)
 UserBank.create!(user_banks)
 Relationship.create!(relation_ships)
-Reward.create!(rewards)
+# Reward.create!(rewards)
