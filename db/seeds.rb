@@ -182,7 +182,7 @@ users = [
   # id: 77 佐藤竜寛
   { login_id: "tatu", email: "tatu110403@yahoo.co.jp", name: "佐藤竜寛", password: "Tatu1430!?", password_confirmation: "Tatu1430!?", name_kana: "サトウタツヒロ", birthday: Date.new(2002, 4, 30), phone: "08098637968", status: 1, introducer_id: 53, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-12-16 00:00:00", updated_at: nil, incentive_id: 1 },
   # id: 78 保坂滉人 退会済み
-  { login_id: "unknown0046", email: "unknown46@gmail.com", name: "保坂滉人", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "タカハシモトキ", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 59, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-10-15 00:00:00", updated_at: nil, incentive_id: 2 },
+  { login_id: "unknown0046", email: "unknown46@gmail.com", name: "保坂滉人", password: "Unknown!?", password_confirmation: "Unknown!?", name_kana: "ホサカヒロト", birthday: Date.new(1990, 1, 1), phone: "11100001111", status: 9, introducer_id: 59, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-10-15 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 79 伊藤栞汰
   { login_id: "stn34kan", email: "ito.2016.0327@gmail.com", name: "伊藤栞汰", password: "Kanta130304!?", password_confirmation: "Kanta130304!?", name_kana: "イトウカンタ", birthday: Date.new(2001, 3, 4), phone: "08028426794", status: 1, introducer_id: 59, admin_flg: 9, gender_id: 1, online_flg: 9, grade_id: 99, created_at: "2023-12-11 00:00:00", updated_at: nil, incentive_id: 2 },
   # id: 80 山田真聡 退会済み

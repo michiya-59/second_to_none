@@ -4,7 +4,7 @@ module Admin
   class LearnCategoriesController < ApplicationController
     before_action :set_learn_category, only: %i(edit update destroy)
 
-    def index 
+    def index
       @learn_category = LearnCategory.new
       @learn_categories = LearnCategory.all
       session[:admin_learn_page] = nil
@@ -15,9 +15,13 @@ module Admin
     def edit; end
     def create
       @learn_category = LearnCategory.new(learn_category_params)
+
+      # 現在の最大の order_num を取得し、1 を加える
+      max_order_num = LearnCategory.maximum(:order_num) || 0
+      @learn_category.order_num = max_order_num + 1
       if @learn_category.save
         flash[:success] = "学びのカテゴリーを登録しました。"
-      else        
+      else
         flash[:form_error] = @learn_category.errors.full_messages
       end
       redirect_to admin_learn_categories_path
@@ -37,7 +41,7 @@ module Admin
       flash[:success] = "学びのカテゴリーを削除しました。"
       redirect_to admin_learn_categories_path
     end
-    
+
     private
 
     def learn_category_params
