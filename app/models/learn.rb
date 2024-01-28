@@ -10,6 +10,7 @@ class Learn < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true, length: {maximum: 30}
+  attr_accessor :remove_document_file, :remove_video_file
 
   scope :created_this_month, ->{where("extract(year from created_at) = ? AND extract(month from created_at) = ?", Time.current.year, Time.current.month)}
 end

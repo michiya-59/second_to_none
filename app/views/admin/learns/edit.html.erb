@@ -20,24 +20,31 @@
     <div class="learn_edit_part">
       <%= form.label :document_file, "ファイル", class: "common_size16" %>
       <% if @learn.document_file.attached? %>
-        <%= link_to rails_blob_path(@learn.document_file, disposition: "attachment"), class: "download_edit_btm" do %>
-          <i class="fas fa-download"></i> ファイルあり
-        <% end %>
+        <div class="dument_content">
+          <%= link_to rails_blob_path(@learn.document_file, disposition: "attachment"), class: "download_edit_btm" do %>
+            <i class="fas fa-download"></i> ファイルあり
+          <% end %>
+          <%= form.check_box :remove_document_file, class: "document_remove_checkbtn" %>
+        </div>
       <% else %>
         なし
       <% end %>
-      <%= form.file_field :document_file, class: "common_size13 document_file", accept: ".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx", 'data-max-file-size': 5.megabytes, 'data-file-type': 'document', 'data-allowed-types-display': 'PDF, PPT, PPTX, DOC, DOCX, XLS, XLSX' %>
+      <%= form.file_field :document_file, class: "common_size13 document_file mt-1", accept: ".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx" %>
     </div>
-    <div class="learn_edit_part">
+
+    <div class="learn_edit_part mt-3">
       <%= form.label :video_file, "動画", class: "common_size16" %>
       <% if @learn.video_file.attached? %>
-        <%= link_to rails_blob_path(@learn.video_file, disposition: "attachment"), class: "download_edit_btm" do %>
-          <i class="fas fa-download"></i> 動画あり
-        <% end %>
+        <div class="dument_content">
+          <%= link_to rails_blob_path(@learn.video_file, disposition: "attachment"), class: "download_edit_btm" do %>
+            <i class="fas fa-download"></i> 動画あり
+          <% end %>
+          <%= form.check_box :remove_video_file, class: "document_remove_checkbtn" %>
+        </div>
       <% else %>
         なし
       <% end %>
-      <%= form.file_field :video_file, class: "common_size13 video_file", accept: "video/mp4,video/x-m4v,video/*", 'data-max-file-size': 500.megabytes, 'data-file-type': 'video', 'data-allowed-types-display': 'MP4, M4V' %>
+      <%= form.file_field :video_file, class: "common_size13 video_file mt-1", accept: "video/mp4,video/x-m4v,video/*" %>
     </div>
     <div class="admin_submit_btn text_center common_merge">
       <% if page_year_month_include?(session[:admin_learn_page], session[:search_learn_month], session[:search_learn_year]) %>
