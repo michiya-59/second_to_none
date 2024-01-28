@@ -11,20 +11,26 @@ class SessionsController < ApplicationController
 
     user = User.find_by(login_id: params[:login_id])
     if user
-      account_unlocked user
-      if user.locked
-        @lock = true
-        @error_msg = "アカウントがロックされています"
-        render :new
-      elsif user.authenticate(params[:password])
-        failed_info_reset user
-        login(user)
-        redirect_to root_path
+      # 退会済みはログインできないようにする
+      if user.status == 1
+        account_unlocked user
+        if user.locked
+          @lock = true
+          @error_msg = "アカウントがロックされています"
+          render :new
+        elsif user.authenticate(params[:password])
+          failed_info_reset user
+          login(user)
+          redirect_to root_path
+        else
+          user.failed_login_count += 1
+          user = account_lock user
+          user.save
+          @error_msg = "ログインIDまたはパスワードが間違っています。<br>5回ログインに失敗すると、アカウントがロックされますのでご注意下さい。"
+          render :new
+        end
       else
-        user.failed_login_count += 1
-        user = account_lock user
-        user.save
-        @error_msg = "ログインIDまたはパスワードが間違っています。<br>5回ログインに失敗すると、アカウントがロックされますのでご注意下さい。"
+        @error_msg = "退会済みのアカウントのため<br>ログインできません。"
         render :new
       end
     else
