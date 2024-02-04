@@ -32,7 +32,7 @@
       </div>
       <div class="learn_add_part">
         <%= form.label :video_file, "動画", class: "common_size16" %>
-        <%= form.file_field :video_file, direct_upload: true, class: "common_size13 video_file", accept: "video/mp4,video/x-m4v,video/mov,video/*", 'data-max-file-size': 1536.megabytes, 'data-file-type': 'video', 'data-allowed-types-display': 'MP4, M4V, MOV' %>
+        <%= form.file_field :video_file, direct_upload: true, class: "common_size13 video_file", accept: "video/mp4,video/x-m4v,video/mov,video/*", 'data-max-file-size': 500.megabytes, 'data-file-type': 'video', 'data-allowed-types-display': 'MP4, M4V, MOV' %>
       </div>
       <%= form.submit "新規追加", class: "admin_add_btn common_btn_beige common_btn_content common_box_beige" %>
     </div>
