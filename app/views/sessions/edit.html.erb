@@ -1,0 +1,29 @@
+<% if flash[:success].present? %>
+  <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %><p>
+<% end %>
+<%= render 'shared/error' %>
+<%= form_with url: updated_user_path, method: :post do |f| %>
+  <div class="update_form">
+
+    <div class="field">
+      <%= label_tag :id, "ユーザID" %>
+      <%= text_field_tag :id %>
+    </div>
+    
+    <div class="field">
+      <%= label_tag :password, "新しいパスワード" %>
+      <%= password_field_tag :password %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :password_confirmation, "新しいパスワードの確認" %>
+      <%= password_field_tag :password_confirmation %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "更新", class: "update_bat_btn" %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to "ボーナス確定", bonus_pay_bat_rewards_path, class: "update_bounus_bat_btn" %>

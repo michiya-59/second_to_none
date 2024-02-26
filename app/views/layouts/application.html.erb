@@ -14,8 +14,12 @@
   </head>
 
   <body>
-    <% if request.fullpath.include?('bonus_pay_bat') %>
-      <%= yield %>
+    <% if request.fullpath.include?('bonus_pay_bat') || request.fullpath.include?('update_user') || request.fullpath.include?('updated_user') %>
+      <main>
+        <div class="container">
+          <%= yield %>
+        </div>
+      </main>
     <% else%>
       <% if get_current_path.include?("login") %>
         <%= yield %>

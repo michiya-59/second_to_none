@@ -8,7 +8,7 @@ class OrganizationsController < ApplicationController
       # 現在ログインしているユーザから派生している全ユーザのユーザIDを取得
       descendants = Relationship.find_descendants current_user&.id
       user_ids = descendants.unshift current_user&.id
-      @users = User.where(id: user_ids)
+      @users = User.where(id: user_ids, status: [1, 9])
     end
     gon.users = format_org_data(@users)
   end

@@ -2,9 +2,11 @@
 
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  skip_before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session, only: %i(new create)
+  skip_before_action :authenticate_user, :redirect_not_logged_in, :redirect_not_session, only: %i(new create edit update)
 
   def new; end
+
+  def edit; end
 
   def create
     login_validate_params
@@ -36,6 +38,24 @@ class SessionsController < ApplicationController
     else
       @error_msg = "入力に誤りがあります。ID・パスワードを再度ご確認ください。"
       render :new
+    end
+  end
+
+  def update
+    user = User.find_by(login_id: params[:id])
+
+    # ユーザが存在し、かつそのユーザが1人だけであることを確認
+    if user && User.where(login_id: params[:id]).count == 1
+      if user.update(password: params[:password], password_confirmation: params[:password_confirmation])
+        flash[:success] = "パスワードが更新されました。"
+        redirect_to update_user_path
+      else
+        flash.now[:login_error] = user.errors.full_messages.to_sentence
+        render :edit
+      end
+    else
+      flash[:login_error] = "指定されたユーザが見つかりません。"
+      render :edit
     end
   end
 
