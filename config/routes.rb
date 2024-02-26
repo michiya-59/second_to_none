@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   post "/login", to: "sessions#create"
   post "lock_off", to: "sessions#lock_off"
+  get "update_user", to: "sessions#edit"
+  post "updated_user", to: "sessions#update"
 
   resources :tasks, only: %i(new create) do
     collection do

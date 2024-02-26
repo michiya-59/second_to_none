@@ -169,6 +169,11 @@ class RewardsController < ApplicationController
 
       BonusSnapshot.create_snapshot(bonus_info) if bonus_info[:total_payment_price].to_i > 0
     end
+    flash[:success] = "ボーナス情報の更新が完了しました。"
+    redirect_to update_user_path
+  rescue StandardError
+    flash[:login_error] = "ボーナス情報の更新に失敗しました。"
+    redirect_to update_user_path
   end
 
   def bonus_pay_detail

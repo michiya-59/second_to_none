@@ -4,13 +4,13 @@ class IntroducersController < ApplicationController
   before_action :set_search_session, only: %i(index search)
 
   def index
-    @introducers = User.select(:id, :created_at, :name, :status).where(introducer_id: current_user&.id).order(id: :asc)
+    @introducers = User.select(:id, :created_at, :name, :status).where(introducer_id: current_user&.id, status: [1, 9]).order(id: :asc)
     # 紹介者ごとに紹介したユーザの数を取得
     set_introduced_counts
   end
 
   def search
-    introduce_users = User.select(:id, :created_at, :name, :status).where(introducer_id: current_user&.id).order(id: :asc)
+    introduce_users = User.select(:id, :created_at, :name, :status).where(introducer_id: current_user&.id, status: [1, 9]).order(id: :asc)
     @introducers = introducer_search(introduce_users)
     # 紹介者ごとに紹介したユーザの数を取得
     set_introduced_counts
@@ -32,7 +32,7 @@ class IntroducersController < ApplicationController
 
   def set_introduced_counts
     @introduced_counts = @introducers.each_with_object({}) do |introducer, counts|
-      counts[introducer.id] = introducer.introduced_users.count
+      counts[introducer.id] = introducer.introduced_users.where(status: [1, 9]).count
     end
   end
 

@@ -12,15 +12,18 @@ class TitlesController < ApplicationController
   def get_introduce_count user_id
     return unless user_id
 
-    # 1段目の紹介人数取得
-    introducer_datas = Relationship.where(parent_id: user_id)
-    introducer_introduction_count = count_second_level_introductions introducer_datas
+    # 1段目の紹介人数取得（statusが1または9のユーザーのみ）
+    introducer_datas = Relationship.joins("INNER JOIN users ON relationships.child_id = users.id")
+      .where(parent_id: user_id, users: {status: [1, 9]})
+    introducer_introduction_count = count_second_level_introductions(introducer_datas)
     [introducer_datas.count, introducer_introduction_count]
   end
 
   def count_second_level_introductions introducer_datas
     introducer_datas.sum do |introducer_data|
-      Relationship.where(parent_id: introducer_data&.child_id).count
+      # 2段目の紹介人数もstatusが1または9のユーザーのみをカウント
+      Relationship.joins("INNER JOIN users ON relationships.child_id = users.id")
+        .where(parent_id: introducer_data&.child_id, users: {status: [1, 9]}).count
     end
   end
 
