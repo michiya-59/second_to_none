@@ -10,7 +10,10 @@ module LearnsHelper
 
   def task_submitted? learn_id, user_id, index
     # 最初の3つの資料には制限をかけない
-    return true if index <= 3
+    if params[:page].present? && params[:page].to_i >= 2
+    elsif index <= 3
+      return true
+    end
 
     # 4つ目以降の資料については、それまでの全ての資料の課題が提出されているかを確認
     # そのために、現在のlearn_idより小さい全てのlearn_idを取得

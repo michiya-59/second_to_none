@@ -34,7 +34,7 @@ class TitlesController < ApplicationController
     elsif first_level >= 6 && second_level < 4
       # ルビーエグゼクティブの条件（1段目は6名以上、2段目は4名未満）
       ["ルビーエグゼクティブ", 0, 4 - second_level]
-    elsif (first_level >= 6 && second_level >= 4) || (first_level >= 3 && second_level >= 12)
+    elsif (first_level >= 6 && second_level >= 4) || (first_level > 3 && second_level >= 12)
       # エメラルドエグゼクティブの条件（1段目と2段目がそれぞれ12名以上、またはルビーエグゼクティブを満たしている）
       ["エメラルドエグゼクティブ", 12 - first_level, 12 - second_level]
     elsif first_level >= 3
