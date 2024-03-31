@@ -14,7 +14,6 @@ amazon:
   secret_access_key:
   region: ap-northeast-1
   bucket: shine-stn-s3
-  public: true
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
