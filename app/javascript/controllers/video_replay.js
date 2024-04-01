@@ -3,13 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const videoModal = document.getElementById('videoModal');
   const videoPlayer = document.getElementById('videoPlayer');
   const closeModal = document.querySelector('.modal .close');
-
-  videoLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      videoPlayer.src = this.dataset.videoUrl;
-      videoModal.style.display = 'block';
-      videoPlayer.play();
+  
+  document.querySelectorAll('video[class="common_box_beige common_size16"]').forEach(function(video) {
+    video.addEventListener('play', function() {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) { /* Safari */
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) { /* IE11 */
+        video.msRequestFullscreen();
+      }
     });
   });
 

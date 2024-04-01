@@ -37,16 +37,16 @@
         <p class="common_size20"><%= learn.created_at.strftime('%Y/%m/%d') %></p>
         <p class="common_size16"><%= learn.name %></p>
 
-        <div class="learn_box common_btn_shape <%= video_class %>">
+        <div class="learn_box <%= video_class %>">
           <% if video_class == "not_video" %>
             <%= image_tag 'lock.svg' %>
           <% end %>
           <div class="learn_document_video">
+            <% if learn.video_file.attached? %>
+              <%= video_tag(url_for(learn.video_file), controls: true, class: 'common_box_beige common_size16', id: "learnVideo#{index}", controlsList: "nodownload") %>
+            <% end %>
             <% if learn.document_file.attached? %>
               <%= link_to '資料', rails_blob_path(learn.document_file, disposition: "inline"), target: "_blank", class: 'common_box_beige common_size16' %>
-            <% end %>
-            <% if learn.video_file.attached? %>
-              <%= link_to '動画', '#', class: 'common_box_beige common_size16 play-video', data: { video_id: learn.id, user_id: current_user&.id, video_url: rails_blob_path(learn.video_file, disposition: "inline") } %>
             <% end %>
           </div>
         </div>
