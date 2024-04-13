@@ -1,13 +1,13 @@
 FROM ruby:3.2.1
 
 RUN apt update -qq && apt install -y postgresql-client
-RUN mkdir /shine_stn_app
-WORKDIR /shine_stn_app
-COPY Gemfile /shine_stn_app/Gemfile
-COPY Gemfile.lock /shine_stn_app/Gemfile.lock
+RUN mkdir /blast_stn_knowledge
+WORKDIR /blast_stn_knowledge
+COPY Gemfile /blast_stn_knowledge/Gemfile
+COPY Gemfile.lock /blast_stn_knowledge/Gemfile.lock
 RUN bundle install
 RUN gem install foreman
-COPY . /shine_stn_app
+COPY . /blast_stn_knowledge
 ENV TZ Asia/Tokyo
 
 COPY entrypoint.sh /usr/bin/

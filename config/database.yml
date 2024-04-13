@@ -3,16 +3,16 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
-  password: shine_stn_app_pass
+  password: blast_stn_knowledge_pass
   pool: 5
 
 development:
   <<: *default
-  database: shine_stn_app_development
+  database: blast_stn_knowledge_development
 
 test:
   <<: *default
-  database: shine_stn_app_test
+  database: blast_stn_knowledge_test
 
 production:
   <<: *default

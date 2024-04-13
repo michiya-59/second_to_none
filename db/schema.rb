@@ -162,7 +162,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_06_113354) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.boolean "approved", default: false, null: false
     t.bigint "learn_category_id"
     t.index ["learn_category_id"], name: "index_tasks_on_learn_category_id"
@@ -248,7 +248,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_06_113354) do
     t.integer "failed_login_count", default: 0
     t.boolean "locked", default: false, null: false
     t.integer "incentive_id"
-    t.datetime "cap_date", precision: nil
     t.index ["email"], name: "index_users_on_email"
     t.index ["grade_id"], name: "index_users_on_grade_id"
     t.index ["login_id"], name: "index_users_on_login_id", unique: true

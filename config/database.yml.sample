@@ -8,15 +8,15 @@ default: &default
 
 development:
   <<: *default
-  database: shine_stn_app_development
+  database: blast_stn_knowledge_development
 
 test:
   <<: *default
-  database: shine_stn_app_test
+  database: blast_stn_knowledge_test
 
 production:
   <<: *default
-  database: shine_stn_app_production
+  database: blast_stn_knowledge_production
 
 
 

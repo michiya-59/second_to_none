@@ -2,11 +2,11 @@ version: '3.9'
 services:
   web:
     build: .
-    command: sh -c "rm -f /shine_stn_app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: sh -c "rm -f /blast_stn_knowledge/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     tty: true
     stdin_open: true
     volumes:
-      - .:/shine_stn_app
+      - .:/blast_stn_knowledge
     ports:
       - "80:3000"
     environment:
@@ -15,6 +15,6 @@ services:
     build: .
     command: bundle exec rails dartsass:watch
     volumes:
-      - .:/shine_stn_app
+      - .:/blast_stn_knowledge
     depends_on:
       - web

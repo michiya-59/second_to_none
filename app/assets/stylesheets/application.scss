@@ -464,6 +464,9 @@ main{
     @include responsive_media(tab){
       width: 22%;
     }
+    @include responsive_media(sp){
+      margin-left: 0;
+    }
     img{
       height: 100%;
       object-fit: contain;
@@ -509,6 +512,9 @@ main{
     .header_left{
       width: 40%;
     }
+  }
+  @include responsive_media(sp){
+    padding: 1.1rem 1.7rem 1.1rem 0;
   }
 }
 #tree {
