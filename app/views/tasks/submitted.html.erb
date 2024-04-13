@@ -1,0 +1,43 @@
+<% content_for :js do %>
+  <%= javascript_import_module_tag "controllers/task_submit" %>
+<% end %>
+
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '課題提出 種別一覧', tasks_path, class: 'common_a' %> >
+  <%= link_to '課題提出', new_task_path(type: params[:type]), class: 'common_a' %> >
+  <%= @learn_category_info&.name %> 課題提出の確認
+</p>
+
+<div class="common_field_title">
+  <h1><%= @learn_category_info&.name %> 提出済一覧</h1>
+  <div class="underline"></div>
+</div>
+
+<div class="admin_seminar_content">
+  <div class="common_admin_list">
+    <div class="common_list_head">
+      <p class="w6"></p>
+      <p class="w41 common_size16">タイトル名</p>
+      <p class="w41 common_size16">承認ステータス</p>
+      <p class="w6"></p>
+    </div>
+    <% if @my_tasks.present? %>
+      <div class="common_list_body mt-1">
+        <% @my_tasks.each_with_index do |task, index| %>
+          <div class="common_list_body_part">
+            <p class="w6 common_size16"><%= index + 1 %>.</p>
+            <p class="w41 common_size16"><%= task.learn.name %></p>
+            <p class="w41 common_size16"><%= task&.approved == true ? "承認済み" : "未承認" %></p>
+            <%= link_to '確認', member_detail_task_path(task, learn_category_id: @learn_category_info.id, type: params[:type], admin: false), class: 'confirm_btn common_box_beige task_submitted_btn' %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>まだ<%= @learn_category_info&.name %>の課題は一つも提出していません。</p>
+    <% end %>
+  </div>
+</div>
+
+
+<%= link_to '戻る', new_task_path(type: params[:type]), class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

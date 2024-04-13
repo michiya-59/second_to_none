@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   post "lock_off", to: "sessions#lock_off"
   get "update_user", to: "sessions#edit"
   post "updated_user", to: "sessions#update"
+  get "term", to: "homes#term"
 
-  resources :tasks, only: %i(new create) do
+  resources :tasks, only: %i(index new create update) do
     collection do
       get "confirm"
+      get "submitted"
     end
     member do
       get "member_detail"
@@ -82,6 +84,7 @@ Rails.application.routes.draw do
       patch "confirm"
       get "get_confirm"
       get "complete"
+      get "term_form"
     end
   end
 

@@ -1,9 +1,68 @@
-<% content_for :js do %>
-  <%= javascript_import_module_tag "controllers/orgchart_front" %>
-  <%= javascript_import_module_tag "controllers/orgchart" %>
+<p class="pankuzu">
+  <%= link_to "トップページ", root_path, class: "common_a"%>
+  >
+  組織表
+</p>
+
+<h1 class="organization_title">組織表</h1>
+
+<%= form_with(url: organizations_path, method: :get, local: true) do |form| %>
+  <div class="search_fields">
+    <div class="search_field">
+      <%= form.label :status_query, "ステータス:" %>
+      <%= form.select :status_query, @status_options, 
+                      include_blank: '全て',
+                      selected: params[:status_query] %>
+    </div>
+    <div class="search_field">
+      <%= form.label :level_query, "階層:" %>
+      <%= form.select :level_query, @level_options, 
+                      include_blank: '全て',
+                      selected: params[:level_query] %>
+    </div>
+    <%= form.submit "検索", class: "search" %>
+    <%= link_to 'クリア', organizations_path, class: 'clear_button' %>
+  </div>
 <% end %>
 
-<script src="https://balkan.app/js/OrgChart.js"></script>
-<div id="tree"></div>
+<div class="organization_count">
+  <p>総人数: <%= @total_count %>人 (活動中: <%= @active_count %>人、退会済: <%= @inactive_count %>人)</p>
+  <% if @level_counts.any? %>
+    <ul>
+      <% @level_counts.sort.each do |level, count| %>
+        <% next if level.to_i == 0 %>
+        <li><%= level %>段目: <%= count %>人</li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 
+<table class="organization_table">
+  <thead id="header">
+    <tr>
+      <th class="id">ID</th>
+      <th class="name">名前</th>
+      <th class="status">ステータス</th>
+      <th class="level">階層</th>
+      <th class="parent-id">親ユーザ</th>
+    </tr>
+  </thead>
+  <tbody id="body">
 
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user['id'] %></td>
+        <td><%= user['name'] %></td>
+        <% if user['status'] == 1 %>
+          <td class="active">活動中</td>
+        <% else %>
+          <td class="unactive">退会済</td>
+        <% end %>
+        <td><%= user['level'] %>段目</td>
+        <td><%= user['parent_name'] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

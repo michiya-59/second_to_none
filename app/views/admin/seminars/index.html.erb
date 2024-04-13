@@ -1,6 +1,4 @@
-<% content_for :js do %>
-  <%= javascript_import_module_tag "controllers/seminar_form" %>
-<% end %>
+
 
 <p class="pankuzu">
   <%= link_to "トップページ", root_path, class: "common_a"%>
@@ -21,11 +19,6 @@
       <% if flash[:success].present? %>
         <p class="success_dsn"><i class="fa fa-check "></i><%= flash[:success] %></p>
       <% end %>
-      <div class="seminar_entry_btns">
-        <button id="monday_seminar">月曜日セミナー</button>
-        <button id="wednesday_seminar">水曜日セミナー</button>
-        <button id="saturday_seminar">土曜日セミナー</button>
-      </div>
       <div class="seminar_add_part">
         <p>日程：</p>
         <div class="form_select">

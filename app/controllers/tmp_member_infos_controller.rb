@@ -54,6 +54,8 @@ class TmpMemberInfosController < ApplicationController
 
   def complete; end
 
+  def term_form; end
+
   private
 
   def update_tmp_member_info

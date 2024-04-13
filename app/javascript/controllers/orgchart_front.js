@@ -14,7 +14,7 @@ OrgChart.templates.group.min.description = '<text data-width="230" data-text-ove
 
 var chart; // グローバル変数としてchartを定義
 
-// 画面サイズが変更されたときに組織図の設定を更新する関数
+// 画面サイズが変更されたときに組織表の設定を更新する関数
 function resizeChart() {
   var width = window.innerWidth;
   var height = window.innerHeight;
@@ -36,7 +36,7 @@ function resizeChart() {
 
 document.addEventListener("DOMContentLoaded", function() {
   chart = new OrgChart(document.getElementById("tree"), {
-    // 組織図の設定
+    // 組織表の設定
     mouseScrool: OrgChart.none,
     template: "olivia",
     nodeMenu: {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
   resizeChart(); // 初期サイズ設定
   window.addEventListener('resize', resizeChart); // リサイズイベントリスナー追加
 
-  // 組織図にデータをロード
+  // 組織表にデータをロード
   chart.load(gon.users);
 });
 

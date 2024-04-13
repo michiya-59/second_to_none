@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_28_144301) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_06_113354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -163,6 +163,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_144301) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.boolean "approved", default: false, null: false
+    t.bigint "learn_category_id"
+    t.index ["learn_category_id"], name: "index_tasks_on_learn_category_id"
     t.index ["learn_id"], name: "index_tasks_on_learn_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -272,6 +275,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_28_144301) do
   add_foreign_key "reservations", "users"
   add_foreign_key "rewards", "incentives"
   add_foreign_key "rewards", "users"
+  add_foreign_key "tasks", "learn_categories"
   add_foreign_key "tasks", "learns"
   add_foreign_key "tasks", "users"
   add_foreign_key "user_addresses", "users"

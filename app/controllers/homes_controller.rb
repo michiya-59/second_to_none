@@ -6,4 +6,6 @@ class HomesController < ApplicationController
   end
 
   def get_entry_url; end
+
+  def term; end
 end

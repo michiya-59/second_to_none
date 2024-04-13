@@ -1,0 +1,23 @@
+<% content_for :js do %>
+  <%= javascript_import_module_tag "controllers/task_submit" %>
+<% end %>
+
+<p class="pankuzu">
+  <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  課題提出 種別一覧
+</p>
+
+<div class="common_field_title">
+  <h1>課題提出 種類</h1>
+  <div class="underline"></div>
+</div>
+
+<div class="admin_lsit">
+  <%= link_to "新規MT", new_task_path(type: "new_mt"), class: "common_btn_beige common_btn_content common_box_beige" %>
+  <%= link_to "株式取引の学び", new_task_path(type: "stock"), class: "common_btn_beige common_btn_content common_box_beige" %>
+  <%= link_to "保険の学び", new_task_path(type: "insurance"), class: "common_btn_beige common_btn_content common_box_beige", style: "line-height: 9rem;padding-top:0;" %>
+  <%= link_to "不動産の学び", new_task_path(type: "real_estate"), class: "common_btn_beige common_btn_content common_box_beige" %>
+  <%= link_to "NISAの学び", new_task_path(type: "nisa"), class: "common_btn_beige common_btn_content common_box_beige" %>
+  <%= link_to "為替取引", new_task_path(type: "derivative"), class: "common_btn_beige common_btn_content common_box_beige" %>
+</div>
+<%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

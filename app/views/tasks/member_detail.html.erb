@@ -1,7 +1,7 @@
 <p class="pankuzu">
   <%= link_to 'トップページ', root_path, class: 'common_a' %> >
-  <%= link_to '課題提出の確認一覧', new_task_path, class: 'common_a' %> >
-  <%= link_to '課題提出の確認 メンバー一覧', new_task_path, class: 'common_a' %> >
+  <%= link_to '課題提出の確認一覧', new_task_path(type: params[:type]), class: 'common_a' %> >
+  <%= link_to '課題提出の確認 メンバー一覧', confirm_tasks_path(learn_id: @task&.learn_id, type: params[:type]), class: 'common_a' %> >
   課題提出内容詳細
 </p>
 
@@ -14,7 +14,17 @@
   <div class="underline"></div>
 </div>
 
-<%= form_with model: @task, url: tasks_path, local: true, class: "task_entry_form" do |form| %>
+<% if current_user.admin_flg == 1 %>
+  <div class="approved_dsp">
+    <% if @task&.approved == true %>
+      <strong class="approved">承認済</strong>
+    <% else %>
+      <strong class="unapprove">未承認</strong>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_with model: @task, url: task_path, local: true, class: "task_entry_form" do |form| %>
   <div class="admin_event_form_part">
     <%= form.label :learn_id, "新規MT名", class: "common_size16" %>
     <p class="fz-1_5 disabled_form"><%= @task.learn&.name %></p>
@@ -42,6 +52,21 @@
     <%= form.label :comment, "達成した感想と、得れた学びの内容", class: "common_size16" %>
     <%= form.text_area :comment, rows: 15, required: true, disabled: true %>
   </div>
+  <% if current_user.admin_flg == 1 %>
+    <% unless @task.approved %>
+      <div class="task_form_part" style="display: flex;flex-direction: row;">
+        <%= form.label :approved, "承認済みにする", class: "common_size16", style: "margin-right: 1rem;margin-bottom: 0rem;" %>
+        <%= form.check_box :approved, required: true %>
+      </div>
+      <%= form.hidden_field :type, value: params[:type] %>
+      <%= form.submit "更新する", class: "add_btn common_box_beige" %>
+    <% end %>
+  <% end %>
 <% end %>
 
-<%= link_to '戻る', confirm_tasks_path(learn_id: @task&.learn_id), class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+<% if params[:admin].to_s == "true" %>
+  <%= link_to '戻る', confirm_tasks_path(learn_id: @task&.learn_id, type: params[:type]), class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+<% else %>
+  <%= link_to '戻る', submitted_tasks_path(id: @learn_category_id, type: params[:type]), class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>
+<% end %>
+

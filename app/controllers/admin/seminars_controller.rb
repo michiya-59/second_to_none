@@ -46,6 +46,8 @@ module Admin
         flash[:delete_success] = "セミナー情報が削除されました。"
         if session[:admin_seminars_page].present? && session[:search_seminars_year] && session[:search_seminars_month]
           redirect_to admin_seminars_path(page: session[:admin_seminars_page], search_month: session[:search_seminars_month], search_year: session[:search_seminars_year])
+        else
+          redirect_to admin_seminars_path
         end
       else
         flash[:error] = "セミナー情報の削除に失敗しました。"

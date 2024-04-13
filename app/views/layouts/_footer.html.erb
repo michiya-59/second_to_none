@@ -1,5 +1,8 @@
 <footer>
   <div class="footer">
     <p>copyright©️ STN All Right Reserved.</p>
+    <% unless request.fullpath.include?('tmp_member_infos') %>
+      <%= link_to "利用規約", term_path %>
+    <% end %>
   </div>
 </footer>

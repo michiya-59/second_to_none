@@ -22,7 +22,8 @@
     <%# </div> %>
   </div>
 </section>
-<%= link_to new_task_path, class: "uranai_link" do %>
+
+<%= link_to tasks_path, class: "uranai_link" do %>
   <div class="uranai">
     <div class="uranai_icon">
       <%= image_tag 'cil_badge.svg', alt: '課題提出のアイコン' %>
@@ -30,6 +31,7 @@
     <p class="common_size16">課題提出</p>
   </div>
 <% end %>
+
 <section class="menu_list">
   <%= link_to reservations_path do %>
     <div class="menu_part common_btn_shape">
@@ -39,6 +41,7 @@
       <p class="common_size16">セミナー予約</p>
     </div>
   <% end %>
+
   <%= link_to member_reservation_list_reservation_path(current_user) do %>
     <div class="menu_part common_btn_shape">
       <div class="menu_icon">
@@ -47,30 +50,7 @@
       <p class="common_size16">メンバー予約一覧</p>
     </div>
   <% end %>
-  <%= link_to organizations_path do %>
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'organization.svg', alt: '組織図のアイコン' %>
-      </div>
-      <p class="common_size16">組織図</p>
-    </div>
-  <% end %>
-  <%= link_to events_path do %>
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'event.svg', alt: 'イベント・お知らせ情報のアイコン' %>
-      </div>
-      <p class="common_size16">イベント・お知らせ情報</p>
-    </div>
-  <% end %>
-  <%= link_to connect_services_path do %>
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'connect_service.svg', alt: '提携先のアイコン' %>
-      </div>
-      <p class="common_size16">提携先</p>
-    </div>
-  <% end %>
+
   <% if current_user&.admin_flg == 1 %>
     <%= link_to user_list_rewards_path do %>
       <div class="menu_part common_btn_shape">
@@ -90,16 +70,7 @@
       </div>
     <% end %>
   <% end %>
-  <% if current_user&.admin_flg == 1 %>
-    <%= link_to bonus_pay_list_rewards_path do %>
-      <div class="menu_part common_btn_shape">
-        <div class="menu_icon">
-          <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
-        </div>
-        <p class="common_size16">ボーナス支払い</p>
-      </div>
-    <% end %>
-  <% end %>
+
   <% if current_user&.admin_flg != 1 %>
     <%= link_to titles_path do %>
       <div class="menu_part common_btn_shape">
@@ -110,30 +81,7 @@
       </div>
     <% end %>
   <% end %>
-  <%= link_to learns_path do %>
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'study.svg', alt: '学びの資料のアイコン' %>
-      </div>
-      <p class="common_size16">学びの資料</p>
-    </div>
-  <% end %>
-  <%= link_to 'https://learningbox.online/', target: "_blank" do %>
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'study.svg' %>
-      </div>
-      <p class="common_size16">確認テスト</p>
-    </div>
-  <% end %>
-  <%= link_to learn_list_learns_path(type: "新規MT") do %>
-    <div class="menu_part common_btn_shape">
-      <div class="menu_icon">
-        <%= image_tag 'study.svg', alt: '新規MT' %>
-      </div>
-      <p class="common_size16">新規MT</p>
-    </div>
-  <% end %>
+
   <%= link_to introducers_path do %>
     <div class="menu_part common_btn_shape">
       <div class="menu_icon">
@@ -142,6 +90,25 @@
       <p class="common_size16">紹介者一覧</p>
     </div>
   <% end %>
+
+  <%= link_to organizations_path do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'organization.svg', alt: '組織表のアイコン' %>
+      </div>
+      <p class="common_size16">組織表</p>
+    </div>
+  <% end %>
+
+  <%= link_to connect_services_path do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'connect_service.svg', alt: '提携先のアイコン' %>
+      </div>
+      <p class="common_size16">提携先</p>
+    </div>
+  <% end %>
+
   <%= link_to user_path(current_user) do %>
     <div class="menu_part common_btn_shape">
       <div class="menu_icon">
@@ -150,6 +117,16 @@
       <p class="common_size16">会員登録情報</p>
     </div>
   <% end %>
+
+  <%= link_to events_path do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'event.svg', alt: 'イベント・お知らせ情報のアイコン' %>
+      </div>
+      <p class="common_size16">イベント・お知らせ情報</p>
+    </div>
+  <% end %>
+
   <%= link_to get_entry_url_path do %>
     <div class="menu_part common_btn_shape">
       <div class="menu_icon">
@@ -158,6 +135,18 @@
       <p class="common_size16">会員登録QRコード</p>
     </div>
   <% end %>
+
+  <% if current_user&.admin_flg == 1 %>
+    <%= link_to bonus_pay_list_rewards_path do %>
+      <div class="menu_part common_btn_shape">
+        <div class="menu_icon">
+          <%= image_tag 'bonus.svg', alt: 'ボーナス情報のアイコン' %>
+        </div>
+        <p class="common_size16">ボーナス支払い</p>
+      </div>
+    <% end %>
+  <% end %>
+
   <% if current_user&.admin_flg == 1 %>
     <%= link_to approvals_path(type: "new") do %>
       <div class="menu_part common_btn_shape">
@@ -168,4 +157,77 @@
       </div>
     <% end %>
   <% end %>
+
+  <%= link_to 'https://learningbox.online/', target: "_blank" do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'study.svg' %>
+      </div>
+      <p class="common_size16">確認テスト</p>
+    </div>
+  <% end %>
+
+  <%= link_to learn_list_learns_path(type: "新規MT") do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'study.svg', alt: '新規MT' %>
+      </div>
+      <p class="common_size16">新規MT</p>
+    </div>
+  <% end %>
+
+  <%= link_to learn_list_learns_path(type: "株式取引の学び") do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'stock_price.png', alt: '株式取引の学び' %>
+      </div>
+      <p class="common_size16">株式取引の学び</p>
+    </div>
+  <% end %>
+
+  <%= link_to learn_list_learns_path(type: "保険の学び") do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'insurance.svg', alt: '保険の学び' %>
+      </div>
+      <p class="common_size16">保険の学び</p>
+    </div>
+  <% end %>
+
+  <%= link_to learn_list_learns_path(type: "不動産の学び") do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'real_estate.svg', alt: '不動産の学び' %>
+      </div>
+      <p class="common_size16">不動産の学び</p>
+    </div>
+  <% end %>
+
+  <%= link_to learn_list_learns_path(type: "NISAの学び") do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'nisa.svg', alt: 'NISAの学び' %>
+      </div>
+      <p class="common_size16">NISAの学び</p>
+    </div>
+  <% end %>
+
+  <%= link_to learn_list_learns_path(type: "為替取引") do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon derivative">
+        <%= image_tag 'derivative.svg', alt: '為替取引' %>
+      </div>
+      <p class="common_size16">為替取引</p>
+    </div>
+  <% end %>
+
+  <%= link_to learns_path do %>
+    <div class="menu_part common_btn_shape">
+      <div class="menu_icon">
+        <%= image_tag 'study.svg', alt: '学びの資料のアイコン' %>
+      </div>
+      <p class="common_size16">その他の学びの資料</p>
+    </div>
+  <% end %>
+
 </section>

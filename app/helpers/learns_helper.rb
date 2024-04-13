@@ -8,18 +8,15 @@ module LearnsHelper
   #   current_user.video_views.where(learn_id: required_views).count == required_views.count
   # end
 
-  def task_submitted? learn_id, user_id, index
-    # 最初の3つの資料には制限をかけない
-    if params[:page].present? && params[:page].to_i >= 2
-    elsif index <= 3
-      return true
-    end
+  def task_submitted? learn_id, user_id, learn_category_id, index
+    # 最初の1つの資料には制限をかけない
+    return true if index <= 1
 
-    # 4つ目以降の資料については、それまでの全ての資料の課題が提出されているかを確認
+    # 2つ目以降の資料については、それまでの全ての資料の課題が提出されているかを確認
     # そのために、現在のlearn_idより小さい全てのlearn_idを取得
-    previous_learn_ids = Learn.where("id < ? AND learn_category_id = ?", learn_id, 1).pluck(:id)
+    previous_learn_ids = Learn.where("id < ? AND learn_category_id = ?", learn_id, learn_category_id).pluck(:id)
 
     # それらのlearn_idに対して、全ての課題が提出されているかを確認
-    previous_learn_ids.all?{|id| Task.exists?(learn_id: id, user_id:)}
+    previous_learn_ids.all?{|id| Task.exists?(approved: true, learn_id: id, user_id:)}
   end
 end
