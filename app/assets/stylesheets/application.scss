@@ -2031,18 +2031,18 @@ main{
 
 // login
 .login_icon{
-  width: 44.5rem;
+  width: 50rem;
   margin: 0 auto;
-  margin-top: 6rem;
+  margin-top: 10rem;
   @include responsive_media(tab){
     margin-top: 29rem;
   }
   @include responsive_media(sp_394){
-    margin-top: 23rem;
+    margin-top: 27.5rem;
   }
   @include responsive_media(sp_375){
     margin-top: 18rem;
-    width: 42rem;
+    width: 50rem;
   }
   @include responsive_media(sp_320){
     margin-top: 14rem;
