@@ -15,9 +15,6 @@
           <% else %>
             <li><%= link_to 'ボーナス情報', rewards_path(id: current_user&.id) %></li>
           <% end %>
-          <% if current_user&.admin_flg != 1 %>
-            <li><%= link_to 'タイトル', titles_path %></li>
-          <% end %>
           <li><%= link_to '紹介者一覧', introducers_path %></li>
           <li><%= link_to '登録情報', user_path(current_user) %></li>
           <% if current_user&.admin_flg == 1 %>
@@ -59,15 +56,6 @@
               <%= image_tag 'hamburger_arrow.svg' %>
             </div>
           </li>
-
-          <% if current_user&.admin_flg != 1 %>
-            <li>
-              <%= link_to 'タイトル', titles_path %>
-              <div>
-                <%= image_tag 'hamburger_arrow.svg' %>
-              </div>
-            </li>
-          <% end %>
 
           <li>
             <%= link_to '紹介者一覧', introducers_path %>

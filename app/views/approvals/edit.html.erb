@@ -75,7 +75,7 @@
     </div>
     <div class="common_list_part common_size16">
       <p>登録タイプ</p>
-      <p><%= @approval.incentive_id == 1 ? "ノーマルコース" : "アドバンスコース" %></p>
+      <p><%= get_course_name(@approval.incentive_id) %></p>
     </div>
     <div class="common_list_part common_size16">
       <p>紹介者</p>

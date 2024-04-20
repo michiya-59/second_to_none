@@ -228,24 +228,7 @@
           <p class="common_size16">コース</p>
         </div>
         <div class="form_part_input">
-          <p class="not_merge common_size16"><%= @set_tmp_member_info.incentive_id == 1 ? "ノーマルコース" : "アドバンスコース" %></p>
-        </div>
-      </div>
-
-      <div class="form_edit_part">
-        <div class="form_part_title common_list_title">
-          <p class="common_size16">2ティア制の結果</p>
-        </div>
-        <div class="form_part_input">
-          <p class="not_merge common_size16">
-            <% if @set_tmp_member_info.a_san_flg == 1 %>
-              自組織の３列目以降
-            <% elsif @set_tmp_member_info.a_san_flg == 2 %>
-              他系列
-            <% elsif @set_tmp_member_info.a_san_flg == 9 %>
-              どれでもない
-            <% end %>
-          </p>
+          <p class="not_merge common_size16"><%= get_course_name(@set_tmp_member_info.incentive_id) %></p>
         </div>
       </div>
     </div>

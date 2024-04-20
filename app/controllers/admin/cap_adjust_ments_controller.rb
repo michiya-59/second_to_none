@@ -4,7 +4,7 @@ module Admin
   class CapAdjustMentsController < ApplicationController
     before_action :load_cap_adjustments_data, only: %i(index edit)
     def index
-      @user_all = User.select(:id, :name).all
+      @user_all = User.select(:id, :name).all.order(id: :asc)
     end
 
     def edit
@@ -48,7 +48,7 @@ module Admin
       if params[:id].present?
         @user = User.select("users.id, users.name").find(params[:id])
       else
-        @user_all = User.select(:id, :name).all
+        @user_all = User.select(:id, :name).all.order(id: :asc)
       end
 
       @search_year = if session[:search_cap_adjust_ment_year].present?

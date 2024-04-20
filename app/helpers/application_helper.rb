@@ -19,7 +19,7 @@ module ApplicationHelper
   def calculate_age birthdate
     # 現在の日付を取得
     today = Time.zone.today
-    
+
     # 現在の年 - 生年月日の年
     age = today.year - birthdate.year
 
@@ -48,5 +48,16 @@ module ApplicationHelper
     return nil unless user.user_image.attached?
 
     rails_blob_url(user.user_image, only_path: true)
+  end
+
+  def get_course_name course_id
+    case course_id.to_i
+    when 1
+      "ノーマルコース"
+    when 2
+      "デラックスコース"
+    when 3
+      "ラグジュアリーコース"
+    end
   end
 end

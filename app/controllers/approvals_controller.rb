@@ -18,17 +18,17 @@ class ApprovalsController < ApplicationController
     if approval.present?
       ActiveRecord::Base.transaction do
         # ユーザ情報の登録
-        user = User.create_user approval
+        entry_user = User.create_user approval
         # ユーザ住所情報の登録
-        UserAddress.create_user_address user, approval
+        UserAddress.create_user_address entry_user, approval
         # ユーザ銀行情報の登録
-        UserBank.create_user_bank user, approval
+        UserBank.create_user_bank entry_user, approval
         # 関係情報の登録
-        Relationship.create_relationship user
+        Relationship.create_relationship entry_user
         # 報酬ボーナスの登録
-        Reward.create_rewards user, approval
+        Reward.create_rewards entry_user, approval
         # グレード更新処理
-        UserIntroducerGradeUpdater.new(user).update_introducer_grades
+        # UserIntroducerGradeUpdater.new(entry_user).update_introducer_grades
 
         # 承認済みに変更
         approval.update(approval_id: 1)

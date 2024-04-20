@@ -17,8 +17,8 @@ class TmpMemberInfosController < ApplicationController
     @tmp_member_info_id = params[:tmp_member_info_id] if params[:tmp_member_info_id].present?
     return unless @current_step == TmpMemberInfo::CURRENT_STEP["contract"]
 
-    @incentives = Incentive.where(id: [1, 2])
-    @users = User.all
+    @incentives = Incentive.where(id: [1, 2, 3])
+    @users = User.all.order(id: :asc)
   end
 
   def confirm
@@ -151,7 +151,7 @@ class TmpMemberInfosController < ApplicationController
   end
 
   def user_contract_info_params
-    params.require(:tmp_member_info).permit(:introducer_id, :sales_id, :incentive_id, :a_san_flg)
+    params.require(:tmp_member_info).permit(:introducer_id, :sales_id, :incentive_id)
   end
 
   def set_conversion_account_number
