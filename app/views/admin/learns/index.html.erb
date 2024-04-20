@@ -102,7 +102,7 @@
         </div>
       <% end %>
     <% else %>
-      <p>学びの資料がありません。</p>
+      <p class="not_element"></p>学びの資料がありません。</p>
     <% end %>
   </div>
   <%= paginate @learn_infos, theme: 'admin_learn_custom_paginator', params: { search_year: @search_year, search_month: @search_month } %>  
