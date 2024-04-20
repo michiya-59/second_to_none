@@ -8,18 +8,12 @@ class Incentive < ApplicationRecord
 
   BONUS = {
     normal: 1,
-    advance: 2,
-    two_tier_normal: 3,
-    two_tier_advance: 4,
-    a_san_self_organization: 5,
-    a_san_other_organization: 6,
-    title_bonus_ruby: 7,
-    title_bonus_emerald: 8
-  }.freeze
-
-  A_SAN_FLG = {
-    a_san_self_organization: 1,
-    a_san_other_organization: 2
+    deluxe: 2,
+    luxury: 3,
+    two_tier: 4,
+    normal_incentive: 5,
+    deluxe_incentive: 6,
+    luxury_incentive: 7
   }.freeze
 
   class << self

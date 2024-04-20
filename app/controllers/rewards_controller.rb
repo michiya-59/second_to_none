@@ -28,14 +28,12 @@ class RewardsController < ApplicationController
       @two_tier_bonus_total = snapshot.two_tier_bonus_total
       # タイトルボーナス
       @title_bonus_total = snapshot.title_bonus_total
-      # aさんボーナス
-      @a_san_bonus_total = snapshot.a_san_bonus_total
       # 源泉所得税
       @certificate_of_tax_deducted_price_final = snapshot.tax_withholding
       # キャップ調整金
       @cap_adjustment_money = snapshot.cap_adjustment_money
     else
-      # 直紹介ボーナス、2ティアボーナス、タイトルボーナス、aさんボーナスの合計
+      # 直紹介ボーナス、2ティアボーナス、タイトルボーナスの合計
       tmp_total_payment_price = get_totle_payment_price
       # キャップ調整金
       @cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: params[:id], cap_date: DateTime.new(@search_year.to_i, @search_month.to_i))&.price
@@ -48,7 +46,7 @@ class RewardsController < ApplicationController
   end
 
   def user_list
-    @user_all = User.select(:id, :name).all
+    @user_all = User.select(:id, :name).all.order(id: :asc)
 
     if params[:id].present?
       @user = User.select(:id, :name).find(params[:id])
@@ -69,7 +67,7 @@ class RewardsController < ApplicationController
       reward_info[:user] = user
       reward_info[:reward_month] = "#{@search_year}年#{@search_month}月"
     else
-      # 直紹介ボーナス、2ティアボーナス、タイトルボーナス、aさんボーナスの合計
+      # 直紹介ボーナス、2ティアボーナス、タイトルボーナスの合計
       total_price = get_totle_payment_price
       # キャップ調整金
       cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: params[:id], cap_date: DateTime.new(@search_year.to_i, @search_month.to_i))&.price
@@ -92,8 +90,6 @@ class RewardsController < ApplicationController
         two_tier_bonus_total: @two_tier_bonus_total,
         # タイトルボーナス
         title_bonus_total: @title_bonus_total,
-        # aさんボーナス
-        a_san_bonus_total: @a_san_bonus_total,
         # 源泉徴収
         tax_withholding:,
         # 事務手数料
@@ -130,7 +126,7 @@ class RewardsController < ApplicationController
     current_month = Time.zone.today.month
 
     user_all.each do |user|
-      # 直紹介ボーナス、2ティアボーナス、タイトルボーナス、aさんボーナスの合計
+      # 直紹介ボーナス、2ティアボーナス、タイトルボーナスの合計
       total_price = get_totle_payment_price user.id
       # キャップ調整金
       cap_adjustment_money = CapAdjustmentMoney.find_by(user_id: user.id, cap_date: DateTime.new(current_year, current_month))&.price
@@ -153,8 +149,6 @@ class RewardsController < ApplicationController
         two_tier_bonus_total: @two_tier_bonus_total,
         # タイトルボーナス
         title_bonus_total: @title_bonus_total,
-        # aさんボーナス
-        a_san_bonus_total: @a_san_bonus_total,
         # 源泉徴収
         tax_withholding:,
         # 事務手数料
@@ -187,8 +181,6 @@ class RewardsController < ApplicationController
       @two_tier_bonus_total = snapshot&.two_tier_bonus_total
       # タイトルボーナス
       @title_bonus_total = snapshot&.title_bonus_total
-      # aさんボーナス
-      @a_san_bonus_total = snapshot&.a_san_bonus_total
       # 源泉所得税
       @certificate_of_tax_deducted_price_final = snapshot&.tax_withholding
       # キャップ調整金
@@ -233,13 +225,13 @@ class RewardsController < ApplicationController
       pdf.font "IPAex"
 
       # 会社情報
-      pdf.text "株式会社Shine", align: :right, size: 14
+      pdf.text "BLAST 細谷菜奈", align: :right, size: 14
       pdf.move_down 9
-      pdf.text "〒160-0023", align: :right, size: 14
+      pdf.text "150-0044", align: :right, size: 14
       pdf.move_down 2
-      pdf.text "東京都新宿区西新宿三丁目3番13号", align: :right, size: 14
+      pdf.text "東京都渋谷区円山町5番5号", align: :right, size: 14
       pdf.move_down 2
-      pdf.text "西新宿水間ビル2F", align: :right, size: 14
+      pdf.text "Navi渋谷V 3階", align: :right, size: 14
       pdf.move_down 38
 
       # タイトル
@@ -380,7 +372,6 @@ class RewardsController < ApplicationController
         ["【ボーナス内訳】", ""],
         ["リクルートボーナス", "¥ #{reward_info[:reward_bonus_total]}"],
         ["2ティアボーナス", "¥ #{reward_info[:two_tier_bonus_total]}"],
-        ["Aさんボーナス", "¥ #{reward_info[:a_san_bonus_total]}"],
         ["タイトルボーナス", "¥ #{reward_info[:title_bonus_total]}"],
         ["", ""],
         ["", ""],
@@ -400,17 +391,17 @@ class RewardsController < ApplicationController
         row(0..10).height = 22
         row(0..10).borders = [:bottom]
         row(0..10).border_width = 1
-        11.times do |row_index|
+        10.times do |row_index|
           row(row_index).columns(1).align = :right
         end
         row(0).font_style = :bold
         row(0).padding = [0, 0, 8, 0]
 
-        cells[10, 0].borders = %i(top bottom left)
-        cells[10, 0].border_width = 2
-        cells[10, 1].borders = %i(top bottom right)
-        cells[10, 1].border_width = 2
-        row(10).border_width = 2
+        cells[9, 0].borders = %i(top bottom left)
+        cells[9, 0].border_width = 2
+        cells[9, 1].borders = %i(top bottom right)
+        cells[9, 1].border_width = 2
+        row(9).border_width = 2
       end
 
       pdf.move_down 50
@@ -433,25 +424,22 @@ class RewardsController < ApplicationController
   end
 
   def get_totle_payment_price bat_user_id = nil
-    reward_bonus_incentive_ids = [1, 2]
-    two_tier_bonus_incentive_ids = [3, 4]
-    a_san_bonus_incentive_ids = [5, 6]
-    title_bonus_incentive_ids = [7, 8]
+    reward_bonus_incentive_ids = [1, 2, 3]
+    two_tier_bonus_incentive_ids = [4]
+    title_bonus_incentive_ids = [5, 6, 7]
 
     user_id = (bat_user_id || session[:reward_only_user_id].presence || current_user&.id)
     if session[:search_rewards_year].present? && session[:search_rewards_month].present?
       @reward_bonus_total = calculate_monthly_user_rewards(user_id, *reward_bonus_incentive_ids, session[:search_rewards_year].to_i, session[:search_rewards_month].to_i)
       @two_tier_bonus_total = calculate_monthly_user_rewards(user_id, *two_tier_bonus_incentive_ids, session[:search_rewards_year].to_i, session[:search_rewards_month].to_i)
-      @a_san_bonus_total = calculate_monthly_user_rewards(user_id, *a_san_bonus_incentive_ids, session[:search_rewards_year].to_i, session[:search_rewards_month].to_i)
       @title_bonus_total = calculate_monthly_user_rewards(user_id, *title_bonus_incentive_ids, session[:search_rewards_year].to_i, session[:search_rewards_month].to_i)
     else
       @reward_bonus_total = calculate_monthly_user_rewards(user_id, *reward_bonus_incentive_ids, nil, nil)
       @two_tier_bonus_total = calculate_monthly_user_rewards(user_id, *two_tier_bonus_incentive_ids, nil, nil)
-      @a_san_bonus_total = calculate_monthly_user_rewards(user_id, *a_san_bonus_incentive_ids, nil, nil)
       @title_bonus_total = calculate_monthly_user_rewards(user_id, *title_bonus_incentive_ids, nil, nil)
     end
 
-    @reward_bonus_total + @two_tier_bonus_total + @a_san_bonus_total + @title_bonus_total
+    @reward_bonus_total + @two_tier_bonus_total + @title_bonus_total
   end
 
   def set_date

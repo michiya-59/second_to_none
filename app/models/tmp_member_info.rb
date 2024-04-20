@@ -44,7 +44,6 @@ class TmpMemberInfo < ApplicationRecord
     validates :introducer_id, presence: true
     validates :sales_id, presence: true
     validates :incentive_id, presence: true
-    validates :a_san_flg, presence: true
   end
 
   CURRENT_STEP = {

@@ -79,32 +79,6 @@
         <%= f.select :incentive_id, @incentives&.map { |i| [i.course_name, i.id] }, { selected: get_default_value("incentive_id", "select", @set_tmp_member_info) }%>
       </div>
     </div>
-
-    <div class="two_thier">
-      <div class="underline"></div>
-      <p class="common_size16 sales_info_text">
-        営業担当さんと契約者さんの関係を教えてください。
-      </p>
-      <p class="gray common_size13">
-        ※営業担当の方のみ以下の選択肢を選択してください。
-        紹介者ではなく営業担当本人でお願いいたします。
-      </p>
-      
-      <div class="two_thier_radio">
-        <%= f.radio_button :a_san_flg, 1, checked: (get_default_value("a_san_flg", "radio", @set_tmp_member_info) == 1), required: true %>
-        <%= f.label :a_san_flg, '自組織の３列目以降' %>
-      </div>
-      
-      <div class="two_thier_radio">
-        <%= f.radio_button :a_san_flg, 2, checked: (get_default_value("a_san_flg", "radio", @set_tmp_member_info) == 2), required: true %>
-        <%= f.label :a_san_flg, '他系列'%>
-      </div>
-      
-      <div class="two_thier_radio">
-        <%= f.radio_button :a_san_flg, 9, checked: (get_default_value("a_san_flg", "radio", @set_tmp_member_info) == 9), required: true %>
-        <%= f.label :a_san_flg, 'どれでもない' %>
-      </div>
-    </div>
   </div>
 
   <% if params["back_flg"].present? %>
