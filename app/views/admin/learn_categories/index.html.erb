@@ -40,7 +40,9 @@
             <p class="w6 common_size16"><%= index + 1 %>.</p>
             <p class="w41 common_size16"><%= learn_category.created_at.strftime('%Y/%m/%d %H:%M') %></p>
             <p class="common_size16"><%= learn_category.name %></p>
-            <%= link_to '編集', edit_admin_learn_category_path(learn_category), class: 'edit_btn common_box_beige' %>
+            <% if (1..6).exclude?(learn_category.id.to_i) %>
+              <%= link_to '編集', edit_admin_learn_category_path(learn_category), class: 'edit_btn common_box_beige' %>
+            <% end %>
           </div>
         </div>
       <% end %>
