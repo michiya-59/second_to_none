@@ -4,8 +4,9 @@
 
 <p class="pankuzu">
   <%= link_to 'トップページ', root_path, class: 'common_a' %> >
+  <%= link_to '課題提出 種別一覧', tasks_path, class: 'common_a' %> >
   <%= link_to '課題提出の確認一覧', new_task_path(type: params[:type]), class: 'common_a' %> >
-  課題提出の確認 メンバー一覧
+  メンバー一覧
 </p>
 <div class="admin_seminar_content">
   <div class="common_field_title">
@@ -14,8 +15,8 @@
   </div>
 
   <%= form_with url: confirm_tasks_path, local: true, method: :get, class: "cap_adjust_ments_search" do |form| %>
-    <%= form.select :id, options_for_select(@user_all.map { |user| [user.name, user.id] }, selected: @selected_user_id), {}, { id: 'select2' } %>
-    <%= select_tag :approved, options_for_select([['未承認', false], ['承認済み', true]]), class: "mt-1" %><br>
+    <%= form.select :id, options_for_select([['全てのユーザ', "all"]] + @user_all.map { |user| [user.name, user.id] }, selected: params[:id]), {}, { id: 'select2' } %>
+    <%= select_tag :approved, options_for_select([['未承認', false], ['承認済み', true]], selected: params[:approved]), class: "mt-1" %><br>
     <%= form.hidden_field :learn_id, value: params[:learn_id] %>
     <%= form.hidden_field :type, value: params[:type] %>
     <%= form.submit "検索", class: "search_btn common_box_beige mt-1" %>

@@ -1,7 +1,16 @@
 <p class="pankuzu">
   <%= link_to 'トップページ', root_path, class: 'common_a' %> >
-  <%= link_to '課題提出の確認一覧', new_task_path(type: params[:type]), class: 'common_a' %> >
-  <%= link_to '課題提出の確認 メンバー一覧', confirm_tasks_path(learn_id: @task&.learn_id, type: params[:type]), class: 'common_a' %> >
+  <%= link_to '課題提出 種別一覧', tasks_path, class: 'common_a' %> >
+  <% if current_user&.admin_flg == 1 %>
+    <%= link_to '課題提出の確認一覧', new_task_path(type: params[:type]), class: 'common_a' %> >
+  <% else %>
+    <%= link_to '課題提出', new_task_path(type: params[:type]), class: 'common_a' %> >
+  <% end %>
+  <% if params[:admin].to_s == "false" %>
+    <%= link_to "#{@learn_category_info&.name}" + '課題提出の確認', submitted_tasks_path(id: @learn_category_id, type: params[:type]), class: 'common_a' %> >
+  <% else %>
+    <%= link_to 'メンバー一覧', confirm_tasks_path(learn_id: @task&.learn_id, type: params[:type]), class: 'common_a' %> >
+  <% end %>
   課題提出内容詳細
 </p>
 

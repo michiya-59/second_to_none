@@ -1,26 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var el = document.getElementById('terms-scroll');
-  var checkbox = document.getElementById('agree-checkbox');
-  var link = document.getElementById('registration-link');
+  var termsEl = document.getElementById('terms-scroll');
+  var agreeCheckbox = document.getElementById('agree-checkbox');
+  var businessOwnerCheckbox = document.getElementById('business-owner-checkbox');
+  var registrationLink = document.getElementById('registration-link');
 
   function checkScroll() {
-    if (el.scrollHeight <= el.clientHeight || el.scrollHeight - el.scrollTop <= el.clientHeight + 1) {
-      checkbox.disabled = false;
+    if (termsEl.scrollHeight <= termsEl.clientHeight || termsEl.scrollHeight - termsEl.scrollTop <= termsEl.clientHeight + 1) {
+      agreeCheckbox.disabled = false;
     } else {
-      checkbox.disabled = true;
-      checkbox.checked = false;
-      link.classList.remove('enabled');
+      agreeCheckbox.disabled = true;
+      agreeCheckbox.checked = false;
+      businessOwnerCheckbox.checked = false;
+      businessOwnerCheckbox.disabled = true;
+      registrationLink.classList.remove('enabled');
     }
   }
 
-  el.addEventListener('scroll', checkScroll);
+  termsEl.addEventListener('scroll', checkScroll);
   checkScroll(); // Call on initial load
 
-  checkbox.addEventListener('change', function() {
+  agreeCheckbox.addEventListener('change', function() {
     if (this.checked) {
-      link.classList.add('enabled');
+      businessOwnerCheckbox.disabled = false;
     } else {
-      link.classList.remove('enabled');
+      businessOwnerCheckbox.checked = false;
+      businessOwnerCheckbox.disabled = true;
+      registrationLink.classList.remove('enabled');
     }
+    enableRegistrationLink();
   });
+
+  businessOwnerCheckbox.addEventListener('change', function() {
+    enableRegistrationLink();
+  });
+
+  function enableRegistrationLink() {
+    if (agreeCheckbox.checked && businessOwnerCheckbox.checked) {
+      registrationLink.classList.add('enabled');
+    } else {
+      registrationLink.classList.remove('enabled');
+    }
+  }
 });
