@@ -11,9 +11,6 @@
       <p class="common_size20 sp_320_font_size">名前：<%= @user&.name %></p>
       <p class="common_size20 sp_320_font_size">契約日時：<%= @user&.created_at.strftime("%Y/%m/%d") %></p>
     </div>
-    <%# <div class="sales_batch"> %>
-      <%#= image_tag 'business.svg', alt: '営業する人のアイコン' %>
-    <%# </div> %>
   </div>
 </section>
 
@@ -21,6 +18,9 @@
   <div class="uranai">
     <div class="uranai_icon">
       <%= image_tag 'cil_badge.svg', alt: '課題提出のアイコン' %>
+      <% if current_user&.admin_flg == 1 && @tasked_total_count > 0 %>
+        <span class="badge"><%= @tasked_total_count %></span>
+      <% end %>
     </div>
     <p class="common_size16">課題提出</p>
   </div>

@@ -269,4 +269,9 @@
   <label for="agree-checkbox">利用規約に同意する</label>
 </div>
 
+<div class="agreement-checkbox">
+  <input type="checkbox" id="business-owner-checkbox" disabled required: true>
+  <label for="business-owner-checkbox">個人事業主又は法人の事業主であることに同意する</label>
+</div>
+
 <%= link_to "登録フォームへ", new_tmp_member_info_path(current_step: 1), class: 'common_btn_beige btn_term_submit', id: 'registration-link' %>

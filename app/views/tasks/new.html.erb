@@ -5,7 +5,11 @@
 <p class="pankuzu">
   <%= link_to 'トップページ', root_path, class: 'common_a' %> >
   <%= link_to '課題提出 種別一覧', tasks_path, class: 'common_a' %> >
-  課題提出
+  <% if current_user&.admin_flg == 1 %>
+    課題提出の確認一覧
+  <% else %>
+    課題提出
+  <% end %>
 </p>
 
 <div class="common_field_title">
@@ -29,10 +33,16 @@
       <% if @learns.present? %>
         <div class="common_list_body mt-2">
           <% @learns.each_with_index do |learn, index| %>
+            <% @tasked_detail_count = Task.where(learn_id: learn.id, approved: false).count %>
             <div class="common_list_body_part">
-              <p class="w6 common_size16"><%= index + 1 %>.</p>
-              <p class="w41 common_size16"><%= learn&.name %></p>
-              <%= link_to '課題提出確認', confirm_tasks_path(learn_id: learn&.id, type: params[:type]), class: 'confirm_btn common_box_beige' %>
+              <p class="w6 common_size16 lh-5"><%= index + 1 %>.</p>
+              <p class="w41 common_size16 lh-5"><%= learn&.name %></p>
+                <div class="link_wrapper" style="width: 100%;">
+                  <%= link_to '課題提出確認', confirm_tasks_path(learn_id: learn&.id, type: params[:type]), class: 'confirm_btn common_box_beige', style: "display: block;" %>
+                  <% if current_user&.admin_flg == 1 && @tasked_detail_count > 0 %>
+                    <span class="badge detail_badge"><%= @tasked_detail_count %></span>
+                  <% end %>
+                </div>
             </div>
           <% end %>
         </div>

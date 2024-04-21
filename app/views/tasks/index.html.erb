@@ -12,12 +12,43 @@
   <div class="underline"></div>
 </div>
 
-<div class="admin_lsit">
-  <%= link_to "新規MT", new_task_path(type: "new_mt"), class: "common_btn_beige common_btn_content common_box_beige" %>
-  <%= link_to "株式取引の学び", new_task_path(type: "stock"), class: "common_btn_beige common_btn_content common_box_beige" %>
-  <%= link_to "保険の学び", new_task_path(type: "insurance"), class: "common_btn_beige common_btn_content common_box_beige", style: "line-height: 9rem;padding-top:0;" %>
-  <%= link_to "不動産の学び", new_task_path(type: "real_estate"), class: "common_btn_beige common_btn_content common_box_beige" %>
-  <%= link_to "NISAの学び", new_task_path(type: "nisa"), class: "common_btn_beige common_btn_content common_box_beige" %>
-  <%= link_to "為替取引", new_task_path(type: "derivative"), class: "common_btn_beige common_btn_content common_box_beige" %>
+<div class="admin_list">
+  <div class="link_wrapper">
+    <%= link_to "新規MT", new_task_path(type: "new_mt"), class: "common_btn_beige common_btn_content common_box_beige" %>
+    <% if current_user&.admin_flg == 1 &&  @new_mt_total_count > 0 %>
+      <span class="badge"><%= @new_mt_total_count %></span>
+    <% end %>
+  </div>
+  <div class="link_wrapper">
+    <%= link_to "株式取引の学び", new_task_path(type: "stock"), class: "common_btn_beige common_btn_content common_box_beige" %>
+    <% if current_user&.admin_flg == 1 && @stock_total_count > 0%>
+      <span class="badge"><%= @stock_total_count %></span>
+    <% end %>
+  </div>
+  <div class="link_wrapper" style="line-height: 9rem; padding-top: 0;">
+    <%= link_to "保険の学び", new_task_path(type: "insurance"), class: "common_btn_beige common_btn_content common_box_beige" %>
+    <% if current_user&.admin_flg == 1 && @insurance_total_count > 0%>
+      <span class="badge"><%= @insurance_total_count %></span>
+    <% end %>
+  </div>
+  <div class="link_wrapper">
+    <%= link_to "不動産の学び", new_task_path(type: "real_estate"), class: "common_btn_beige common_btn_content common_box_beige" %>
+    <% if current_user&.admin_flg == 1 && @real_estate_total_count > 0%>
+      <span class="badge"><%= @real_estate_total_count %></span>
+    <% end %>
+  </div>
+  <div class="link_wrapper">
+    <%= link_to "NISAの学び", new_task_path(type: "nisa"), class: "common_btn_beige common_btn_content common_box_beige" %>
+    <% if current_user&.admin_flg == 1 && @nisa_total_count > 0%>
+      <span class="badge"><%= @nisa_total_count %></span>
+    <% end %>
+  </div>
+  <div class="link_wrapper">
+    <%= link_to "為替取引", new_task_path(type: "derivative"), class: "common_btn_beige common_btn_content common_box_beige" %>
+    <% if current_user&.admin_flg == 1 && @derivative_total_count > 0%>
+      <span class="badge"><%= @derivative_total_count %></span>
+    <% end %>
+  </div>
 </div>
+
 <%= link_to '戻る', root_path, class: 'common_btn_beige common_btn_beige_background common_btn_content common_merge' %>

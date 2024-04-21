@@ -446,6 +446,11 @@ $border_radius: 0.5rem;
     font-size: 1.7rem;
   }
 }
+.lh-5{
+  @include responsive_media(sp){
+    line-height: 5rem;
+  }
+}
 // 共通部品
 
 main{
@@ -624,6 +629,7 @@ main{
     justify-content: center;
     align-items: center;
     margin-top: 3rem;
+    position: relative;
     @include responsive_media(sp){
       height: 100%;
       margin-top: 2rem;
@@ -3245,5 +3251,53 @@ main{
   a{
     border: 1px solid #afafaf;
     padding: 0 1rem;
+  }
+}
+
+// 通知スタイル
+.admin_list{
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.link_wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  transform: translate(50%, -50%);
+  @include responsive_media(tab){
+    width: 4rem;
+    height: 4rem;
+  }
+  @include responsive_media(sp){
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    width: 5rem;
+    height: 5rem;
+  }
+}
+.detail_badge{
+  @include responsive_media(sp){
+    top: 0rem;
+    right: 0rem;
+    width: 4rem;
+    height: 4rem;
   }
 }
