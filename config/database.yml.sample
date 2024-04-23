@@ -8,15 +8,15 @@ default: &default
 
 development:
   <<: *default
-  database: blast_stn_knowledge_development
+  database: second_to_none_development
 
 test:
   <<: *default
-  database: blast_stn_knowledge_test
+  database: second_to_none_test
 
 production:
   <<: *default
-  database: blast_stn_knowledge_production
+  database: second_to_none_production
 
 
 

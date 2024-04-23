@@ -3,20 +3,20 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
-  password: blast_stn_knowledge_pass
+  password: second_to_none_pass
   pool: 5
 
 development:
   <<: *default
-  database: blast_stn_knowledge_development
+  database: second_to_none_development
 
 test:
   <<: *default
-  database: blast_stn_knowledge_test
+  database: second_to_none_test
 
 production:
   <<: *default
-  database: blast_stn_knowledge_production
-  username: <%= ENV["BLAST_STN_DATABASE_USER"] %>
-  host: <%= ENV["BLAST_STN_DATABASE_HOST"] %>
-  password: <%= ENV["BLAST_STN_DATABASE_PASSWORD"] %>
+  database: second_to_none_production
+  username: <%= ENV["SECOND_TO_NONE_DATABASE_USER"] %>
+  host: <%= ENV["SECOND_TO_NONE_DATABASE_HOST"] %>
+  password: <%= ENV["SECOND_TO_NONE_DATABASE_PASSWORD"] %>
